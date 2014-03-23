@@ -59,7 +59,9 @@ src/main.d: ../src/main.cpp ../src/first.view/Widget.h \
  /usr/include/qt4/QtGui/qabstractbutton.h \
  /usr/include/qt4/QtGui/qboxlayout.h /usr/include/qt4/QtGui/qlayout.h \
  /usr/include/qt4/QtGui/qlayoutitem.h \
- /usr/include/qt4/QtGui/qgridlayout.h
+ /usr/include/qt4/QtGui/qgridlayout.h \
+ /usr/include/qt4/QtGui/qmessagebox.h /usr/include/qt4/QtGui/qdialog.h \
+ /usr/include/qt4/QtGui/qmainwindow.h
 
 ../src/first.view/Widget.h:
 
@@ -238,3 +240,9 @@ src/main.d: ../src/main.cpp ../src/first.view/Widget.h \
 /usr/include/qt4/QtGui/qlayoutitem.h:
 
 /usr/include/qt4/QtGui/qgridlayout.h:
+
+/usr/include/qt4/QtGui/qmessagebox.h:
+
+/usr/include/qt4/QtGui/qdialog.h:
+
+/usr/include/qt4/QtGui/qmainwindow.h:

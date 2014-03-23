@@ -1,18 +1,18 @@
 #include "Widget.h"
 
 
-Widget::Widget(QWidget *parent) : QWidget(parent)
+Widget::Widget() : QMainWindow()
 {
     if (this->objectName().isEmpty()){
         this->setObjectName(QString::fromUtf8("Widget"));
     }
     this->resize(680, 450);
-    upButton = new QPushButton(this);
-    upButton->setObjectName(QString::fromUtf8("upButton"));
-    upButton->setGeometry(QRect(80, 290, 51, 27));
     leftButton = new QPushButton(this);
     leftButton->setObjectName(QString::fromUtf8("leftButton"));
     leftButton->setGeometry(QRect(30, 330, 51, 27));
+    upButton = new QPushButton(this);
+    upButton->setObjectName(QString::fromUtf8("upButton"));
+    upButton->setGeometry(QRect(80, 290, 51, 27));
     rightButton = new QPushButton(this);
     rightButton->setObjectName(QString::fromUtf8("rightButton"));
     rightButton->setGeometry(QRect(130, 330, 51, 27));
@@ -37,16 +37,35 @@ Widget::Widget(QWidget *parent) : QWidget(parent)
     verticalLayout->setContentsMargins(0, 0, 0, 0);
 
     QMetaObject::connectSlotsByName(this);
-
-    this->setWindowTitle(QApplication::translate("Widget", "Widget", 0, QApplication::UnicodeUTF8));
+    this->setWindowTitle("Widget");
     upButton->setText("up");
-    leftButton->setText(QApplication::translate("Widget", "left", 0, QApplication::UnicodeUTF8));
-    rightButton->setText(QApplication::translate("Widget", "right", 0, QApplication::UnicodeUTF8));
-    downButton->setText(QApplication::translate("Widget", "down", 0, QApplication::UnicodeUTF8));
-    zoomInButton->setText(QApplication::translate("Widget", "zoom in", 0, QApplication::UnicodeUTF8));
-    zoomOutButton->setText(QApplication::translate("Widget", "zoom out", 0, QApplication::UnicodeUTF8));
+    leftButton->setText("left");
+    rightButton->setText("right");
+    downButton->setText("down");
+    zoomInButton->setText("zoom in");
+    zoomOutButton->setText("zoom out");
+    QObject::connect(upButton,SIGNAL(clicked()),this,SLOT(clickedSlot()));
+    QObject::connect(rightButton,SIGNAL(clicked()),this,SLOT(clicked()));
+    QObject::connect(downButton,SIGNAL(clicked()),this,SLOT(clickeds()));
 }
-
+void Widget::clickedSlot(){
+	QMessageBox* msgBox = new QMessageBox();
+	msgBox->setWindowTitle("Hello");
+	msgBox->setText("I love you");
+	msgBox->exec();
+}
+void Widget::clicked(){
+	QMessageBox* msgBox = new QMessageBox();
+		msgBox->setWindowTitle("Hello");
+		msgBox->setText("work");
+		msgBox->exec();
+}
+void Widget::clickeds(){
+	QMessageBox* msgBox = new QMessageBox();
+		msgBox->setWindowTitle("Hello");
+		msgBox->setText("worksss");
+		msgBox->exec();
+}
 Widget::~Widget()
 {
 

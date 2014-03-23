@@ -4,13 +4,16 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/first.view/Widget.cpp 
+../src/first.view/Widget.cpp \
+../src/first.view/moc_widget.cpp 
 
 OBJS += \
-./src/first.view/Widget.o 
+./src/first.view/Widget.o \
+./src/first.view/moc_widget.o 
 
 CPP_DEPS += \
-./src/first.view/Widget.d 
+./src/first.view/Widget.d \
+./src/first.view/moc_widget.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

@@ -10,16 +10,24 @@
 #include "QtGui/qpushbutton.h"
 #include "QtGui/qboxlayout.h"
 #include "QtGui/qwidget.h"
+#include "QtGui/qmessagebox.h"
+#include "QtGui/qmainwindow.h"
 
-class Widget : public QWidget
+
+class Widget : public QMainWindow
 {
+	Q_OBJECT
 public:
-     Widget(QWidget *parent = 0);
+	explicit Widget();
     ~Widget();
 
+public slots:
+    void clickedSlot();
+    void clicked();
+    void clickeds();
 private:
-   QPushButton *upButton;
    QPushButton *leftButton;
+   QPushButton *upButton;
    QPushButton *rightButton;
    QPushButton *downButton;
    QPushButton *zoomInButton;
