@@ -44,28 +44,39 @@ Widget::Widget() : QMainWindow()
     downButton->setText("down");
     zoomInButton->setText("zoom in");
     zoomOutButton->setText("zoom out");
-    QObject::connect(upButton,SIGNAL(clicked()),this,SLOT(clickeedSlot()));
-    QObject::connect(rightButton,SIGNAL(clicked()),this,SLOT(clicked()));
-    QObject::connect(downButton,SIGNAL(clicked()),this,SLOT(clickeds()));
+    QObject::connect(upButton,SIGNAL(clicked()),this,SLOT(onUpClick()));
+    QObject::connect(rightButton,SIGNAL(clicked()),this,SLOT(onRightClick()));
+    QObject::connect(downButton,SIGNAL(clicked()),this,SLOT(onDownClick()));
+    QObject::connect(leftButton,SIGNAL(clicked()),this,SLOT(onLeftClick()));
+
+    QObject::connect(zoomInButton,SIGNAL(clicked()),this,SLOT(onZoomInClick()));
+    QObject::connect(zoomOutButton,SIGNAL(clicked()),this,SLOT(onZoomOutClick()));
 }
-void Widget::clickeedSlot(){
-	QMessageBox* msgBox = new QMessageBox();
-	msgBox->setWindowTitle("Hello");
-	msgBox->setText("I love you");
-	msgBox->exec();
+
+void Widget::onUpClick(){
+	printf("up\n");
 }
-void Widget::clicked(){
-	QMessageBox* msgBox = new QMessageBox();
-		msgBox->setWindowTitle("Hello");
-		msgBox->setText("work");
-		msgBox->exec();
+
+void Widget::onRightClick(){
+	printf("right\n");
 }
-void Widget::clickeds(){
-	QMessageBox* msgBox = new QMessageBox();
-		msgBox->setWindowTitle("Hello");
-		msgBox->setText("worksss");
-		msgBox->exec();
+
+void Widget::onDownClick(){
+	printf("down\n");
 }
+
+void Widget::onLeftClick(){
+	printf("left\n");
+}
+
+void Widget::onZoomInClick(){
+	printf("in\n");
+}
+
+void Widget::onZoomOutClick(){
+	printf("out\n");
+}
+
 Widget::~Widget()
 {
 

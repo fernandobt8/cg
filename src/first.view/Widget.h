@@ -1,6 +1,7 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 
+#include <stdio.h>
 #include "QtGui/qwidget.h"
 #include "QtCore/qvariant.h"
 #include "QtGui/qaction.h"
@@ -22,9 +23,13 @@ public:
     ~Widget();
 
 public slots:
-    void clickeedSlot();
-    void clicked();
-    void clickeds();
+    void onUpClick();
+    void onRightClick();
+    void onDownClick();
+    void onLeftClick();
+    void onZoomInClick();
+    void onZoomOutClick();
+
 private:
    QPushButton *leftButton;
    QPushButton *upButton;
