@@ -44,11 +44,11 @@ Widget::Widget() : QMainWindow()
     downButton->setText("down");
     zoomInButton->setText("zoom in");
     zoomOutButton->setText("zoom out");
-    QObject::connect(upButton,SIGNAL(clicked()),this,SLOT(clickedSlot()));
+    QObject::connect(upButton,SIGNAL(clicked()),this,SLOT(clickeedSlot()));
     QObject::connect(rightButton,SIGNAL(clicked()),this,SLOT(clicked()));
     QObject::connect(downButton,SIGNAL(clicked()),this,SLOT(clickeds()));
 }
-void Widget::clickedSlot(){
+void Widget::clickeedSlot(){
 	QMessageBox* msgBox = new QMessageBox();
 	msgBox->setWindowTitle("Hello");
 	msgBox->setText("I love you");

@@ -22,7 +22,7 @@ public:
     ~Widget();
 
 public slots:
-    void clickedSlot();
+    void clickeedSlot();
     void clicked();
     void clickeds();
 private:
