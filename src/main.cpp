@@ -4,7 +4,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Widget *w =  new Widget();
+    Widget *w =  new Widget(NULL);
     w->show();
     
     return a.exec();
