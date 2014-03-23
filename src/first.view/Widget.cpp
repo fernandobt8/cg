@@ -30,10 +30,8 @@ Widget::Widget() : QMainWindow()
     verticalLayoutWidget = new QWidget(this);
     verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
     verticalLayoutWidget->setGeometry(QRect(239, 19, 421, 401));
-    verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-    verticalLayout->setSpacing(6);
-    verticalLayout->setContentsMargins(11, 11, 11, 11);
-    verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+
+
 
     QMetaObject::connectSlotsByName(this);
     this->setWindowTitle("Widget");
@@ -50,6 +48,11 @@ Widget::Widget() : QMainWindow()
 
     QObject::connect(zoomInButton,SIGNAL(clicked()),this,SLOT(onZoomInClick()));
     QObject::connect(zoomOutButton,SIGNAL(clicked()),this,SLOT(onZoomOutClick()));
+}
+
+void Widget::paintEvent(QPaintEvent* e){
+	QPainter *a = new QPainter(this);
+	a->drawLine(10,10,50,50);
 }
 
 void Widget::onUpClick(){

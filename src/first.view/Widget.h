@@ -2,6 +2,7 @@
 #define WIDGET_H
 
 #include <stdio.h>
+#include "QtGui/qpainter.h"
 #include "QtGui/qwidget.h"
 #include "QtCore/qvariant.h"
 #include "QtGui/qaction.h"
@@ -21,7 +22,7 @@ class Widget : public QMainWindow
 public:
 	explicit Widget();
     ~Widget();
-
+    virtual void paintEvent(QPaintEvent*);
 public slots:
     void onUpClick();
     void onRightClick();
