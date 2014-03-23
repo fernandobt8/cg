@@ -34,7 +34,6 @@ Widget::Widget() : QMainWindow()
     verticalLayout->setSpacing(6);
     verticalLayout->setContentsMargins(11, 11, 11, 11);
     verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-    verticalLayout->setContentsMargins(0, 0, 0, 0);
 
     QMetaObject::connectSlotsByName(this);
     this->setWindowTitle("Widget");
