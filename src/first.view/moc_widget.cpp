@@ -23,7 +23,7 @@ static const uint qt_meta_data_Widget[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -37,6 +37,7 @@ static const uint qt_meta_data_Widget[] = {
       49,    7,    7,    7, 0x0a,
       63,    7,    7,    7, 0x0a,
       79,    7,    7,    7, 0x0a,
+      96,    7,    7,    7, 0x0a,
 
        0        // eod
 };
@@ -44,7 +45,7 @@ static const uint qt_meta_data_Widget[] = {
 static const char qt_meta_stringdata_Widget[] = {
     "Widget\0\0onUpClick()\0onRightClick()\0"
     "onDownClick()\0onLeftClick()\0onZoomInClick()\0"
-    "onZoomOutClick()\0"
+    "onZoomOutClick()\0onAdicionarButtonClicked()\0"
 };
 
 void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -59,6 +60,7 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 3: _t->onLeftClick(); break;
         case 4: _t->onZoomInClick(); break;
         case 5: _t->onZoomOutClick(); break;
+        case 6: _t->onAdicionarButtonClicked(); break;
         default: ;
         }
     }

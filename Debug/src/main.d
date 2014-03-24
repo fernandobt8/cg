@@ -36,10 +36,6 @@ src/main.d: ../src/main.cpp ../src/first.view/Widget.h \
  /usr/include/qt4/QtCore/qmap.h /usr/include/qt4/QtCore/qhash.h \
  /usr/include/qt4/QtGui/qaction.h /usr/include/qt4/QtGui/qicon.h \
  /usr/include/qt4/QtGui/qactiongroup.h \
- /usr/include/qt4/QtGui/qapplication.h \
- /usr/include/qt4/QtCore/qcoreapplication.h \
- /usr/include/qt4/QtCore/qcoreevent.h \
- /usr/include/qt4/QtCore/qeventloop.h \
  /usr/include/qt4/QtGui/qbuttongroup.h \
  /usr/include/qt4/QtGui/qheaderview.h \
  /usr/include/qt4/QtGui/qabstractitemview.h \
@@ -61,8 +57,16 @@ src/main.d: ../src/main.cpp ../src/first.view/Widget.h \
  /usr/include/qt4/QtGui/qboxlayout.h /usr/include/qt4/QtGui/qlayout.h \
  /usr/include/qt4/QtGui/qlayoutitem.h \
  /usr/include/qt4/QtGui/qgridlayout.h \
+ /usr/include/qt4/QtGui/qlistwidget.h /usr/include/qt4/QtGui/qlistview.h \
  /usr/include/qt4/QtGui/qmessagebox.h /usr/include/qt4/QtGui/qdialog.h \
- /usr/include/qt4/QtGui/qmainwindow.h
+ /usr/include/qt4/QtGui/qmainwindow.h /usr/include/qt4/QtGui/qlineedit.h \
+ /usr/include/qt4/QtGui/qtextcursor.h \
+ /usr/include/qt4/QtGui/qtextformat.h /usr/include/qt4/QtGui/qlabel.h \
+ ../src/first.view/AdicionarWindow.h /usr/include/qt4/QtCore/QVariant \
+ /usr/include/qt4/QtCore/qvariant.h /usr/include/qt4/QtGui/qapplication.h \
+ /usr/include/qt4/QtCore/qcoreapplication.h \
+ /usr/include/qt4/QtCore/qcoreevent.h \
+ /usr/include/qt4/QtCore/qeventloop.h
 
 ../src/first.view/Widget.h:
 
@@ -192,14 +196,6 @@ src/main.d: ../src/main.cpp ../src/first.view/Widget.h \
 
 /usr/include/qt4/QtGui/qactiongroup.h:
 
-/usr/include/qt4/QtGui/qapplication.h:
-
-/usr/include/qt4/QtCore/qcoreapplication.h:
-
-/usr/include/qt4/QtCore/qcoreevent.h:
-
-/usr/include/qt4/QtCore/qeventloop.h:
-
 /usr/include/qt4/QtGui/qbuttongroup.h:
 
 /usr/include/qt4/QtGui/qheaderview.h:
@@ -250,8 +246,34 @@ src/main.d: ../src/main.cpp ../src/first.view/Widget.h \
 
 /usr/include/qt4/QtGui/qgridlayout.h:
 
+/usr/include/qt4/QtGui/qlistwidget.h:
+
+/usr/include/qt4/QtGui/qlistview.h:
+
 /usr/include/qt4/QtGui/qmessagebox.h:
 
 /usr/include/qt4/QtGui/qdialog.h:
 
 /usr/include/qt4/QtGui/qmainwindow.h:
+
+/usr/include/qt4/QtGui/qlineedit.h:
+
+/usr/include/qt4/QtGui/qtextcursor.h:
+
+/usr/include/qt4/QtGui/qtextformat.h:
+
+/usr/include/qt4/QtGui/qlabel.h:
+
+../src/first.view/AdicionarWindow.h:
+
+/usr/include/qt4/QtCore/QVariant:
+
+/usr/include/qt4/QtCore/qvariant.h:
+
+/usr/include/qt4/QtGui/qapplication.h:
+
+/usr/include/qt4/QtCore/qcoreapplication.h:
+
+/usr/include/qt4/QtCore/qcoreevent.h:
+
+/usr/include/qt4/QtCore/qeventloop.h:
