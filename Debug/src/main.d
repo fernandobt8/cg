@@ -1,4 +1,4 @@
-src/main.d: ../src/main.cpp ../src/first.view/Widget.h \
+src/main.d: ../src/main.cpp ../src/main.view/MainView.h \
  /usr/include/qt4/QtGui/qpainter.h /usr/include/qt4/QtCore/qnamespace.h \
  /usr/include/qt4/QtCore/qglobal.h /usr/include/qt4/QtCore/qconfig.h \
  /usr/include/qt4/QtCore/qfeatures.h /usr/include/qt4/QtCore/qrect.h \
@@ -62,13 +62,16 @@ src/main.d: ../src/main.cpp ../src/first.view/Widget.h \
  /usr/include/qt4/QtGui/qmainwindow.h /usr/include/qt4/QtGui/qlineedit.h \
  /usr/include/qt4/QtGui/qtextcursor.h \
  /usr/include/qt4/QtGui/qtextformat.h /usr/include/qt4/QtGui/qlabel.h \
- ../src/first.view/AdicionarWindow.h /usr/include/qt4/QtCore/QVariant \
- /usr/include/qt4/QtCore/qvariant.h /usr/include/qt4/QtGui/qapplication.h \
+ ../src/main.view/adicionar/AdicionarTipoObjetoView.h \
+ /usr/include/qt4/QtCore/QVariant /usr/include/qt4/QtCore/qvariant.h \
+ /usr/include/qt4/QtGui/qapplication.h \
  /usr/include/qt4/QtCore/qcoreapplication.h \
  /usr/include/qt4/QtCore/qcoreevent.h \
- /usr/include/qt4/QtCore/qeventloop.h
+ /usr/include/qt4/QtCore/qeventloop.h \
+ ../src/main.view/adicionar/../../api/OnAdicionarObjetoTipoEvent.h \
+ ../src/main.view/adicionar/../../api/../dto/ObjetoGeometrico.h
 
-../src/first.view/Widget.h:
+../src/main.view/MainView.h:
 
 /usr/include/qt4/QtGui/qpainter.h:
 
@@ -264,7 +267,7 @@ src/main.d: ../src/main.cpp ../src/first.view/Widget.h \
 
 /usr/include/qt4/QtGui/qlabel.h:
 
-../src/first.view/AdicionarWindow.h:
+../src/main.view/adicionar/AdicionarTipoObjetoView.h:
 
 /usr/include/qt4/QtCore/QVariant:
 
@@ -277,3 +280,7 @@ src/main.d: ../src/main.cpp ../src/first.view/Widget.h \
 /usr/include/qt4/QtCore/qcoreevent.h:
 
 /usr/include/qt4/QtCore/qeventloop.h:
+
+../src/main.view/adicionar/../../api/OnAdicionarObjetoTipoEvent.h:
+
+../src/main.view/adicionar/../../api/../dto/ObjetoGeometrico.h:

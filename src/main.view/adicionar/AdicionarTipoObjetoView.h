@@ -24,14 +24,14 @@
 #include "QtGui/qmainwindow.h"
 #include "QtGui/qlineedit.h"
 #include "QtGui/qlabel.h"
+#include "../../api/OnAdicionarObjetoTipoEvent.h"
 
-
-class AdicionarWindow : public QMainWindow
+class AdicionarTipoObjetoView : public QMainWindow
 {
 	Q_OBJECT
 public:
-	explicit AdicionarWindow();
-	~AdicionarWindow();
+	 AdicionarTipoObjetoView(OnAdicionarObjetoTipoEvent *event);
+	~AdicionarTipoObjetoView();
 
 public slots:
 	void on_tabWindow_currentChanged(int index);
@@ -65,6 +65,7 @@ private:
     QWidget *poligonoWidget;
     QPushButton *okButton;
     QPushButton *cancelarButton;
+    OnAdicionarObjetoTipoEvent *addEvent;
 };
 
 

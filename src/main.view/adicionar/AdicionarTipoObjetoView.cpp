@@ -1,7 +1,7 @@
-#include "AdicionarWindow.h"
+#include "AdicionarTipoObjetoView.h"
 
-AdicionarWindow::AdicionarWindow() :
-		QMainWindow() {
+AdicionarTipoObjetoView::AdicionarTipoObjetoView(OnAdicionarObjetoTipoEvent *event) : QMainWindow() {
+	addEvent = event;
 
 	if (this->objectName().isEmpty())
 		this->setObjectName(QString::fromUtf8("AdicionarWindow"));
@@ -96,18 +96,20 @@ AdicionarWindow::AdicionarWindow() :
 	QMetaObject::connectSlotsByName(this);
 }
 
-void AdicionarWindow::on_tabWindow_currentChanged(int index) {
+void AdicionarTipoObjetoView::on_tabWindow_currentChanged(int index) {
 
 }
 
-void AdicionarWindow::on_okButton_clicked() {
+void AdicionarTipoObjetoView::on_okButton_clicked() {
+	//só montar o objeto
+	addEvent->OnAdicionarObjetoTipoClick(NULL);
 	this->close();
 }
 
-void AdicionarWindow::on_cancelarButton_clicked() {
+void AdicionarTipoObjetoView::on_cancelarButton_clicked() {
 	this->close();
 }
 
-AdicionarWindow::~AdicionarWindow() {
+AdicionarTipoObjetoView::~AdicionarTipoObjetoView() {
 
 }

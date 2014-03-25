@@ -16,13 +16,13 @@
 #include "QtGui/qmainwindow.h"
 #include "QtGui/qlineedit.h"
 #include "QtGui/qlabel.h"
-#include "AdicionarWindow.h"
+#include "adicionar/AdicionarTipoObjetoView.h"
 
-class Widget: public QMainWindow {
+class MainView: public QMainWindow ,public  OnAdicionarObjetoTipoEvent{
 Q_OBJECT
 public:
-	explicit Widget();
-	~Widget();
+	explicit MainView();
+	~MainView();
 	virtual void paintEvent(QPaintEvent*);
 public slots:
 	void onUpClick();
@@ -46,7 +46,10 @@ private:
 	QPushButton *adicionarButton;
 	QLineEdit *lineEdit;
 	QLabel *passoLabel;
-	AdicionarWindow adicionarWindow;
+	AdicionarTipoObjetoView *adicionarWindow;
+
+	void renderControleWindowPanel();
+	void renderListaObjetosPanel();
 };
 
 #endif // WIDGET_H

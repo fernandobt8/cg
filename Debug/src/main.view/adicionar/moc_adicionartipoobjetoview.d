@@ -1,8 +1,9 @@
-src/first.view/AdicionarWindow.d: ../src/first.view/AdicionarWindow.cpp \
- ../src/first.view/AdicionarWindow.h /usr/include/qt4/QtCore/QVariant \
- /usr/include/qt4/QtCore/qvariant.h /usr/include/qt4/QtCore/qatomic.h \
- /usr/include/qt4/QtCore/qglobal.h /usr/include/qt4/QtCore/qconfig.h \
- /usr/include/qt4/QtCore/qfeatures.h \
+src/main.view/adicionar/moc_adicionartipoobjetoview.d: \
+ ../src/main.view/adicionar/moc_adicionartipoobjetoview.cpp \
+ ../src/main.view/adicionar/AdicionarTipoObjetoView.h \
+ /usr/include/qt4/QtCore/QVariant /usr/include/qt4/QtCore/qvariant.h \
+ /usr/include/qt4/QtCore/qatomic.h /usr/include/qt4/QtCore/qglobal.h \
+ /usr/include/qt4/QtCore/qconfig.h /usr/include/qt4/QtCore/qfeatures.h \
  /usr/include/qt4/QtCore/qbasicatomic.h \
  /usr/include/qt4/QtCore/qatomic_arch.h \
  /usr/include/qt4/QtCore/qatomic_x86_64.h \
@@ -67,9 +68,11 @@ src/first.view/AdicionarWindow.d: ../src/first.view/AdicionarWindow.cpp \
  /usr/include/qt4/QtGui/qmessagebox.h /usr/include/qt4/QtGui/qdialog.h \
  /usr/include/qt4/QtGui/qmainwindow.h /usr/include/qt4/QtGui/qlineedit.h \
  /usr/include/qt4/QtGui/qtextcursor.h \
- /usr/include/qt4/QtGui/qtextformat.h /usr/include/qt4/QtGui/qlabel.h
+ /usr/include/qt4/QtGui/qtextformat.h /usr/include/qt4/QtGui/qlabel.h \
+ ../src/main.view/adicionar/../../api/OnAdicionarObjetoTipoEvent.h \
+ ../src/main.view/adicionar/../../api/../dto/ObjetoGeometrico.h
 
-../src/first.view/AdicionarWindow.h:
+../src/main.view/adicionar/AdicionarTipoObjetoView.h:
 
 /usr/include/qt4/QtCore/QVariant:
 
@@ -272,3 +275,7 @@ src/first.view/AdicionarWindow.d: ../src/first.view/AdicionarWindow.cpp \
 /usr/include/qt4/QtGui/qtextformat.h:
 
 /usr/include/qt4/QtGui/qlabel.h:
+
+../src/main.view/adicionar/../../api/OnAdicionarObjetoTipoEvent.h:
+
+../src/main.view/adicionar/../../api/../dto/ObjetoGeometrico.h:

@@ -1,15 +1,15 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'Widget.h'
+** Meta object code from reading C++ file 'MainView.h'
 **
-** Created: Sun Mar 23 14:04:07 2014
+** Created: Mon Mar 24 21:26:04 2014
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.4)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "Widget.h"
+#include "MainView.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'Widget.h' doesn't include <QObject>."
+#error "The header file 'MainView.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 63
 #error "This file was generated using the moc from 4.8.4. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -17,7 +17,7 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-static const uint qt_meta_data_Widget[] = {
+static const uint qt_meta_data_MainView[] = {
 
  // content:
        6,       // revision
@@ -31,28 +31,28 @@ static const uint qt_meta_data_Widget[] = {
        0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-       8,    7,    7,    7, 0x0a,
-      20,    7,    7,    7, 0x0a,
-      35,    7,    7,    7, 0x0a,
-      49,    7,    7,    7, 0x0a,
-      63,    7,    7,    7, 0x0a,
-      79,    7,    7,    7, 0x0a,
-      96,    7,    7,    7, 0x0a,
+      10,    9,    9,    9, 0x0a,
+      22,    9,    9,    9, 0x0a,
+      37,    9,    9,    9, 0x0a,
+      51,    9,    9,    9, 0x0a,
+      65,    9,    9,    9, 0x0a,
+      81,    9,    9,    9, 0x0a,
+      98,    9,    9,    9, 0x0a,
 
        0        // eod
 };
 
-static const char qt_meta_stringdata_Widget[] = {
-    "Widget\0\0onUpClick()\0onRightClick()\0"
+static const char qt_meta_stringdata_MainView[] = {
+    "MainView\0\0onUpClick()\0onRightClick()\0"
     "onDownClick()\0onLeftClick()\0onZoomInClick()\0"
     "onZoomOutClick()\0onAdicionarButtonClicked()\0"
 };
 
-void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void MainView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         Q_ASSERT(staticMetaObject.cast(_o));
-        Widget *_t = static_cast<Widget *>(_o);
+        MainView *_t = static_cast<MainView *>(_o);
         switch (_id) {
         case 0: _t->onUpClick(); break;
         case 1: _t->onRightClick(); break;
@@ -67,41 +67,43 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
     Q_UNUSED(_a);
 }
 
-const QMetaObjectExtraData Widget::staticMetaObjectExtraData = {
+const QMetaObjectExtraData MainView::staticMetaObjectExtraData = {
     0,  qt_static_metacall 
 };
 
-const QMetaObject Widget::staticMetaObject = {
-    { &QMainWindow::staticMetaObject, qt_meta_stringdata_Widget,
-      qt_meta_data_Widget, &staticMetaObjectExtraData }
+const QMetaObject MainView::staticMetaObject = {
+    { &QMainWindow::staticMetaObject, qt_meta_stringdata_MainView,
+      qt_meta_data_MainView, &staticMetaObjectExtraData }
 };
 
 #ifdef Q_NO_DATA_RELOCATION
-const QMetaObject &Widget::getStaticMetaObject() { return staticMetaObject; }
+const QMetaObject &MainView::getStaticMetaObject() { return staticMetaObject; }
 #endif //Q_NO_DATA_RELOCATION
 
-const QMetaObject *Widget::metaObject() const
+const QMetaObject *MainView::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
 }
 
-void *Widget::qt_metacast(const char *_clname)
+void *MainView::qt_metacast(const char *_clname)
 {
     if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_Widget))
-        return static_cast<void*>(const_cast< Widget*>(this));
+    if (!strcmp(_clname, qt_meta_stringdata_MainView))
+        return static_cast<void*>(const_cast< MainView*>(this));
+    if (!strcmp(_clname, "OnAdicionarObjetoTipoEvent"))
+        return static_cast< OnAdicionarObjetoTipoEvent*>(const_cast< MainView*>(this));
     return QMainWindow::qt_metacast(_clname);
 }
 
-int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int MainView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QMainWindow::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     }
     return _id;
 }
