@@ -35,7 +35,7 @@ MainView::MainView() : QMainWindow(), OnAdicionarObjetoTipoEvent(){
 }
 
 void MainView::renderListaObjetosPanel(){
-
+	adicionarWindow = new AdicionarTipoObjetoView(this);
 	listaObjetos = new QListWidget(this);
 	listaObjetos->setObjectName(QString::fromUtf8("listaObjetos"));
 	listaObjetos->setGeometry(QRect(20, 30, 250, 190));
