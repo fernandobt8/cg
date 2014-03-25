@@ -114,7 +114,7 @@ void MainView::onAdicionarButtonClicked() {
 	adicionarWindow->show();
 }
 
-void OnAdicionarObjetoTipoEvent::OnAdicionarObjetoTipoClick(ObjetoGeometrico *objeto){
+void MainView::OnAdicionarObjetoTipoClick(ObjetoGeometrico *objeto){
 
 }
 

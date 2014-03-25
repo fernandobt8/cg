@@ -18,12 +18,13 @@
 #include "QtGui/qlabel.h"
 #include "adicionar/AdicionarTipoObjetoView.h"
 
-class MainView: public QMainWindow ,public  OnAdicionarObjetoTipoEvent{
+class MainView: public QMainWindow ,virtual public  OnAdicionarObjetoTipoEvent{
 Q_OBJECT
 public:
 	explicit MainView();
 	~MainView();
 	virtual void paintEvent(QPaintEvent*);
+	virtual void OnAdicionarObjetoTipoClick(class ObjetoGeometrico *objeto);
 public slots:
 	void onUpClick();
 	void onRightClick();
