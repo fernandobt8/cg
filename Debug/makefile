@@ -8,6 +8,7 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include src/main.view/modelo.interno/subdir.mk
 -include src/main.view/adicionar/subdir.mk
 -include src/main.view/subdir.mk
 -include src/dto/subdir.mk

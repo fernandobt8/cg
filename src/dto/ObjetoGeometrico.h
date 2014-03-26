@@ -16,6 +16,7 @@ public:
 	ObjetoGeometrico(char* nome, Coordenada** coordenada);
 	virtual ~ObjetoGeometrico();
 	Coordenada** getCoordenada();
+	char* getNome();
 	virtual Coordenada** getCoordenadasParaDesenho() = 0;
 
 protected:

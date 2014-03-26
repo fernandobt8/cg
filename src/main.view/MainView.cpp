@@ -115,7 +115,7 @@ void MainView::onAdicionarButtonClicked() {
 }
 
 void MainView::OnAdicionarObjetoTipoClick(ObjetoGeometrico *objeto){
-
+	modeloInterno->addObjeto(objeto);
 }
 
 MainView::~MainView(){

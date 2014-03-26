@@ -19,3 +19,7 @@ Coordenada** ObjetoGeometrico::getCoordenada() {
 	return this->coordenada;
 }
 
+char* ObjetoGeometrico::getNome(){
+	return this->nome;
+}
+

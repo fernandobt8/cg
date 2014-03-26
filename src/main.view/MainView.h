@@ -17,8 +17,9 @@
 #include "QtGui/qlineedit.h"
 #include "QtGui/qlabel.h"
 #include "adicionar/AdicionarTipoObjetoView.h"
+#include "modelo.interno/ModeloInterno.h"
 
-class MainView: public QMainWindow ,virtual public  OnAdicionarObjetoTipoEvent{
+class MainView: public QMainWindow, virtual public OnAdicionarObjetoTipoEvent {
 Q_OBJECT
 public:
 	explicit MainView();
@@ -48,6 +49,7 @@ private:
 	QLineEdit *lineEdit;
 	QLabel *passoLabel;
 	AdicionarTipoObjetoView *adicionarWindow;
+	ModeloInterno *modeloInterno;
 
 	void renderControleWindowPanel();
 	void renderListaObjetosPanel();

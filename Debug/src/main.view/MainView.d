@@ -74,7 +74,9 @@ src/main.view/MainView.d: ../src/main.view/MainView.cpp \
  ../src/main.view/adicionar/../../api/../dto/Coordenada.h \
  ../src/main.view/adicionar/../../dto/Ponto.h \
  ../src/main.view/adicionar/../../dto/ObjetoGeometrico.h \
- ../src/main.view/adicionar/../../dto/Reta.h
+ ../src/main.view/adicionar/../../dto/Reta.h \
+ ../src/main.view/modelo.interno/ModeloInterno.h \
+ ../src/main.view/modelo.interno/../../dto/ObjetoGeometrico.h
 
 ../src/main.view/MainView.h:
 
@@ -297,3 +299,7 @@ src/main.view/MainView.d: ../src/main.view/MainView.cpp \
 ../src/main.view/adicionar/../../dto/ObjetoGeometrico.h:
 
 ../src/main.view/adicionar/../../dto/Reta.h:
+
+../src/main.view/modelo.interno/ModeloInterno.h:
+
+../src/main.view/modelo.interno/../../dto/ObjetoGeometrico.h:
