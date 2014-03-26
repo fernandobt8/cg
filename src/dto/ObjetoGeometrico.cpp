@@ -7,17 +7,15 @@
 
 #include "ObjetoGeometrico.h"
 
-ObjetoGeometrico::ObjetoGeometrico(int x, int y) {
-	this->coordenada = new Coordenada(x, y);
+ObjetoGeometrico::ObjetoGeometrico(char* nome, Coordenada** coordenada) {
+	this->coordenada = coordenada;
 }
 
 ObjetoGeometrico::~ObjetoGeometrico() {
 	// TODO Auto-generated destructor stub
 }
 
-Coordenada* ObjetoGeometrico::getCoordenada(){
+Coordenada** ObjetoGeometrico::getCoordenada() {
 	return this->coordenada;
 }
-
-
 

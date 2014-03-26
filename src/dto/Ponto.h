@@ -12,9 +12,9 @@
 
 class Ponto: public ObjetoGeometrico {
 public:
-	Ponto(int x, int y);
+	Ponto(char* nome, Coordenada** coordenada);
 	virtual ~Ponto();
-	virtual Coordenada* getCoordenadasParaDesenho();
+	virtual Coordenada** getCoordenadasParaDesenho();
 };
 
 #endif /* PONTO_H_ */

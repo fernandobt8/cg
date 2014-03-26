@@ -7,15 +7,16 @@
 
 #include "Ponto.h"
 
-Ponto::Ponto(int x, int y) : ObjetoGeometrico(x, y) {
-
+Ponto::Ponto(char* nome, Coordenada** coordenada) : ObjetoGeometrico(nome, coordenada) {
+	this->nome = nome;
+	this->coordenada = coordenada;
 }
 
 Ponto::~Ponto() {
 	// TODO Auto-generated destructor stub
 }
 
-Coordenada* Ponto::getCoordenadasParaDesenho(){
+Coordenada** Ponto::getCoordenadasParaDesenho(){
 	return this->getCoordenada();
 }
 

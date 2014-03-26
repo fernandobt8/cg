@@ -29,12 +29,12 @@ AdicionarTipoObjetoView::AdicionarTipoObjetoView(
 	tabWindow->addTab(pontoWidget, QString("Ponto"));
 	tabWindow->addTab(retaWidget, QString("Reta"));
 	tabWindow->addTab(poligonoWidget, QString("Poligono"));
-	xTextField = new QLineEdit(pontoWidget);
-	xTextField->setObjectName(QString::fromUtf8("xTextField"));
-	xTextField->setGeometry(QRect(30, 40, 50, 25));
-	yTextField = new QLineEdit(pontoWidget);
-	yTextField->setObjectName(QString::fromUtf8("yTextField"));
-	yTextField->setGeometry(QRect(130, 40, 50, 25));
+	xTextFieldPonto = new QLineEdit(pontoWidget);
+	xTextFieldPonto->setObjectName(QString::fromUtf8("xTextField"));
+	xTextFieldPonto->setGeometry(QRect(30, 40, 50, 25));
+	yTextFieldPonto = new QLineEdit(pontoWidget);
+	yTextFieldPonto->setObjectName(QString::fromUtf8("yTextField"));
+	yTextFieldPonto->setGeometry(QRect(130, 40, 50, 25));
 	coordenadasLabel = new QLabel(pontoWidget);
 	coordenadasLabel->setObjectName(QString::fromUtf8("coordenadasLabel"));
 	coordenadasLabel->setGeometry(QRect(10, 10, 81, 16));
@@ -47,18 +47,18 @@ AdicionarTipoObjetoView::AdicionarTipoObjetoView(
 	label_2->setObjectName(QString::fromUtf8("label_2"));
 	label_2->setGeometry(QRect(110, 45, 21, 16));
 	label_2->setText(QString::fromUtf8("y"));
-	xTextField_2 = new QLineEdit(retaWidget);
-	xTextField_2->setObjectName(QString::fromUtf8("xTextField_2"));
-	xTextField_2->setGeometry(QRect(30, 40, 50, 25));
-	xTextField_3 = new QLineEdit(retaWidget);
-	xTextField_3->setObjectName(QString::fromUtf8("xTextField_3"));
-	xTextField_3->setGeometry(QRect(130, 40, 50, 25));
-	xTextField_4 = new QLineEdit(retaWidget);
-	xTextField_4->setObjectName(QString::fromUtf8("xTextField_4"));
-	xTextField_4->setGeometry(QRect(30, 100, 50, 25));
-	xTextField_5 = new QLineEdit(retaWidget);
-	xTextField_5->setObjectName(QString::fromUtf8("xTextField_5"));
-	xTextField_5->setGeometry(QRect(130, 100, 50, 25));
+	x1TextFieldReta = new QLineEdit(retaWidget);
+	x1TextFieldReta->setObjectName(QString::fromUtf8("xTextField_2"));
+	x1TextFieldReta->setGeometry(QRect(30, 40, 50, 25));
+	y1TextFieldReta = new QLineEdit(retaWidget);
+	y1TextFieldReta->setObjectName(QString::fromUtf8("xTextField_3"));
+	y1TextFieldReta->setGeometry(QRect(130, 40, 50, 25));
+	x2TextFieldReta = new QLineEdit(retaWidget);
+	x2TextFieldReta->setObjectName(QString::fromUtf8("xTextField_4"));
+	x2TextFieldReta->setGeometry(QRect(30, 100, 50, 25));
+	y2TextFieldReta = new QLineEdit(retaWidget);
+	y2TextFieldReta->setObjectName(QString::fromUtf8("xTextField_5"));
+	y2TextFieldReta->setGeometry(QRect(130, 100, 50, 25));
 	coordenadasLabel_2 = new QLabel(retaWidget);
 	coordenadasLabel_2->setObjectName(QString::fromUtf8("coordenadasLabel_2"));
 	coordenadasLabel_2->setGeometry(QRect(10, 10, 131, 16));
@@ -106,19 +106,27 @@ void AdicionarTipoObjetoView::on_okButton_clicked() {
 	int index = this->tabWindow->currentIndex();
 	bool *ok = 0;
 	ObjetoGeometrico *objeto;
+	Coordenada** coordenada;
 	switch (index) {
 	case 0: {
-		Ponto *ponto = new Ponto(
-				atoi(this->xTextField->text().toUtf8().constData()),
-				atoi(this->xTextField->text().toUtf8().constData()));
+		coordenada = new Coordenada*[0];
+		coordenada[0] = new Coordenada(
+				atoi(this->xTextFieldPonto->text().toUtf8().constData()),
+				atoi(this->xTextFieldPonto->text().toUtf8().constData()));
+		Ponto *ponto = new Ponto(this->nomeTextField->text().toUtf8().data(),
+				coordenada);
 		objeto = ponto;
 		break;
 	}
 	case 1:
-		Reta *reta = new Reta(this->xTextField_2->text().toInt(ok, 10),
-				this->xTextField_3->text().toInt(ok, 10),
-				this->xTextField_4->text().toInt(ok, 10),
-				xTextField_5->text().toInt(ok, 10));
+		coordenada = new Coordenada*[1];
+		coordenada[0] = new Coordenada(
+				atoi(this->x1TextFieldReta->text().toUtf8().constData()),
+				atoi(this->y1TextFieldReta->text().toUtf8().constData()));
+		coordenada[1] = new Coordenada(
+				atoi(this->x2TextFieldReta->text().toUtf8().constData()),
+				atoi(this->y2TextFieldReta->text().toUtf8().constData()));
+		Reta *reta = new Reta(this->nomeTextField->text().toUtf8().data(), coordenada);
 		objeto = reta;
 		break;
 	};

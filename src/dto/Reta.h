@@ -13,9 +13,9 @@
 
 class Reta: public ObjetoGeometrico {
 public:
-	Reta(int x1, int y1, int x2, int y2);
+	Reta(char *nome, Coordenada** coordenada);
 	virtual ~Reta();
-	virtual Coordenada* getCoordenadasParaDesenho();
+	virtual Coordenada** getCoordenadasParaDesenho();
 
 private:
 	Coordenada *coordenadaFinal;

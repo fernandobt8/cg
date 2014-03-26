@@ -13,13 +13,14 @@
 
 class ObjetoGeometrico {
 public:
-	ObjetoGeometrico(int x, int y);
+	ObjetoGeometrico(char* nome, Coordenada** coordenada);
 	virtual ~ObjetoGeometrico();
-	Coordenada* getCoordenada();
-	virtual Coordenada* getCoordenadasParaDesenho() = 0;
+	Coordenada** getCoordenada();
+	virtual Coordenada** getCoordenadasParaDesenho() = 0;
 
-private:
-	Coordenada *coordenada;
+protected:
+	Coordenada **coordenada;
+	char* nome;
 };
 
 #endif /* OBJETOGEOMETRICO_H_ */
