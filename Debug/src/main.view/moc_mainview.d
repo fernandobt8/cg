@@ -70,7 +70,18 @@ src/main.view/moc_mainview.d: ../src/main.view/moc_mainview.cpp \
  /usr/include/qt4/QtCore/qcoreevent.h \
  /usr/include/qt4/QtCore/qeventloop.h \
  ../src/main.view/adicionar/../../api/OnAdicionarObjetoTipoEvent.h \
- ../src/main.view/adicionar/../../api/../dto/ObjetoGeometrico.h
+ ../src/main.view/adicionar/../../api/../dto/ObjetoGeometrico.h \
+ ../src/main.view/adicionar/../../api/../dto/Coordenada.h \
+ ../src/main.view/adicionar/../../dto/Ponto.h \
+ ../src/main.view/adicionar/../../dto/ObjetoGeometrico.h \
+ ../src/main.view/adicionar/../../dto/Reta.h \
+ ../src/main.view/modelo.interno/ModeloInterno.h \
+ ../src/main.view/modelo.interno/../../dto/ObjetoGeometrico.h \
+ ../src/main.view/window/WindowView.h \
+ ../src/main.view/window/../../dto/Coordenada.h \
+ ../src/main.view/window/../../dto/ObjetoGeometrico.h \
+ ../src/main.view/window/../../dto/Reta.h \
+ ../src/main.view/window/../modelo.interno/ModeloInterno.h
 
 ../src/main.view/MainView.h:
 
@@ -285,3 +296,25 @@ src/main.view/moc_mainview.d: ../src/main.view/moc_mainview.cpp \
 ../src/main.view/adicionar/../../api/OnAdicionarObjetoTipoEvent.h:
 
 ../src/main.view/adicionar/../../api/../dto/ObjetoGeometrico.h:
+
+../src/main.view/adicionar/../../api/../dto/Coordenada.h:
+
+../src/main.view/adicionar/../../dto/Ponto.h:
+
+../src/main.view/adicionar/../../dto/ObjetoGeometrico.h:
+
+../src/main.view/adicionar/../../dto/Reta.h:
+
+../src/main.view/modelo.interno/ModeloInterno.h:
+
+../src/main.view/modelo.interno/../../dto/ObjetoGeometrico.h:
+
+../src/main.view/window/WindowView.h:
+
+../src/main.view/window/../../dto/Coordenada.h:
+
+../src/main.view/window/../../dto/ObjetoGeometrico.h:
+
+../src/main.view/window/../../dto/Reta.h:
+
+../src/main.view/window/../modelo.interno/ModeloInterno.h:

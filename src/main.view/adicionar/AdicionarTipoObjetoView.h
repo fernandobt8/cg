@@ -25,6 +25,10 @@
 #include "QtGui/qlineedit.h"
 #include "QtGui/qlabel.h"
 #include "../../api/OnAdicionarObjetoTipoEvent.h"
+#include "../../dto/Ponto.h"
+#include "../../dto/Reta.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 class AdicionarTipoObjetoView : public QMainWindow
 {
@@ -32,32 +36,32 @@ class AdicionarTipoObjetoView : public QMainWindow
 public:
 	 AdicionarTipoObjetoView(OnAdicionarObjetoTipoEvent *event);
 	~AdicionarTipoObjetoView();
+	void setOrientatio(Coordenada * orientation);
 
 public slots:
 	void on_tabWindow_currentChanged(int index);
-
     void on_okButton_clicked();
-
     void on_cancelarButton_clicked();
 
 private:
+    Coordenada* orientation;
     QWidget *centralwidget;
     QLineEdit *nomeTextField;
     QLabel *nomeLabel;
     QTabWidget *tabWindow;
     QWidget *pontoWidget;
-    QLineEdit *xTextField;
-    QLineEdit *yTextField;
+    QLineEdit *xTextFieldPonto;
+    QLineEdit *yTextFieldPonto;
     QLabel *coordenadasLabel;
     QLabel *label;
     QLabel *label_2;
     QWidget *retaWidget;
     QLabel *coordenadasLabel_2;
     QLabel *coordenadasLabel_3;
-    QLineEdit *xTextField_2;
-    QLineEdit *xTextField_3;
-    QLineEdit *xTextField_4;
-    QLineEdit *xTextField_5;
+    QLineEdit *x1TextFieldReta;
+    QLineEdit *y1TextFieldReta;
+    QLineEdit *x2TextFieldReta;
+    QLineEdit *y2TextFieldReta;
     QLabel *label_3;
     QLabel *label_4;
     QLabel *label_5;
@@ -66,6 +70,9 @@ private:
     QPushButton *okButton;
     QPushButton *cancelarButton;
     OnAdicionarObjetoTipoEvent *addEvent;
+
+    ObjetoGeometrico* getReta();
+    ObjetoGeometrico* getPonto();
 };
 
 

@@ -1,25 +1,20 @@
 #include "MainView.h"
 
-MainView::MainView() : QMainWindow(), OnAdicionarObjetoTipoEvent(){
+MainView::MainView() : QWidget(), OnAdicionarObjetoTipoEvent(){
 	if (this->objectName().isEmpty())
 		this->setObjectName(QString::fromUtf8("Widget"));
 	this->resize(836, 576);
 	this->renderControleWindowPanel();
 	this->renderListaObjetosPanel();
 
-	//representando o quadrado da window ainda a fazer
-	verticalLayoutWidget = new QWidget(this);
-	verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-	verticalLayoutWidget->setGeometry(QRect(300, 20, 501, 441));
-	verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-	verticalLayout->setSpacing(6);
-	verticalLayout->setContentsMargins(11, 11, 11, 11);
-	verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-	verticalLayout->setContentsMargins(0, 0, 0, 0);
 
+	//representando o quadrado da window ainda a fazer
+	window = new WindowView(this);
+	window->setObjectName(QString::fromUtf8("window"));
+	window->setGeometry(QRect(300, 25, 500, 500));
 
 	QMetaObject::connectSlotsByName(this);
-	this->setWindowTitle("Widget");
+	this->setWindowTitle(QString::fromUtf8("Computação Grafica"));
 
 	QObject::connect(upButton, SIGNAL(clicked()), this, SLOT(onUpClick()));
 	QObject::connect(rightButton, SIGNAL(clicked()), this,
@@ -81,11 +76,6 @@ void MainView::renderControleWindowPanel(){
 	zoomOutButton->setText("zoom out");
 }
 
-void MainView::paintEvent(QPaintEvent* e) {
-	QPainter *a = new QPainter(this);
-	a->drawLine(10, 10, 50, 50);
-}
-
 void MainView::onUpClick() {
 	printf("up\n");
 }
@@ -111,11 +101,12 @@ void MainView::onZoomOutClick() {
 }
 
 void MainView::onAdicionarButtonClicked() {
+	adicionarWindow->setOrientatio(this->window->getStart());
 	adicionarWindow->show();
 }
 
 void MainView::OnAdicionarObjetoTipoClick(ObjetoGeometrico *objeto){
-
+	window->addObjeto(objeto);
 }
 
 MainView::~MainView(){

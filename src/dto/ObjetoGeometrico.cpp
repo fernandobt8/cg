@@ -7,12 +7,19 @@
 
 #include "ObjetoGeometrico.h"
 
-ObjetoGeometrico::ObjetoGeometrico() {
-	// TODO Auto-generated constructor stub
-
+ObjetoGeometrico::ObjetoGeometrico(char* nome, Coordenada** coordenadas) {
+	this->coordenadas = coordenadas;
+	this->nome = nome;
 }
 
 ObjetoGeometrico::~ObjetoGeometrico() {
-	// TODO Auto-generated destructor stub
+}
+
+Coordenada** ObjetoGeometrico::getCoordenadas() {
+	return this->coordenadas;
+}
+
+char* ObjetoGeometrico::getNome(){
+	return this->nome;
 }
 

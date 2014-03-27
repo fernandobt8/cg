@@ -70,7 +70,11 @@ src/main.view/adicionar/moc_adicionartipoobjetoview.d: \
  /usr/include/qt4/QtGui/qtextcursor.h \
  /usr/include/qt4/QtGui/qtextformat.h /usr/include/qt4/QtGui/qlabel.h \
  ../src/main.view/adicionar/../../api/OnAdicionarObjetoTipoEvent.h \
- ../src/main.view/adicionar/../../api/../dto/ObjetoGeometrico.h
+ ../src/main.view/adicionar/../../api/../dto/ObjetoGeometrico.h \
+ ../src/main.view/adicionar/../../api/../dto/Coordenada.h \
+ ../src/main.view/adicionar/../../dto/Ponto.h \
+ ../src/main.view/adicionar/../../dto/ObjetoGeometrico.h \
+ ../src/main.view/adicionar/../../dto/Reta.h
 
 ../src/main.view/adicionar/AdicionarTipoObjetoView.h:
 
@@ -279,3 +283,11 @@ src/main.view/adicionar/moc_adicionartipoobjetoview.d: \
 ../src/main.view/adicionar/../../api/OnAdicionarObjetoTipoEvent.h:
 
 ../src/main.view/adicionar/../../api/../dto/ObjetoGeometrico.h:
+
+../src/main.view/adicionar/../../api/../dto/Coordenada.h:
+
+../src/main.view/adicionar/../../dto/Ponto.h:
+
+../src/main.view/adicionar/../../dto/ObjetoGeometrico.h:
+
+../src/main.view/adicionar/../../dto/Reta.h:
