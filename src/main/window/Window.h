@@ -10,6 +10,7 @@
 #include "../../dto/Coordenada.h"
 #include "../../dto/ObjetoGeometrico.h"
 #include "../../dto/Reta.h"
+#include "../modelo.interno/ModeloInterno.h"
 #include <list>
 using namespace std;
 

@@ -4,13 +4,13 @@ src/main.d: ../src/main.cpp ../src/main/MainController.h \
  ../src/main/window/../../dto/Coordenada.h \
  ../src/main/window/../../dto/Reta.h \
  ../src/main/window/../../dto/ObjetoGeometrico.h \
- ../src/main/modelo.interno/ModeloInterno.h \
- ../src/main/modelo.interno/../../dto/ObjetoGeometrico.h \
- ../src/main/MainView.h /usr/include/qt4/QtGui/qpainter.h \
- /usr/include/qt4/QtCore/qnamespace.h /usr/include/qt4/QtCore/qglobal.h \
- /usr/include/qt4/QtCore/qconfig.h /usr/include/qt4/QtCore/qfeatures.h \
- /usr/include/qt4/QtCore/qrect.h /usr/include/qt4/QtCore/qsize.h \
- /usr/include/qt4/QtCore/qpoint.h \
+ ../src/main/window/../modelo.interno/ModeloInterno.h \
+ ../src/main/window/../modelo.interno/../../dto/ObjetoGeometrico.h \
+ ../src/main/modelo.interno/ModeloInterno.h ../src/main/MainView.h \
+ /usr/include/qt4/QtGui/qpainter.h /usr/include/qt4/QtCore/qnamespace.h \
+ /usr/include/qt4/QtCore/qglobal.h /usr/include/qt4/QtCore/qconfig.h \
+ /usr/include/qt4/QtCore/qfeatures.h /usr/include/qt4/QtCore/qrect.h \
+ /usr/include/qt4/QtCore/qsize.h /usr/include/qt4/QtCore/qpoint.h \
  /usr/include/qt4/QtCore/qscopedpointer.h \
  /usr/include/qt4/QtGui/qpixmap.h /usr/include/qt4/QtGui/qpaintdevice.h \
  /usr/include/qt4/QtGui/qwindowdefs.h \
@@ -98,9 +98,11 @@ src/main.d: ../src/main.cpp ../src/main/MainController.h \
 
 ../src/main/window/../../dto/ObjetoGeometrico.h:
 
-../src/main/modelo.interno/ModeloInterno.h:
+../src/main/window/../modelo.interno/ModeloInterno.h:
 
-../src/main/modelo.interno/../../dto/ObjetoGeometrico.h:
+../src/main/window/../modelo.interno/../../dto/ObjetoGeometrico.h:
+
+../src/main/modelo.interno/ModeloInterno.h:
 
 ../src/main/MainView.h:
 

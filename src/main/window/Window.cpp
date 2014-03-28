@@ -15,7 +15,13 @@ Window::Window(ModeloInterno* modelo){
 }
 
 void Window::update(){
+	list<ObjetoGeometrico* >::iterator it = modelo->getObjetos()->begin();
+	for (; it != modelo->getObjetos()->end(); it++) {
+		ObjetoGeometrico* objeto = dynamic_cast<ObjetoGeometrico* >(*it);
+		if(objeto != 0 && objeto->isAfterCoordenada(start)){
 
+		}
+	}
 }
 
 Coordenada* Window::getStart(){

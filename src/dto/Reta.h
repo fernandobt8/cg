@@ -15,7 +15,7 @@ using namespace std;
 
 class Reta: public ObjetoGeometrico {
 public:
-	Reta(char *nome, list<Coordenada*> coordenadas);
+	Reta(char *nome, list<Coordenada*>* coordenadas);
 	Reta(char *nome);
 	virtual ~Reta();
 };
