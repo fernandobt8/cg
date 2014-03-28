@@ -12,7 +12,7 @@ Coordenada::Coordenada(int x, int y) {
 	this->y = y;
 }
 
-Coordenada::Coordenada(){
+Coordenada::Coordenada() {
 
 }
 
@@ -20,18 +20,21 @@ Coordenada::~Coordenada() {
 	// TODO Auto-generated destructor stub
 }
 
-void Coordenada::setX(int x){
+void Coordenada::setX(int x) {
 	this->x = x;
 }
 
-void Coordenada::setY(int y){
+void Coordenada::setY(int y) {
 	this->y = y;
 }
 
-int Coordenada::getX(){
+int Coordenada::getX() {
 	return this->x;
 }
 
-int Coordenada::getY(){
+int Coordenada::getY() {
 	return this->y;
+}
+
+char* Coordenada::toString() {
 }

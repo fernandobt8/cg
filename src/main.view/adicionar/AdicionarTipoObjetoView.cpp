@@ -7,7 +7,7 @@ AdicionarTipoObjetoView::AdicionarTipoObjetoView(
 
 	if (this->objectName().isEmpty())
 		this->setObjectName(QString::fromUtf8("AdicionarWindow"));
-	this->resize(250, 282);
+	this->resize(270, 350);
 	centralwidget = new QWidget(this);
 	centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
 	nomeTextField = new QLineEdit(centralwidget);
@@ -19,7 +19,7 @@ AdicionarTipoObjetoView::AdicionarTipoObjetoView(
 	nomeLabel->setText(QString::fromUtf8("Nome"));
 	tabWindow = new QTabWidget(centralwidget);
 	tabWindow->setObjectName(QString::fromUtf8("tabWindow"));
-	tabWindow->setGeometry(QRect(10, 50, 221, 171));
+	tabWindow->setGeometry(QRect(10, 50, 250, 250));
 	pontoWidget = new QWidget();
 	pontoWidget->setObjectName(QString::fromUtf8("pontoWidget"));
 	retaWidget = new QWidget();
@@ -30,10 +30,10 @@ AdicionarTipoObjetoView::AdicionarTipoObjetoView(
 	tabWindow->addTab(retaWidget, QString("Reta"));
 	tabWindow->addTab(poligonoWidget, QString("Poligono"));
 	xTextFieldPonto = new QLineEdit(pontoWidget);
-	xTextFieldPonto->setObjectName(QString::fromUtf8("xTextField"));
+	xTextFieldPonto->setObjectName(QString::fromUtf8("xTextFieldPonto"));
 	xTextFieldPonto->setGeometry(QRect(30, 40, 50, 25));
 	yTextFieldPonto = new QLineEdit(pontoWidget);
-	yTextFieldPonto->setObjectName(QString::fromUtf8("yTextField"));
+	yTextFieldPonto->setObjectName(QString::fromUtf8("yTextFieldPonto"));
 	yTextFieldPonto->setGeometry(QRect(130, 40, 50, 25));
 	coordenadasLabel = new QLabel(pontoWidget);
 	coordenadasLabel->setObjectName(QString::fromUtf8("coordenadasLabel"));
@@ -48,13 +48,13 @@ AdicionarTipoObjetoView::AdicionarTipoObjetoView(
 	label_2->setGeometry(QRect(110, 45, 21, 16));
 	label_2->setText(QString::fromUtf8("y"));
 	x1TextFieldReta = new QLineEdit(retaWidget);
-	x1TextFieldReta->setObjectName(QString::fromUtf8("xTextField_2"));
+	x1TextFieldReta->setObjectName(QString::fromUtf8("x1TextFieldReta"));
 	x1TextFieldReta->setGeometry(QRect(30, 40, 50, 25));
 	y1TextFieldReta = new QLineEdit(retaWidget);
-	y1TextFieldReta->setObjectName(QString::fromUtf8("xTextField_3"));
+	y1TextFieldReta->setObjectName(QString::fromUtf8("y1TextFieldReta"));
 	y1TextFieldReta->setGeometry(QRect(130, 40, 50, 25));
 	x2TextFieldReta = new QLineEdit(retaWidget);
-	x2TextFieldReta->setObjectName(QString::fromUtf8("xTextField_4"));
+	x2TextFieldReta->setObjectName(QString::fromUtf8("x2TextFieldReta"));
 	x2TextFieldReta->setGeometry(QRect(30, 100, 50, 25));
 	y2TextFieldReta = new QLineEdit(retaWidget);
 	y2TextFieldReta->setObjectName(QString::fromUtf8("xTextField_5"));
@@ -85,12 +85,40 @@ AdicionarTipoObjetoView::AdicionarTipoObjetoView(
 	label_6->setText(QString::fromUtf8("y2"));
 	okButton = new QPushButton(centralwidget);
 	okButton->setObjectName(QString::fromUtf8("okButton"));
-	okButton->setGeometry(QRect(140, 230, 80, 30));
+	okButton->setGeometry(QRect(140, 310, 80, 30));
 	okButton->setText(QString::fromUtf8("Ok"));
 	cancelarButton = new QPushButton(centralwidget);
 	cancelarButton->setObjectName(QString::fromUtf8("cancelarButton"));
-	cancelarButton->setGeometry(QRect(20, 230, 80, 30));
+	cancelarButton->setGeometry(QRect(20, 310, 80, 30));
 	cancelarButton->setText(QString::fromUtf8("Cancelar"));
+
+	coordenadasList = new QListWidget(poligonoWidget);
+	coordenadasList->setObjectName(QString::fromUtf8("coordenadasList"));
+	coordenadasList->setGeometry(QRect(10, 10, 200, 61));
+	adicionarCoordenada = new QPushButton(poligonoWidget);
+	adicionarCoordenada->setObjectName(
+			QString::fromUtf8("adicionarCoordenada"));
+	adicionarCoordenada->setGeometry(QRect(20, 160, 201, 27));
+	adicionarCoordenada->setText(
+			QString::fromUtf8("Adicionar nova coordenada"));
+	xTextFieldPoligono = new QLineEdit(poligonoWidget);
+	xTextFieldPoligono->setObjectName(QString::fromUtf8("xTextFieldPoligono"));
+	xTextFieldPoligono->setGeometry(QRect(50, 120, 50, 25));
+	yTextFieldPoligono = new QLineEdit(poligonoWidget);
+	yTextFieldPoligono->setObjectName(QString::fromUtf8("yTextFieldPoligono"));
+	yTextFieldPoligono->setGeometry(QRect(150, 120, 50, 25));
+	label_7 = new QLabel(poligonoWidget);
+	label_7->setObjectName(QString::fromUtf8("label"));
+	label_7->setGeometry(QRect(30, 120, 16, 17));
+	label_7->setText(QString::fromUtf8("x"));
+	label_8 = new QLabel(poligonoWidget);
+	label_8->setObjectName(QString::fromUtf8("label_2"));
+	label_8->setGeometry(QRect(130, 120, 16, 17));
+	label_8->setText(QString::fromUtf8("y"));
+	removerCoordenada = new QPushButton(poligonoWidget);
+	removerCoordenada->setObjectName(QString::fromUtf8("removerCoordenada"));
+	removerCoordenada->setGeometry(QRect(20, 80, 201, 27));
+	removerCoordenada->setText(QString::fromUtf8("Remover coordenada"));
 	this->setCentralWidget(centralwidget);
 
 	tabWindow->setCurrentIndex(0);
@@ -118,23 +146,37 @@ void AdicionarTipoObjetoView::on_okButton_clicked() {
 	this->close();
 }
 
-ObjetoGeometrico* AdicionarTipoObjetoView::getPonto(){
+ObjetoGeometrico* AdicionarTipoObjetoView::getPonto() {
 	Coordenada** coordenadas = new Coordenada*[0];
 	coordenadas[0] = new Coordenada();
-	coordenadas[0]->setX(atoi(this->xTextFieldPonto->text().toUtf8().constData()) + orientation->getX());
-	coordenadas[0]->setY(atoi(this->xTextFieldPonto->text().toUtf8().constData()) + orientation->getY());
-	return new Ponto(this->nomeTextField->text().toUtf8().data(),coordenadas);
+	coordenadas[0]->setX(
+			atoi(this->xTextFieldPonto->text().toUtf8().constData())
+					+ orientation->getX());
+	coordenadas[0]->setY(
+			atoi(this->xTextFieldPonto->text().toUtf8().constData())
+					+ orientation->getY());
+	return new Ponto(this->nomeTextField->text().toUtf8().data(), coordenadas);
 }
 
 ObjetoGeometrico* AdicionarTipoObjetoView::getReta() {
 	Coordenada** coordenadas = new Coordenada*;
 	coordenadas[0] = new Coordenada();
-	coordenadas[0]->setX(atoi(this->x1TextFieldReta->text().toUtf8().constData() + orientation->getX()));
-	coordenadas[0]->setY(atoi(this->y1TextFieldReta->text().toUtf8().constData()) + orientation->getY());
+	coordenadas[0]->setX(
+			atoi(
+					this->x1TextFieldReta->text().toUtf8().constData()
+							+ orientation->getX()));
+	coordenadas[0]->setY(
+			atoi(this->y1TextFieldReta->text().toUtf8().constData())
+					+ orientation->getY());
 
 	coordenadas[1] = new Coordenada();
-	coordenadas[1]->setX(atoi(this->x2TextFieldReta->text().toUtf8().constData() + orientation->getX()));
-	coordenadas[1]->setY(atoi(this->y2TextFieldReta->text().toUtf8().constData()) + orientation->getY());
+	coordenadas[1]->setX(
+			atoi(
+					this->x2TextFieldReta->text().toUtf8().constData()
+							+ orientation->getX()));
+	coordenadas[1]->setY(
+			atoi(this->y2TextFieldReta->text().toUtf8().constData())
+					+ orientation->getY());
 	return new Reta(this->nomeTextField->text().toUtf8().data(), coordenadas);
 }
 
@@ -144,6 +186,20 @@ void AdicionarTipoObjetoView::setOrientatio(Coordenada* orientation) {
 
 void AdicionarTipoObjetoView::on_cancelarButton_clicked() {
 	this->close();
+}
+
+void AdicionarTipoObjetoView::on_removerCoordenada_clicked() {
+
+}
+
+void AdicionarTipoObjetoView::on_adicionarCoordenada_clicked() {
+	QListWidgetItem * item = new QListWidgetItem();
+	QString *string = new QString();
+	string->append(this->xTextFieldPoligono->text().toUtf8().data());
+	string->append(",");
+	string->append(this->yTextFieldPoligono->text().toUtf8().data());
+	item->setText(string->toUtf8());
+	this->coordenadasList->addItem(item);
 }
 
 AdicionarTipoObjetoView::~AdicionarTipoObjetoView() {

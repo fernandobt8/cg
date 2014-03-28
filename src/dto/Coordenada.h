@@ -8,6 +8,8 @@
 #ifndef COORDENADA_H_
 #define COORDENADA_H_
 
+#include <string.h>
+
 class Coordenada {
 public:
 	Coordenada(int x, int y);
@@ -17,6 +19,7 @@ public:
 	int getY();
 	void setX(int x);
 	void setY(int y);
+	char* toString();
 
 private:
 	int x;

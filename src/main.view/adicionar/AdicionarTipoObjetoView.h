@@ -24,56 +24,67 @@
 #include "QtGui/qmainwindow.h"
 #include "QtGui/qlineedit.h"
 #include "QtGui/qlabel.h"
+#include "QtGui/qlistwidget.h"
 #include "../../api/OnAdicionarObjetoTipoEvent.h"
 #include "../../dto/Ponto.h"
 #include "../../dto/Reta.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <list>
 
-class AdicionarTipoObjetoView : public QMainWindow
-{
-	Q_OBJECT
+using namespace std;
+
+class AdicionarTipoObjetoView: public QMainWindow {
+Q_OBJECT
 public:
-	 AdicionarTipoObjetoView(OnAdicionarObjetoTipoEvent *event);
+	AdicionarTipoObjetoView(OnAdicionarObjetoTipoEvent *event);
 	~AdicionarTipoObjetoView();
 	void setOrientatio(Coordenada * orientation);
 
 public slots:
 	void on_tabWindow_currentChanged(int index);
-    void on_okButton_clicked();
-    void on_cancelarButton_clicked();
+	void on_okButton_clicked();
+	void on_cancelarButton_clicked();
+	void on_removerCoordenada_clicked();
+	void on_adicionarCoordenada_clicked();
 
 private:
-    Coordenada* orientation;
-    QWidget *centralwidget;
-    QLineEdit *nomeTextField;
-    QLabel *nomeLabel;
-    QTabWidget *tabWindow;
-    QWidget *pontoWidget;
-    QLineEdit *xTextFieldPonto;
-    QLineEdit *yTextFieldPonto;
-    QLabel *coordenadasLabel;
-    QLabel *label;
-    QLabel *label_2;
-    QWidget *retaWidget;
-    QLabel *coordenadasLabel_2;
-    QLabel *coordenadasLabel_3;
-    QLineEdit *x1TextFieldReta;
-    QLineEdit *y1TextFieldReta;
-    QLineEdit *x2TextFieldReta;
-    QLineEdit *y2TextFieldReta;
-    QLabel *label_3;
-    QLabel *label_4;
-    QLabel *label_5;
-    QLabel *label_6;
-    QWidget *poligonoWidget;
-    QPushButton *okButton;
-    QPushButton *cancelarButton;
-    OnAdicionarObjetoTipoEvent *addEvent;
+	Coordenada* orientation;
+	QWidget *centralwidget;
+	QLineEdit *nomeTextField;
+	QLabel *nomeLabel;
+	QTabWidget *tabWindow;
+	QWidget *pontoWidget;
+	QLineEdit *xTextFieldPonto;
+	QLineEdit *yTextFieldPonto;
+	QLabel *coordenadasLabel;
+	QLabel *label;
+	QLabel *label_2;
+	QWidget *retaWidget;
+	QLabel *coordenadasLabel_2;
+	QLabel *coordenadasLabel_3;
+	QLineEdit *x1TextFieldReta;
+	QLineEdit *y1TextFieldReta;
+	QLineEdit *x2TextFieldReta;
+	QLineEdit *y2TextFieldReta;
+	QLabel *label_3;
+	QLabel *label_4;
+	QLabel *label_5;
+	QLabel *label_6;
+	QWidget *poligonoWidget;
+	QPushButton *okButton;
+	QPushButton *cancelarButton;
+	QListWidget *coordenadasList;
+	QPushButton *adicionarCoordenada;
+	QLineEdit *xTextFieldPoligono;
+	QLineEdit *yTextFieldPoligono;
+	QLabel *label_7;
+	QLabel *label_8;
+	QPushButton *removerCoordenada;
+	OnAdicionarObjetoTipoEvent *addEvent;
 
-    ObjetoGeometrico* getReta();
-    ObjetoGeometrico* getPonto();
+	ObjetoGeometrico* getReta();
+	ObjetoGeometrico* getPonto();
 };
-
 
 #endif /* ADICIONARWINDOW_H_ */
