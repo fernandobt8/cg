@@ -11,16 +11,21 @@
 #include "Coordenada.h"
 #include <list>
 
+using namespace std;
+
 class ObjetoGeometrico {
 public:
-	ObjetoGeometrico(char* nome, Coordenada** coordenadas);
+	ObjetoGeometrico(char* nome, list<Coordenada*> coordenadas);
+	ObjetoGeometrico(char* nome);
 	virtual ~ObjetoGeometrico();
 	char* getNome();
-	Coordenada** getCoordenadas();
+	list<Coordenada*> getCoordenadas();
+	void addToAllCoordenadas(Coordenada* coordenada);
+	void addCoordenada(Coordenada* coordenada);
 
 protected:
 	char* nome;
-	Coordenada **coordenadas;
+	list<Coordenada*> coordenadas;
 };
 
 #endif /* OBJETOGEOMETRICO_H_ */

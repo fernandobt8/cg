@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'MainView.h'
 **
-** Created: Wed Mar 26 20:51:44 2014
+** Created: Fri Mar 28 19:09:21 2014
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -32,20 +32,23 @@ static const uint qt_meta_data_MainView[] = {
 
  // slots: signature, parameters, type, tag, flags
       10,    9,    9,    9, 0x0a,
-      22,    9,    9,    9, 0x0a,
-      37,    9,    9,    9, 0x0a,
-      51,    9,    9,    9, 0x0a,
-      65,    9,    9,    9, 0x0a,
+      32,    9,    9,    9, 0x0a,
+      57,    9,    9,    9, 0x0a,
       81,    9,    9,    9, 0x0a,
-      98,    9,    9,    9, 0x0a,
+     105,    9,    9,    9, 0x0a,
+     131,    9,    9,    9, 0x0a,
+     158,    9,    9,    9, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MainView[] = {
-    "MainView\0\0onUpClick()\0onRightClick()\0"
-    "onDownClick()\0onLeftClick()\0onZoomInClick()\0"
-    "onZoomOutClick()\0onAdicionarButtonClicked()\0"
+    "MainView\0\0on_upButton_clicked()\0"
+    "on_rightButton_clicked()\0"
+    "on_downButton_clicked()\0on_leftButton_clicked()\0"
+    "on_zoomInButton_clicked()\0"
+    "on_zoomOutButton_clicked()\0"
+    "on_adicionarButton_clicked()\0"
 };
 
 void MainView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -54,13 +57,13 @@ void MainView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         Q_ASSERT(staticMetaObject.cast(_o));
         MainView *_t = static_cast<MainView *>(_o);
         switch (_id) {
-        case 0: _t->onUpClick(); break;
-        case 1: _t->onRightClick(); break;
-        case 2: _t->onDownClick(); break;
-        case 3: _t->onLeftClick(); break;
-        case 4: _t->onZoomInClick(); break;
-        case 5: _t->onZoomOutClick(); break;
-        case 6: _t->onAdicionarButtonClicked(); break;
+        case 0: _t->on_upButton_clicked(); break;
+        case 1: _t->on_rightButton_clicked(); break;
+        case 2: _t->on_downButton_clicked(); break;
+        case 3: _t->on_leftButton_clicked(); break;
+        case 4: _t->on_zoomInButton_clicked(); break;
+        case 5: _t->on_zoomOutButton_clicked(); break;
+        case 6: _t->on_adicionarButton_clicked(); break;
         default: ;
         }
     }

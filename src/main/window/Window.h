@@ -5,35 +5,29 @@
  *      Author: fernandobt8
  */
 
-#ifndef WINDOWVIEW_H_
-#define WINDOWVIEW_H_
-#include "QtGui/qpalette.h"
-#include "QtGui/qwidget.h"
+#ifndef WINDOW_H_
+#define WINDOW_H_
 #include "../../dto/Coordenada.h"
 #include "../../dto/ObjetoGeometrico.h"
 #include "../../dto/Reta.h"
-#include "../modelo.interno/ModeloInterno.h"
-#include "QtGui/qpainter.h"
 #include <list>
 using namespace std;
 
-class WindowView : public QWidget{
-	Q_OBJECT
+class Window{
 public:
-	WindowView(QWidget* parent);
-	virtual ~WindowView();
+	Window(ModeloInterno* modelo);
+	virtual ~Window();
 	Coordenada* getStart();
 	Coordenada* getEnd();
 	Coordenada* getCenter();
-	virtual void paintEvent(QPaintEvent* event);
-	void addObjeto(ObjetoGeometrico* objeto);
+	void update();
+
 private:
 	Coordenada* start;
 	Coordenada* end;
 	Coordenada* center;
-	ModeloInterno *modeloInterno;
+	ModeloInterno* modelo;
 
-	bool isBetweenWindow(Coordenada* coordenada);
 	Coordenada** drawReta(Reta* reta);
 
 };

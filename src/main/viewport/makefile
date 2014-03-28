@@ -1,2 +1,2 @@
-moc_windowview.cpp: WindowView.h
+moc_viewport.cpp: ViewPort.h
 	moc $(DEFINES) $(INCPATH) $< -o $@

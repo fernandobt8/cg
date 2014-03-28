@@ -17,6 +17,8 @@ public:
 	int getY();
 	void setX(int x);
 	void setY(int y);
+	void addToX(int x);
+	void addToY(int y);
 
 private:
 	int x;

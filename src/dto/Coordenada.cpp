@@ -17,7 +17,14 @@ Coordenada::Coordenada(){
 }
 
 Coordenada::~Coordenada() {
-	// TODO Auto-generated destructor stub
+}
+
+void Coordenada::addToX(int x){
+	this->x += x;
+}
+
+void Coordenada::addToY(int y){
+	this->y += y;
 }
 
 void Coordenada::setX(int x){

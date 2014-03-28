@@ -1,5 +1,5 @@
-#ifndef WIDGET_H
-#define WIDGET_H
+#ifndef MAINVIEW_H
+#define MAINVIEW_H
 
 #include <stdio.h>
 #include "QtGui/qpainter.h"
@@ -18,22 +18,22 @@
 #include "QtGui/qlabel.h"
 #include "adicionar/AdicionarTipoObjetoView.h"
 #include "modelo.interno/ModeloInterno.h"
-#include "window/WindowView.h"
-
+#include "MainController.h"
+#include "viewport/ViewPort.h"
 class MainView: public QWidget ,virtual public  OnAdicionarObjetoTipoEvent{
 	Q_OBJECT
 public:
-	explicit MainView();
+	MainView(class MainController* controller);
 	~MainView();
 	virtual void OnAdicionarObjetoTipoClick(class ObjetoGeometrico *objeto);
 public slots:
-	void onUpClick();
-	void onRightClick();
-	void onDownClick();
-	void onLeftClick();
-	void onZoomInClick();
-	void onZoomOutClick();
-	void onAdicionarButtonClicked();
+	void on_upButton_clicked();
+	void on_rightButton_clicked();
+	void on_downButton_clicked();
+	void on_leftButton_clicked();
+	void on_zoomInButton_clicked();
+	void on_zoomOutButton_clicked();
+	void on_adicionarButton_clicked();
 
 private:
 	QPushButton *upButton;
@@ -46,11 +46,12 @@ private:
 	QPushButton *adicionarButton;
 	QLineEdit *lineEdit;
 	QLabel *passoLabel;
-	WindowView * window;
 	AdicionarTipoObjetoView *adicionarWindow;
+	MainController* controller;
+	ViewPort* viewPort;
 
 	void renderControleWindowPanel();
 	void renderListaObjetosPanel();
 };
 
-#endif // WIDGET_H
+#endif

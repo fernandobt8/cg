@@ -10,9 +10,12 @@
 
 #include "ObjetoGeometrico.h"
 
+using namespace std;
+
 class Ponto: public ObjetoGeometrico {
 public:
-	Ponto(char* nome, Coordenada** coordenadas);
+	Ponto(char* nome, list<Coordenada*> coordenadas);
+	Ponto(char* nome);
 	virtual ~Ponto();
 };
 

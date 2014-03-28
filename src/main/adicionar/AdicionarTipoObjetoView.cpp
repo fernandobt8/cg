@@ -119,23 +119,26 @@ void AdicionarTipoObjetoView::on_okButton_clicked() {
 }
 
 ObjetoGeometrico* AdicionarTipoObjetoView::getPonto(){
-	Coordenada** coordenadas = new Coordenada*[0];
-	coordenadas[0] = new Coordenada();
-	coordenadas[0]->setX(atoi(this->xTextFieldPonto->text().toUtf8().constData()) + orientation->getX());
-	coordenadas[0]->setY(atoi(this->xTextFieldPonto->text().toUtf8().constData()) + orientation->getY());
-	return new Ponto(this->nomeTextField->text().toUtf8().data(),coordenadas);
+	Coordenada* coordenada = new Coordenada();
+	coordenada->setX(atoi(this->xTextFieldPonto->text().toUtf8().constData()) + orientation->getX());
+	coordenada->setY(atoi(this->xTextFieldPonto->text().toUtf8().constData()) + orientation->getY());
+	Ponto* ponto = new Ponto(this->nomeTextField->text().toUtf8().data());
+	ponto->addCoordenada(coordenada);
+	return ponto;
 }
 
 ObjetoGeometrico* AdicionarTipoObjetoView::getReta() {
-	Coordenada** coordenadas = new Coordenada*;
-	coordenadas[0] = new Coordenada();
-	coordenadas[0]->setX(atoi(this->x1TextFieldReta->text().toUtf8().constData() + orientation->getX()));
-	coordenadas[0]->setY(atoi(this->y1TextFieldReta->text().toUtf8().constData()) + orientation->getY());
+	Coordenada* coordenada1 = new Coordenada();
+	coordenada1->setX(atoi(this->x1TextFieldReta->text().toUtf8().constData() + orientation->getX()));
+	coordenada1->setY(atoi(this->y1TextFieldReta->text().toUtf8().constData()) + orientation->getY());
 
-	coordenadas[1] = new Coordenada();
-	coordenadas[1]->setX(atoi(this->x2TextFieldReta->text().toUtf8().constData() + orientation->getX()));
-	coordenadas[1]->setY(atoi(this->y2TextFieldReta->text().toUtf8().constData()) + orientation->getY());
-	return new Reta(this->nomeTextField->text().toUtf8().data(), coordenadas);
+	Coordenada* coordenada2  = new Coordenada();
+	coordenada2->setX(atoi(this->x2TextFieldReta->text().toUtf8().constData() + orientation->getX()));
+	coordenada2->setY(atoi(this->y2TextFieldReta->text().toUtf8().constData()) + orientation->getY());
+	Reta* reta = new Reta(this->nomeTextField->text().toUtf8().data());
+	reta->addCoordenada(coordenada1);
+	reta->addCoordenada(coordenada2);
+	return reta;
 }
 
 void AdicionarTipoObjetoView::setOrientatio(Coordenada* orientation) {

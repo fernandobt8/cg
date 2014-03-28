@@ -1,32 +1,18 @@
 #include "MainView.h"
 
-MainView::MainView() : QWidget(), OnAdicionarObjetoTipoEvent(){
+MainView::MainView(MainController* controller) : QWidget(), OnAdicionarObjetoTipoEvent(){
+	this->controller = controller;
 	if (this->objectName().isEmpty())
 		this->setObjectName(QString::fromUtf8("Widget"));
 	this->resize(836, 576);
 	this->renderControleWindowPanel();
 	this->renderListaObjetosPanel();
-
-
-	//representando o quadrado da window ainda a fazer
-	window = new WindowView(this);
-	window->setObjectName(QString::fromUtf8("window"));
-	window->setGeometry(QRect(300, 25, 500, 500));
+	viewPort = new ViewPort(this);
+	viewPort->setObjectName(QString::fromUtf8("viewPort"));
+	viewPort->setGeometry(QRect(300, 25, 500, 500));
 
 	QMetaObject::connectSlotsByName(this);
 	this->setWindowTitle(QString::fromUtf8("Computação Grafica"));
-
-	QObject::connect(upButton, SIGNAL(clicked()), this, SLOT(onUpClick()));
-	QObject::connect(rightButton, SIGNAL(clicked()), this,
-			SLOT(onRightClick()));
-	QObject::connect(downButton, SIGNAL(clicked()), this, SLOT(onDownClick()));
-	QObject::connect(leftButton, SIGNAL(clicked()), this, SLOT(onLeftClick()));
-
-	QObject::connect(zoomInButton, SIGNAL(clicked()), this,
-			SLOT(onZoomInClick()));
-	QObject::connect(zoomOutButton, SIGNAL(clicked()), this,
-			SLOT(onZoomOutClick()));
-	QObject::connect(adicionarButton, SIGNAL(clicked()), this, SLOT(onAdicionarButtonClicked()));
 }
 
 void MainView::renderListaObjetosPanel(){
@@ -76,37 +62,36 @@ void MainView::renderControleWindowPanel(){
 	zoomOutButton->setText("zoom out");
 }
 
-void MainView::onUpClick() {
+void MainView::on_upButton_clicked() {
 	printf("up\n");
 }
 
-void MainView::onRightClick() {
+void MainView::on_rightButton_clicked() {
 	printf("right\n");
 }
 
-void MainView::onDownClick() {
+void MainView::on_downButton_clicked() {
 	printf("down\n");
 }
 
-void MainView::onLeftClick() {
+void MainView::on_leftButton_clicked() {
 	printf("left\n");
 }
 
-void MainView::onZoomInClick() {
+void MainView::on_zoomInButton_clicked() {
 	printf("in\n");
 }
 
-void MainView::onZoomOutClick() {
+void MainView::on_zoomOutButton_clicked() {
 	printf("out\n");
 }
 
-void MainView::onAdicionarButtonClicked() {
-	adicionarWindow->setOrientatio(this->window->getStart());
+void MainView::on_adicionarButton_clicked() {
 	adicionarWindow->show();
 }
 
 void MainView::OnAdicionarObjetoTipoClick(ObjetoGeometrico *objeto){
-	window->addObjeto(objeto);
+	controller->addObjeto(objeto);
 }
 
 MainView::~MainView(){

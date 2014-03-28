@@ -1,11 +1,10 @@
-#include "main.view/MainView.h"
+#include "main/MainController.h"
+#include "main/MainView.h"
 #include "QtGui/qapplication.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainView *w =  new MainView();
-    w->show() ;
-    
+    MainController *w =  new MainController();
     return a.exec();
 }
