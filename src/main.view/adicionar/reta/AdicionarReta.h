@@ -9,11 +9,12 @@
 #define ADICIONARRETA_H_
 
 #include "../AdicionarAbstract.h"
-#include "../../../dto/Reta.h"
 #include "QtGui/qlineedit.h"
 #include "QtGui/qlabel.h"
+#include "../../../dto/Reta.h"
 
 class AdicionarReta: public AdicionarAbstract {
+Q_OBJECT
 public:
 	AdicionarReta(QWidget *parent, OnAdicionarObjetoTipoEvent *event,
 			Coordenada *orientation);

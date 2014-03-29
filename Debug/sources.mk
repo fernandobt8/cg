@@ -28,6 +28,7 @@ src/main.view/modelo.interno \
 src/main.view \
 src/main.view/adicionar/reta \
 src/main.view/adicionar/ponto \
+src/main.view/adicionar/poligono \
 src/main.view/adicionar \
 src \
 src/dto \

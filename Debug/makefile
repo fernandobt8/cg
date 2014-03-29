@@ -12,6 +12,7 @@ RM := rm -rf
 -include src/main.view/modelo.interno/subdir.mk
 -include src/main.view/adicionar/reta/subdir.mk
 -include src/main.view/adicionar/ponto/subdir.mk
+-include src/main.view/adicionar/poligono/subdir.mk
 -include src/main.view/adicionar/subdir.mk
 -include src/main.view/subdir.mk
 -include src/dto/subdir.mk

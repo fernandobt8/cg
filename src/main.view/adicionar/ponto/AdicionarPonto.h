@@ -10,7 +10,6 @@
 
 #include "QtGui/qlineedit.h"
 #include "QtGui/qlabel.h"
-#include "../../../dto/Coordenada.h"
 #include "../AdicionarAbstract.h"
 #include "../../../dto/Ponto.h"
 

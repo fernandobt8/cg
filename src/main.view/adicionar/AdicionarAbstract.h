@@ -35,7 +35,6 @@ public:
 
 public slots:
 	void on_okButton_clicked();
-	void setOrientation(Coordenada* orientation);
 };
 
 #endif /* ADICIONARABSTRACT_H_ */

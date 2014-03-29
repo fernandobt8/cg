@@ -19,11 +19,13 @@ AdicionarReta::AdicionarReta(QWidget *parent, OnAdicionarObjetoTipoEvent *event,
 	xInput2->setGeometry(QRect(50, 125, 50, 25));
 	coordenadasLabelY2 = new QLabel(this);
 	coordenadasLabelY2->setObjectName(QString::fromUtf8("label_2"));
-	coordenadasLabelY2->setGeometry(QRect(130, 125, 10, 25));
+	coordenadasLabelY2->setGeometry(QRect(150, 125, 10, 25));
 	coordenadasLabelY2->setText(QString::fromUtf8("y"));
 	yInput2 = new QLineEdit(this);
 	yInput2->setObjectName(QString::fromUtf8("yTextFieldPonto"));
-	yInput2->setGeometry(QRect(150, 125, 50, 25));
+	yInput2->setGeometry(QRect(170, 125, 50, 25));
+
+	QMetaObject::connectSlotsByName(this);
 
 }
 
@@ -31,7 +33,7 @@ AdicionarReta::~AdicionarReta() {
 }
 
 void AdicionarReta::okEvent() {
-	Coordenada** coordenadas = new Coordenada*;
+	Coordenada** coordenadas = new Coordenada*[1];
 	coordenadas[0] = new Coordenada();
 	coordenadas[0]->setX(
 			atoi(
