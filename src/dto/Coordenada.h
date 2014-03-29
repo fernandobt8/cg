@@ -8,6 +8,10 @@
 #ifndef COORDENADA_H_
 #define COORDENADA_H_
 
+#include <string.h>
+
+using namespace std;
+
 class Coordenada {
 public:
 	Coordenada(int x, int y);
@@ -19,7 +23,7 @@ public:
 	void setY(int y);
 	void addToX(int x);
 	void addToY(int y);
-
+	char* toString();
 private:
 	int x;
 	int y;

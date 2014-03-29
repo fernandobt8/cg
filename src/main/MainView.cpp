@@ -15,8 +15,9 @@ MainView::MainView(MainController* controller) : QWidget(), OnAdicionarObjetoTip
 	this->setWindowTitle(QString::fromUtf8("Computação Grafica"));
 }
 
-void MainView::renderListaObjetosPanel(){
-	adicionarWindow = new AdicionarTipoObjetoView(this);
+void MainView::renderListaObjetosPanel() {
+	adicionarWindow = new AdicionarTipoObjetoView(this,
+			this->window->getStart());
 	listaObjetos = new QListWidget(this);
 	listaObjetos->setObjectName(QString::fromUtf8("listaObjetos"));
 	listaObjetos->setGeometry(QRect(20, 30, 250, 190));
@@ -90,10 +91,13 @@ void MainView::on_adicionarButton_clicked() {
 	adicionarWindow->show();
 }
 
-void MainView::OnAdicionarObjetoTipoClick(ObjetoGeometrico *objeto){
+void MainView::OnAdicionarObjetoTipoClick(ObjetoGeometrico *objeto) {
 	controller->addObjeto(objeto);
+	QListWidgetItem * item = new QListWidgetItem();
+	item->setText(objeto->getNome());
+	this->listaObjetos->addItem(item);
 }
 
-MainView::~MainView(){
+MainView::~MainView() {
 
 }

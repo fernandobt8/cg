@@ -6,18 +6,21 @@
 CPP_SRCS += \
 ../src/dto/Coordenada.cpp \
 ../src/dto/ObjetoGeometrico.cpp \
+../src/dto/Poligono.cpp \
 ../src/dto/Ponto.cpp \
 ../src/dto/Reta.cpp 
 
 OBJS += \
 ./src/dto/Coordenada.o \
 ./src/dto/ObjetoGeometrico.o \
+./src/dto/Poligono.o \
 ./src/dto/Ponto.o \
 ./src/dto/Reta.o 
 
 CPP_DEPS += \
 ./src/dto/Coordenada.d \
 ./src/dto/ObjetoGeometrico.d \
+./src/dto/Poligono.d \
 ./src/dto/Ponto.d \
 ./src/dto/Reta.d 
 
