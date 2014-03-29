@@ -75,7 +75,10 @@ src/main.view/adicionar/moc_adicionartipoobjetoview.d: \
  ../src/main.view/adicionar/../../api/../dto/Coordenada.h \
  ../src/main.view/adicionar/../../dto/Ponto.h \
  ../src/main.view/adicionar/../../dto/ObjetoGeometrico.h \
- ../src/main.view/adicionar/../../dto/Reta.h
+ ../src/main.view/adicionar/../../dto/Reta.h \
+ ../src/main.view/adicionar/../../dto/Poligono.h \
+ ../src/main.view/adicionar/../../dto/Reta.h \
+ ../src/main.view/adicionar/ponto/AdicionarPonto.h
 
 ../src/main.view/adicionar/AdicionarTipoObjetoView.h:
 
@@ -296,3 +299,9 @@ src/main.view/adicionar/moc_adicionartipoobjetoview.d: \
 ../src/main.view/adicionar/../../dto/ObjetoGeometrico.h:
 
 ../src/main.view/adicionar/../../dto/Reta.h:
+
+../src/main.view/adicionar/../../dto/Poligono.h:
+
+../src/main.view/adicionar/../../dto/Reta.h:
+
+../src/main.view/adicionar/ponto/AdicionarPonto.h:

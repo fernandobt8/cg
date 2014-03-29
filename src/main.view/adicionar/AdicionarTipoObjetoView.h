@@ -28,9 +28,9 @@
 #include "../../api/OnAdicionarObjetoTipoEvent.h"
 #include "../../dto/Ponto.h"
 #include "../../dto/Reta.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "../../dto/Poligono.h"
 #include <list>
+#include <string.h>
 
 using namespace std;
 
@@ -54,12 +54,7 @@ private:
 	QLineEdit *nomeTextField;
 	QLabel *nomeLabel;
 	QTabWidget *tabWindow;
-	QWidget *pontoWidget;
-	QLineEdit *xTextFieldPonto;
-	QLineEdit *yTextFieldPonto;
-	QLabel *coordenadasLabel;
-	QLabel *label;
-	QLabel *label_2;
+
 	QWidget *retaWidget;
 	QLabel *coordenadasLabel_2;
 	QLabel *coordenadasLabel_3;
@@ -82,9 +77,12 @@ private:
 	QLabel *label_8;
 	QPushButton *removerCoordenada;
 	OnAdicionarObjetoTipoEvent *addEvent;
+	list<Coordenada*> coordenadasPoligono;
 
 	ObjetoGeometrico* getReta();
 	ObjetoGeometrico* getPonto();
+	ObjetoGeometrico* getPoligono();
+	void strcopy(char *str1, char *str2);
 };
 
 #endif /* ADICIONARWINDOW_H_ */

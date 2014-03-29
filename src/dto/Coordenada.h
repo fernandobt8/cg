@@ -10,6 +10,8 @@
 
 #include <string.h>
 
+using namespace std;
+
 class Coordenada {
 public:
 	Coordenada(int x, int y);

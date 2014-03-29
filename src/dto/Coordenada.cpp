@@ -6,6 +6,7 @@
  */
 
 #include "Coordenada.h"
+#include <cstdio>
 
 Coordenada::Coordenada(int x, int y) {
 	this->x = x;
@@ -37,4 +38,8 @@ int Coordenada::getY() {
 }
 
 char* Coordenada::toString() {
+	int i=25; char *str;
+	sprintf(str,"%d",i);
+	return str;
 }
+

@@ -74,6 +74,9 @@ src/main.d: ../src/main.cpp ../src/main.view/MainView.h \
  ../src/main.view/adicionar/../../dto/Ponto.h \
  ../src/main.view/adicionar/../../dto/ObjetoGeometrico.h \
  ../src/main.view/adicionar/../../dto/Reta.h \
+ ../src/main.view/adicionar/../../dto/Poligono.h \
+ ../src/main.view/adicionar/../../dto/Reta.h \
+ ../src/main.view/adicionar/ponto/AdicionarPonto.h \
  ../src/main.view/modelo.interno/ModeloInterno.h \
  ../src/main.view/modelo.interno/../../dto/ObjetoGeometrico.h \
  ../src/main.view/window/WindowView.h \
@@ -303,6 +306,12 @@ src/main.d: ../src/main.cpp ../src/main.view/MainView.h \
 ../src/main.view/adicionar/../../dto/ObjetoGeometrico.h:
 
 ../src/main.view/adicionar/../../dto/Reta.h:
+
+../src/main.view/adicionar/../../dto/Poligono.h:
+
+../src/main.view/adicionar/../../dto/Reta.h:
+
+../src/main.view/adicionar/ponto/AdicionarPonto.h:
 
 ../src/main.view/modelo.interno/ModeloInterno.h:
 
