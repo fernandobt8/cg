@@ -14,6 +14,10 @@ ModeloInterno::ModeloInterno() {
 }
 
 ModeloInterno::~ModeloInterno() {
+	while(!objetos->empty()){
+		delete objetos->front();
+		objetos->pop_front();
+	}
 }
 
 list<ObjetoGeometrico*>* ModeloInterno::getObjetos(){

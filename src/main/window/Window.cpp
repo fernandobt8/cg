@@ -15,8 +15,7 @@ Window::Window(ModeloInterno* modelo){
 }
 
 void Window::update(){
-	//todo destruir os ponteiros da lista
-	windowObjetos->clear();
+	this->clearWindowObjetos();
 	list<ObjetoGeometrico* >::iterator it = modelo->getObjetos()->begin();
 	for (; it != modelo->getObjetos()->end(); it++) {
 		ObjetoGeometrico* objeto = dynamic_cast<ObjetoGeometrico* >(*it);
@@ -25,6 +24,13 @@ void Window::update(){
 			clone->addToAllCoordenadas(start);
 			windowObjetos->push_back(clone);
 		}
+	}
+}
+
+void Window::clearWindowObjetos(){
+	while(!windowObjetos->empty()){
+		delete windowObjetos->front();
+		windowObjetos->pop_front();
 	}
 }
 
@@ -41,6 +47,6 @@ Coordenada* Window::getCenter(){
 }
 
 Window::~Window() {
-
+	this->clearWindowObjetos();
 }
 

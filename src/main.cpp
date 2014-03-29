@@ -1,5 +1,4 @@
 #include "main/MainController.h"
-#include "main/MainView.h"
 #include "QtGui/qapplication.h"
 
 int main(int argc, char *argv[])

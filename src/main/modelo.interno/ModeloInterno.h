@@ -22,7 +22,6 @@ public:
 
 private:
 	list<ObjetoGeometrico*> *objetos;
-	list<ObjetoGeometrico*>::iterator it;
 };
 
 #endif /* MODELOINTERNO_H_ */

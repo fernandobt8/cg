@@ -17,6 +17,10 @@ ObjetoGeometrico::ObjetoGeometrico(char* nome) {
 }
 
 ObjetoGeometrico::~ObjetoGeometrico() {
+	while(!coordenadas->empty()){
+		delete coordenadas->front();
+		coordenadas->pop_front();
+	}
 }
 
 list<Coordenada*>* ObjetoGeometrico::getCoordenadas() {
@@ -48,6 +52,17 @@ void ObjetoGeometrico::addToAllCoordenadas(Coordenada* coordenada) {
 		if (current) {
 			current->addToX(coordenada->getX());
 			current->addToY(coordenada->getY());
+		}
+	}
+}
+
+void ObjetoGeometrico::subToAllCoordenadas(Coordenada* coordenada) {
+	list<Coordenada*>::iterator it = coordenadas->begin();
+	for (; it != coordenadas->end(); it++) {
+		Coordenada* current = dynamic_cast<Coordenada*>(*it);
+		if (current) {
+			current->addToX(-coordenada->getX());
+			current->addToY(-coordenada->getY());
 		}
 	}
 }

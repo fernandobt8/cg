@@ -35,7 +35,7 @@ class AdicionarTipoObjetoView : public QMainWindow
 	Q_OBJECT
 public:
 	 AdicionarTipoObjetoView(OnAdicionarObjetoTipoEvent *event);
-	~AdicionarTipoObjetoView();
+	virtual ~AdicionarTipoObjetoView();
 	void setOrientatio(Coordenada * orientation);
 
 public slots:

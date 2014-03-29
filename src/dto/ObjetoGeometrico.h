@@ -20,8 +20,9 @@ public:
 	virtual ~ObjetoGeometrico();
 	char* getNome();
 	list<Coordenada*>* getCoordenadas();
-	void addToAllCoordenadas(Coordenada* coordenada);
 	void addCoordenada(Coordenada* coordenada);
+	void addToAllCoordenadas(Coordenada* coordenada);
+	void subToAllCoordenadas(Coordenada* coordenada);
 	bool betweenCoordenadas(Coordenada* start, Coordenada* end);
 
 protected:

@@ -29,6 +29,7 @@ private:
 	Coordenada* center;
 	ModeloInterno* modelo;
 	list<ObjetoGeometrico* >* windowObjetos;
+	void clearWindowObjetos();
 
 };
 
