@@ -10,6 +10,8 @@
 #include "../../dto/Coordenada.h"
 #include "../../dto/ObjetoGeometrico.h"
 #include "../../dto/Reta.h"
+#include "../../dto/Poligono.h"
+#include "../../dto/Ponto.h"
 #include "../modelo.interno/ModeloInterno.h"
 #include <list>
 using namespace std;
@@ -21,6 +23,7 @@ public:
 	Coordenada* getStart();
 	Coordenada* getEnd();
 	Coordenada* getCenter();
+	list<ObjetoGeometrico* >* getWindowObjetos();
 	void update();
 
 private:

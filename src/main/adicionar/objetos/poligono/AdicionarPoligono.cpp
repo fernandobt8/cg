@@ -34,7 +34,6 @@ AdicionarPoligono::~AdicionarPoligono() {
 
 void AdicionarPoligono::okEvent() {
 	Poligono *p = new Poligono(this->nomeInput->text().toUtf8().data(), coordenadasPoligono);
-	memset(&coordenadasPoligono, 0, sizeof(coordenadasPoligono));
 	addEvent->OnAdicionarObjetoTipoClick(p);
 	this->parent->close();
 }
@@ -52,7 +51,6 @@ void AdicionarPoligono::on_adicionarCoordenada_clicked() {
 	QListWidgetItem * item = new QListWidgetItem();
 	char *text = new char[strlen(this->xInput->text().toUtf8().data())
 			+ strlen(this->yInput->text().toUtf8().data())];
-	memset(&text[0], 0, sizeof(text));
 	strcat(text, this->xInput->text().toUtf8().data());
 	strcat(text, ",");
 	strcat(text, this->yInput->text().toUtf8().data());

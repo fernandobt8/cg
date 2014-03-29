@@ -18,9 +18,12 @@ void MainController::addObjeto(ObjetoGeometrico* objeto){
 	objeto->addToAllCoordenadas(window->getStart());
 	modelo->addObjeto(objeto);
 	window->update();
-	view->repaint();
+	view->updateWindow(window);
 }
 
 MainController::~MainController() {
+	delete modelo;
+	delete window;
+	delete view;
 }
 

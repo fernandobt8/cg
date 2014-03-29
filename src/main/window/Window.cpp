@@ -21,7 +21,19 @@ void Window::update(){
 	for (; it != modelo->getObjetos()->end(); it++) {
 		ObjetoGeometrico* objeto = dynamic_cast<ObjetoGeometrico* >(*it);
 		if(objeto != 0 && objeto->betweenCoordenadas(start,end)){
-			ObjetoGeometrico* clone = new ObjetoGeometrico(*objeto);
+			ObjetoGeometrico* clone;
+			Ponto* ponto = dynamic_cast<Ponto* >(objeto);
+			if(ponto){
+				clone = new Ponto(*ponto);
+			}
+			Reta* reta = dynamic_cast<Reta* >(objeto);
+			if(reta){
+				clone = new Reta(*reta);
+			}
+			Poligono* poligono = dynamic_cast<Poligono* >(objeto);
+			if(poligono){
+				clone = new Poligono(*poligono);
+			}
 			clone->addToAllCoordenadas(start);
 			windowObjetos->push_back(clone);
 		}
@@ -33,6 +45,10 @@ void Window::clearWindowObjetos(){
 		delete windowObjetos->front();
 		windowObjetos->pop_front();
 	}
+}
+
+list<ObjetoGeometrico* >* Window::getWindowObjetos(){
+	return windowObjetos;
 }
 
 Coordenada* Window::getStart(){

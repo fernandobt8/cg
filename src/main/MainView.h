@@ -26,6 +26,7 @@ public:
 	MainView(class MainController* controller);
 	~MainView();
 	virtual void OnAdicionarObjetoTipoClick(class ObjetoGeometrico *objeto);
+	void updateWindow(Window* window);
 public slots:
 	void on_upButton_clicked();
 	void on_rightButton_clicked();

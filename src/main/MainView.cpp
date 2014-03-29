@@ -90,6 +90,10 @@ void MainView::on_adicionarButton_clicked() {
 	adicionarWindow->show();
 }
 
+void MainView::updateWindow(Window* window){
+	viewPort->renderWindow(window);
+}
+
 void MainView::OnAdicionarObjetoTipoClick(ObjetoGeometrico *objeto) {
 	controller->addObjeto(objeto);
 	QListWidgetItem * item = new QListWidgetItem();
@@ -98,5 +102,15 @@ void MainView::OnAdicionarObjetoTipoClick(ObjetoGeometrico *objeto) {
 }
 
 MainView::~MainView() {
-
+	delete upButton;
+	delete leftButton;
+	delete rightButton;
+	delete downButton;
+	delete zoomInButton;
+	delete zoomOutButton;
+	delete listaObjetos;
+	delete adicionarButton;
+	delete lineEdit;
+	delete passoLabel;
+	delete adicionarWindow;
 }
