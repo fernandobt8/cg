@@ -28,8 +28,7 @@ private:
 	Coordenada* end;
 	Coordenada* center;
 	ModeloInterno* modelo;
-
-	Coordenada** drawReta(Reta* reta);
+	list<ObjetoGeometrico* >* windowObjetos;
 
 };
 

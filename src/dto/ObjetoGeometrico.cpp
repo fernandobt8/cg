@@ -23,26 +23,36 @@ list<Coordenada*>* ObjetoGeometrico::getCoordenadas() {
 	return this->coordenadas;
 }
 
-void ObjetoGeometrico::addCoordenada(Coordenada* coordenada){
+void ObjetoGeometrico::addCoordenada(Coordenada* coordenada) {
 	coordenadas->push_back(coordenada);
 }
 
-bool ObjetoGeometrico::isAfterCoordenada(Coordenada* coordenada){
-	list<Coordenada* >::iterator it = coordenadas->begin();
+bool ObjetoGeometrico::betweenCoordenadas(Coordenada* start, Coordenada* end) {
+	list<Coordenada*>::iterator it = coordenadas->begin();
+	for (; it != coordenadas->end(); it++) {
+		Coordenada* coordenada = dynamic_cast<Coordenada*>(*it);
+		if (coordenada->getX() >= start->getX()
+				&& coordenada->getX() <= end->getX()
+				&& coordenada->getY() >= start->getY()
+				&& coordenada->getY() <= end->getY()) {
+			return true;
+		}
+	}
+	return false;
 }
 
-void ObjetoGeometrico::addToAllCoordenadas(Coordenada* coordenada){
-	list<Coordenada* >::iterator it = coordenadas->begin();
+void ObjetoGeometrico::addToAllCoordenadas(Coordenada* coordenada) {
+	list<Coordenada*>::iterator it = coordenadas->begin();
 	for (; it != coordenadas->end(); it++) {
-		Coordenada* current = dynamic_cast<Coordenada* >(*it);
-		if(current){
+		Coordenada* current = dynamic_cast<Coordenada*>(*it);
+		if (current) {
 			current->addToX(coordenada->getX());
 			current->addToY(coordenada->getY());
 		}
 	}
 }
 
-char* ObjetoGeometrico::getNome(){
+char* ObjetoGeometrico::getNome() {
 	return this->nome;
 }
 
