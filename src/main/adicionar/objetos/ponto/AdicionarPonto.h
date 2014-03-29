@@ -13,13 +13,13 @@
 #include "../AdicionarAbstract.h"
 #include "../../../../dto/Ponto.h"
 
-class AdicionarPonto: public AdicionarAbstract {
+class AdicionarPonto: virtual public AdicionarAbstract {
 public:
 	AdicionarPonto(QWidget *parent, OnAdicionarObjetoTipoEvent *event);
 	virtual ~AdicionarPonto();
 
 private:
-	void okEvent();
+	virtual void okEvent();
 };
 
 #endif /* ADICIONARPONTO_H_ */

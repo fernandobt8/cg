@@ -13,7 +13,7 @@
 #include "QtGui/qlabel.h"
 #include "../../../../dto/Reta.h"
 
-class AdicionarReta: public AdicionarAbstract {
+class AdicionarReta: virtual public AdicionarAbstract {
 public:
 	AdicionarReta(QWidget *parent, OnAdicionarObjetoTipoEvent *event);
 	virtual ~AdicionarReta();
@@ -23,7 +23,7 @@ private:
 	QLabel *y2Label;
 	QLineEdit *x2Input;
 	QLineEdit *y2Input;
-	void okEvent();
+	virtual void okEvent();
 
 };
 

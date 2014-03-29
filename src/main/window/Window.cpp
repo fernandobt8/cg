@@ -12,6 +12,7 @@ Window::Window(ModeloInterno* modelo){
 	start = new Coordenada(0, 0);
 	end = new Coordenada(500, 500);
 	center = new Coordenada(250, 250);
+	windowObjetos = new list<ObjetoGeometrico*>();
 }
 
 void Window::update(){

@@ -14,6 +14,7 @@ ObjetoGeometrico::ObjetoGeometrico(char* nome, list<Coordenada*>* coordenadas) {
 
 ObjetoGeometrico::ObjetoGeometrico(char* nome) {
 	this->nome = nome;
+	this->coordenadas = new list<Coordenada* >();
 }
 
 ObjetoGeometrico::~ObjetoGeometrico() {

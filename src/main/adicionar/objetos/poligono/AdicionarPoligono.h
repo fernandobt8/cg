@@ -27,7 +27,7 @@ private:
 	QPushButton *adicionarCoordenadaButton;
 	QPushButton *removerCoordenadaButton;
 	list<Coordenada*>* coordenadasPoligono;
-	void okEvent();
+	virtual void okEvent();
 
 public slots:
 	void on_removerCoordenada_clicked();

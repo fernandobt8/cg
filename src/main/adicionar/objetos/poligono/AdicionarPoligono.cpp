@@ -23,6 +23,7 @@ AdicionarPoligono::AdicionarPoligono(QWidget *parent,
 	removerCoordenadaButton->setObjectName(QString::fromUtf8("removerCoordenada"));
 	removerCoordenadaButton->setGeometry(QRect(25, 255, 200, 30));
 	removerCoordenadaButton->setText(QString::fromUtf8("Remover coordenada"));
+	coordenadasPoligono = new list<Coordenada*>();
 
 	QMetaObject::connectSlotsByName(this);
 

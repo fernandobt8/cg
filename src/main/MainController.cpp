@@ -8,10 +8,10 @@
 #include "MainController.h"
 
 MainController::MainController() {
-	this->view = new MainView(this);
-	view->show();
 	modelo = new ModeloInterno();
 	window = new Window(modelo);
+	this->view = new MainView(this);
+	view->show();
 }
 
 void MainController::addObjeto(ObjetoGeometrico* objeto){
