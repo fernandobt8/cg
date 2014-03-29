@@ -11,7 +11,7 @@
 #include "../AdicionarAbstract.h"
 #include <list>
 #include "QtGui/qlistwidget.h"
-#include "../../../dto/Poligono.h"
+#include "../../../../dto/Poligono.h"
 
 
 using namespace std;
@@ -21,9 +21,11 @@ Q_OBJECT
 public:
 	AdicionarPoligono(QWidget *parent, OnAdicionarObjetoTipoEvent *event, Coordenada *orientation);
 	virtual ~AdicionarPoligono();
+
+private:
 	QListWidget *coordenadasList;
-	QPushButton *adicionarCoordenada;
-	QPushButton *removerCoordenada;
+	QPushButton *adicionarCoordenadaButton;
+	QPushButton *removerCoordenadaButton;
 	list<Coordenada*> coordenadasPoligono;
 	void okEvent();
 

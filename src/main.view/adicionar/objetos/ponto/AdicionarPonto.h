@@ -11,13 +11,14 @@
 #include "QtGui/qlineedit.h"
 #include "QtGui/qlabel.h"
 #include "../AdicionarAbstract.h"
-#include "../../../dto/Ponto.h"
+#include "../../../../dto/Ponto.h"
 
 class AdicionarPonto: public AdicionarAbstract {
 public:
 	AdicionarPonto(QWidget *parent, OnAdicionarObjetoTipoEvent *event, Coordenada *orientation);
 	virtual ~AdicionarPonto();
 
+private:
 	void okEvent();
 };
 

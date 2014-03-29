@@ -20,9 +20,6 @@ AdicionarTipoObjetoView::AdicionarTipoObjetoView(
 			QString("Poligono"));
 
 	this->setCentralWidget(centralwidget);
-
-	tabWindow->setCurrentIndex(0);
-
 }
 
 AdicionarTipoObjetoView::~AdicionarTipoObjetoView() {

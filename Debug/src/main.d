@@ -63,22 +63,22 @@ src/main.d: ../src/main.cpp ../src/main.view/MainView.h \
  /usr/include/qt4/QtGui/qtextcursor.h \
  /usr/include/qt4/QtGui/qtextformat.h /usr/include/qt4/QtGui/qlabel.h \
  ../src/main.view/adicionar/AdicionarTipoObjetoView.h \
- ../src/main.view/adicionar/ponto/AdicionarPonto.h \
- ../src/main.view/adicionar/ponto/../AdicionarAbstract.h \
- ../src/main.view/adicionar/ponto/../../../api/OnAdicionarObjetoTipoEvent.h \
- ../src/main.view/adicionar/ponto/../../../api/../dto/ObjetoGeometrico.h \
- ../src/main.view/adicionar/ponto/../../../api/../dto/Coordenada.h \
- ../src/main.view/adicionar/ponto/../../../dto/Ponto.h \
- ../src/main.view/adicionar/ponto/../../../dto/ObjetoGeometrico.h \
- ../src/main.view/adicionar/reta/AdicionarReta.h \
- ../src/main.view/adicionar/reta/../AdicionarAbstract.h \
- ../src/main.view/adicionar/reta/../../../dto/Reta.h \
- ../src/main.view/adicionar/reta/../../../dto/ObjetoGeometrico.h \
- ../src/main.view/adicionar/poligono/AdicionarPoligono.h \
- ../src/main.view/adicionar/poligono/../AdicionarAbstract.h \
- ../src/main.view/adicionar/poligono/../../../dto/Poligono.h \
- ../src/main.view/adicionar/poligono/../../../dto/Reta.h \
- ../src/main.view/adicionar/poligono/../../../dto/ObjetoGeometrico.h \
+ ../src/main.view/adicionar/objetos/ponto/AdicionarPonto.h \
+ ../src/main.view/adicionar/objetos/ponto/../AdicionarAbstract.h \
+ ../src/main.view/adicionar/objetos/ponto/../../../../api/OnAdicionarObjetoTipoEvent.h \
+ ../src/main.view/adicionar/objetos/ponto/../../../../api/../dto/ObjetoGeometrico.h \
+ ../src/main.view/adicionar/objetos/ponto/../../../../api/../dto/Coordenada.h \
+ ../src/main.view/adicionar/objetos/ponto/../../../../dto/Ponto.h \
+ ../src/main.view/adicionar/objetos/ponto/../../../../dto/ObjetoGeometrico.h \
+ ../src/main.view/adicionar/objetos/reta/AdicionarReta.h \
+ ../src/main.view/adicionar/objetos/reta/../AdicionarAbstract.h \
+ ../src/main.view/adicionar/objetos/reta/../../../../dto/Reta.h \
+ ../src/main.view/adicionar/objetos/reta/../../../../dto/ObjetoGeometrico.h \
+ ../src/main.view/adicionar/objetos/poligono/AdicionarPoligono.h \
+ ../src/main.view/adicionar/objetos/poligono/../AdicionarAbstract.h \
+ ../src/main.view/adicionar/objetos/poligono/../../../../dto/Poligono.h \
+ ../src/main.view/adicionar/objetos/poligono/../../../../dto/Reta.h \
+ ../src/main.view/adicionar/objetos/poligono/../../../../dto/ObjetoGeometrico.h \
  ../src/main.view/modelo.interno/ModeloInterno.h \
  ../src/main.view/modelo.interno/../../dto/ObjetoGeometrico.h \
  ../src/main.view/window/WindowView.h \
@@ -289,37 +289,37 @@ src/main.d: ../src/main.cpp ../src/main.view/MainView.h \
 
 ../src/main.view/adicionar/AdicionarTipoObjetoView.h:
 
-../src/main.view/adicionar/ponto/AdicionarPonto.h:
+../src/main.view/adicionar/objetos/ponto/AdicionarPonto.h:
 
-../src/main.view/adicionar/ponto/../AdicionarAbstract.h:
+../src/main.view/adicionar/objetos/ponto/../AdicionarAbstract.h:
 
-../src/main.view/adicionar/ponto/../../../api/OnAdicionarObjetoTipoEvent.h:
+../src/main.view/adicionar/objetos/ponto/../../../../api/OnAdicionarObjetoTipoEvent.h:
 
-../src/main.view/adicionar/ponto/../../../api/../dto/ObjetoGeometrico.h:
+../src/main.view/adicionar/objetos/ponto/../../../../api/../dto/ObjetoGeometrico.h:
 
-../src/main.view/adicionar/ponto/../../../api/../dto/Coordenada.h:
+../src/main.view/adicionar/objetos/ponto/../../../../api/../dto/Coordenada.h:
 
-../src/main.view/adicionar/ponto/../../../dto/Ponto.h:
+../src/main.view/adicionar/objetos/ponto/../../../../dto/Ponto.h:
 
-../src/main.view/adicionar/ponto/../../../dto/ObjetoGeometrico.h:
+../src/main.view/adicionar/objetos/ponto/../../../../dto/ObjetoGeometrico.h:
 
-../src/main.view/adicionar/reta/AdicionarReta.h:
+../src/main.view/adicionar/objetos/reta/AdicionarReta.h:
 
-../src/main.view/adicionar/reta/../AdicionarAbstract.h:
+../src/main.view/adicionar/objetos/reta/../AdicionarAbstract.h:
 
-../src/main.view/adicionar/reta/../../../dto/Reta.h:
+../src/main.view/adicionar/objetos/reta/../../../../dto/Reta.h:
 
-../src/main.view/adicionar/reta/../../../dto/ObjetoGeometrico.h:
+../src/main.view/adicionar/objetos/reta/../../../../dto/ObjetoGeometrico.h:
 
-../src/main.view/adicionar/poligono/AdicionarPoligono.h:
+../src/main.view/adicionar/objetos/poligono/AdicionarPoligono.h:
 
-../src/main.view/adicionar/poligono/../AdicionarAbstract.h:
+../src/main.view/adicionar/objetos/poligono/../AdicionarAbstract.h:
 
-../src/main.view/adicionar/poligono/../../../dto/Poligono.h:
+../src/main.view/adicionar/objetos/poligono/../../../../dto/Poligono.h:
 
-../src/main.view/adicionar/poligono/../../../dto/Reta.h:
+../src/main.view/adicionar/objetos/poligono/../../../../dto/Reta.h:
 
-../src/main.view/adicionar/poligono/../../../dto/ObjetoGeometrico.h:
+../src/main.view/adicionar/objetos/poligono/../../../../dto/ObjetoGeometrico.h:
 
 ../src/main.view/modelo.interno/ModeloInterno.h:
 

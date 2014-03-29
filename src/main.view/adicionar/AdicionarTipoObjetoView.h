@@ -11,9 +11,9 @@
 #include "QtGui/qwidget.h"
 #include "QtGui/qwidget.h"
 #include "QtGui/qmainwindow.h"
-#include "ponto/AdicionarPonto.h"
-#include "reta/AdicionarReta.h"
-#include "poligono/AdicionarPoligono.h"
+#include "objetos/ponto/AdicionarPonto.h"
+#include "objetos/reta/AdicionarReta.h"
+#include "objetos/poligono/AdicionarPoligono.h"
 
 using namespace std;
 

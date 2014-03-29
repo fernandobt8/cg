@@ -12,9 +12,9 @@ AdicionarAbstract::AdicionarAbstract(QWidget *parent, OnAdicionarObjetoTipoEvent
 	this->parent = parent;
 	this->addEvent = event;
 	this->orientation = orientation;
-	nomeTextField = new QLineEdit(this);
-	nomeTextField->setObjectName(QString::fromUtf8("nomeTextField"));
-	nomeTextField->setGeometry(QRect(60, 10, 160, 25));
+	nomeInput = new QLineEdit(this);
+	nomeInput->setObjectName(QString::fromUtf8("nomeTextField"));
+	nomeInput->setGeometry(QRect(60, 10, 160, 25));
 	nomeLabel = new QLabel(this);
 	nomeLabel->setObjectName(QString::fromUtf8("nomeLabel"));
 	nomeLabel->setGeometry(QRect(10, 15, 40, 15));
@@ -23,17 +23,17 @@ AdicionarAbstract::AdicionarAbstract(QWidget *parent, OnAdicionarObjetoTipoEvent
 	coordenadasLabel->setObjectName(QString::fromUtf8("coordenadasLabel"));
 	coordenadasLabel->setGeometry(QRect(10, 65, 90, 10));
 	coordenadasLabel->setText(QString::fromUtf8("Coordenadas"));
-	coordenadasLabelX = new QLabel(this);
-	coordenadasLabelX->setObjectName(QString::fromUtf8("label"));
-	coordenadasLabelX->setGeometry(QRect(30, 90, 10, 25));
-	coordenadasLabelX->setText(QString::fromUtf8("x"));
+	xLabel = new QLabel(this);
+	xLabel->setObjectName(QString::fromUtf8("label"));
+	xLabel->setGeometry(QRect(30, 90, 10, 25));
+	xLabel->setText(QString::fromUtf8("x"));
 	xInput = new QLineEdit(this);
 	xInput->setObjectName(QString::fromUtf8("xTextFieldPonto"));
 	xInput->setGeometry(QRect(50, 90, 50, 25));
-	coordenadasLabelY = new QLabel(this);
-	coordenadasLabelY->setObjectName(QString::fromUtf8("label_2"));
-	coordenadasLabelY->setGeometry(QRect(150, 90, 10, 25));
-	coordenadasLabelY->setText(QString::fromUtf8("y"));
+	yLabel = new QLabel(this);
+	yLabel->setObjectName(QString::fromUtf8("label_2"));
+	yLabel->setGeometry(QRect(150, 90, 10, 25));
+	yLabel->setText(QString::fromUtf8("y"));
 	yInput = new QLineEdit(this);
 	yInput->setObjectName(QString::fromUtf8("yTextFieldPonto"));
 	yInput->setGeometry(QRect(170, 90, 50, 25));
@@ -51,9 +51,12 @@ AdicionarAbstract::AdicionarAbstract(QWidget *parent, OnAdicionarObjetoTipoEvent
 }
 
 AdicionarAbstract::~AdicionarAbstract() {
-	// TODO Auto-generated destructor stub
 }
 
 void AdicionarAbstract::on_okButton_clicked() {
 	this->okEvent();
+}
+
+void AdicionarAbstract::on_cancelarButton_clicked() {
+	this->parent->close();
 }

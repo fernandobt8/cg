@@ -1,6 +1,7 @@
 #include "MainView.h"
 
-MainView::MainView() : QWidget(), OnAdicionarObjetoTipoEvent(){
+MainView::MainView() :
+		QWidget(), OnAdicionarObjetoTipoEvent() {
 	if (this->objectName().isEmpty())
 		this->setObjectName(QString::fromUtf8("Widget"));
 	this->resize(836, 576);
@@ -10,8 +11,6 @@ MainView::MainView() : QWidget(), OnAdicionarObjetoTipoEvent(){
 	window->setGeometry(QRect(300, 25, 500, 500));
 	this->renderControleWindowPanel();
 	this->renderListaObjetosPanel();
-
-
 
 	QMetaObject::connectSlotsByName(this);
 	this->setWindowTitle(QString::fromUtf8("Computação Grafica"));
@@ -26,11 +25,13 @@ MainView::MainView() : QWidget(), OnAdicionarObjetoTipoEvent(){
 			SLOT(onZoomInClick()));
 	QObject::connect(zoomOutButton, SIGNAL(clicked()), this,
 			SLOT(onZoomOutClick()));
-	QObject::connect(adicionarButton, SIGNAL(clicked()), this, SLOT(onAdicionarButtonClicked()));
+	QObject::connect(adicionarButton, SIGNAL(clicked()), this,
+			SLOT(onAdicionarButtonClicked()));
 }
 
-void MainView::renderListaObjetosPanel(){
-	adicionarWindow = new AdicionarTipoObjetoView(this, this->window->getStart());
+void MainView::renderListaObjetosPanel() {
+	adicionarWindow = new AdicionarTipoObjetoView(this,
+			this->window->getStart());
 	listaObjetos = new QListWidget(this);
 	listaObjetos->setObjectName(QString::fromUtf8("listaObjetos"));
 	listaObjetos->setGeometry(QRect(20, 30, 250, 190));
@@ -47,7 +48,7 @@ void MainView::renderListaObjetosPanel(){
 	passoLabel->setText("Passo");
 }
 
-void MainView::renderControleWindowPanel(){
+void MainView::renderControleWindowPanel() {
 	upButton = new QPushButton(this);
 	upButton->setObjectName(QString::fromUtf8("upButton"));
 	upButton->setGeometry(QRect(120, 340, 50, 30));
@@ -104,10 +105,13 @@ void MainView::onAdicionarButtonClicked() {
 	adicionarWindow->show();
 }
 
-void MainView::OnAdicionarObjetoTipoClick(ObjetoGeometrico *objeto){
+void MainView::OnAdicionarObjetoTipoClick(ObjetoGeometrico *objeto) {
 	window->addObjeto(objeto);
+	QListWidgetItem * item = new QListWidgetItem();
+	item->setText(objeto->getNome());
+	this->listaObjetos->addItem(item);
 }
 
-MainView::~MainView(){
+MainView::~MainView() {
 
 }

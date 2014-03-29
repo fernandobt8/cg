@@ -27,7 +27,7 @@ void AdicionarPonto::okEvent() {
 			atoi(this->yInput->text().toUtf8().constData())
 					+ orientation->getY());
 	addEvent->OnAdicionarObjetoTipoClick(
-			new Ponto(this->nomeTextField->text().toUtf8().data(),
+			new Ponto(this->nomeInput->text().toUtf8().data(),
 					coordenadas));
 	this->parent->close();
 }

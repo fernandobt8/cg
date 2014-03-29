@@ -35,27 +35,27 @@ src/main.view/adicionar/AdicionarTipoObjetoView.d: \
  /usr/include/qt4/QtGui/qcursor.h /usr/include/qt4/QtGui/qkeysequence.h \
  /usr/include/qt4/QtGui/qmainwindow.h /usr/include/qt4/QtGui/qtabwidget.h \
  /usr/include/qt4/QtGui/qicon.h \
- ../src/main.view/adicionar/ponto/AdicionarPonto.h \
+ ../src/main.view/adicionar/objetos/ponto/AdicionarPonto.h \
  /usr/include/qt4/QtGui/qlineedit.h /usr/include/qt4/QtGui/qframe.h \
  /usr/include/qt4/QtGui/qtextcursor.h \
  /usr/include/qt4/QtGui/qtextformat.h /usr/include/qt4/QtCore/qvariant.h \
  /usr/include/qt4/QtCore/qmetatype.h /usr/include/qt4/QtCore/qmap.h \
  /usr/include/qt4/QtCore/qhash.h /usr/include/qt4/QtGui/qpen.h \
  /usr/include/qt4/QtGui/qtextoption.h /usr/include/qt4/QtGui/qlabel.h \
- ../src/main.view/adicionar/ponto/../AdicionarAbstract.h \
- ../src/main.view/adicionar/ponto/../../../api/OnAdicionarObjetoTipoEvent.h \
- ../src/main.view/adicionar/ponto/../../../api/../dto/ObjetoGeometrico.h \
- ../src/main.view/adicionar/ponto/../../../api/../dto/Coordenada.h \
+ ../src/main.view/adicionar/objetos/ponto/../AdicionarAbstract.h \
+ ../src/main.view/adicionar/objetos/ponto/../../../../api/OnAdicionarObjetoTipoEvent.h \
+ ../src/main.view/adicionar/objetos/ponto/../../../../api/../dto/ObjetoGeometrico.h \
+ ../src/main.view/adicionar/objetos/ponto/../../../../api/../dto/Coordenada.h \
  /usr/include/qt4/QtGui/qpushbutton.h \
  /usr/include/qt4/QtGui/qabstractbutton.h \
- ../src/main.view/adicionar/ponto/../../../dto/Ponto.h \
- ../src/main.view/adicionar/ponto/../../../dto/ObjetoGeometrico.h \
- ../src/main.view/adicionar/reta/AdicionarReta.h \
- ../src/main.view/adicionar/reta/../AdicionarAbstract.h \
- ../src/main.view/adicionar/reta/../../../dto/Reta.h \
- ../src/main.view/adicionar/reta/../../../dto/ObjetoGeometrico.h \
- ../src/main.view/adicionar/poligono/AdicionarPoligono.h \
- ../src/main.view/adicionar/poligono/../AdicionarAbstract.h \
+ ../src/main.view/adicionar/objetos/ponto/../../../../dto/Ponto.h \
+ ../src/main.view/adicionar/objetos/ponto/../../../../dto/ObjetoGeometrico.h \
+ ../src/main.view/adicionar/objetos/reta/AdicionarReta.h \
+ ../src/main.view/adicionar/objetos/reta/../AdicionarAbstract.h \
+ ../src/main.view/adicionar/objetos/reta/../../../../dto/Reta.h \
+ ../src/main.view/adicionar/objetos/reta/../../../../dto/ObjetoGeometrico.h \
+ ../src/main.view/adicionar/objetos/poligono/AdicionarPoligono.h \
+ ../src/main.view/adicionar/objetos/poligono/../AdicionarAbstract.h \
  /usr/include/qt4/QtGui/qlistwidget.h /usr/include/qt4/QtGui/qlistview.h \
  /usr/include/qt4/QtGui/qabstractitemview.h \
  /usr/include/qt4/QtGui/qabstractscrollarea.h \
@@ -69,9 +69,9 @@ src/main.view/adicionar/AdicionarTipoObjetoView.d: \
  /usr/include/qt4/QtGui/qslider.h \
  /usr/include/qt4/QtGui/qabstractslider.h /usr/include/qt4/QtGui/qstyle.h \
  /usr/include/qt4/QtGui/qtabbar.h /usr/include/qt4/QtGui/qrubberband.h \
- ../src/main.view/adicionar/poligono/../../../dto/Poligono.h \
- ../src/main.view/adicionar/poligono/../../../dto/Reta.h \
- ../src/main.view/adicionar/poligono/../../../dto/ObjetoGeometrico.h
+ ../src/main.view/adicionar/objetos/poligono/../../../../dto/Poligono.h \
+ ../src/main.view/adicionar/objetos/poligono/../../../../dto/Reta.h \
+ ../src/main.view/adicionar/objetos/poligono/../../../../dto/ObjetoGeometrico.h
 
 ../src/main.view/adicionar/AdicionarTipoObjetoView.h:
 
@@ -185,7 +185,7 @@ src/main.view/adicionar/AdicionarTipoObjetoView.d: \
 
 /usr/include/qt4/QtGui/qicon.h:
 
-../src/main.view/adicionar/ponto/AdicionarPonto.h:
+../src/main.view/adicionar/objetos/ponto/AdicionarPonto.h:
 
 /usr/include/qt4/QtGui/qlineedit.h:
 
@@ -209,33 +209,33 @@ src/main.view/adicionar/AdicionarTipoObjetoView.d: \
 
 /usr/include/qt4/QtGui/qlabel.h:
 
-../src/main.view/adicionar/ponto/../AdicionarAbstract.h:
+../src/main.view/adicionar/objetos/ponto/../AdicionarAbstract.h:
 
-../src/main.view/adicionar/ponto/../../../api/OnAdicionarObjetoTipoEvent.h:
+../src/main.view/adicionar/objetos/ponto/../../../../api/OnAdicionarObjetoTipoEvent.h:
 
-../src/main.view/adicionar/ponto/../../../api/../dto/ObjetoGeometrico.h:
+../src/main.view/adicionar/objetos/ponto/../../../../api/../dto/ObjetoGeometrico.h:
 
-../src/main.view/adicionar/ponto/../../../api/../dto/Coordenada.h:
+../src/main.view/adicionar/objetos/ponto/../../../../api/../dto/Coordenada.h:
 
 /usr/include/qt4/QtGui/qpushbutton.h:
 
 /usr/include/qt4/QtGui/qabstractbutton.h:
 
-../src/main.view/adicionar/ponto/../../../dto/Ponto.h:
+../src/main.view/adicionar/objetos/ponto/../../../../dto/Ponto.h:
 
-../src/main.view/adicionar/ponto/../../../dto/ObjetoGeometrico.h:
+../src/main.view/adicionar/objetos/ponto/../../../../dto/ObjetoGeometrico.h:
 
-../src/main.view/adicionar/reta/AdicionarReta.h:
+../src/main.view/adicionar/objetos/reta/AdicionarReta.h:
 
-../src/main.view/adicionar/reta/../AdicionarAbstract.h:
+../src/main.view/adicionar/objetos/reta/../AdicionarAbstract.h:
 
-../src/main.view/adicionar/reta/../../../dto/Reta.h:
+../src/main.view/adicionar/objetos/reta/../../../../dto/Reta.h:
 
-../src/main.view/adicionar/reta/../../../dto/ObjetoGeometrico.h:
+../src/main.view/adicionar/objetos/reta/../../../../dto/ObjetoGeometrico.h:
 
-../src/main.view/adicionar/poligono/AdicionarPoligono.h:
+../src/main.view/adicionar/objetos/poligono/AdicionarPoligono.h:
 
-../src/main.view/adicionar/poligono/../AdicionarAbstract.h:
+../src/main.view/adicionar/objetos/poligono/../AdicionarAbstract.h:
 
 /usr/include/qt4/QtGui/qlistwidget.h:
 
@@ -271,8 +271,8 @@ src/main.view/adicionar/AdicionarTipoObjetoView.d: \
 
 /usr/include/qt4/QtGui/qrubberband.h:
 
-../src/main.view/adicionar/poligono/../../../dto/Poligono.h:
+../src/main.view/adicionar/objetos/poligono/../../../../dto/Poligono.h:
 
-../src/main.view/adicionar/poligono/../../../dto/Reta.h:
+../src/main.view/adicionar/objetos/poligono/../../../../dto/Reta.h:
 
-../src/main.view/adicionar/poligono/../../../dto/ObjetoGeometrico.h:
+../src/main.view/adicionar/objetos/poligono/../../../../dto/ObjetoGeometrico.h:

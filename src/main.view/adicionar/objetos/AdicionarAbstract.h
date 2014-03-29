@@ -8,7 +8,7 @@
 #ifndef ADICIONARABSTRACT_H_
 #define ADICIONARABSTRACT_H_
 
-#include "../../api/OnAdicionarObjetoTipoEvent.h"
+#include "../../../api/OnAdicionarObjetoTipoEvent.h"
 #include "QtGui/qpushbutton.h"
 #include "QtGui/qlineedit.h"
 #include "QtGui/qlabel.h"
@@ -19,11 +19,13 @@ Q_OBJECT
 public:
 	AdicionarAbstract(QWidget *parent, OnAdicionarObjetoTipoEvent *event, Coordenada *orientation);
 	virtual ~AdicionarAbstract();
+
+protected:
 	QLabel *nomeLabel;
-	QLineEdit *nomeTextField;
+	QLineEdit *nomeInput;
 	QLabel *coordenadasLabel;
-	QLabel *coordenadasLabelX;
-	QLabel *coordenadasLabelY;
+	QLabel *xLabel;
+	QLabel *yLabel;
 	QLineEdit *xInput;
 	QLineEdit *yInput;
 	QPushButton *okButton;
@@ -35,6 +37,7 @@ public:
 
 public slots:
 	void on_okButton_clicked();
+	void on_cancelarButton_clicked();
 };
 
 #endif /* ADICIONARABSTRACT_H_ */
