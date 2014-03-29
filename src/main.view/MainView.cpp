@@ -4,14 +4,14 @@ MainView::MainView() : QWidget(), OnAdicionarObjetoTipoEvent(){
 	if (this->objectName().isEmpty())
 		this->setObjectName(QString::fromUtf8("Widget"));
 	this->resize(836, 576);
-	this->renderControleWindowPanel();
-	this->renderListaObjetosPanel();
-
-
 	//representando o quadrado da window ainda a fazer
 	window = new WindowView(this);
 	window->setObjectName(QString::fromUtf8("window"));
 	window->setGeometry(QRect(300, 25, 500, 500));
+	this->renderControleWindowPanel();
+	this->renderListaObjetosPanel();
+
+
 
 	QMetaObject::connectSlotsByName(this);
 	this->setWindowTitle(QString::fromUtf8("Computação Grafica"));
@@ -30,7 +30,7 @@ MainView::MainView() : QWidget(), OnAdicionarObjetoTipoEvent(){
 }
 
 void MainView::renderListaObjetosPanel(){
-	adicionarWindow = new AdicionarTipoObjetoView(this);
+	adicionarWindow = new AdicionarTipoObjetoView(this, this->window->getStart());
 	listaObjetos = new QListWidget(this);
 	listaObjetos->setObjectName(QString::fromUtf8("listaObjetos"));
 	listaObjetos->setGeometry(QRect(20, 30, 250, 190));
@@ -101,7 +101,6 @@ void MainView::onZoomOutClick() {
 }
 
 void MainView::onAdicionarButtonClicked() {
-	adicionarWindow->setOrientatio(this->window->getStart());
 	adicionarWindow->show();
 }
 

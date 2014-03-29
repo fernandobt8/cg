@@ -10,6 +10,7 @@ RM := rm -rf
 -include sources.mk
 -include src/main.view/window/subdir.mk
 -include src/main.view/modelo.interno/subdir.mk
+-include src/main.view/adicionar/reta/subdir.mk
 -include src/main.view/adicionar/ponto/subdir.mk
 -include src/main.view/adicionar/subdir.mk
 -include src/main.view/subdir.mk

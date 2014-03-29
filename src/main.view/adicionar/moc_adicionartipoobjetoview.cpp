@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'AdicionarTipoObjetoView.h'
 **
-** Created: Fri Mar 28 22:53:17 2014
+** Created: Fri Mar 28 23:59:12 2014
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_AdicionarTipoObjetoView[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -33,9 +33,8 @@ static const uint qt_meta_data_AdicionarTipoObjetoView[] = {
  // slots: signature, parameters, type, tag, flags
       31,   25,   24,   24, 0x0a,
       64,   24,   24,   24, 0x0a,
-      86,   24,   24,   24, 0x0a,
-     114,   24,   24,   24, 0x0a,
-     145,   24,   24,   24, 0x0a,
+      92,   24,   24,   24, 0x0a,
+     123,   24,   24,   24, 0x0a,
 
        0        // eod
 };
@@ -43,7 +42,7 @@ static const uint qt_meta_data_AdicionarTipoObjetoView[] = {
 static const char qt_meta_stringdata_AdicionarTipoObjetoView[] = {
     "AdicionarTipoObjetoView\0\0index\0"
     "on_tabWindow_currentChanged(int)\0"
-    "on_okButton_clicked()\0on_cancelarButton_clicked()\0"
+    "on_cancelarButton_clicked()\0"
     "on_removerCoordenada_clicked()\0"
     "on_adicionarCoordenada_clicked()\0"
 };
@@ -55,10 +54,9 @@ void AdicionarTipoObjetoView::qt_static_metacall(QObject *_o, QMetaObject::Call 
         AdicionarTipoObjetoView *_t = static_cast<AdicionarTipoObjetoView *>(_o);
         switch (_id) {
         case 0: _t->on_tabWindow_currentChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 1: _t->on_okButton_clicked(); break;
-        case 2: _t->on_cancelarButton_clicked(); break;
-        case 3: _t->on_removerCoordenada_clicked(); break;
-        case 4: _t->on_adicionarCoordenada_clicked(); break;
+        case 1: _t->on_cancelarButton_clicked(); break;
+        case 2: _t->on_removerCoordenada_clicked(); break;
+        case 3: _t->on_adicionarCoordenada_clicked(); break;
         default: ;
         }
     }
@@ -96,9 +94,9 @@ int AdicionarTipoObjetoView::qt_metacall(QMetaObject::Call _c, int _id, void **_
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 4;
     }
     return _id;
 }

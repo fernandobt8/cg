@@ -4,15 +4,21 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../src/main.view/adicionar/AdicionarAbstract.cpp \
 ../src/main.view/adicionar/AdicionarTipoObjetoView.cpp \
+../src/main.view/adicionar/moc_adicionarabstract.cpp \
 ../src/main.view/adicionar/moc_adicionartipoobjetoview.cpp 
 
 OBJS += \
+./src/main.view/adicionar/AdicionarAbstract.o \
 ./src/main.view/adicionar/AdicionarTipoObjetoView.o \
+./src/main.view/adicionar/moc_adicionarabstract.o \
 ./src/main.view/adicionar/moc_adicionartipoobjetoview.o 
 
 CPP_DEPS += \
+./src/main.view/adicionar/AdicionarAbstract.d \
 ./src/main.view/adicionar/AdicionarTipoObjetoView.d \
+./src/main.view/adicionar/moc_adicionarabstract.d \
 ./src/main.view/adicionar/moc_adicionartipoobjetoview.d 
 
 

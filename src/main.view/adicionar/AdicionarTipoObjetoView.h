@@ -31,41 +31,26 @@
 #include "../../dto/Poligono.h"
 #include <list>
 #include <string.h>
+#include "ponto/AdicionarPonto.h"
+#include "reta/AdicionarReta.h"
 
 using namespace std;
 
 class AdicionarTipoObjetoView: public QMainWindow {
 Q_OBJECT
 public:
-	AdicionarTipoObjetoView(OnAdicionarObjetoTipoEvent *event);
+	AdicionarTipoObjetoView(OnAdicionarObjetoTipoEvent *event, Coordenada *orientation);
 	~AdicionarTipoObjetoView();
-	void setOrientatio(Coordenada * orientation);
 
 public slots:
 	void on_tabWindow_currentChanged(int index);
-	void on_okButton_clicked();
 	void on_cancelarButton_clicked();
 	void on_removerCoordenada_clicked();
 	void on_adicionarCoordenada_clicked();
 
 private:
-	Coordenada* orientation;
 	QWidget *centralwidget;
-	QLineEdit *nomeTextField;
-	QLabel *nomeLabel;
 	QTabWidget *tabWindow;
-
-	QWidget *retaWidget;
-	QLabel *coordenadasLabel_2;
-	QLabel *coordenadasLabel_3;
-	QLineEdit *x1TextFieldReta;
-	QLineEdit *y1TextFieldReta;
-	QLineEdit *x2TextFieldReta;
-	QLineEdit *y2TextFieldReta;
-	QLabel *label_3;
-	QLabel *label_4;
-	QLabel *label_5;
-	QLabel *label_6;
 	QWidget *poligonoWidget;
 	QPushButton *okButton;
 	QPushButton *cancelarButton;
@@ -76,13 +61,9 @@ private:
 	QLabel *label_7;
 	QLabel *label_8;
 	QPushButton *removerCoordenada;
-	OnAdicionarObjetoTipoEvent *addEvent;
 	list<Coordenada*> coordenadasPoligono;
 
-	ObjetoGeometrico* getReta();
-	ObjetoGeometrico* getPonto();
 	ObjetoGeometrico* getPoligono();
-	void strcopy(char *str1, char *str2);
 };
 
 #endif /* ADICIONARWINDOW_H_ */

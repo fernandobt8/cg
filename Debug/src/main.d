@@ -77,6 +77,13 @@ src/main.d: ../src/main.cpp ../src/main.view/MainView.h \
  ../src/main.view/adicionar/../../dto/Poligono.h \
  ../src/main.view/adicionar/../../dto/Reta.h \
  ../src/main.view/adicionar/ponto/AdicionarPonto.h \
+ ../src/main.view/adicionar/ponto/../../../dto/Coordenada.h \
+ ../src/main.view/adicionar/ponto/../AdicionarAbstract.h \
+ ../src/main.view/adicionar/ponto/../../../api/OnAdicionarObjetoTipoEvent.h \
+ ../src/main.view/adicionar/ponto/../../../dto/Ponto.h \
+ ../src/main.view/adicionar/reta/AdicionarReta.h \
+ ../src/main.view/adicionar/reta/../AdicionarAbstract.h \
+ ../src/main.view/adicionar/reta/../../../dto/Reta.h \
  ../src/main.view/modelo.interno/ModeloInterno.h \
  ../src/main.view/modelo.interno/../../dto/ObjetoGeometrico.h \
  ../src/main.view/window/WindowView.h \
@@ -312,6 +319,20 @@ src/main.d: ../src/main.cpp ../src/main.view/MainView.h \
 ../src/main.view/adicionar/../../dto/Reta.h:
 
 ../src/main.view/adicionar/ponto/AdicionarPonto.h:
+
+../src/main.view/adicionar/ponto/../../../dto/Coordenada.h:
+
+../src/main.view/adicionar/ponto/../AdicionarAbstract.h:
+
+../src/main.view/adicionar/ponto/../../../api/OnAdicionarObjetoTipoEvent.h:
+
+../src/main.view/adicionar/ponto/../../../dto/Ponto.h:
+
+../src/main.view/adicionar/reta/AdicionarReta.h:
+
+../src/main.view/adicionar/reta/../AdicionarAbstract.h:
+
+../src/main.view/adicionar/reta/../../../dto/Reta.h:
 
 ../src/main.view/modelo.interno/ModeloInterno.h:
 

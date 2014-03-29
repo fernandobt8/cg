@@ -1,2 +1,2 @@
-moc_adicionartipoobjetoview.cpp: AdicionarTipoObjetoView.h
+moc_adicionarabstract.cpp: AdicionarAbstract.h
 	moc $(DEFINES) $(INCPATH) $< -o $@
