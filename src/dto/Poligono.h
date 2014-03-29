@@ -18,11 +18,7 @@ class Poligono: public ObjetoGeometrico {
 public:
 	Poligono(char* nome, list<Coordenada*> *coordenadas);
 	virtual ~Poligono();
-	void addObjeto(Coordenada *coordenada);
-	list<Coordenada*>* getCoordenadas();
 
-private:
-	list<Coordenada*> *coordenadas;
 };
 
 #endif /* POLIGONO_H_ */

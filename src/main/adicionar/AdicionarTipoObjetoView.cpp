@@ -1,7 +1,7 @@
 #include "AdicionarTipoObjetoView.h"
 
 AdicionarTipoObjetoView::AdicionarTipoObjetoView(
-		OnAdicionarObjetoTipoEvent *event, Coordenada *orientation) :
+		OnAdicionarObjetoTipoEvent *event) :
 		QMainWindow() {
 
 	if (this->objectName().isEmpty())
@@ -12,11 +12,11 @@ AdicionarTipoObjetoView::AdicionarTipoObjetoView(
 	tabWindow = new QTabWidget(centralwidget);
 	tabWindow->setObjectName(QString::fromUtf8("tabWindow"));
 	tabWindow->setGeometry(QRect(10, 10, 250, 380));
-	tabWindow->addTab(new AdicionarPonto(this, event, orientation),
+	tabWindow->addTab(new AdicionarPonto(this, event),
 			QString("Ponto"));
-	tabWindow->addTab(new AdicionarReta(this, event, orientation),
+	tabWindow->addTab(new AdicionarReta(this, event),
 			QString("Reta"));
-	tabWindow->addTab(new AdicionarPoligono(this, event, orientation),
+	tabWindow->addTab(new AdicionarPoligono(this, event),
 			QString("Poligono"));
 
 	this->setCentralWidget(centralwidget);

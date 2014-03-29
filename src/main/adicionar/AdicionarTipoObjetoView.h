@@ -20,8 +20,7 @@ using namespace std;
 class AdicionarTipoObjetoView: public QMainWindow {
 Q_OBJECT
 public:
-	AdicionarTipoObjetoView(OnAdicionarObjetoTipoEvent *event,
-			Coordenada *orientation);
+	AdicionarTipoObjetoView(OnAdicionarObjetoTipoEvent *event);
 	virtual ~AdicionarTipoObjetoView();
 
 private:

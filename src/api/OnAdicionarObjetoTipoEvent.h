@@ -13,6 +13,5 @@
 class OnAdicionarObjetoTipoEvent {
 public:
 	virtual void OnAdicionarObjetoTipoClick(class ObjetoGeometrico *objeto) = 0;
-	virtual ~OnAdicionarObjetoTipoEvent();
 };
 #endif /* OBJETOGEOMETRICO_H_ */

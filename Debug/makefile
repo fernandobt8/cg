@@ -11,11 +11,11 @@ RM := rm -rf
 -include src/main/window/subdir.mk
 -include src/main/viewport/subdir.mk
 -include src/main/modelo.interno/subdir.mk
+-include src/main/adicionar/objetos/reta/subdir.mk
+-include src/main/adicionar/objetos/ponto/subdir.mk
+-include src/main/adicionar/objetos/poligono/subdir.mk
+-include src/main/adicionar/objetos/subdir.mk
 -include src/main/adicionar/subdir.mk
--include src/main.view/adicionar/objetos/reta/subdir.mk
--include src/main.view/adicionar/objetos/ponto/subdir.mk
--include src/main.view/adicionar/objetos/poligono/subdir.mk
--include src/main.view/adicionar/objetos/subdir.mk
 -include src/main/subdir.mk
 -include src/dto/subdir.mk
 -include src/subdir.mk
