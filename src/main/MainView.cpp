@@ -63,27 +63,27 @@ void MainView::renderControleWindowPanel(){
 }
 
 void MainView::on_upButton_clicked() {
-	printf("up\n");
+	controller->moveWindow(TipoMovimento::UP);
 }
 
 void MainView::on_rightButton_clicked() {
-	printf("right\n");
+	controller->moveWindow(TipoMovimento::RIGHT);
 }
 
 void MainView::on_downButton_clicked() {
-	printf("down\n");
+	controller->moveWindow(TipoMovimento::DOWN);
 }
 
 void MainView::on_leftButton_clicked() {
-	printf("left\n");
+	controller->moveWindow(TipoMovimento::LEFT);
 }
 
 void MainView::on_zoomInButton_clicked() {
-	printf("in\n");
+	controller->moveWindow(TipoMovimento::ZOOM_IN);
 }
 
 void MainView::on_zoomOutButton_clicked() {
-	printf("out\n");
+	controller->moveWindow(TipoMovimento::ZOOM_OUT);
 }
 
 void MainView::on_adicionarButton_clicked() {

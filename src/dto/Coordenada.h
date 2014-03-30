@@ -14,19 +14,20 @@ using namespace std;
 
 class Coordenada {
 public:
-	Coordenada(int x, int y);
+	Coordenada(double x, double y);
 	Coordenada();
 	virtual ~Coordenada();
-	int getX();
-	int getY();
-	void setX(int x);
-	void setY(int y);
-	void addToX(int x);
-	void addToY(int y);
+	double getX();
+	double getY();
+	void setX(double x);
+	void setY(double y);
+	void addToX(double x);
+	void addToY(double y);
 	char* toString();
+	Coordenada* clone();
 private:
-	int x;
-	int y;
+	double x;
+	double y;
 };
 
 #endif /* COORDENADA_H_ */

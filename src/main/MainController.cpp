@@ -14,9 +14,32 @@ MainController::MainController() {
 	view->show();
 }
 
-void MainController::addObjeto(ObjetoGeometrico* objeto){
+void MainController::addObjeto(ObjetoGeometrico* objeto) {
 	objeto->addToAllCoordenadas(window->getStart());
 	modelo->addObjeto(objeto);
+	window->update();
+	view->updateWindow(window);
+}
+
+void MainController::moveWindow(int tipoMovimento) {
+	switch (tipoMovimento) {
+	case TipoMovimento::UP:
+		window->move(0, 5);
+		break;
+	case TipoMovimento::LEFT:
+		window->move(-5, 0);
+		break;
+	case TipoMovimento::DOWN:
+		window->move(0, -5);
+		break;
+	case TipoMovimento::RIGHT:
+		window->move(5, 0);
+		break;
+	case TipoMovimento::ZOOM_IN:
+		break;
+	case TipoMovimento::ZOOM_OUT:
+		break;
+	}
 	window->update();
 	view->updateWindow(window);
 }

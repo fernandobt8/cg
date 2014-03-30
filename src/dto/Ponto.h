@@ -9,14 +9,14 @@
 #define PONTO_H_
 
 #include "ObjetoGeometrico.h"
-
-using namespace std;
+#include <string>
 
 class Ponto: public ObjetoGeometrico {
 public:
 	Ponto(char* nome, list<Coordenada*>* coordenadas);
 	Ponto(char* nome);
 	virtual ~Ponto();
+	Ponto* clone();
 };
 
 #endif /* PONTO_H_ */

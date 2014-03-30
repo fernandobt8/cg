@@ -11,11 +11,14 @@
 #include "modelo.interno/ModeloInterno.h"
 #include "MainView.h"
 #include "../dto/ObjetoGeometrico.h"
+#include "TipoMovimento.h"
+
 class MainController {
 public:
 	MainController();
 	virtual ~MainController();
 	void addObjeto(ObjetoGeometrico* objeto);
+	void moveWindow(int tipoMovimento);
 private:
 	Window* window;
 	ModeloInterno* modelo;

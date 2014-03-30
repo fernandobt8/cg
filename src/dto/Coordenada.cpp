@@ -8,7 +8,7 @@
 #include "Coordenada.h"
 #include <cstdio>
 
-Coordenada::Coordenada(int x, int y) {
+Coordenada::Coordenada(double x, double y) {
 	this->x = x;
 	this->y = y;
 }
@@ -20,28 +20,32 @@ Coordenada::Coordenada() {
 Coordenada::~Coordenada() {
 }
 
-void Coordenada::addToX(int x){
+void Coordenada::addToX(double x){
 	this->x += x;
 }
 
-void Coordenada::addToY(int y){
+void Coordenada::addToY(double y){
 	this->y += y;
 }
 
-void Coordenada::setX(int x) {
+void Coordenada::setX(double x) {
 	this->x = x;
 }
 
-void Coordenada::setY(int y) {
+void Coordenada::setY(double y) {
 	this->y = y;
 }
 
-int Coordenada::getX() {
+double Coordenada::getX() {
 	return this->x;
 }
 
-int Coordenada::getY() {
+double Coordenada::getY() {
 	return this->y;
+}
+
+Coordenada* Coordenada::clone(){
+	return new Coordenada(x, y);
 }
 
 char* Coordenada::toString() {

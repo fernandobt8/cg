@@ -18,6 +18,7 @@
 #include <list>
 
 using namespace std;
+
 class ViewPort : public QWidget{
 	Q_OBJECT
 public:

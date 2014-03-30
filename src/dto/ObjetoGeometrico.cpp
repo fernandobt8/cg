@@ -18,10 +18,7 @@ ObjetoGeometrico::ObjetoGeometrico(char* nome) {
 }
 
 ObjetoGeometrico::~ObjetoGeometrico() {
-	while(!coordenadas->empty()){
-		delete coordenadas->front();
-		coordenadas->pop_front();
-	}
+	delete coordenadas;
 }
 
 list<Coordenada*>* ObjetoGeometrico::getCoordenadas() {
@@ -35,7 +32,7 @@ void ObjetoGeometrico::addCoordenada(Coordenada* coordenada) {
 bool ObjetoGeometrico::betweenCoordenadas(Coordenada* start, Coordenada* end) {
 	list<Coordenada*>::iterator it = coordenadas->begin();
 	for (; it != coordenadas->end(); it++) {
-		Coordenada* coordenada = dynamic_cast<Coordenada*>(*it);
+		Coordenada* coordenada = *it;
 		if (coordenada->getX() >= start->getX()
 				&& coordenada->getX() <= end->getX()
 				&& coordenada->getY() >= start->getY()
@@ -49,22 +46,18 @@ bool ObjetoGeometrico::betweenCoordenadas(Coordenada* start, Coordenada* end) {
 void ObjetoGeometrico::addToAllCoordenadas(Coordenada* coordenada) {
 	list<Coordenada*>::iterator it = coordenadas->begin();
 	for (; it != coordenadas->end(); it++) {
-		Coordenada* current = dynamic_cast<Coordenada*>(*it);
-		if (current) {
-			current->addToX(coordenada->getX());
-			current->addToY(coordenada->getY());
-		}
+		Coordenada* current = *it;
+		current->addToX(coordenada->getX());
+		current->addToY(coordenada->getY());
 	}
 }
 
 void ObjetoGeometrico::subToAllCoordenadas(Coordenada* coordenada) {
 	list<Coordenada*>::iterator it = coordenadas->begin();
 	for (; it != coordenadas->end(); it++) {
-		Coordenada* current = dynamic_cast<Coordenada*>(*it);
-		if (current) {
-			current->addToX(-coordenada->getX());
-			current->addToY(-coordenada->getY());
-		}
+		Coordenada* current = *it;
+		current->addToX(-coordenada->getX());
+		current->addToY(-coordenada->getY());
 	}
 }
 

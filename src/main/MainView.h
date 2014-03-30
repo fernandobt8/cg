@@ -20,6 +20,8 @@
 #include "modelo.interno/ModeloInterno.h"
 #include "MainController.h"
 #include "viewport/ViewPort.h"
+#include "TipoMovimento.h"
+
 class MainView: public QWidget ,virtual public  OnAdicionarObjetoTipoEvent{
 	Q_OBJECT
 public:

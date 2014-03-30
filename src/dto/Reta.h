@@ -18,6 +18,7 @@ public:
 	Reta(char *nome, list<Coordenada*>* coordenadas);
 	Reta(char *nome);
 	virtual ~Reta();
+	Reta* clone();
 };
 
 #endif /* RETA_H_ */

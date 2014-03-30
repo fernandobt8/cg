@@ -25,6 +25,7 @@ public:
 	Coordenada* getCenter();
 	list<ObjetoGeometrico* >* getWindowObjetos();
 	void update();
+	void move(double x, double y);
 
 private:
 	Coordenada* start;
