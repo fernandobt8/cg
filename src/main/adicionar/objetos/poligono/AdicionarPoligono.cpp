@@ -61,7 +61,6 @@ void AdicionarPoligono::on_adicionarCoordenada_clicked() {
 }
 
 AdicionarPoligono::~AdicionarPoligono() {
-	printf("addpoligonoclose\n");
 	delete coordenadasPoligono;
 	delete adicionarCoordenadaButton;
 	delete coordenadasList;

@@ -22,5 +22,4 @@ void AdicionarPonto::okEvent() {
 }
 
 AdicionarPonto::~AdicionarPonto() {
-	printf("addpontoclose\n");
 }

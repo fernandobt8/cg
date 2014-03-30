@@ -40,5 +40,8 @@ void AdicionarReta::okEvent() {
 }
 
 AdicionarReta::~AdicionarReta() {
-	printf("addretaclose\n");
+	delete x2Label;
+	delete y2Label;
+	delete x2Input;
+	delete y2Input;
 }
