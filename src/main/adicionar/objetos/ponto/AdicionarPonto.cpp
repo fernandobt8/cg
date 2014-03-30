@@ -12,10 +12,6 @@ AdicionarPonto::AdicionarPonto(QWidget *parent, OnAdicionarObjetoTipoEvent *even
 
 }
 
-AdicionarPonto::~AdicionarPonto() {
-	// TODO Auto-generated destructor stub
-}
-
 void AdicionarPonto::okEvent() {
 	Coordenada* coordenada = new Coordenada();
 	coordenada->setX(atoi(this->xInput->text().toUtf8().constData()) );
@@ -23,5 +19,8 @@ void AdicionarPonto::okEvent() {
 	Ponto* ponto = new Ponto(this->nomeInput->text().toUtf8().data());
 	ponto->addCoordenada(coordenada);
 	addEvent->OnAdicionarObjetoTipoClick(ponto);
-	this->parent->close();
+}
+
+AdicionarPonto::~AdicionarPonto() {
+	printf("addpontoclose\n");
 }

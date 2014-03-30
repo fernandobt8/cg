@@ -23,7 +23,6 @@ C_UPPER_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-src \
 src/main/window \
 src/main/viewport \
 src/main/modelo.interno \
@@ -34,4 +33,5 @@ src/main/adicionar/objetos/poligono \
 src/main/adicionar/objetos \
 src/main/adicionar \
 src/dto \
+src/application \
 

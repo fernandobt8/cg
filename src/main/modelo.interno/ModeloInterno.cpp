@@ -13,17 +13,14 @@ ModeloInterno::ModeloInterno() {
 	objetos = new list<ObjetoGeometrico*>();
 }
 
-ModeloInterno::~ModeloInterno() {
-	while(!objetos->empty()){
-		delete objetos->front();
-		objetos->pop_front();
-	}
-}
-
 list<ObjetoGeometrico*>* ModeloInterno::getObjetos(){
 	return this->objetos;
 }
 
 void ModeloInterno::addObjeto(ObjetoGeometrico *objeto){
 	objetos->push_back(objeto);
+}
+
+ModeloInterno::~ModeloInterno() {
+	delete objetos;
 }

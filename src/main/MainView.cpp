@@ -16,7 +16,6 @@ MainView::MainView(MainController* controller) : QWidget(), OnAdicionarObjetoTip
 }
 
 void MainView::renderListaObjetosPanel() {
-	adicionarWindow = new AdicionarTipoObjetoView(this);
 	listaObjetos = new QListWidget(this);
 	listaObjetos->setObjectName(QString::fromUtf8("listaObjetos"));
 	listaObjetos->setGeometry(QRect(20, 30, 250, 190));
@@ -87,6 +86,7 @@ void MainView::on_zoomOutButton_clicked() {
 }
 
 void MainView::on_adicionarButton_clicked() {
+	adicionarWindow = new AdicionarTipoObjetoView(this);
 	adicionarWindow->show();
 }
 
@@ -95,6 +95,7 @@ void MainView::updateWindow(Window* window){
 }
 
 void MainView::OnAdicionarObjetoTipoClick(ObjetoGeometrico *objeto) {
+	delete adicionarWindow;
 	controller->addObjeto(objeto);
 	QListWidgetItem * item = new QListWidgetItem();
 	item->setText(objeto->getNome());
@@ -112,5 +113,5 @@ MainView::~MainView() {
 	delete adicionarButton;
 	delete lineEdit;
 	delete passoLabel;
-	delete adicionarWindow;
+	delete viewPort;
 }

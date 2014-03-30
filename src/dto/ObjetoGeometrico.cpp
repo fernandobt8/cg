@@ -17,10 +17,6 @@ ObjetoGeometrico::ObjetoGeometrico(char* nome) {
 	this->coordenadas = new list<Coordenada* >();
 }
 
-ObjetoGeometrico::~ObjetoGeometrico() {
-	delete coordenadas;
-}
-
 list<Coordenada*>* ObjetoGeometrico::getCoordenadas() {
 	return this->coordenadas;
 }
@@ -63,5 +59,10 @@ void ObjetoGeometrico::subToAllCoordenadas(Coordenada* coordenada) {
 
 char* ObjetoGeometrico::getNome() {
 	return this->nome;
+}
+
+ObjetoGeometrico::~ObjetoGeometrico() {
+	delete coordenadas;
+	delete nome;
 }
 

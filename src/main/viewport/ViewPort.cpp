@@ -67,5 +67,7 @@ void ViewPort::paintEvent(QPaintEvent* event){
 }
 
 ViewPort::~ViewPort() {
+	delete start;
+	delete end;
 }
 

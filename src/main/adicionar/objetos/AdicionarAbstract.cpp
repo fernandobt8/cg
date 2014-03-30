@@ -57,5 +57,5 @@ void AdicionarAbstract::on_okButton_clicked() {
 }
 
 void AdicionarAbstract::on_cancelarButton_clicked() {
-	this->parent->close();
+	delete parent;
 }

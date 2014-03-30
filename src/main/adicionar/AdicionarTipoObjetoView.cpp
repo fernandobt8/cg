@@ -22,7 +22,11 @@ AdicionarTipoObjetoView::AdicionarTipoObjetoView(
 	this->setCentralWidget(centralwidget);
 }
 
-AdicionarTipoObjetoView::~AdicionarTipoObjetoView() {
+void AdicionarTipoObjetoView::closeEvent(QCloseEvent* event){
+	delete this;
+}
 
+AdicionarTipoObjetoView::~AdicionarTipoObjetoView() {
+	delete centralwidget;
 }
 

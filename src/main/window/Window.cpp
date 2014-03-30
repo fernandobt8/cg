@@ -10,7 +10,7 @@
 Window::Window(ModeloInterno* modelo){
 	this->modelo = modelo;
 	start = new Coordenada(0, 0);
-	end = new Coordenada(250, 500);
+	end = new Coordenada(500, 500);
 	center = new Coordenada(250, 250);
 	windowObjetos = new list<ObjetoGeometrico*>();
 }
@@ -20,23 +20,21 @@ void Window::update(){
 	list<ObjetoGeometrico* >::iterator it = modelo->getObjetos()->begin();
 	for (; it != modelo->getObjetos()->end(); it++) {
 		ObjetoGeometrico* objeto = *it;
-		if(objeto->betweenCoordenadas(start,end)){
-			ObjetoGeometrico* clone;
-			Ponto* ponto = dynamic_cast<Ponto* >(objeto);
-			if(ponto){
-				clone = ponto->clone();
-			}
-			Reta* reta = dynamic_cast<Reta* >(objeto);
-			if(reta){
-				clone = reta->clone();
-			}
-			Poligono* poligono = dynamic_cast<Poligono* >(objeto);
-			if(poligono){
-				clone = poligono->clone();
-			}
-			clone->subToAllCoordenadas(start);
-			windowObjetos->push_back(clone);
+		ObjetoGeometrico* clone;
+		Ponto* ponto = dynamic_cast<Ponto* >(objeto);
+		if(ponto){
+			clone = ponto->clone();
 		}
+		Reta* reta = dynamic_cast<Reta* >(objeto);
+		if(reta){
+			clone = reta->clone();
+		}
+		Poligono* poligono = dynamic_cast<Poligono* >(objeto);
+		if(poligono){
+			clone = poligono->clone();
+		}
+		clone->subToAllCoordenadas(start);
+		windowObjetos->push_back(clone);
 	}
 }
 

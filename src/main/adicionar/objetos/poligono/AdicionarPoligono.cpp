@@ -29,13 +29,9 @@ AdicionarPoligono::AdicionarPoligono(QWidget *parent,
 
 }
 
-AdicionarPoligono::~AdicionarPoligono() {
-}
-
 void AdicionarPoligono::okEvent() {
 	Poligono *p = new Poligono(this->nomeInput->text().toUtf8().data(), coordenadasPoligono);
 	addEvent->OnAdicionarObjetoTipoClick(p);
-	this->parent->close();
 }
 
 void AdicionarPoligono::on_removerCoordenada_clicked() {
@@ -56,5 +52,9 @@ void AdicionarPoligono::on_adicionarCoordenada_clicked() {
 	strcat(text, this->yInput->text().toUtf8().data());
 	item->setText(text);
 	this->coordenadasList->addItem(item);
+}
+
+AdicionarPoligono::~AdicionarPoligono() {
+	printf("addpoligonoclose\n");
 }
 

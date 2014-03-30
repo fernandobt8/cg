@@ -22,7 +22,7 @@ Q_OBJECT
 public:
 	AdicionarTipoObjetoView(OnAdicionarObjetoTipoEvent *event);
 	virtual ~AdicionarTipoObjetoView();
-
+	virtual void closeEvent(QCloseEvent* event);
 private:
 	QWidget *centralwidget;
 	QTabWidget *tabWindow;

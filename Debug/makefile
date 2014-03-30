@@ -18,7 +18,7 @@ RM := rm -rf
 -include src/main/adicionar/subdir.mk
 -include src/main/subdir.mk
 -include src/dto/subdir.mk
--include src/subdir.mk
+-include src/application/subdir.mk
 -include subdir.mk
 -include objects.mk
 
