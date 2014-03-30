@@ -46,18 +46,17 @@ void AdicionarPoligono::on_removerCoordenada_clicked() {
 
 void AdicionarPoligono::on_adicionarCoordenada_clicked() {
 	Coordenada* coordenada = new Coordenada();
-	coordenada->setX(atoi(this->xInput->text().toUtf8().data()));
-	coordenada->setY(atoi(this->yInput->text().toUtf8().data()));
+	coordenada->setX(strtod(this->xInput->text().toUtf8().data(), NULL));
+	coordenada->setY(strtod(this->yInput->text().toUtf8().data(), NULL));
 	this->coordenadasPoligono->push_back(coordenada);
 
 	QListWidgetItem * item = new QListWidgetItem();
-	char *text = new char[strlen(this->xInput->text().toUtf8().data())
-			+ strlen(this->yInput->text().toUtf8().data())];
-	strcat(text, this->xInput->text().toUtf8().data());
-	strcat(text, ",");
-	strcat(text, this->yInput->text().toUtf8().data());
-	item->setText(text);
+	QString sX(this->xInput->text().toUtf8().data());
+	QString sV(", ");
+	QString sY(this->yInput->text().toUtf8().data());
+	item->setText(sX + sV + sY);
 	this->coordenadasList->addItem(item);
+
 }
 
 AdicionarPoligono::~AdicionarPoligono() {

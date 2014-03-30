@@ -58,7 +58,6 @@ void AdicionarAbstract::on_cancelarButton_clicked() {
 }
 
 AdicionarAbstract::~AdicionarAbstract() {
-	printf("addabstract\n");
 	delete nomeLabel;
 	delete nomeInput;
 	delete coordenadasLabel;
