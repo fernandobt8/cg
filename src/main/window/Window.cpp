@@ -73,10 +73,7 @@ void Window::zoom(double zoom){
 	start->addToY(-zoom);
 	end->addToX(zoom);
 	end->addToY(zoom);
-	start->addToX(zoom/2);
-	start->addToY(zoom/2);
-	end->addToX(zoom/2);
-	end->addToY(zoom/2);
+	this->move(zoom/2, zoom/2);
 }
 
 Window::~Window() {
