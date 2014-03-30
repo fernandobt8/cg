@@ -49,13 +49,23 @@ AdicionarAbstract::AdicionarAbstract(QWidget *parent, OnAdicionarObjetoTipoEvent
 
 }
 
-AdicionarAbstract::~AdicionarAbstract() {
-}
-
 void AdicionarAbstract::on_okButton_clicked() {
 	this->okEvent();
 }
 
 void AdicionarAbstract::on_cancelarButton_clicked() {
 	delete parent;
+}
+
+AdicionarAbstract::~AdicionarAbstract() {
+	printf("addabstract\n");
+	delete nomeLabel;
+	delete nomeInput;
+	delete coordenadasLabel;
+	delete xLabel;
+	delete yLabel;
+	delete xInput;
+	delete yInput;
+	delete okButton;
+	delete cancelarButton;
 }

@@ -30,7 +30,13 @@ AdicionarPoligono::AdicionarPoligono(QWidget *parent,
 }
 
 void AdicionarPoligono::okEvent() {
-	Poligono *p = new Poligono(this->nomeInput->text().toUtf8().data(), coordenadasPoligono);
+	list<Coordenada* >* novaLista = new list<Coordenada* >();
+	list<Coordenada* >::iterator it = coordenadasPoligono->begin();
+	while(it != coordenadasPoligono->end()){
+		novaLista->push_back(static_cast<Coordenada* >(*it)->clone());
+		it++;
+	}
+	Poligono *p = new Poligono(this->nomeInput->text().toUtf8().data(), novaLista);
 	addEvent->OnAdicionarObjetoTipoClick(p);
 }
 
@@ -56,5 +62,9 @@ void AdicionarPoligono::on_adicionarCoordenada_clicked() {
 
 AdicionarPoligono::~AdicionarPoligono() {
 	printf("addpoligonoclose\n");
+	delete coordenadasPoligono;
+	delete adicionarCoordenadaButton;
+	delete coordenadasList;
+	delete removerCoordenadaButton;
 }
 

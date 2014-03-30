@@ -36,8 +36,10 @@ void MainController::moveWindow(int tipoMovimento) {
 		window->move(5, 0);
 		break;
 	case TipoMovimento::ZOOM_IN:
+		window->zoom(-5);
 		break;
 	case TipoMovimento::ZOOM_OUT:
+		window->zoom(5);
 		break;
 	}
 	window->update();

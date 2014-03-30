@@ -26,6 +26,7 @@ public:
 	list<ObjetoGeometrico* >* getWindowObjetos();
 	void update();
 	void move(double x, double y);
+	void zoom(double zoom);
 
 private:
 	Coordenada* start;

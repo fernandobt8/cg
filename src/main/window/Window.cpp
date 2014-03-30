@@ -68,6 +68,13 @@ void Window::move(double x, double y){
 	end->addToY(y);
 }
 
+void Window::zoom(double zoom){
+	start->addToX(-zoom);
+	start->addToY(-zoom);
+	end->addToX(zoom);
+	end->addToY(zoom);
+}
+
 Window::~Window() {
 	delete windowObjetos;
 	delete start;

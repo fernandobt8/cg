@@ -37,7 +37,7 @@ void ViewPort::paintEvent(QPaintEvent* event){
 			Ponto* ponto = dynamic_cast<Ponto* >(*it);
 			if(ponto){
 				Coordenada* pontoVP = calculeCoordenadaVP(ponto->getCoordenadas()->front(),window->getStart(),window->getEnd());
-				painter->drawPoint(pontoVP->getX(),pontoVP->getY());
+				painter->drawEllipse(pontoVP->getX(),pontoVP->getY(),2,2);
 			}
 			Reta* reta = dynamic_cast<Reta* >(*it);
 			if(reta){

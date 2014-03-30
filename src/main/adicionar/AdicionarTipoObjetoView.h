@@ -26,6 +26,7 @@ public:
 private:
 	QWidget *centralwidget;
 	QTabWidget *tabWindow;
+	AdicionarPoligono* pol;
 };
 
 #endif /* ADICIONARWINDOW_H_ */
