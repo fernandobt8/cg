@@ -27,7 +27,7 @@ public:
 	void update();
 	void move(double x, double y);
 	void zoom(double zoom);
-
+	void setTamanhoWindow(double width, double height);
 private:
 	Coordenada* start;
 	Coordenada* end;

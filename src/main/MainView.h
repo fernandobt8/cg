@@ -16,6 +16,7 @@
 #include "QtGui/qmainwindow.h"
 #include "QtGui/qlineedit.h"
 #include "QtGui/qlabel.h"
+#include "QtGui/qframe.h"
 #include "adicionar/AdicionarTipoObjetoView.h"
 #include "modelo.interno/ModeloInterno.h"
 #include "MainController.h"
@@ -37,6 +38,7 @@ public slots:
 	void on_zoomInButton_clicked();
 	void on_zoomOutButton_clicked();
 	void on_adicionarButton_clicked();
+	void on_windowOkButton_clicked();
 
 private:
 	QPushButton *upButton;
@@ -46,15 +48,18 @@ private:
 	QPushButton *zoomInButton;
 	QPushButton *zoomOutButton;
 	QListWidget *listaObjetos;
-	QPushButton *adicionarButton;
-	QLineEdit *lineEdit;
-	QLabel *passoLabel;
 	AdicionarTipoObjetoView *adicionarWindow;
 	MainController* controller;
 	ViewPort* viewPort;
+	QFrame* WindowFrame;
+	QLineEdit* windowWidthEdit;
+	QLineEdit* windowHeightEdit;
+	QFrame* listFrame;
+	QFrame* viewPortFrame;
 
 	void renderControleWindowPanel();
 	void renderListaObjetosPanel();
+	void renderWindowPanel();
 };
 
 #endif

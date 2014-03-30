@@ -4,54 +4,96 @@ MainView::MainView(MainController* controller) : QWidget(), OnAdicionarObjetoTip
 	this->controller = controller;
 	if (this->objectName().isEmpty())
 		this->setObjectName(QString::fromUtf8("Widget"));
-	this->resize(836, 576);
+	this->resize(850, 550);
 	this->renderControleWindowPanel();
 	this->renderListaObjetosPanel();
-	viewPort = new ViewPort(this);
+	this->renderWindowPanel();
+	viewPortFrame = new QFrame(this);
+	viewPortFrame->setObjectName(QString::fromUtf8("listFrame"));
+	viewPortFrame->setGeometry(QRect(320, 10, 500, 520));
+	viewPortFrame->setFrameShape(QFrame::WinPanel);
+	viewPortFrame->setFrameShadow(QFrame::Raised);
+	QLabel* viewPortLabel = new QLabel(viewPortFrame);
+	viewPortLabel->setObjectName(QString::fromUtf8("listLabel"));
+	viewPortLabel->setGeometry(QRect(10, 10, 100, 15));
+	viewPortLabel->setText("ViewPort");
+	viewPort = new ViewPort(viewPortFrame);
 	viewPort->setObjectName(QString::fromUtf8("viewPort"));
-	viewPort->setGeometry(QRect(300, 25, 500, 500));
+	viewPort->setGeometry(QRect(10, 30, 480, 480));
 
 	QMetaObject::connectSlotsByName(this);
 	this->setWindowTitle(QString::fromUtf8("Computação Grafica"));
 }
 
+void MainView::renderWindowPanel(){
+	WindowFrame = new QFrame(this);
+	WindowFrame->setObjectName(QString::fromUtf8("WindowFrame"));
+	WindowFrame->setGeometry(QRect(20, 300, 250, 95));
+	WindowFrame->setFrameShape(QFrame::WinPanel);
+	WindowFrame->setFrameShadow(QFrame::Raised);
+	windowWidthEdit = new QLineEdit(WindowFrame);
+	windowWidthEdit->setObjectName(QString::fromUtf8("windowWidthEdit"));
+	windowWidthEdit->setGeometry(QRect(63, 30, 113, 25));
+	windowHeightEdit = new QLineEdit(WindowFrame);
+	windowHeightEdit->setObjectName(QString::fromUtf8("windowHeightEdit"));
+	windowHeightEdit->setGeometry(QRect(63, 60, 113, 25));
+	QLabel* windowWidthLabel = new QLabel(WindowFrame);
+	windowWidthLabel->setObjectName(QString::fromUtf8("windowWidthLabel"));
+	windowWidthLabel->setGeometry(QRect(20, 35, 41, 16));
+	QLabel* windowHeightLabel = new QLabel(WindowFrame);
+	windowHeightLabel->setObjectName(QString::fromUtf8("windowHeightLabel"));
+	windowHeightLabel->setGeometry(QRect(20, 65, 57, 15));
+	QPushButton* windowOkButton = new QPushButton(WindowFrame);
+	windowOkButton->setObjectName(QString::fromUtf8("windowOkButton"));
+	windowOkButton->setGeometry(QRect(180, 60, 60, 25));
+	QLabel* windowLabel = new QLabel(WindowFrame);
+	windowLabel->setObjectName(QString::fromUtf8("windowLabel"));
+	windowLabel->setGeometry(QRect(10, 10, 57, 15));
+	windowHeightLabel->setText("Height");
+	windowWidthLabel->setText("Width");
+	windowOkButton->setText("OK");
+	windowLabel->setText("Window");
+}
+
 void MainView::renderListaObjetosPanel() {
-	listaObjetos = new QListWidget(this);
+	listFrame = new QFrame(this);
+	listFrame->setObjectName(QString::fromUtf8("listFrame"));
+	listFrame->setGeometry(QRect(20, 20, 250, 220));
+	listFrame->setFrameShape(QFrame::WinPanel);
+	listFrame->setFrameShadow(QFrame::Raised);
+	QLabel* listLabel = new QLabel(listFrame);
+	listLabel->setObjectName(QString::fromUtf8("listLabel"));
+	listLabel->setGeometry(QRect(10, 10, 100, 15));
+	listaObjetos = new QListWidget(listFrame);
 	listaObjetos->setObjectName(QString::fromUtf8("listaObjetos"));
-	listaObjetos->setGeometry(QRect(20, 30, 250, 190));
-	adicionarButton = new QPushButton(this);
+	listaObjetos->setGeometry(QRect(10, 30, 230, 150));
+	QPushButton* adicionarButton = new QPushButton(listFrame);
 	adicionarButton->setObjectName(QString::fromUtf8("adicionarButton"));
-	adicionarButton->setGeometry(QRect(100, 230, 90, 30));
-	lineEdit = new QLineEdit(this);
-	lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-	lineEdit->setGeometry(QRect(120, 290, 50, 25));
-	passoLabel = new QLabel(this);
-	passoLabel->setObjectName(QString::fromUtf8("passoLabel"));
-	passoLabel->setGeometry(QRect(50, 295, 41, 16));
+	adicionarButton->setGeometry(QRect(10, 185, 80, 25));
 	adicionarButton->setText("Adicionar");
-	passoLabel->setText("Passo");
+	listLabel->setText("Lista de objetos");
 }
 
 void MainView::renderControleWindowPanel(){
 	upButton = new QPushButton(this);
 	upButton->setObjectName(QString::fromUtf8("upButton"));
-	upButton->setGeometry(QRect(120, 340, 50, 30));
+	upButton->setGeometry(QRect(120, 400, 50, 30));
 	leftButton = new QPushButton(this);
 	leftButton->setObjectName(QString::fromUtf8("leftButton"));
-	leftButton->setGeometry(QRect(70, 370, 50, 30));
+	leftButton->setGeometry(QRect(70, 430, 50, 30));
 	rightButton = new QPushButton(this);
 	rightButton->setObjectName(QString::fromUtf8("rightButton"));
-	rightButton->setGeometry(QRect(170, 370, 50, 30));
+	rightButton->setGeometry(QRect(170, 430, 50, 30));
 	downButton = new QPushButton(this);
 	downButton->setObjectName(QString::fromUtf8("downButton"));
-	downButton->setGeometry(QRect(120, 400, 50, 30));
+	downButton->setGeometry(QRect(120, 460, 50, 30));
 	zoomInButton = new QPushButton(this);
 	zoomInButton->setObjectName(QString::fromUtf8("zoomInButton"));
-	zoomInButton->setGeometry(QRect(75, 440, 70, 30));
+	zoomInButton->setGeometry(QRect(75, 500, 70, 30));
 	zoomInButton->setCursor(QCursor(Qt::PointingHandCursor));
 	zoomOutButton = new QPushButton(this);
 	zoomOutButton->setObjectName(QString::fromUtf8("zoomOutButton"));
-	zoomOutButton->setGeometry(QRect(145, 440, 70, 30));
+	zoomOutButton->setGeometry(QRect(145, 500, 70, 30));
 	zoomOutButton->setCursor(QCursor(Qt::PointingHandCursor));
 	upButton->setText("up");
 	leftButton->setText("left");
@@ -90,6 +132,10 @@ void MainView::on_adicionarButton_clicked() {
 	adicionarWindow->show();
 }
 
+void MainView::on_windowOkButton_clicked(){
+	controller->setWindow(atoi(this->windowWidthEdit->text().toUtf8().constData()), atoi(this->windowHeightEdit->text().toUtf8().constData()));
+}
+
 void MainView::updateWindow(Window* window){
 	viewPort->renderWindow(window);
 }
@@ -110,8 +156,6 @@ MainView::~MainView() {
 	delete zoomInButton;
 	delete zoomOutButton;
 	delete listaObjetos;
-	delete adicionarButton;
-	delete lineEdit;
-	delete passoLabel;
 	delete viewPort;
+	delete WindowFrame;
 }

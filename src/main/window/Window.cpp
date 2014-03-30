@@ -15,6 +15,11 @@ Window::Window(ModeloInterno* modelo){
 	windowObjetos = new list<ObjetoGeometrico*>();
 }
 
+void Window::setTamanhoWindow(double width, double height){
+	end->setX(start->getX() + width);
+	end->setY(start->getY() + height);
+}
+
 void Window::update(){
 	this->clearWindowObjetos();
 	list<ObjetoGeometrico* >::iterator it = modelo->getObjetos()->begin();

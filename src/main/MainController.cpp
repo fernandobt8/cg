@@ -14,6 +14,12 @@ MainController::MainController() {
 	view->show();
 }
 
+void MainController::setWindow(double width, double height){
+	window->setTamanhoWindow(width, height);
+	window->update();
+	view->updateWindow(window);
+}
+
 void MainController::addObjeto(ObjetoGeometrico* objeto) {
 	objeto->addToAllCoordenadas(window->getStart());
 	modelo->addObjeto(objeto);

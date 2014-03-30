@@ -13,7 +13,7 @@ ViewPort::ViewPort(QWidget* parent): QWidget(parent)  {
 	this->setAutoFillBackground(true);
 	this->setPalette(pale);
 	start = new Coordenada(0,0);
-	end = new Coordenada(500,500);
+	end = new Coordenada(480, 480);
 	window = NULL;
 }
 
