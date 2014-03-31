@@ -11,13 +11,7 @@ Window::Window(ModeloInterno* modelo){
 	this->modelo = modelo;
 	start = new Coordenada(0, 0);
 	end = new Coordenada(500, 500);
-	center = new Coordenada(250, 250);
 	windowObjetos = new list<ObjetoGeometrico*>();
-}
-
-void Window::setTamanhoWindow(double width, double height){
-	end->setX(start->getX() + width);
-	end->setY(start->getY() + height);
 }
 
 void Window::update(){
@@ -62,10 +56,6 @@ Coordenada* Window::getEnd(){
 	return end;
 }
 
-Coordenada* Window::getCenter(){
-	return center;
-}
-
 void Window::move(double x, double y){
 	start->addToX(x);
 	start->addToY(y);
@@ -81,10 +71,22 @@ void Window::zoom(double zoom){
 	this->move(zoom/2, zoom/2);
 }
 
+void Window::setTamanhoWindow(double width, double height){
+	end->setX(start->getX() + width);
+	end->setY(start->getY() + height);
+}
+
+double Window::getWidth(){
+	return end->getX() - start->getX();
+}
+
+double Window::getHeight(){
+	return end->getY() - start->getY();
+}
+
 Window::~Window() {
 	delete windowObjetos;
 	delete start;
 	delete end;
-	delete center;
 }
 

@@ -14,7 +14,7 @@ MainController::MainController() {
 	view->show();
 }
 
-void MainController::setWindow(double width, double height){
+void MainController::setTamanhoWindow(double width, double height){
 	window->setTamanhoWindow(width, height);
 	window->update();
 	view->updateWindow(window);
@@ -30,22 +30,22 @@ void MainController::addObjeto(ObjetoGeometrico* objeto) {
 void MainController::moveWindow(int tipoMovimento) {
 	switch (tipoMovimento) {
 	case TipoMovimento::UP:
-		window->move(0, 5);
+		window->move(0, 10);
 		break;
 	case TipoMovimento::LEFT:
-		window->move(-5, 0);
+		window->move(-10, 0);
 		break;
 	case TipoMovimento::DOWN:
-		window->move(0, -5);
+		window->move(0, -10);
 		break;
 	case TipoMovimento::RIGHT:
-		window->move(5, 0);
+		window->move(10, 0);
 		break;
 	case TipoMovimento::ZOOM_IN:
-		window->zoom(-6);
+		window->zoom(-12);
 		break;
 	case TipoMovimento::ZOOM_OUT:
-		window->zoom(6);
+		window->zoom(12);
 		break;
 	}
 	window->update();

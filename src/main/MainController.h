@@ -19,7 +19,7 @@ public:
 	virtual ~MainController();
 	void addObjeto(ObjetoGeometrico* objeto);
 	void moveWindow(int tipoMovimento);
-	void setWindow(double width, double height);
+	void setTamanhoWindow(double width, double height);
 private:
 	Window* window;
 	ModeloInterno* modelo;

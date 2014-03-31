@@ -5,32 +5,42 @@ MainView::MainView(MainController* controller) : QWidget(), OnAdicionarObjetoTip
 	if (this->objectName().isEmpty())
 		this->setObjectName(QString::fromUtf8("Widget"));
 	this->resize(850, 550);
-	this->renderControleWindowPanel();
 	this->renderListaObjetosPanel();
 	this->renderWindowPanel();
-	viewPortFrame = new QFrame(this);
-	viewPortFrame->setObjectName(QString::fromUtf8("listFrame"));
-	viewPortFrame->setGeometry(QRect(320, 10, 500, 520));
-	viewPortFrame->setFrameShape(QFrame::WinPanel);
-	viewPortFrame->setFrameShadow(QFrame::Raised);
-	QLabel* viewPortLabel = new QLabel(viewPortFrame);
-	viewPortLabel->setObjectName(QString::fromUtf8("listLabel"));
-	viewPortLabel->setGeometry(QRect(10, 10, 100, 15));
-	viewPortLabel->setText("ViewPort");
-	viewPort = new ViewPort(viewPortFrame);
-	viewPort->setObjectName(QString::fromUtf8("viewPort"));
-	viewPort->setGeometry(QRect(10, 30, 480, 480));
-
+	this->renderControleWindowPanel();
+	this->renderViewPortPanel();
 	QMetaObject::connectSlotsByName(this);
 	this->setWindowTitle(QString::fromUtf8("Computação Grafica"));
+}
+
+void MainView::renderListaObjetosPanel() {
+	listObjetosFrame = new QFrame(this);
+	listObjetosFrame->setObjectName(QString::fromUtf8("listFrame"));
+	listObjetosFrame->setGeometry(QRect(20, 20, 250, 220));
+	listObjetosFrame->setFrameShape(QFrame::WinPanel);
+	listObjetosFrame->setFrameShadow(QFrame::Raised);
+	QLabel* listLabel = new QLabel(listObjetosFrame);
+	listLabel->setObjectName(QString::fromUtf8("listLabel"));
+	listLabel->setGeometry(QRect(10, 10, 100, 15));
+	listObjetosPanel = new QListWidget(listObjetosFrame);
+	listObjetosPanel->setObjectName(QString::fromUtf8("listaObjetos"));
+	listObjetosPanel->setGeometry(QRect(10, 30, 230, 150));
+	QPushButton* adicionarButton = new QPushButton(listObjetosFrame);
+	adicionarButton->setObjectName(QString::fromUtf8("adicionarButton"));
+	adicionarButton->setGeometry(QRect(10, 185, 80, 25));
+	adicionarButton->setText("Adicionar");
+	listLabel->setText("Lista de objetos");
 }
 
 void MainView::renderWindowPanel(){
 	WindowFrame = new QFrame(this);
 	WindowFrame->setObjectName(QString::fromUtf8("WindowFrame"));
-	WindowFrame->setGeometry(QRect(20, 300, 250, 95));
+	WindowFrame->setGeometry(QRect(20, 300, 250, 230));
 	WindowFrame->setFrameShape(QFrame::WinPanel);
 	WindowFrame->setFrameShadow(QFrame::Raised);
+	QLabel* windowLabel = new QLabel(WindowFrame);
+	windowLabel->setObjectName(QString::fromUtf8("windowLabel"));
+	windowLabel->setGeometry(QRect(10, 10, 57, 15));
 	windowWidthEdit = new QLineEdit(WindowFrame);
 	windowWidthEdit->setObjectName(QString::fromUtf8("windowWidthEdit"));
 	windowWidthEdit->setGeometry(QRect(63, 30, 113, 25));
@@ -46,54 +56,34 @@ void MainView::renderWindowPanel(){
 	QPushButton* windowOkButton = new QPushButton(WindowFrame);
 	windowOkButton->setObjectName(QString::fromUtf8("windowOkButton"));
 	windowOkButton->setGeometry(QRect(180, 60, 60, 25));
-	QLabel* windowLabel = new QLabel(WindowFrame);
-	windowLabel->setObjectName(QString::fromUtf8("windowLabel"));
-	windowLabel->setGeometry(QRect(10, 10, 57, 15));
 	windowHeightLabel->setText("Height");
 	windowWidthLabel->setText("Width");
 	windowOkButton->setText("OK");
 	windowLabel->setText("Window");
-}
-
-void MainView::renderListaObjetosPanel() {
-	listFrame = new QFrame(this);
-	listFrame->setObjectName(QString::fromUtf8("listFrame"));
-	listFrame->setGeometry(QRect(20, 20, 250, 220));
-	listFrame->setFrameShape(QFrame::WinPanel);
-	listFrame->setFrameShadow(QFrame::Raised);
-	QLabel* listLabel = new QLabel(listFrame);
-	listLabel->setObjectName(QString::fromUtf8("listLabel"));
-	listLabel->setGeometry(QRect(10, 10, 100, 15));
-	listaObjetos = new QListWidget(listFrame);
-	listaObjetos->setObjectName(QString::fromUtf8("listaObjetos"));
-	listaObjetos->setGeometry(QRect(10, 30, 230, 150));
-	QPushButton* adicionarButton = new QPushButton(listFrame);
-	adicionarButton->setObjectName(QString::fromUtf8("adicionarButton"));
-	adicionarButton->setGeometry(QRect(10, 185, 80, 25));
-	adicionarButton->setText("Adicionar");
-	listLabel->setText("Lista de objetos");
+	windowHeightEdit->setText("500");
+	windowWidthEdit->setText("500");
 }
 
 void MainView::renderControleWindowPanel(){
-	upButton = new QPushButton(this);
+	QPushButton* upButton = new QPushButton(WindowFrame);
 	upButton->setObjectName(QString::fromUtf8("upButton"));
-	upButton->setGeometry(QRect(120, 400, 50, 30));
-	leftButton = new QPushButton(this);
+	upButton->setGeometry(QRect(100, 95, 50, 30));
+	QPushButton* leftButton = new QPushButton(WindowFrame);
 	leftButton->setObjectName(QString::fromUtf8("leftButton"));
-	leftButton->setGeometry(QRect(70, 430, 50, 30));
-	rightButton = new QPushButton(this);
+	leftButton->setGeometry(QRect(50, 125, 50, 30));
+	QPushButton* rightButton = new QPushButton(WindowFrame);
 	rightButton->setObjectName(QString::fromUtf8("rightButton"));
-	rightButton->setGeometry(QRect(170, 430, 50, 30));
-	downButton = new QPushButton(this);
+	rightButton->setGeometry(QRect(150, 125, 50, 30));
+	QPushButton* downButton = new QPushButton(WindowFrame);
 	downButton->setObjectName(QString::fromUtf8("downButton"));
-	downButton->setGeometry(QRect(120, 460, 50, 30));
-	zoomInButton = new QPushButton(this);
+	downButton->setGeometry(QRect(100, 155, 50, 30));
+	QPushButton* zoomInButton = new QPushButton(WindowFrame);
 	zoomInButton->setObjectName(QString::fromUtf8("zoomInButton"));
-	zoomInButton->setGeometry(QRect(75, 500, 70, 30));
+	zoomInButton->setGeometry(QRect(55, 190, 70, 30));
 	zoomInButton->setCursor(QCursor(Qt::PointingHandCursor));
-	zoomOutButton = new QPushButton(this);
+	QPushButton* zoomOutButton = new QPushButton(WindowFrame);
 	zoomOutButton->setObjectName(QString::fromUtf8("zoomOutButton"));
-	zoomOutButton->setGeometry(QRect(145, 500, 70, 30));
+	zoomOutButton->setGeometry(QRect(125, 190, 70, 30));
 	zoomOutButton->setCursor(QCursor(Qt::PointingHandCursor));
 	upButton->setText("up");
 	leftButton->setText("left");
@@ -101,6 +91,21 @@ void MainView::renderControleWindowPanel(){
 	downButton->setText("down");
 	zoomInButton->setText("zoom in");
 	zoomOutButton->setText("zoom out");
+}
+
+void MainView::renderViewPortPanel(){
+	viewPortFrame = new QFrame(this);
+	viewPortFrame->setObjectName(QString::fromUtf8("listFrame"));
+	viewPortFrame->setGeometry(QRect(320, 10, 500, 520));
+	viewPortFrame->setFrameShape(QFrame::WinPanel);
+	viewPortFrame->setFrameShadow(QFrame::Raised);
+	QLabel* viewPortLabel = new QLabel(viewPortFrame);
+	viewPortLabel->setObjectName(QString::fromUtf8("listLabel"));
+	viewPortLabel->setGeometry(QRect(10, 10, 100, 15));
+	viewPortLabel->setText("ViewPort");
+	viewPort = new ViewPort(viewPortFrame);
+	viewPort->setObjectName(QString::fromUtf8("viewPort"));
+	viewPort->setGeometry(QRect(10, 30, 480, 480));
 }
 
 void MainView::on_upButton_clicked() {
@@ -128,34 +133,31 @@ void MainView::on_zoomOutButton_clicked() {
 }
 
 void MainView::on_adicionarButton_clicked() {
-	adicionarWindow = new AdicionarTipoObjetoView(this);
-	adicionarWindow->show();
+	addObjetoWindow = new AdicionarTipoObjetoView(this);
+	addObjetoWindow->show();
 }
 
 void MainView::on_windowOkButton_clicked(){
-	controller->setWindow(atoi(this->windowWidthEdit->text().toUtf8().constData()), atoi(this->windowHeightEdit->text().toUtf8().constData()));
+	controller->setTamanhoWindow(strtod(this->windowWidthEdit->text().toUtf8().constData(), NULL), strtod(this->windowHeightEdit->text().toUtf8().constData(), NULL));
 }
 
 void MainView::updateWindow(Window* window){
+	windowWidthEdit->setText(QString::number(window->getWidth()));
+	windowHeightEdit->setText(QString::number(window->getHeight()));
 	viewPort->renderWindow(window);
 }
 
 void MainView::OnAdicionarObjetoTipoClick(ObjetoGeometrico *objeto) {
-	delete adicionarWindow;
+	delete addObjetoWindow;
 	controller->addObjeto(objeto);
 	QListWidgetItem * item = new QListWidgetItem();
 	item->setText(objeto->getNome());
-	this->listaObjetos->addItem(item);
+	this->listObjetosPanel->addItem(item);
 }
 
 MainView::~MainView() {
-	delete upButton;
-	delete leftButton;
-	delete rightButton;
-	delete downButton;
-	delete zoomInButton;
-	delete zoomOutButton;
-	delete listaObjetos;
-	delete viewPort;
+	delete listObjetosFrame;
+	delete listObjetosPanel;
 	delete WindowFrame;
+	delete viewPortFrame;
 }

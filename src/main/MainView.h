@@ -41,25 +41,20 @@ public slots:
 	void on_windowOkButton_clicked();
 
 private:
-	QPushButton *upButton;
-	QPushButton *leftButton;
-	QPushButton *rightButton;
-	QPushButton *downButton;
-	QPushButton *zoomInButton;
-	QPushButton *zoomOutButton;
-	QListWidget *listaObjetos;
-	AdicionarTipoObjetoView *adicionarWindow;
 	MainController* controller;
-	ViewPort* viewPort;
+	QFrame* listObjetosFrame;
+	QListWidget *listObjetosPanel;
+	AdicionarTipoObjetoView *addObjetoWindow;
 	QFrame* WindowFrame;
-	QLineEdit* windowWidthEdit;
 	QLineEdit* windowHeightEdit;
-	QFrame* listFrame;
+	QLineEdit* windowWidthEdit;
 	QFrame* viewPortFrame;
+	ViewPort* viewPort;
 
-	void renderControleWindowPanel();
 	void renderListaObjetosPanel();
 	void renderWindowPanel();
+	void renderControleWindowPanel();
+	void renderViewPortPanel();
 };
 
 #endif

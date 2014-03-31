@@ -22,16 +22,17 @@ public:
 	virtual ~Window();
 	Coordenada* getStart();
 	Coordenada* getEnd();
-	Coordenada* getCenter();
 	list<ObjetoGeometrico* >* getWindowObjetos();
 	void update();
 	void move(double x, double y);
 	void zoom(double zoom);
 	void setTamanhoWindow(double width, double height);
+	double getWidth();
+	double getHeight();
+
 private:
 	Coordenada* start;
 	Coordenada* end;
-	Coordenada* center;
 	ModeloInterno* modelo;
 	list<ObjetoGeometrico* >* windowObjetos;
 	void clearWindowObjetos();
