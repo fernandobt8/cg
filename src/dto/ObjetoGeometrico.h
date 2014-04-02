@@ -19,15 +19,15 @@ public:
 	ObjetoGeometrico(char* nome);
 	virtual ~ObjetoGeometrico();
 	char* getNome();
-	list<Coordenada*>* getCoordenadas();
+	list<Coordenada*>* getWindowCoordenadas();
 	void addCoordenada(Coordenada* coordenada);
 	void addToAllCoordenadas(Coordenada* coordenada);
-	void subToAllCoordenadas(Coordenada* coordenada);
-	bool betweenCoordenadas(Coordenada* start, Coordenada* end);
+	void updateWindowCoordenadas(Coordenada* coordenada);
 
 protected:
 	char* nome;
 	list<Coordenada*>* coordenadas;
+	list<Coordenada*>* windowCoordenadas;
 };
 
 #endif /* OBJETOGEOMETRICO_H_ */

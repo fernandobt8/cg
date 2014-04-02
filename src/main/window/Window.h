@@ -34,7 +34,6 @@ private:
 	Coordenada* start;
 	Coordenada* end;
 	ModeloInterno* modelo;
-	list<ObjetoGeometrico* >* windowObjetos;
 	void clearWindowObjetos();
 
 };

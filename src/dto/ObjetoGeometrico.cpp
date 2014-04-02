@@ -10,33 +10,21 @@
 ObjetoGeometrico::ObjetoGeometrico(char* nome, list<Coordenada*>* coordenadas) {
 	this->coordenadas = coordenadas;
 	this->nome = nome;
+	windowCoordenadas = new list<Coordenada*>();
 }
 
 ObjetoGeometrico::ObjetoGeometrico(char* nome) {
 	this->nome = nome;
 	this->coordenadas = new list<Coordenada* >();
+	windowCoordenadas = new list<Coordenada*>();
 }
 
-list<Coordenada*>* ObjetoGeometrico::getCoordenadas() {
-	return this->coordenadas;
+list<Coordenada*>* ObjetoGeometrico::getWindowCoordenadas() {
+	return this->windowCoordenadas;
 }
 
 void ObjetoGeometrico::addCoordenada(Coordenada* coordenada) {
 	coordenadas->push_back(coordenada);
-}
-
-bool ObjetoGeometrico::betweenCoordenadas(Coordenada* start, Coordenada* end) {
-	list<Coordenada*>::iterator it = coordenadas->begin();
-	for (; it != coordenadas->end(); it++) {
-		Coordenada* coordenada = *it;
-		if (coordenada->getX() >= start->getX()
-				&& coordenada->getX() <= end->getX()
-				&& coordenada->getY() >= start->getY()
-				&& coordenada->getY() <= end->getY()) {
-			return true;
-		}
-	}
-	return false;
 }
 
 void ObjetoGeometrico::addToAllCoordenadas(Coordenada* coordenada) {
@@ -48,12 +36,16 @@ void ObjetoGeometrico::addToAllCoordenadas(Coordenada* coordenada) {
 	}
 }
 
-void ObjetoGeometrico::subToAllCoordenadas(Coordenada* coordenada) {
+void ObjetoGeometrico::updateWindowCoordenadas(Coordenada* windowStart) {
+	delete windowCoordenadas;
+	windowCoordenadas = new list<Coordenada*>();
 	list<Coordenada*>::iterator it = coordenadas->begin();
 	for (; it != coordenadas->end(); it++) {
 		Coordenada* current = *it;
-		current->addToX(-coordenada->getX());
-		current->addToY(-coordenada->getY());
+		Coordenada* windowCoor = new Coordenada();
+		windowCoor->setX(current->getX() - windowStart->getX());
+		windowCoor->setY(current->getY() - windowStart->getY());
+		windowCoordenadas->push_back(windowCoor);
 	}
 }
 
@@ -63,6 +55,7 @@ char* ObjetoGeometrico::getNome() {
 
 ObjetoGeometrico::~ObjetoGeometrico() {
 	delete coordenadas;
+	delete windowCoordenadas;
 	delete nome;
 }
 

@@ -11,41 +11,18 @@ Window::Window(ModeloInterno* modelo){
 	this->modelo = modelo;
 	start = new Coordenada(0, 0);
 	end = new Coordenada(500, 500);
-	windowObjetos = new list<ObjetoGeometrico*>();
 }
 
 void Window::update(){
-	this->clearWindowObjetos();
 	list<ObjetoGeometrico* >::iterator it = modelo->getObjetos()->begin();
 	for (; it != modelo->getObjetos()->end(); it++) {
 		ObjetoGeometrico* objeto = *it;
-		ObjetoGeometrico* clone;
-		Ponto* ponto = dynamic_cast<Ponto* >(objeto);
-		if(ponto){
-			clone = ponto->clone();
-		}
-		Reta* reta = dynamic_cast<Reta* >(objeto);
-		if(reta){
-			clone = reta->clone();
-		}
-		Poligono* poligono = dynamic_cast<Poligono* >(objeto);
-		if(poligono){
-			clone = poligono->clone();
-		}
-		clone->subToAllCoordenadas(start);
-		windowObjetos->push_back(clone);
-	}
-}
-
-void Window::clearWindowObjetos(){
-	while(!windowObjetos->empty()){
-		delete windowObjetos->front();
-		windowObjetos->pop_front();
+		objeto->updateWindowCoordenadas(start);
 	}
 }
 
 list<ObjetoGeometrico* >* Window::getWindowObjetos(){
-	return windowObjetos;
+	return modelo->getObjetos();
 }
 
 Coordenada* Window::getStart(){
@@ -85,7 +62,6 @@ double Window::getHeight(){
 }
 
 Window::~Window() {
-	delete windowObjetos;
 	delete start;
 	delete end;
 }
