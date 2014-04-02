@@ -23,7 +23,6 @@ public:
 	void setY(double y);
 	void addToX(double x);
 	void addToY(double y);
-	char* toString();
 	Coordenada* clone();
 private:
 	double x;

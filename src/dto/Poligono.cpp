@@ -13,16 +13,4 @@ Poligono::Poligono(char* nome, list<Coordenada*> *coordenadas) : ObjetoGeometric
 Poligono::~Poligono() {
 }
 
-Poligono* Poligono::clone(){
-	::list<Coordenada* >* list = new ::list<Coordenada* >();
-	::list<Coordenada* >::iterator it = coordenadas->begin();
-	for( ; it != coordenadas->end() ; it++){
-		Coordenada* current = *it;
-		list->push_back(current->clone());
-	}
-	char* temp = new char[strlen(nome)];
-	strcpy(temp, nome);
-	return new Poligono(temp, list);
-}
-
 

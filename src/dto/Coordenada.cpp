@@ -48,9 +48,3 @@ Coordenada* Coordenada::clone(){
 	return new Coordenada(x, y);
 }
 
-char* Coordenada::toString() {
-	int i=25; char *str;
-	sprintf(str,"%d",i);
-	return str;
-}
-

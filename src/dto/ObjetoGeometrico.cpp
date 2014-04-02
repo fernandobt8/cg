@@ -41,10 +41,9 @@ void ObjetoGeometrico::updateWindowCoordenadas(Coordenada* windowStart) {
 	windowCoordenadas = new list<Coordenada*>();
 	list<Coordenada*>::iterator it = coordenadas->begin();
 	for (; it != coordenadas->end(); it++) {
-		Coordenada* current = *it;
-		Coordenada* windowCoor = new Coordenada();
-		windowCoor->setX(current->getX() - windowStart->getX());
-		windowCoor->setY(current->getY() - windowStart->getY());
+		Coordenada* windowCoor = static_cast<Coordenada*>(*it)->clone();
+		windowCoor->addToX(- windowStart->getX());
+		windowCoor->addToY(- windowStart->getY());
 		windowCoordenadas->push_back(windowCoor);
 	}
 }

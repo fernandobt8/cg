@@ -18,7 +18,6 @@ class Poligono: public ObjetoGeometrico {
 public:
 	Poligono(char* nome, list<Coordenada*> *coordenadas);
 	virtual ~Poligono();
-	Poligono* clone();
 };
 
 #endif /* POLIGONO_H_ */
