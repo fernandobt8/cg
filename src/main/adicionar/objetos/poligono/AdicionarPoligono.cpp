@@ -8,7 +8,7 @@
 #include "AdicionarPoligono.h"
 
 AdicionarPoligono::AdicionarPoligono(QWidget *parent,
-		OnAdicionarObjetoTipoEvent *event ) :
+		OnAdicionarObjetoTipoEvent *event) :
 		AdicionarAbstract(parent, event) {
 	adicionarCoordenadaButton = new QPushButton(this);
 	adicionarCoordenadaButton->setObjectName(
@@ -20,7 +20,8 @@ AdicionarPoligono::AdicionarPoligono(QWidget *parent,
 	coordenadasList->setObjectName(QString::fromUtf8("coordenadasList"));
 	coordenadasList->setGeometry(QRect(50, 175, 150, 60));
 	removerCoordenadaButton = new QPushButton(this);
-	removerCoordenadaButton->setObjectName(QString::fromUtf8("removerCoordenada"));
+	removerCoordenadaButton->setObjectName(
+			QString::fromUtf8("removerCoordenada"));
 	removerCoordenadaButton->setGeometry(QRect(25, 255, 200, 30));
 	removerCoordenadaButton->setText(QString::fromUtf8("Remover coordenada"));
 	coordenadasPoligono = new list<Coordenada*>();
@@ -30,18 +31,25 @@ AdicionarPoligono::AdicionarPoligono(QWidget *parent,
 }
 
 void AdicionarPoligono::okEvent() {
-	list<Coordenada* >* novaLista = new list<Coordenada* >();
-	list<Coordenada* >::iterator it = coordenadasPoligono->begin();
-	while(it != coordenadasPoligono->end()){
-		novaLista->push_back(static_cast<Coordenada* >(*it)->clone());
+	list<Coordenada*>* novaLista = new list<Coordenada*>();
+	list<Coordenada*>::iterator it = coordenadasPoligono->begin();
+	while (it != coordenadasPoligono->end()) {
+		novaLista->push_back(static_cast<Coordenada*>(*it)->clone());
 		it++;
 	}
-	Poligono *p = new Poligono(this->nomeInput->text().toUtf8().data(), novaLista);
+	Poligono *p = new Poligono(this->nomeInput->text().toUtf8().data(),
+			novaLista);
 	addEvent->OnAdicionarObjetoTipoClick(p);
 }
 
 void AdicionarPoligono::on_removerCoordenada_clicked() {
-
+	QList<QListWidgetItem *> itens = this->coordenadasList->selectedItems();
+	QList<QListWidgetItem*>::iterator it = itens.begin();
+	while (it != itens.end()) {
+		this->coordenadasList->removeItemWidget(static_cast<QListWidgetItem*>(*it)->clone());
+		it++;
+	}
+	this->coordenadasList->repaint();
 }
 
 void AdicionarPoligono::on_adicionarCoordenada_clicked() {
