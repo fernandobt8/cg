@@ -8,22 +8,21 @@
 #include "MainController.h"
 
 MainController::MainController() {
-	modelo = new ModeloInterno();
-	window = new Window(modelo);
+	window = new Window();
+	modelo = new ModeloInterno(window);
 	this->view = new MainView(this);
 	view->show();
 }
 
 void MainController::setTamanhoWindow(double width, double height){
 	window->setTamanhoWindow(width, height);
-	window->update();
+	modelo->updateWindow();
 	view->updateWindow(window);
 }
 
 void MainController::addObjeto(ObjetoGeometrico* objeto) {
 	objeto->addToAllCoordenadas(window->getStart());
 	modelo->addObjeto(objeto);
-	window->update();
 	view->updateWindow(window);
 }
 
@@ -48,7 +47,7 @@ void MainController::moveWindow(int tipoMovimento) {
 		window->zoom(12);
 		break;
 	}
-	window->update();
+	modelo->updateWindow();
 	view->updateWindow(window);
 }
 

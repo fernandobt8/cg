@@ -17,10 +17,10 @@
 #include "QtGui/qlineedit.h"
 #include "QtGui/qlabel.h"
 #include "QtGui/qframe.h"
-#include "adicionar/AdicionarTipoObjetoView.h"
-#include "modelo.interno/ModeloInterno.h"
+#include "../adicionar/AdicionarTipoObjetoView.h"
+#include "../modelo.interno/ModeloInterno.h"
 #include "MainController.h"
-#include "viewport/ViewPort.h"
+#include "../viewport/ViewPort.h"
 #include "TipoMovimento.h"
 
 class MainView: public QWidget ,virtual public  OnAdicionarObjetoTipoEvent{
