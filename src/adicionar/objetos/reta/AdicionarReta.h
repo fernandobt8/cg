@@ -11,7 +11,7 @@
 #include "../AdicionarAbstract.h"
 #include "QtGui/qlineedit.h"
 #include "QtGui/qlabel.h"
-#include "../../../../dto/Reta.h"
+#include "../../../dto/geometrico/Reta.h"
 
 class AdicionarReta: virtual public AdicionarAbstract {
 public:

@@ -7,26 +7,27 @@
 
 #include "Window.h"
 
-Window::Window(ModeloInterno* modelo){
-	this->modelo = modelo;
+Window::Window(){
 	start = new Coordenada(0, 0);
 	end = new Coordenada(500, 500);
+	objetos = NULL;
 }
 
-void Window::update(){
-	list<ObjetoGeometrico* >::iterator it = modelo->getObjetos()->begin();
-	for (; it != modelo->getObjetos()->end(); it++) {
+void Window::updateObjetos(list<ObjetoGeometrico* >* objetos){
+	this->objetos = objetos;
+	list<ObjetoGeometrico* >::iterator it = objetos->begin();
+	for (; it != objetos->end(); it++) {
 		ObjetoGeometrico* objeto = *it;
 		objeto->updateWindowCoordenadas(start);
 	}
 }
 
-list<ObjetoGeometrico* >* Window::getWindowObjetos(){
-	return modelo->getObjetos();
-}
-
 Coordenada* Window::getStart(){
 	return start;
+}
+
+list<ObjetoGeometrico*>* Window::getWindowObjetos(){
+	return objetos;
 }
 
 Coordenada* Window::getEnd(){

@@ -7,10 +7,10 @@
 
 #ifndef MAINCONTROLLER_H_
 #define MAINCONTROLLER_H_
-#include "window/Window.h"
-#include "modelo.interno/ModeloInterno.h"
+#include "../modelo.interno/window/Window.h"
+#include "../modelo.interno/ModeloInterno.h"
 #include "MainView.h"
-#include "../dto/ObjetoGeometrico.h"
+#include "../dto/geometrico/ObjetoGeometrico.h"
 #include "TipoMovimento.h"
 
 class MainController {

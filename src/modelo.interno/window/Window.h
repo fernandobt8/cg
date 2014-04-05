@@ -7,23 +7,23 @@
 
 #ifndef WINDOW_H_
 #define WINDOW_H_
-#include "../../dto/Coordenada.h"
-#include "../../dto/ObjetoGeometrico.h"
-#include "../../dto/Reta.h"
-#include "../../dto/Poligono.h"
-#include "../../dto/Ponto.h"
-#include "../modelo.interno/ModeloInterno.h"
+#include "../../dto/geometrico/Coordenada.h"
+#include "../../dto/geometrico/ObjetoGeometrico.h"
+#include "../../dto/geometrico/Reta.h"
+#include "../../dto/geometrico/Poligono.h"
+#include "../../dto/geometrico/Ponto.h"
+#include "../../modelo.interno/ModeloInterno.h"
 #include <list>
 using namespace std;
 
 class Window{
 public:
-	Window(ModeloInterno* modelo);
+	Window();
 	virtual ~Window();
 	Coordenada* getStart();
 	Coordenada* getEnd();
 	list<ObjetoGeometrico* >* getWindowObjetos();
-	void update();
+	void updateObjetos(list<ObjetoGeometrico* >* objetos);
 	void move(double x, double y);
 	void zoom(double zoom);
 	void setTamanhoWindow(double width, double height);
@@ -33,7 +33,7 @@ public:
 private:
 	Coordenada* start;
 	Coordenada* end;
-	ModeloInterno* modelo;
+	list<ObjetoGeometrico* >* objetos;
 	void clearWindowObjetos();
 
 };

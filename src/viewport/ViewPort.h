@@ -9,12 +9,12 @@
 #define VIEWPORT_H_
 #include "QtGui/qwidget.h"
 #include "QtGui/qpalette.h"
-#include "../../dto/Coordenada.h"
-#include "../../dto/Ponto.h"
-#include "../../dto/Poligono.h"
-#include "../../dto/Reta.h"
+#include "../dto/geometrico/Coordenada.h"
+#include "../dto/geometrico/Ponto.h"
+#include "../dto/geometrico/Poligono.h"
+#include "../dto/geometrico/Reta.h"
 #include "QtGui/qpainter.h"
-#include "../window/Window.h"
+#include "../modelo.interno/window/Window.h"
 #include <list>
 
 using namespace std;

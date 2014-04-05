@@ -11,7 +11,7 @@
 #include "../AdicionarAbstract.h"
 #include <list>
 #include "QtGui/qlistwidget.h"
-#include "../../../../dto/Poligono.h"
+#include "../../../dto/geometrico/Poligono.h"
 
 
 using namespace std;

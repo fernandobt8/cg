@@ -11,7 +11,7 @@
 #include "QtGui/qlineedit.h"
 #include "QtGui/qlabel.h"
 #include "../AdicionarAbstract.h"
-#include "../../../../dto/Ponto.h"
+#include "../../../dto/geometrico/Ponto.h"
 
 class AdicionarPonto: virtual public AdicionarAbstract {
 public:

@@ -8,7 +8,7 @@
 #ifndef ADICIONARABSTRACT_H_
 #define ADICIONARABSTRACT_H_
 
-#include "../../../api/OnAdicionarObjetoTipoEvent.h"
+#include "../../api/OnAdicionarObjetoTipoEvent.h"
 #include "QtGui/qpushbutton.h"
 #include "QtGui/qlineedit.h"
 #include "QtGui/qlabel.h"
