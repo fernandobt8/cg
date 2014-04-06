@@ -20,9 +20,11 @@ public:
 	virtual ~ObjetoGeometrico();
 	char* getNome();
 	list<Coordenada*>* getWindowCoordenadas();
+	list<Coordenada*>* getCoordenadas();
 	void addCoordenada(Coordenada* coordenada);
 	void addToAllCoordenadas(Coordenada* coordenada);
 	void updateWindowCoordenadas(Coordenada* coordenada);
+	Coordenada* getCenter();
 
 protected:
 	char* nome;

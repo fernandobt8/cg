@@ -27,6 +27,7 @@ src/viewport \
 src/modelo.interno/window \
 src/modelo.interno \
 src/main \
+src/dto/transformacao \
 src/dto/geometrico \
 src/dto \
 src/application \

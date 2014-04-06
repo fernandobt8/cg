@@ -16,11 +16,19 @@ ObjetoGeometrico::ObjetoGeometrico(char* nome, list<Coordenada*>* coordenadas) {
 ObjetoGeometrico::ObjetoGeometrico(char* nome) {
 	this->nome = nome;
 	this->coordenadas = new list<Coordenada* >();
-	windowCoordenadas = new list<Coordenada*>();
+	this->windowCoordenadas = new list<Coordenada*>();
+}
+
+char* ObjetoGeometrico::getNome() {
+	return this->nome;
 }
 
 list<Coordenada*>* ObjetoGeometrico::getWindowCoordenadas() {
 	return this->windowCoordenadas;
+}
+
+list<Coordenada*>* ObjetoGeometrico::getCoordenadas() {
+	return this->coordenadas;
 }
 
 void ObjetoGeometrico::addCoordenada(Coordenada* coordenada) {
@@ -48,8 +56,18 @@ void ObjetoGeometrico::updateWindowCoordenadas(Coordenada* windowStart) {
 	}
 }
 
-char* ObjetoGeometrico::getNome() {
-	return this->nome;
+Coordenada* ObjetoGeometrico::getCenter(){
+	int numberPoints = 0;
+	double somaX = 0;
+	double somaY = 0;
+	list<Coordenada* >::iterator it = coordenadas->begin();
+	for(; it != coordenadas->end();it++){
+		Coordenada* coordenada = *it;
+		somaX += coordenada->getX();
+		somaY += coordenada->getY();
+		numberPoints++;
+	}
+	return new Coordenada(somaX/numberPoints, somaY/numberPoints);
 }
 
 ObjetoGeometrico::~ObjetoGeometrico() {

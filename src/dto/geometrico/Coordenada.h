@@ -9,6 +9,7 @@
 #define COORDENADA_H_
 
 #include <string.h>
+#include "../Matriz.h"
 
 using namespace std;
 
@@ -23,6 +24,7 @@ public:
 	void setY(double y);
 	void addToX(double x);
 	void addToY(double y);
+	void vezesMatriz(class Matriz* matriz);
 	Coordenada* clone();
 private:
 	double x;

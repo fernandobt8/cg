@@ -6,7 +6,6 @@
  */
 
 #include "Coordenada.h"
-#include <cstdio>
 
 Coordenada::Coordenada(double x, double y) {
 	this->x = x;
@@ -18,6 +17,12 @@ Coordenada::Coordenada() {
 }
 
 Coordenada::~Coordenada() {
+}
+
+void Coordenada::vezesMatriz(Matriz* matriz){
+	Matriz* coordenada = Matriz::getMatrizByCoordenada(this)->multiplique(matriz);
+	x = coordenada->getMatriz()[0][0];
+	y = coordenada->getMatriz()[0][1];
 }
 
 void Coordenada::addToX(double x){

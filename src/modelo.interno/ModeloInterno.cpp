@@ -6,8 +6,6 @@
  */
 
 #include "ModeloInterno.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 ModeloInterno::ModeloInterno(Window* window) {
 	objetos = new list<ObjetoGeometrico*>();
@@ -16,6 +14,21 @@ ModeloInterno::ModeloInterno(Window* window) {
 
 list<ObjetoGeometrico*>* ModeloInterno::getObjetos(){
 	return this->objetos;
+}
+
+void ModeloInterno::transformeObjeto(char* nome, list<Transformacao* >* transformacoes){
+	list<ObjetoGeometrico*>::iterator it = objetos->begin();
+	for(;it != objetos->end(); it++){
+		ObjetoGeometrico* objeto = *it;
+		if(strcmp(objeto->getNome(), nome) == 0){
+			Matriz* matriz = Matriz::getMatrizTransformacao(objeto->getCenter(), transformacoes);
+			list<Coordenada*>::iterator itCoor = objeto->getCoordenadas()->begin();
+			for(;itCoor != objeto->getCoordenadas()->end(); itCoor++){
+				Coordenada* coor = *itCoor;
+				coor->vezesMatriz(matriz);
+			}
+		}
+	}
 }
 
 void ModeloInterno::updateWindow(){

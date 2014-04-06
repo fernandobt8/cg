@@ -10,6 +10,9 @@
 
 #include "../dto/geometrico/ObjetoGeometrico.h"
 #include "window/Window.h"
+#include "../dto/transformacao/Transformacao.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include <list>
 
 using namespace std;
@@ -22,7 +25,7 @@ public:
 	void updateWindow();
 	list<ObjetoGeometrico*>* getObjetos();
 	Window* window;
-	void transformeObjeto(char* nome);
+	void transformeObjeto(char* nome, list<Transformacao* >* transformacoes);
 
 private:
 	list<ObjetoGeometrico*> *objetos;
