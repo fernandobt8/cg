@@ -12,6 +12,14 @@ class Transformacao {
 public:
 	Transformacao();
 	virtual ~Transformacao();
+	double getX();
+	double getY();
+	void setX(double x);
+	void setY(double y);
+
+protected:
+	double x;
+	double y;
 };
 
 #endif /* TRANSFORMACAO_H_ */

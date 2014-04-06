@@ -12,6 +12,7 @@
 #include "MainView.h"
 #include "../dto/geometrico/ObjetoGeometrico.h"
 #include "TipoMovimento.h"
+#include "../dto/transformacao/Transformacao.h"
 
 class MainController {
 public:
@@ -20,6 +21,8 @@ public:
 	void addObjeto(ObjetoGeometrico* objeto);
 	void moveWindow(int tipoMovimento);
 	void setTamanhoWindow(double width, double height);
+	void transformeObjeto(char* nome, list<Transformacao* >* transformacoes);
+
 private:
 	Window* window;
 	ModeloInterno* modelo;

@@ -10,6 +10,7 @@
 
 #include "../TransformacaoAbstractView.h"
 #include "../../../api/OnAdicionarTipoTransformacaoEvent.h"
+#include "../../../dto/transformacao/Translacao.h"
 
 class TranslacaoView : public TransformacaoAbstractView{
 public:

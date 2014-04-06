@@ -62,8 +62,19 @@ Matriz* Matriz::getMatrizTransformacao(Coordenada* center, list<Transformacao* >
 }
 
 Matriz* Matriz::getMatrizTranslacao(Translacao* translacao){
+	Matriz* matriz = new Matriz(3);
+	matriz->getMatriz()[0][0] = 1;
+	matriz->getMatriz()[0][1] = 0;
+	matriz->getMatriz()[0][2] = translacao->getX();
 
-	return 0;
+	matriz->getMatriz()[1][0] = 0;
+	matriz->getMatriz()[1][1] = 1;
+	matriz->getMatriz()[1][2] = translacao->getY();
+
+	matriz->getMatriz()[2][0] = 0;
+	matriz->getMatriz()[2][1] = 0;
+	matriz->getMatriz()[2][2] = 1;
+	return matriz;
 }
 
 Matriz* Matriz::getMatrizRotacao(Coordenada* center, Rotacao* rotacao){

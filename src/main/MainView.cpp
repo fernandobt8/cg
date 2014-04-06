@@ -143,12 +143,21 @@ void MainView::on_adicionarButton_clicked() {
 }
 
 void MainView::on_transformarButton_clicked() {
-	transformarWindow = new TransformacaoView(this);
-	transformarWindow->show();
+	if(listObjetosPanel->selectedItems().size() == 0){
+		printf("sem objeto selecionado\n");
+	}else{
+		transformarWindow = new TransformacaoView(this);
+		transformarWindow->show();
+	}
 }
 
 void MainView::onOkTransformacaoClick(list<Transformacao* >* transformacoes){
 	delete transformarWindow;
+	if(transformacoes->size() > 0){
+		QByteArray byte = listObjetosPanel->selectedItems().first()->text().toLocal8Bit();
+		char* nome = byte.data();
+		controller->transformeObjeto(nome, transformacoes);
+	}
 }
 
 void MainView::on_windowOkButton_clicked() {

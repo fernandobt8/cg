@@ -2,6 +2,7 @@
 #define MAINVIEW_H
 
 #include <stdio.h>
+#include <string>
 #include "QtGui/qwidget.h"
 #include "QtCore/qvariant.h"
 #include "QtGui/qaction.h"
@@ -24,6 +25,8 @@
 #include "../transformacao/TransformacaoView.h"
 #include "../api/OnOkTransformcaoEvent.h"
 #include "../dto/transformacao/Transformacao.h"
+
+using namespace std;
 
 class MainView: public QWidget ,virtual public  OnAdicionarObjetoTipoEvent , virtual public OnOkTransformcaoEvent{
 	Q_OBJECT

@@ -14,6 +14,12 @@ MainController::MainController() {
 	view->show();
 }
 
+void MainController::transformeObjeto(char* nome, list<Transformacao*>* transformacoes){
+	modelo->transformeObjeto(nome, transformacoes);
+	modelo->updateWindow();
+	view->updateWindow(window);
+}
+
 void MainController::setTamanhoWindow(double width, double height){
 	window->setTamanhoWindow(width, height);
 	modelo->updateWindow();
