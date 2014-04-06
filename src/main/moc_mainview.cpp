@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'MainView.h'
 **
-** Created: Sun Mar 30 15:25:14 2014
+** Created: Sat Apr 5 22:30:59 2014
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainView[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -39,6 +39,7 @@ static const uint qt_meta_data_MainView[] = {
      131,    9,    9,    9, 0x0a,
      158,    9,    9,    9, 0x0a,
      187,    9,    9,    9, 0x0a,
+     218,    9,    9,    9, 0x0a,
 
        0        // eod
 };
@@ -50,6 +51,7 @@ static const char qt_meta_stringdata_MainView[] = {
     "on_zoomInButton_clicked()\0"
     "on_zoomOutButton_clicked()\0"
     "on_adicionarButton_clicked()\0"
+    "on_transformarButton_clicked()\0"
     "on_windowOkButton_clicked()\0"
 };
 
@@ -66,7 +68,8 @@ void MainView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 4: _t->on_zoomInButton_clicked(); break;
         case 5: _t->on_zoomOutButton_clicked(); break;
         case 6: _t->on_adicionarButton_clicked(); break;
-        case 7: _t->on_windowOkButton_clicked(); break;
+        case 7: _t->on_transformarButton_clicked(); break;
+        case 8: _t->on_windowOkButton_clicked(); break;
         default: ;
         }
     }
@@ -107,9 +110,9 @@ int MainView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }

@@ -22,6 +22,7 @@
 #include "MainController.h"
 #include "../viewport/ViewPort.h"
 #include "TipoMovimento.h"
+#include "../transformacao/TransformacaoView.h"
 
 class MainView: public QWidget ,virtual public  OnAdicionarObjetoTipoEvent{
 	Q_OBJECT
@@ -38,6 +39,7 @@ public slots:
 	void on_zoomInButton_clicked();
 	void on_zoomOutButton_clicked();
 	void on_adicionarButton_clicked();
+	void on_transformarButton_clicked();
 	void on_windowOkButton_clicked();
 
 private:
@@ -45,6 +47,7 @@ private:
 	QFrame* listObjetosFrame;
 	QListWidget *listObjetosPanel;
 	AdicionarTipoObjetoView *addObjetoWindow;
+	TransformacaoView *transformarWindow;
 	QFrame* WindowFrame;
 	QLineEdit* windowHeightEdit;
 	QLineEdit* windowWidthEdit;

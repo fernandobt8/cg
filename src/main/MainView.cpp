@@ -1,6 +1,7 @@
 #include "MainView.h"
 
-MainView::MainView(MainController* controller) : QWidget(), OnAdicionarObjetoTipoEvent(){
+MainView::MainView(MainController* controller) :
+		QWidget(), OnAdicionarObjetoTipoEvent() {
 	this->controller = controller;
 	if (this->objectName().isEmpty())
 		this->setObjectName(QString::fromUtf8("Widget"));
@@ -27,12 +28,16 @@ void MainView::renderListaObjetosPanel() {
 	listObjetosPanel->setGeometry(QRect(10, 30, 230, 150));
 	QPushButton* adicionarButton = new QPushButton(listObjetosFrame);
 	adicionarButton->setObjectName(QString::fromUtf8("adicionarButton"));
-	adicionarButton->setGeometry(QRect(10, 185, 80, 25));
+	adicionarButton->setGeometry(QRect(10, 185, 100, 25));
 	adicionarButton->setText("Adicionar");
+	QPushButton* transformarButton = new QPushButton(listObjetosFrame);
+	transformarButton->setObjectName(QString::fromUtf8("transformarButton"));
+	transformarButton->setGeometry(QRect(140, 185, 100, 25));
+	transformarButton->setText("Transformar");
 	listLabel->setText("Lista de objetos");
 }
 
-void MainView::renderWindowPanel(){
+void MainView::renderWindowPanel() {
 	WindowFrame = new QFrame(this);
 	WindowFrame->setObjectName(QString::fromUtf8("WindowFrame"));
 	WindowFrame->setGeometry(QRect(20, 300, 250, 230));
@@ -64,7 +69,7 @@ void MainView::renderWindowPanel(){
 	windowWidthEdit->setText("500");
 }
 
-void MainView::renderControleWindowPanel(){
+void MainView::renderControleWindowPanel() {
 	QPushButton* upButton = new QPushButton(WindowFrame);
 	upButton->setObjectName(QString::fromUtf8("upButton"));
 	upButton->setGeometry(QRect(100, 95, 50, 30));
@@ -93,7 +98,7 @@ void MainView::renderControleWindowPanel(){
 	zoomOutButton->setText("zoom out");
 }
 
-void MainView::renderViewPortPanel(){
+void MainView::renderViewPortPanel() {
 	viewPortFrame = new QFrame(this);
 	viewPortFrame->setObjectName(QString::fromUtf8("listFrame"));
 	viewPortFrame->setGeometry(QRect(320, 10, 500, 520));
@@ -137,11 +142,18 @@ void MainView::on_adicionarButton_clicked() {
 	addObjetoWindow->show();
 }
 
-void MainView::on_windowOkButton_clicked(){
-	controller->setTamanhoWindow(strtod(this->windowWidthEdit->text().toUtf8().constData(), NULL), strtod(this->windowHeightEdit->text().toUtf8().constData(), NULL));
+void MainView::on_transformarButton_clicked() {
+	transformarWindow = new TransformacaoView(this);
+	transformarWindow->show();
 }
 
-void MainView::updateWindow(Window* window){
+void MainView::on_windowOkButton_clicked() {
+	controller->setTamanhoWindow(
+			strtod(this->windowWidthEdit->text().toUtf8().constData(), NULL),
+			strtod(this->windowHeightEdit->text().toUtf8().constData(), NULL));
+}
+
+void MainView::updateWindow(Window* window) {
 	windowWidthEdit->setText(QString::number(window->getWidth()));
 	windowHeightEdit->setText(QString::number(window->getHeight()));
 	viewPort->renderWindow(window);
