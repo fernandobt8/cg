@@ -7,7 +7,11 @@
 
 #include "TranslacaoView.h"
 
-TranslacaoView::TranslacaoView() : TransformacaoAbstractView(){
+TranslacaoView::TranslacaoView(OnAdicionarTipoTransformacaoEvent* event) : TransformacaoAbstractView(){
+	this->event = event;
+}
+
+void TranslacaoView::on_adicionarButton_clicked(){
 
 }
 

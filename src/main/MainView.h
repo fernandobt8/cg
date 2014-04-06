@@ -2,7 +2,6 @@
 #define MAINVIEW_H
 
 #include <stdio.h>
-#include "QtGui/qpainter.h"
 #include "QtGui/qwidget.h"
 #include "QtCore/qvariant.h"
 #include "QtGui/qaction.h"
@@ -23,13 +22,16 @@
 #include "../viewport/ViewPort.h"
 #include "TipoMovimento.h"
 #include "../transformacao/TransformacaoView.h"
+#include "../api/OnOkTransformcaoEvent.h"
+#include "../dto/transformacao/Transformacao.h"
 
-class MainView: public QWidget ,virtual public  OnAdicionarObjetoTipoEvent{
+class MainView: public QWidget ,virtual public  OnAdicionarObjetoTipoEvent , virtual public OnOkTransformcaoEvent{
 	Q_OBJECT
 public:
 	MainView(class MainController* controller);
 	~MainView();
 	virtual void OnAdicionarObjetoTipoClick(class ObjetoGeometrico *objeto);
+	virtual void onOkTransformacaoClick(list<Transformacao* >* transformacoes);
 	void updateWindow(Window* window);
 public slots:
 	void on_upButton_clicked();

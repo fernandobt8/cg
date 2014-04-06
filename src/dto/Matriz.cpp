@@ -45,7 +45,7 @@ Matriz* Matriz::getMatrizTransformacao(Coordenada* center, list<Transformacao* >
 	}else if(esca){
 		matriz = Matriz::getMatrizEscalonamento(center, esca);
 	}
-	list<Transformacao* >::iterator it = transformacoes->begin()._M_node->_M_next;
+	list<Transformacao* >::iterator it = _List_iterator<Transformacao* >(transformacoes->begin()._M_node->_M_next);
 	for(;it != transformacoes->end(); it++){
 		Translacao* trans = dynamic_cast<Translacao* >(*it);
 		Rotacao* rotacao = dynamic_cast<Rotacao* >(*it);
@@ -77,10 +77,10 @@ Matriz* Matriz::getMatrizEscalonamento(Coordenada* center, Escalonamento* escalo
 }
 
 Matriz* Matriz::getMatrizByCoordenada(Coordenada* coordenada){
-	Matriz matriz = new Matriz(1);
-	matriz.getMatriz()[0][0] = coordenada->getX();
-	matriz.getMatriz()[0][1] = coordenada->getY();
-	matriz.getMatriz()[0][2] = 1;
+	Matriz* matriz = new Matriz(1);
+	matriz->getMatriz()[0][0] = coordenada->getX();
+	matriz->getMatriz()[0][1] = coordenada->getY();
+	matriz->getMatriz()[0][2] = 1;
 	return matriz;
 }
 

@@ -7,8 +7,9 @@
 
 #include "RotacaoView.h"
 
-RotacaoView::RotacaoView() :
+RotacaoView::RotacaoView(OnAdicionarTipoTransformacaoEvent* event) :
 		QWidget() {
+	this->event = event;
 	frame = new QFrame(this);
 	frame->setObjectName(QString::fromUtf8("frame"));
 	frame->setGeometry(QRect(20, 30, 320, 100));

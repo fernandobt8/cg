@@ -15,9 +15,15 @@
 #include <QtGui/QWidget>
 
 class TransformacaoAbstractView : public QWidget{
+	Q_OBJECT
 public:
 	TransformacaoAbstractView();
 	virtual ~TransformacaoAbstractView();
+
+public slots:
+	virtual void on_adicionarButton_clicked() = 0;
+
+protected:
 	QFrame *frame;
 	QLabel *labelMovimentacao;
 	QLineEdit *xInput;
@@ -25,6 +31,7 @@ public:
 	QLineEdit *yInput;
 	QLabel *yLabel;
 	QPushButton *adicionarButton;
+
 };
 
 #endif /* TRANSFORMACAOABSTRACTVIEW_H_ */

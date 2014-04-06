@@ -9,11 +9,16 @@
 #define ESCALONAMENTOVIEW_H_
 
 #include "../TransformacaoAbstractView.h"
+#include "../../../api/OnAdicionarTipoTransformacaoEvent.h"
 
 class EscalonamentoView : public TransformacaoAbstractView{
 public:
-	EscalonamentoView();
+	EscalonamentoView(OnAdicionarTipoTransformacaoEvent* event);
 	virtual ~EscalonamentoView();
+	virtual void on_adicionarButton_clicked();
+
+private:
+	OnAdicionarTipoTransformacaoEvent* event;
 };
 
 #endif /* ESCALONAMENTOVIEW_H_ */

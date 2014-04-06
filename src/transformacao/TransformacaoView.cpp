@@ -7,8 +7,10 @@
 
 #include "TransformacaoView.h"
 
-TransformacaoView::TransformacaoView(QWidget *parent) :
+TransformacaoView::TransformacaoView(OnOkTransformcaoEvent *event) :
 		QWidget() {
+	this->event = event;
+	transformacoes = new list<Transformacao*>();
 	if (this->objectName().isEmpty())
 		this->setObjectName(QString::fromUtf8("Transformacoes"));
 	this->setWindowTitle(QString::fromUtf8("Transformacoes"));
@@ -17,9 +19,9 @@ TransformacaoView::TransformacaoView(QWidget *parent) :
 	transformacaoWidget->setObjectName(
 			QString::fromUtf8("transformacaoWidget"));
 	transformacaoWidget->setGeometry(QRect(10, 20, 370, 330));
-	transformacaoWidget->addTab(new TranslacaoView(), QString::fromUtf8("Translação"));
-	transformacaoWidget->addTab(new RotacaoView(), QString::fromUtf8("Rotação"));
-	transformacaoWidget->addTab(new EscalonamentoView(),
+	transformacaoWidget->addTab(new TranslacaoView(this), QString::fromUtf8("Translação"));
+	transformacaoWidget->addTab(new RotacaoView(this), QString::fromUtf8("Rotação"));
+	transformacaoWidget->addTab(new EscalonamentoView(this),
 			QString::fromUtf8("Escalonamento"));
 	listWidget = new QListWidget(this);
 	listWidget->setObjectName(QString::fromUtf8("listWidget"));
@@ -38,6 +40,18 @@ TransformacaoView::TransformacaoView(QWidget *parent) :
 	cancelarButton->setText(QString::fromUtf8("Cancelar"));
 
 	QMetaObject::connectSlotsByName(this);
+}
+
+void TransformacaoView::onAdicionarTipoTransformacaoClick(Transformacao* transformacao){
+	transformacoes->push_back(transformacao);
+}
+
+void TransformacaoView::on_okButton_clicked(){
+	event->onOkTransformacaoClick(transformacoes);
+}
+
+void TransformacaoView::on_cancelarButton_clicked(){
+	delete this;
 }
 
 TransformacaoView::~TransformacaoView() {

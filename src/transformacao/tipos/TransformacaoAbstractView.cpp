@@ -35,6 +35,7 @@ TransformacaoAbstractView::TransformacaoAbstractView() : QWidget() {
 	adicionarButton->setObjectName(QString::fromUtf8("adicionarButton"));
 	adicionarButton->setGeometry(QRect(250, 260, 100, 30));
 	adicionarButton->setText(QString::fromUtf8("Adicionar"));
+	QMetaObject::connectSlotsByName(this);
 }
 
 TransformacaoAbstractView::~TransformacaoAbstractView() {

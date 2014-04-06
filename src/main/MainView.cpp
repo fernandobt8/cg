@@ -147,6 +147,10 @@ void MainView::on_transformarButton_clicked() {
 	transformarWindow->show();
 }
 
+void MainView::onOkTransformacaoClick(list<Transformacao* >* transformacoes){
+	delete transformarWindow;
+}
+
 void MainView::on_windowOkButton_clicked() {
 	controller->setTamanhoWindow(
 			strtod(this->windowWidthEdit->text().toUtf8().constData(), NULL),

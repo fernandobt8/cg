@@ -14,13 +14,20 @@
 #include <QtGui/QRadioButton>
 #include <QtGui/QWidget>
 #include <QtGui/QPushButton>
+#include "../../../api/OnAdicionarTipoTransformacaoEvent.h"
 
 class RotacaoView: public QWidget {
 Q_OBJECT
 public:
-	RotacaoView();
+	RotacaoView(OnAdicionarTipoTransformacaoEvent* event);
 	virtual ~RotacaoView();
 
+
+public slots:
+	void on_pontoButton_toggled(bool checked);
+	void on_adicionarButton_clicked();
+
+private:
 	QFrame *frame;
 	QLabel *operacoesLabel;
 	QLabel *anguloLabel;
@@ -32,11 +39,7 @@ public:
 	QLineEdit *pontoInput;
 	QLabel *pontoLabel;
 	QPushButton *adicionarButton;
-
-public slots:
-	void on_pontoButton_toggled(bool checked);
-	void on_adicionarButton_clicked();
-
+	OnAdicionarTipoTransformacaoEvent* event;
 };
 
 #endif /* ROTACAOVIEW_H_ */
