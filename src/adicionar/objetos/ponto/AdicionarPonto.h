@@ -12,6 +12,7 @@
 #include "QtGui/qlabel.h"
 #include "../AdicionarAbstract.h"
 #include "../../../dto/geometrico/Ponto.h"
+#include "../../../utils/Utils.h"
 
 class AdicionarPonto: virtual public AdicionarAbstract {
 public:

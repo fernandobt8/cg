@@ -15,10 +15,10 @@ using namespace std;
 
 class ObjetoGeometrico {
 public:
-	ObjetoGeometrico(char* nome, list<Coordenada*>* coordenadas);
-	ObjetoGeometrico(char* nome);
+	ObjetoGeometrico(const char* nome, list<Coordenada*>* coordenadas);
+	ObjetoGeometrico(const char* nome);
 	virtual ~ObjetoGeometrico();
-	char* getNome();
+	const char* getNome();
 	list<Coordenada*>* getWindowCoordenadas();
 	list<Coordenada*>* getCoordenadas();
 	void addCoordenada(Coordenada* coordenada);
@@ -27,7 +27,7 @@ public:
 	Coordenada* getCenter();
 
 protected:
-	char* nome;
+	const char* nome;
 	list<Coordenada*>* coordenadas;
 	list<Coordenada*>* windowCoordenadas;
 };

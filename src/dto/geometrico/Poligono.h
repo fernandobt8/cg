@@ -16,7 +16,7 @@ using namespace std;
 
 class Poligono: public ObjetoGeometrico {
 public:
-	Poligono(char* nome, list<Coordenada*> *coordenadas);
+	Poligono(const char* nome, list<Coordenada*> *coordenadas);
 	virtual ~Poligono();
 };
 

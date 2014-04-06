@@ -26,6 +26,7 @@ public:
 	list<ObjetoGeometrico*>* getObjetos();
 	Window* window;
 	void transformeObjeto(char* nome, list<Transformacao* >* transformacoes);
+	void printAll();
 
 private:
 	list<ObjetoGeometrico*> *objetos;

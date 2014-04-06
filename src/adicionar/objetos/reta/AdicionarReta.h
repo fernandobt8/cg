@@ -12,6 +12,7 @@
 #include "QtGui/qlineedit.h"
 #include "QtGui/qlabel.h"
 #include "../../../dto/geometrico/Reta.h"
+#include "../../../utils/Utils.h"
 
 class AdicionarReta: virtual public AdicionarAbstract {
 public:

@@ -33,7 +33,7 @@ void AdicionarReta::okEvent() {
 	Coordenada* coordenada2  = new Coordenada();
 	coordenada2->setX(atoi(this->x2Input->text().toUtf8().constData()));
 	coordenada2->setY(atoi(this->y2Input->text().toUtf8().constData()));
-	Reta* reta = new Reta(this->nomeInput->text().toUtf8().data());
+	Reta* reta = new Reta(Utils::cloneChar(this->nomeInput->text().toUtf8().data()));
 	reta->addCoordenada(coordenada1);
 	reta->addCoordenada(coordenada2);
 	addEvent->OnAdicionarObjetoTipoClick(reta);

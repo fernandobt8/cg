@@ -13,8 +13,8 @@
 
 class Ponto: public ObjetoGeometrico {
 public:
-	Ponto(char* nome, list<Coordenada*>* coordenadas);
-	Ponto(char* nome);
+	Ponto(const char* nome, list<Coordenada*>* coordenadas);
+	Ponto(const char* nome);
 	virtual ~Ponto();
 };
 

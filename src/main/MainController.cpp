@@ -27,7 +27,6 @@ void MainController::setTamanhoWindow(double width, double height){
 }
 
 void MainController::addObjeto(ObjetoGeometrico* objeto) {
-	objeto->addToAllCoordenadas(window->getStart());
 	modelo->addObjeto(objeto);
 	view->updateWindow(window);
 }

@@ -7,19 +7,19 @@
 
 #include "ObjetoGeometrico.h"
 
-ObjetoGeometrico::ObjetoGeometrico(char* nome, list<Coordenada*>* coordenadas) {
+ObjetoGeometrico::ObjetoGeometrico(const char* nome, list<Coordenada*>* coordenadas) {
 	this->coordenadas = coordenadas;
 	this->nome = nome;
 	windowCoordenadas = new list<Coordenada*>();
 }
 
-ObjetoGeometrico::ObjetoGeometrico(char* nome) {
+ObjetoGeometrico::ObjetoGeometrico(const char* nome) {
 	this->nome = nome;
 	this->coordenadas = new list<Coordenada* >();
 	this->windowCoordenadas = new list<Coordenada*>();
 }
 
-char* ObjetoGeometrico::getNome() {
+const char* ObjetoGeometrico::getNome() {
 	return this->nome;
 }
 

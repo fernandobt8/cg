@@ -25,6 +25,7 @@
 #include "../transformacao/TransformacaoView.h"
 #include "../api/OnOkTransformcaoEvent.h"
 #include "../dto/transformacao/Transformacao.h"
+#include "../utils/Utils.h"
 
 using namespace std;
 

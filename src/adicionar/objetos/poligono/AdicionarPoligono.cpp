@@ -37,7 +37,7 @@ void AdicionarPoligono::okEvent() {
 		novaLista->push_back(static_cast<Coordenada*>(*it)->clone());
 		it++;
 	}
-	Poligono *p = new Poligono(this->nomeInput->text().toUtf8().data(),
+	Poligono *p = new Poligono(Utils::cloneChar(this->nomeInput->text().toUtf8().data()),
 			novaLista);
 	addEvent->OnAdicionarObjetoTipoClick(p);
 }

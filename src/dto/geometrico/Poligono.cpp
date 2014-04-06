@@ -7,7 +7,7 @@
 
 #include "Poligono.h"
 
-Poligono::Poligono(char* nome, list<Coordenada*> *coordenadas) : ObjetoGeometrico(nome, coordenadas){
+Poligono::Poligono(const char* nome, list<Coordenada*> *coordenadas) : ObjetoGeometrico(nome, coordenadas){
 }
 
 Poligono::~Poligono() {

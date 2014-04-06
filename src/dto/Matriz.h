@@ -13,6 +13,7 @@
 #include "transformacao/Translacao.h"
 #include "transformacao/Escalonamento.h"
 
+#include <stdio.h>
 #include <list>
 
 using namespace std;
@@ -25,15 +26,16 @@ public:
 	virtual ~Matriz();
 	Matriz* multiplique(Matriz* matriz);
 	double** getMatriz();
+	void printAll();
 	static Matriz* getMatrizTransformacao(Coordenada* center, list<Transformacao* >* transformacoes);
 	static Matriz* getMatrizByCoordenada(Coordenada* coordenada);
 	static Matriz* getMatrizTranslacao(Translacao* translacao);
 	static Matriz* getMatrizRotacao(Coordenada* center, Rotacao* rotacao);
 	static Matriz* getMatrizEscalonamento(Coordenada* center, Escalonamento* escalonamento);
+	int numLinhas;
 
 private:
 	double** dado;
-	int numLinhas;
 };
 
 #endif /* MATRIZ_H_ */

@@ -174,10 +174,10 @@ void MainView::updateWindow(Window* window) {
 
 void MainView::OnAdicionarObjetoTipoClick(ObjetoGeometrico *objeto) {
 	delete addObjetoWindow;
-	controller->addObjeto(objeto);
 	QListWidgetItem * item = new QListWidgetItem();
-	item->setText(objeto->getNome());
+	item->setText(Utils::cloneChar(objeto->getNome()));
 	this->listObjetosPanel->addItem(item);
+	controller->addObjeto(objeto);
 }
 
 MainView::~MainView() {

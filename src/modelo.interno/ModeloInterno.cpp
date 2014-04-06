@@ -12,6 +12,15 @@ ModeloInterno::ModeloInterno(Window* window) {
 	this->window = window;
 }
 
+void ModeloInterno::printAll(){
+	list<ObjetoGeometrico*>::iterator it = objetos->begin();
+	for(; it!= objetos->end() ; it++){
+		ObjetoGeometrico* o = *it;
+		printf(o->getNome());
+		printf("\n");
+	}
+}
+
 list<ObjetoGeometrico*>* ModeloInterno::getObjetos(){
 	return this->objetos;
 }
@@ -36,6 +45,7 @@ void ModeloInterno::updateWindow(){
 }
 
 void ModeloInterno::addObjeto(ObjetoGeometrico *objeto){
+	objeto->addToAllCoordenadas(window->getStart());
 	objetos->push_back(objeto);
 	window->updateObjetos(objetos);
 }

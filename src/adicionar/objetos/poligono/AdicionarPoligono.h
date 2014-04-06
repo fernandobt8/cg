@@ -12,6 +12,7 @@
 #include <list>
 #include "QtGui/qlistwidget.h"
 #include "../../../dto/geometrico/Poligono.h"
+#include "../../../utils/Utils.h"
 
 
 using namespace std;
