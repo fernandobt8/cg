@@ -22,6 +22,7 @@ public:
 	void updateWindow();
 	list<ObjetoGeometrico*>* getObjetos();
 	Window* window;
+	void transformeObjeto(char* nome);
 
 private:
 	list<ObjetoGeometrico*> *objetos;
