@@ -20,7 +20,8 @@ Coordenada::~Coordenada() {
 }
 
 void Coordenada::vezesMatriz(Matriz* matriz){
-	Matriz* coordenada = Matriz::getMatrizByCoordenada(this)->multiplique(matriz);
+	Matriz* coordenada = Matriz::getMatrizByCoordenada(this);
+	coordenada->multiplique(matriz);
 	coordenada->printAll();
 	x = coordenada->getMatriz()[0][0];
 	y = coordenada->getMatriz()[0][1];

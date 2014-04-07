@@ -10,6 +10,7 @@
 
 #include "../TransformacaoAbstractView.h"
 #include "../../../api/OnAdicionarTipoTransformacaoEvent.h"
+#include "../../../dto/transformacao/Escalonamento.h"
 
 class EscalonamentoView : public TransformacaoAbstractView{
 public:

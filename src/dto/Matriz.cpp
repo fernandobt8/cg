@@ -21,17 +21,19 @@ Matriz::Matriz(int numLinhas){
 	}
 }
 
-Matriz* Matriz::multiplique(Matriz* matriz)  {
-	Matriz* resultado = new Matriz(numLinhas);
+void Matriz::multiplique(Matriz* matriz)  {
+	double** resultado = new double*[numLinhas];
 	for (int i = 0; i < numLinhas; i++) {
+		resultado[i] = new double[numColunas];
 		for (int j = 0; j < numColunas; j++) {
-			resultado->getMatriz()[i][j] = 0;
+			resultado[i][j] = 0;
 			for (int k = 0; k < numColunas; k++) {
-				resultado->getMatriz()[i][j] = resultado->getMatriz()[i][j] + (this->dado[i][k] * matriz->getMatriz()[k][j]);
+				resultado[i][j] = resultado[i][j] + (this->dado[i][k] * matriz->getMatriz()[k][j]);
 			}
 		}
 	}
-	return resultado;
+	delete dado ;
+	this->dado = resultado;
 }
 
 Matriz* Matriz::getMatrizTransformacao(Coordenada* center, list<Transformacao* >* transformacoes){
@@ -48,19 +50,16 @@ Matriz* Matriz::getMatrizTransformacao(Coordenada* center, list<Transformacao* >
 	}
 	list<Transformacao* >::iterator it = _List_iterator<Transformacao* >(transformacoes->begin()._M_node->_M_next);
 	for(;it != transformacoes->end(); it++){
-		Matriz* temp = new Matriz(matriz->numLinhas);
 		Translacao* trans = dynamic_cast<Translacao* >(*it);
 		Rotacao* rotacao = dynamic_cast<Rotacao* >(*it);
 		Escalonamento* esca = dynamic_cast<Escalonamento* >(*it);
 		if(trans){
-			temp = matriz->multiplique(Matriz::getMatrizTranslacao(trans));
+			matriz->multiplique(Matriz::getMatrizTranslacao(trans));
 		}else if(rotacao){
-			temp = matriz->multiplique(Matriz::getMatrizRotacao(center, rotacao));
+			matriz->multiplique(Matriz::getMatrizRotacao(center, rotacao));
 		}else if(esca){
-			temp = matriz->multiplique(Matriz::getMatrizEscalonamento(center, esca));
+			matriz->multiplique(Matriz::getMatrizEscalonamento(center, esca));
 		}
-		delete matriz;
-		matriz = temp;
 	}
 	return matriz;
 }
@@ -81,23 +80,41 @@ Matriz* Matriz::getMatrizTranslacao(Translacao* translacao){
 	return matriz;
 }
 
-void Matriz::printAll(){
-	 for (int i=0; i<numLinhas; i++) {
-	  for (int j=0; j<numColunas; j++) {
-		printf("%f ", dado[i][j]);
-	  }
-	  printf("\n");
-	}
-}
-
 Matriz* Matriz::getMatrizRotacao(Coordenada* center, Rotacao* rotacao){
 
 	return 0;
 }
 
 Matriz* Matriz::getMatrizEscalonamento(Coordenada* center, Escalonamento* escalonamento){
+	Translacao* trans = new Translacao();
+	trans->setX(-center->getX());
+	trans->setY(-center->getY());
+	Matriz* transCenter = Matriz::getMatrizTranslacao(trans);
+	transCenter->printAll();
 
-	return 0;
+	Matriz* esca = new Matriz(3);
+	esca->getMatriz()[0][0] = escalonamento->getX();
+	esca->getMatriz()[0][1] = 0;
+	esca->getMatriz()[0][2] = 0;
+
+	esca->getMatriz()[1][0] = 0;
+	esca->getMatriz()[1][1] = escalonamento->getY();
+	esca->getMatriz()[1][2] = 0;
+
+	esca->getMatriz()[2][0] = 0;
+	esca->getMatriz()[2][1] = 0;
+	esca->getMatriz()[2][2] = 1;
+	esca->printAll();
+
+	transCenter->multiplique(esca);
+
+	trans->setX(center->getX());
+	trans->setY(center->getY());
+
+	transCenter->multiplique(Matriz::getMatrizTranslacao(trans));
+	delete trans;
+	delete esca;
+	return transCenter;
 }
 
 Matriz* Matriz::getMatrizByCoordenada(Coordenada* coordenada){
@@ -106,6 +123,15 @@ Matriz* Matriz::getMatrizByCoordenada(Coordenada* coordenada){
 	matriz->getMatriz()[0][1] = coordenada->getY();
 	matriz->getMatriz()[0][2] = 1;
 	return matriz;
+}
+
+void Matriz::printAll(){
+	 for (int i=0; i<numLinhas; i++) {
+	  for (int j=0; j<numColunas; j++) {
+		printf("%f ", dado[i][j]);
+	  }
+	  printf("\n");
+	}
 }
 
 double** Matriz::getMatriz() {

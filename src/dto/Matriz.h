@@ -7,11 +7,15 @@
 
 #ifndef MATRIZ_H_
 #define MATRIZ_H_
+
+#define PI 3.14159265
+
 #include "geometrico/Coordenada.h"
 #include "transformacao/Transformacao.h"
 #include "transformacao/Rotacao.h"
 #include "transformacao/Translacao.h"
 #include "transformacao/Escalonamento.h"
+#include <math.h>
 
 #include <stdio.h>
 #include <list>
@@ -24,7 +28,7 @@ public:
 	Matriz(double** matriz, int numLinhas);
 	Matriz(int numLinhas);
 	virtual ~Matriz();
-	Matriz* multiplique(Matriz* matriz);
+	void multiplique(Matriz* matriz);
 	double** getMatriz();
 	void printAll();
 	static Matriz* getMatrizTransformacao(Coordenada* center, list<Transformacao* >* transformacoes);
