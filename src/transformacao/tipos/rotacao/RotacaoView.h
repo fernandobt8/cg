@@ -15,6 +15,7 @@
 #include <QtGui/QWidget>
 #include <QtGui/QPushButton>
 #include "../../../api/OnAdicionarTipoTransformacaoEvent.h"
+#include "../../../dto/transformacao/Rotacao.h"
 
 class RotacaoView: public QWidget {
 Q_OBJECT
@@ -36,8 +37,11 @@ private:
 	QRadioButton *centroButton;
 	QRadioButton *pontoButton;
 	QLineEdit *anguloInput;
-	QLineEdit *pontoInput;
+	QLineEdit *xInput;
+	QLineEdit *yInput;
 	QLabel *pontoLabel;
+	QLabel *xLabel;
+	QLabel *yLabel;
 	QPushButton *adicionarButton;
 	OnAdicionarTipoTransformacaoEvent* event;
 };

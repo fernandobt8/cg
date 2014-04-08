@@ -81,8 +81,44 @@ Matriz* Matriz::getMatrizTranslacao(Translacao* translacao){
 }
 
 Matriz* Matriz::getMatrizRotacao(Coordenada* center, Rotacao* rotacao){
+	Matriz* matriz = new Matriz(3);
+	matriz->getMatriz()[0][0] = cos(rotacao->angulo*(PI/180));
+	matriz->getMatriz()[0][1] = -sin(rotacao->angulo*(PI/180));
+	matriz->getMatriz()[0][2] = 0;
 
-	return 0;
+	matriz->getMatriz()[1][0] = sin(rotacao->angulo*(PI/180));
+	matriz->getMatriz()[1][1] = cos(rotacao->angulo*(PI/180));
+	matriz->getMatriz()[1][2] = 0;
+
+	matriz->getMatriz()[2][0] = 0;
+	matriz->getMatriz()[2][1] = 0;
+	matriz->getMatriz()[2][2] = 1;
+	if(rotacao->tipoRotacao != ORIGEM){
+		double x;
+		double y;
+		if(rotacao->tipoRotacao == CENTRO){
+			x = center->getX();
+			y = center->getY();
+		} else if(rotacao->tipoRotacao == PONTO){
+			x = rotacao->getX();
+			y = rotacao->getY();
+		}
+			Translacao* trans = new Translacao();
+			trans->setX(-x);
+			trans->setY(-y);
+
+			Matriz* transCenter = Matriz::getMatrizTranslacao(trans);
+			transCenter->multiplique(matriz);
+
+			trans->setX(x);
+			trans->setY(y);
+			transCenter->multiplique(Matriz::getMatrizTranslacao(trans));
+
+			delete trans;
+			delete matriz;
+			return transCenter;
+	}
+	return matriz;
 }
 
 Matriz* Matriz::getMatrizEscalonamento(Coordenada* center, Escalonamento* escalonamento){
@@ -90,7 +126,6 @@ Matriz* Matriz::getMatrizEscalonamento(Coordenada* center, Escalonamento* escalo
 	trans->setX(-center->getX());
 	trans->setY(-center->getY());
 	Matriz* transCenter = Matriz::getMatrizTranslacao(trans);
-	transCenter->printAll();
 
 	Matriz* esca = new Matriz(3);
 	esca->getMatriz()[0][0] = escalonamento->getX();

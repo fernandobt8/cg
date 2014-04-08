@@ -14,8 +14,7 @@ EscalonamentoView::EscalonamentoView(OnAdicionarTipoTransformacaoEvent* event) :
 
 void EscalonamentoView::on_adicionarButton_clicked(){
 	Escalonamento* trans = new Escalonamento();
-	double temp = strtod(this->xInput->text().toUtf8().data(), NULL);
-	trans->setX(temp);
+	trans->setX(strtod(this->xInput->text().toUtf8().data(), NULL));
 	trans->setY(strtod(this->yInput->text().toUtf8().data(), NULL));
 	event->onAdicionarTipoTransformacaoClick(trans);
 }

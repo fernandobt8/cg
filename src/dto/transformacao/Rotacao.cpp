@@ -8,11 +8,9 @@
 #include "Rotacao.h"
 
 Rotacao::Rotacao() {
-	// TODO Auto-generated constructor stub
 
 }
 
 Rotacao::~Rotacao() {
-	// TODO Auto-generated destructor stub
 }
 
