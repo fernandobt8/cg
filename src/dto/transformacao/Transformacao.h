@@ -10,16 +10,18 @@
 
 class Transformacao {
 public:
-	Transformacao();
+	Transformacao(char* nome);
 	virtual ~Transformacao();
 	double getX();
 	double getY();
 	void setX(double x);
 	void setY(double y);
+	char* getNome();
 
 protected:
 	double x;
 	double y;
+	char* nome;
 };
 
 #endif /* TRANSFORMACAO_H_ */

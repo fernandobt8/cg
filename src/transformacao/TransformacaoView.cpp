@@ -44,6 +44,9 @@ TransformacaoView::TransformacaoView(OnOkTransformcaoEvent *event) :
 
 void TransformacaoView::onAdicionarTipoTransformacaoClick(Transformacao* transformacao){
 	transformacoes->push_back(transformacao);
+	QListWidgetItem * item = new QListWidgetItem();
+	item->setText(QString::fromUtf8(Utils::cloneChar(transformacao->getNome())));
+	this->listWidget->addItem(item);
 }
 
 void TransformacaoView::on_okButton_clicked(){

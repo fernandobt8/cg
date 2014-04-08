@@ -18,6 +18,7 @@
 #include "tipos/translacao/TranslacaoView.h"
 #include "../api/OnOkTransformcaoEvent.h"
 #include "../dto/transformacao/Transformacao.h"
+#include "../utils/Utils.h"
 #include <list>
 
 using namespace std;

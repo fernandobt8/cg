@@ -7,7 +7,7 @@
 
 #include "Translacao.h"
 
-Translacao::Translacao() {
+Translacao::Translacao() : Transformacao("Translacao"){
 	// TODO Auto-generated constructor stub
 
 }

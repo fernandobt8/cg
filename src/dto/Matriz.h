@@ -9,6 +9,7 @@
 #define MATRIZ_H_
 
 #define PI 3.14159265
+#define numColunas 3
 
 #include "geometrico/Coordenada.h"
 #include "transformacao/Transformacao.h"

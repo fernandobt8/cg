@@ -7,7 +7,7 @@
 
 #include "Rotacao.h"
 
-Rotacao::Rotacao() {
+Rotacao::Rotacao() : Transformacao("Rotação") {
 
 }
 

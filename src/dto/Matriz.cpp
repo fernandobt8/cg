@@ -6,7 +6,6 @@
  */
 
 #include "Matriz.h"
-int numColunas = 3;
 
 Matriz::Matriz(double** matriz, int numLinhas) {
 	dado = matriz;

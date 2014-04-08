@@ -7,9 +7,8 @@
 
 #include "Transformacao.h"
 
-Transformacao::Transformacao() {
-	// TODO Auto-generated constructor stub
-
+Transformacao::Transformacao(char* nome) {
+	this->nome = nome;
 }
 
 void Transformacao::setX(double x){
@@ -26,6 +25,10 @@ double Transformacao::getX(){
 
 double Transformacao::getY(){
 	return y;
+}
+
+char* Transformacao::getNome(){
+	return nome;
 }
 
 Transformacao::~Transformacao() {

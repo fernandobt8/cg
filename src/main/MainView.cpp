@@ -144,7 +144,7 @@ void MainView::on_adicionarButton_clicked() {
 
 void MainView::on_transformarButton_clicked() {
 	if(listObjetosPanel->selectedItems().size() == 0){
-		printf("sem objeto selecionado\n");
+		QMessageBox::information(NULL, "Aviso", "Selecione um objeto da lista antes!");
 	}else{
 		transformarWindow = new TransformacaoView(this);
 		transformarWindow->show();

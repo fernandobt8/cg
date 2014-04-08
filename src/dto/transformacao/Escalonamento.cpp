@@ -7,12 +7,10 @@
 
 #include "Escalonamento.h"
 
-Escalonamento::Escalonamento() {
-	// TODO Auto-generated constructor stub
+Escalonamento::Escalonamento() : Transformacao("Escalonamento") {
 
 }
 
 Escalonamento::~Escalonamento() {
-	// TODO Auto-generated destructor stub
 }
 
