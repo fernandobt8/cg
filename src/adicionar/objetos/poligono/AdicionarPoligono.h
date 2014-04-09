@@ -22,13 +22,13 @@ Q_OBJECT
 public:
 	AdicionarPoligono(QWidget *parent, OnAdicionarObjetoTipoEvent *event);
 	virtual ~AdicionarPoligono();
+	virtual void on_okButton_clicked();
 
 private:
 	QListWidget *coordenadasList;
 	QPushButton *adicionarCoordenadaButton;
 	QPushButton *removerCoordenadaButton;
 	list<Coordenada*>* coordenadasPoligono;
-	virtual void okEvent();
 
 public slots:
 	void on_removerCoordenada_clicked();

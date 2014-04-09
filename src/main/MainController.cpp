@@ -58,7 +58,6 @@ void MainController::moveWindow(int tipoMovimento) {
 
 MainController::~MainController() {
 	delete modelo;
-	delete window;
 	delete view;
 }
 

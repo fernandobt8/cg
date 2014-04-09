@@ -24,11 +24,11 @@ public:
 	void addObjeto(ObjetoGeometrico *objeto);
 	void updateWindow();
 	list<ObjetoGeometrico*>* getObjetos();
-	Window* window;
 	void transformeObjeto(char* nome, list<Transformacao* >* transformacoes);
 	void printAll();
 
 private:
+	Window* window;
 	list<ObjetoGeometrico*> *objetos;
 };
 

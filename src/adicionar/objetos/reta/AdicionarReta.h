@@ -18,13 +18,13 @@ class AdicionarReta: virtual public AdicionarAbstract {
 public:
 	AdicionarReta(QWidget *parent, OnAdicionarObjetoTipoEvent *event);
 	virtual ~AdicionarReta();
+	virtual void on_okButton_clicked();
 
 private:
 	QLabel *x2Label;
 	QLabel *y2Label;
 	QLineEdit *x2Input;
 	QLineEdit *y2Input;
-	virtual void okEvent();
 
 };
 

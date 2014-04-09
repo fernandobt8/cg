@@ -32,10 +32,9 @@ protected:
 	QPushButton *cancelarButton;
 	OnAdicionarObjetoTipoEvent *addEvent;
 	QWidget *parent;
-	virtual void okEvent() = 0;
 
 public slots:
-	void on_okButton_clicked();
+	virtual void on_okButton_clicked() = 0;
 	void on_cancelarButton_clicked();
 };
 

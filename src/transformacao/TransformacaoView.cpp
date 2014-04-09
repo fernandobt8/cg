@@ -57,5 +57,14 @@ void TransformacaoView::on_cancelarButton_clicked(){
 	delete this;
 }
 
+void TransformacaoView::closeEvent(QCloseEvent* event){
+	delete this;
+}
+
 TransformacaoView::~TransformacaoView() {
+	delete transformacaoWidget;
+	delete listWidget;
+	delete label;
+	delete okButton;
+	delete cancelarButton;
 }

@@ -41,6 +41,7 @@ public:
 
 private:
 	double** dado;
+	void clear();
 };
 
 #endif /* MATRIZ_H_ */

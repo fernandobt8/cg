@@ -152,12 +152,12 @@ void MainView::on_transformarButton_clicked() {
 }
 
 void MainView::onOkTransformacaoClick(list<Transformacao* >* transformacoes){
-	delete transformarWindow;
 	if(transformacoes->size() > 0){
 		QByteArray byte = listObjetosPanel->selectedItems().first()->text().toLocal8Bit();
 		char* nome = byte.data();
 		controller->transformeObjeto(nome, transformacoes);
 	}
+	delete transformarWindow;
 }
 
 void MainView::on_windowOkButton_clicked() {
@@ -173,11 +173,11 @@ void MainView::updateWindow(Window* window) {
 }
 
 void MainView::OnAdicionarObjetoTipoClick(ObjetoGeometrico *objeto) {
-	delete addObjetoWindow;
 	QListWidgetItem * item = new QListWidgetItem();
 	item->setText(Utils::cloneChar(objeto->getNome()));
 	this->listObjetosPanel->addItem(item);
 	controller->addObjeto(objeto);
+	delete addObjetoWindow;
 }
 
 MainView::~MainView() {
@@ -185,4 +185,5 @@ MainView::~MainView() {
 	delete listObjetosPanel;
 	delete WindowFrame;
 	delete viewPortFrame;
+	delete viewPort;
 }

@@ -32,6 +32,6 @@ char* Transformacao::getNome(){
 }
 
 Transformacao::~Transformacao() {
-	// TODO Auto-generated destructor stub
+
 }
 

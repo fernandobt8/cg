@@ -18,9 +18,8 @@ class AdicionarPonto: virtual public AdicionarAbstract {
 public:
 	AdicionarPonto(QWidget *parent, OnAdicionarObjetoTipoEvent *event);
 	virtual ~AdicionarPonto();
+	virtual void on_okButton_clicked();
 
-private:
-	virtual void okEvent();
 };
 
 #endif /* ADICIONARPONTO_H_ */

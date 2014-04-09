@@ -29,6 +29,7 @@ public:
 	TransformacaoView(OnOkTransformcaoEvent* event);
 	virtual ~TransformacaoView();
 	virtual void onAdicionarTipoTransformacaoClick(Transformacao* transformacao);
+	virtual void closeEvent(QCloseEvent* event);
 
 public slots:
 	void on_okButton_clicked();

@@ -25,7 +25,7 @@ AdicionarReta::AdicionarReta(QWidget *parent, OnAdicionarObjetoTipoEvent *event)
 	y2Input->setGeometry(QRect(170, 125, 50, 25));
 }
 
-void AdicionarReta::okEvent() {
+void AdicionarReta::on_okButton_clicked() {
 	Coordenada* coordenada1 = new Coordenada();
 	coordenada1->setX(atoi(this->xInput->text().toUtf8().constData()));
 	coordenada1->setY(atoi(this->yInput->text().toUtf8().constData()));

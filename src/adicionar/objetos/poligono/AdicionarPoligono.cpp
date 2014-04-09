@@ -30,7 +30,7 @@ AdicionarPoligono::AdicionarPoligono(QWidget *parent,
 
 }
 
-void AdicionarPoligono::okEvent() {
+void AdicionarPoligono::on_okButton_clicked() {
 	list<Coordenada*>* novaLista = new list<Coordenada*>();
 	list<Coordenada*>::iterator it = coordenadasPoligono->begin();
 	while (it != coordenadasPoligono->end()) {

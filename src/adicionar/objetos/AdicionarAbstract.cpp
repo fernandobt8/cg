@@ -49,10 +49,6 @@ AdicionarAbstract::AdicionarAbstract(QWidget *parent, OnAdicionarObjetoTipoEvent
 
 }
 
-void AdicionarAbstract::on_okButton_clicked() {
-	this->okEvent();
-}
-
 void AdicionarAbstract::on_cancelarButton_clicked() {
 	delete parent;
 }

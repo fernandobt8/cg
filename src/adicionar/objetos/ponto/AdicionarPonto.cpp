@@ -12,7 +12,7 @@ AdicionarPonto::AdicionarPonto(QWidget *parent, OnAdicionarObjetoTipoEvent *even
 
 }
 
-void AdicionarPonto::okEvent() {
+void AdicionarPonto::on_okButton_clicked() {
 	Coordenada* coordenada = new Coordenada();
 	coordenada->setX(atoi(this->xInput->text().toUtf8().constData()) );
 	coordenada->setY(atoi(this->yInput->text().toUtf8().constData()) );

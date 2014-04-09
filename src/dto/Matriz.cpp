@@ -31,12 +31,13 @@ void Matriz::multiplique(Matriz* matriz)  {
 			}
 		}
 	}
-	delete dado ;
+	this->clear();
 	this->dado = resultado;
 }
 
 Matriz* Matriz::getMatrizTransformacao(Coordenada* center, list<Transformacao* >* transformacoes){
 	Matriz* matriz;
+	Matriz* temp;
 	Translacao* trans = dynamic_cast<Translacao* >(*transformacoes->begin());
 	Rotacao* rotacao = dynamic_cast<Rotacao* >(*transformacoes->begin());
 	Escalonamento* esca = dynamic_cast<Escalonamento* >(*transformacoes->begin());
@@ -53,12 +54,14 @@ Matriz* Matriz::getMatrizTransformacao(Coordenada* center, list<Transformacao* >
 		Rotacao* rotacao = dynamic_cast<Rotacao* >(*it);
 		Escalonamento* esca = dynamic_cast<Escalonamento* >(*it);
 		if(trans){
-			matriz->multiplique(Matriz::getMatrizTranslacao(trans));
+			temp = Matriz::getMatrizTranslacao(trans);
 		}else if(rotacao){
-			matriz->multiplique(Matriz::getMatrizRotacao(center, rotacao));
+			temp = Matriz::getMatrizRotacao(center, rotacao);
 		}else if(esca){
-			matriz->multiplique(Matriz::getMatrizEscalonamento(center, esca));
+			temp = Matriz::getMatrizEscalonamento(center, esca);
 		}
+		matriz->multiplique(temp);
+		delete temp;
 	}
 	return matriz;
 }
@@ -111,10 +114,12 @@ Matriz* Matriz::getMatrizRotacao(Coordenada* center, Rotacao* rotacao){
 
 			trans->setX(x);
 			trans->setY(y);
-			transCenter->multiplique(Matriz::getMatrizTranslacao(trans));
+			Matriz* transCenterBack = Matriz::getMatrizTranslacao(trans);
+			transCenter->multiplique(transCenterBack);
 
 			delete trans;
 			delete matriz;
+			delete transCenterBack;
 			return transCenter;
 	}
 	return matriz;
@@ -138,14 +143,15 @@ Matriz* Matriz::getMatrizEscalonamento(Coordenada* center, Escalonamento* escalo
 	esca->getMatriz()[2][0] = 0;
 	esca->getMatriz()[2][1] = 0;
 	esca->getMatriz()[2][2] = 1;
-	esca->printAll();
 
 	transCenter->multiplique(esca);
 
 	trans->setX(center->getX());
 	trans->setY(center->getY());
 
-	transCenter->multiplique(Matriz::getMatrizTranslacao(trans));
+	Matriz* transCenterBack = Matriz::getMatrizTranslacao(trans);
+	transCenter->multiplique(transCenterBack);
+	delete transCenterBack;
 	delete trans;
 	delete esca;
 	return transCenter;
@@ -173,6 +179,12 @@ double** Matriz::getMatriz() {
 }
 
 Matriz::~Matriz() {
-
+	this->clear();
 }
 
+void Matriz::clear(){
+	for(int i = 0; i < numLinhas; i++){
+		delete[] dado[i];
+	}
+	delete[] dado;
+}

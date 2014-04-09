@@ -39,5 +39,12 @@ TransformacaoAbstractView::TransformacaoAbstractView() : QWidget() {
 }
 
 TransformacaoAbstractView::~TransformacaoAbstractView() {
+	delete frame;
+	delete labelMovimentacao;
+	delete xInput;
+	delete xLabel;
+	delete yInput;
+	delete yLabel;
+	delete adicionarButton;
 }
 

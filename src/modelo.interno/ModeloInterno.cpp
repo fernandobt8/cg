@@ -38,6 +38,7 @@ void ModeloInterno::transformeObjeto(char* nome, list<Transformacao* >* transfor
 			}
 		}
 	}
+	delete transformacoes;
 }
 
 void ModeloInterno::updateWindow(){
@@ -52,4 +53,5 @@ void ModeloInterno::addObjeto(ObjetoGeometrico *objeto){
 
 ModeloInterno::~ModeloInterno() {
 	delete objetos;
+	delete window;
 }

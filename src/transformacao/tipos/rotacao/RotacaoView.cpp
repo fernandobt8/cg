@@ -107,5 +107,19 @@ void RotacaoView::on_pontoButton_toggled(bool checked) {
 }
 
 RotacaoView::~RotacaoView() {
+	delete frame;
+	delete operacoesLabel;
+	delete anguloLabel;
+	delete grausLabel;
+	delete origemButton;
+	delete centroButton;
+	delete pontoButton;
+	delete anguloInput;
+	delete xInput;
+	delete yInput;
+	delete pontoLabel;
+	delete xLabel;
+	delete yLabel;
+	delete adicionarButton;
 }
 
