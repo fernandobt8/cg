@@ -23,10 +23,11 @@ public:
 	AdicionarTipoObjetoView(OnAdicionarObjetoTipoEvent *event);
 	virtual ~AdicionarTipoObjetoView();
 	virtual void closeEvent(QCloseEvent* event);
+
 private:
 	QWidget *centralwidget;
 	QTabWidget *tabWindow;
-	AdicionarPoligono* pol;
+
 };
 
 #endif /* ADICIONARWINDOW_H_ */
