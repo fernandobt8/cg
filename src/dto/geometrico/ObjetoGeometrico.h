@@ -19,16 +19,19 @@ public:
 	ObjetoGeometrico(const char* nome);
 	virtual ~ObjetoGeometrico();
 	const char* getNome();
-	list<Coordenada*>* getWindowCoordenadas();
-	list<Coordenada*>* getCoordenadas();
-	void addCoordenada(Coordenada* coordenada);
-	void addToAllCoordenadas(Coordenada* coordenada);
-	void updateWindowCoordenadas(Coordenada* coordenada);
 	Coordenada* getCenter();
+	void addCoordenada(Coordenada* coordenada);
+	list<Coordenada*>* getCoordenadas();
+	list<Coordenada*>* getWindowCoordenadas();
+	void addToAllCoordenadas(Coordenada* coordenada);
+	void multipliqueAllCoordenadas(Matriz* matriz);
+	void subAllWindowCoordenadas(Coordenada* coordenada);
+	void multipliqueAllCPPcoordenadas(Matriz* matriz);
 
 protected:
 	const char* nome;
 	list<Coordenada*>* coordenadas;
+	list<Coordenada*>* CPPcoordenadas;
 	list<Coordenada*>* windowCoordenadas;
 };
 

@@ -12,6 +12,7 @@
 #include "../../dto/geometrico/Reta.h"
 #include "../../dto/geometrico/Poligono.h"
 #include "../../dto/geometrico/Ponto.h"
+#include "../../dto/Matriz.h"
 #include "../../modelo.interno/ModeloInterno.h"
 #include <list>
 using namespace std;
@@ -20,21 +21,23 @@ class Window{
 public:
 	Window();
 	virtual ~Window();
-	Coordenada* getStart();
-	Coordenada* getEnd();
 	list<ObjetoGeometrico* >* getWindowObjetos();
-	void updateObjetos(list<ObjetoGeometrico* >* objetos);
+	void setWindowObjetos(list<ObjetoGeometrico*>* objetos);
+	void mutipliqueCPPcoordenadas(Matriz* matriz);
 	void move(double x, double y);
 	void zoom(double zoom);
 	void setTamanhoWindow(double width, double height);
 	double getWidth();
 	double getHeight();
+	Coordenada* getCenter();
+	Coordenada* CPPstart;
+	Coordenada* CPPend;
+	double angulo;
+	Coordenada* start;
 
 private:
-	Coordenada* start;
 	Coordenada* end;
 	list<ObjetoGeometrico* >* objetos;
-	void clearWindowObjetos();
 
 };
 

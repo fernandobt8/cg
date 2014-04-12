@@ -36,7 +36,7 @@ void ViewPort::paintEvent(QPaintEvent* event){
 		for(;it != window->getWindowObjetos()->end(); it++){
 			Ponto* ponto = dynamic_cast<Ponto* >(*it);
 			if(ponto){
-				Coordenada* pontoVP = calculeCoordenadaVP(ponto->getWindowCoordenadas()->front(),window->getStart(),window->getEnd());
+				Coordenada* pontoVP = calculeCoordenadaVP(ponto->getWindowCoordenadas()->front(), window->CPPstart, window->CPPend);
 				painter->drawEllipse(pontoVP->getX(),pontoVP->getY(),2,2);
 			}
 			ObjetoGeometrico* objeto = *it;
@@ -45,12 +45,12 @@ void ViewPort::paintEvent(QPaintEvent* event){
 				for (; it._M_node != objeto->getWindowCoordenadas()->end()._M_node->_M_prev; it++) {
 					Coordenada* current = *it;
 					Coordenada* next = static_cast<_List_node<Coordenada*>*>( it._M_node->_M_next)->_M_data;
-					Coordenada* pontoVP1 = calculeCoordenadaVP( current, window->getStart(), window->getEnd());
-					Coordenada* pontoVP2 = calculeCoordenadaVP( next, window->getStart(), window->getEnd());
+					Coordenada* pontoVP1 = calculeCoordenadaVP( current, window->CPPstart, window->CPPend);
+					Coordenada* pontoVP2 = calculeCoordenadaVP( next, window->CPPstart, window->CPPend);
 					painter->drawLine( pontoVP1->getX(), pontoVP1->getY(), pontoVP2->getX(), pontoVP2->getY());
 				}
-				Coordenada* pontoVP1 = calculeCoordenadaVP( objeto->getWindowCoordenadas()->front(), window->getStart(), window->getEnd());
-				Coordenada* pontoVP2 = calculeCoordenadaVP( objeto->getWindowCoordenadas()->back(), window->getStart(), window->getEnd());
+				Coordenada* pontoVP1 = calculeCoordenadaVP( objeto->getWindowCoordenadas()->front(), window->CPPstart, window->CPPend);
+				Coordenada* pontoVP2 = calculeCoordenadaVP( objeto->getWindowCoordenadas()->back(), window->CPPstart, window->CPPend);
 				painter->drawLine(pontoVP1->getX(), pontoVP1->getY(), pontoVP2->getX(), pontoVP2->getY());
 			}
 		}

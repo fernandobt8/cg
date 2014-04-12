@@ -10,28 +10,27 @@
 Window::Window(){
 	start = new Coordenada(0, 0);
 	end = new Coordenada(500, 500);
+	CPPstart = start->clone();
+	CPPend = end->clone();
+	angulo = 0;
 	objetos = NULL;
-}
-
-void Window::updateObjetos(list<ObjetoGeometrico* >* objetos){
-	this->objetos = objetos;
-	list<ObjetoGeometrico* >::iterator it = objetos->begin();
-	for (; it != objetos->end(); it++) {
-		ObjetoGeometrico* objeto = *it;
-		objeto->updateWindowCoordenadas(start);
-	}
-}
-
-Coordenada* Window::getStart(){
-	return start;
 }
 
 list<ObjetoGeometrico*>* Window::getWindowObjetos(){
 	return objetos;
 }
 
-Coordenada* Window::getEnd(){
-	return end;
+void Window::setWindowObjetos(list<ObjetoGeometrico*>* objetos){
+	this->objetos = objetos;
+}
+
+void Window::mutipliqueCPPcoordenadas(Matriz* matriz){
+	delete CPPstart;
+	delete CPPend;
+	CPPstart = start->clone();
+	CPPend = end->clone();
+	CPPstart->vezesMatriz(matriz);
+	CPPend->vezesMatriz(matriz);
 }
 
 void Window::move(double x, double y){
@@ -52,6 +51,12 @@ void Window::zoom(double zoom){
 void Window::setTamanhoWindow(double width, double height){
 	end->setX(start->getX() + width);
 	end->setY(start->getY() + height);
+}
+
+Coordenada* Window::getCenter(){
+	double x = (start->getX() + end->getX()) / 2;
+	double y = (start->getY() + end->getY()) / 2;
+	return new Coordenada(x, y);
 }
 
 double Window::getWidth(){

@@ -24,7 +24,6 @@ public:
 	void transformeObjeto(char* nome, list<Transformacao* >* transformacoes);
 
 private:
-	Window* window;
 	ModeloInterno* modelo;
 	class MainView* view;
 };
