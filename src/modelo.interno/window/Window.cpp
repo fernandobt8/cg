@@ -60,11 +60,13 @@ void Window::move(double x, double y){
 }
 
 void Window::zoom(double zoom){
-	start->addToX(-zoom);
-	start->addToY(-zoom);
-	end->addToX(zoom);
-	end->addToY(zoom);
-	this->move(zoom/2, zoom/2);
+	Coordenada* coor = this->getCenter();
+	Escalonamento* esca = new Escalonamento();
+	esca->setX(zoom);
+	esca->setY(zoom);
+	Matriz* matriz = Matriz::getMatrizEscalonamento(coor, esca);
+	start->vezesMatriz(matriz);
+	end->vezesMatriz(matriz);
 }
 
 void Window::setTamanhoWindow(double width, double height){

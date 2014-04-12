@@ -95,6 +95,7 @@ void ModeloInterno::moveWindow(double x, double y){
 
 void ModeloInterno::zoomWindow(double value){
 	window->zoom(value);
+	this->updateCPPCoordenadas();
 }
 
 void ModeloInterno::setTamanhoWindow(double width, double height){
