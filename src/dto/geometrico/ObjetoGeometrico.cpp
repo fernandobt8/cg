@@ -21,7 +21,7 @@ ObjetoGeometrico::ObjetoGeometrico(const char* nome) {
 	this->windowCoordenadas = new list<Coordenada*>();
 }
 
-void ObjetoGeometrico::addToAllCoordenadas(Coordenada* coordenada) {
+void ObjetoGeometrico::addToCoordenadas(Coordenada* coordenada) {
 	list<Coordenada*>::iterator it = coordenadas->begin();
 	for (; it != coordenadas->end(); it++) {
 		Coordenada* current = *it;
@@ -30,14 +30,14 @@ void ObjetoGeometrico::addToAllCoordenadas(Coordenada* coordenada) {
 	}
 }
 
-void ObjetoGeometrico::multipliqueAllCoordenadas(Matriz* matriz){
+void ObjetoGeometrico::multipliqueCoordenadas(Matriz* matriz){
 	list<Coordenada*>::iterator it = coordenadas->begin();
 	for (; it != coordenadas->end(); it++) {
 		static_cast<Coordenada*>(*it)->vezesMatriz(matriz);
 	}
 }
 
-void ObjetoGeometrico::multipliqueAllCPPcoordenadas(Matriz* matriz) {
+void ObjetoGeometrico::multipliqueCPPcoordenadas(Matriz* matriz) {
 	delete CPPcoordenadas;
 	CPPcoordenadas = new list<Coordenada*>();
 	list<Coordenada*>::iterator it = coordenadas->begin();
@@ -48,7 +48,7 @@ void ObjetoGeometrico::multipliqueAllCPPcoordenadas(Matriz* matriz) {
 	}
 }
 
-void ObjetoGeometrico::subAllWindowCoordenadas(Coordenada* coordenada) {
+void ObjetoGeometrico::subWindowCoordenadas(Coordenada* coordenada) {
 	delete windowCoordenadas;
 	windowCoordenadas = new list<Coordenada*>();
 	list<Coordenada*>::iterator it = CPPcoordenadas->begin();

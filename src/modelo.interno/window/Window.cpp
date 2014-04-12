@@ -24,6 +24,11 @@ void Window::setWindowObjetos(list<ObjetoGeometrico*>* objetos){
 	this->objetos = objetos;
 }
 
+void Window::mutipliqueCoordenadas(Matriz* matriz){
+	start->vezesMatriz(matriz);
+	end->vezesMatriz(matriz);
+}
+
 void Window::mutipliqueCPPcoordenadas(Matriz* matriz){
 	delete CPPstart;
 	delete CPPend;

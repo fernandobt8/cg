@@ -23,6 +23,7 @@ public:
 	virtual ~Window();
 	list<ObjetoGeometrico* >* getWindowObjetos();
 	void setWindowObjetos(list<ObjetoGeometrico*>* objetos);
+	void mutipliqueCoordenadas(Matriz* matriz);
 	void mutipliqueCPPcoordenadas(Matriz* matriz);
 	void move(double x, double y);
 	void zoom(double zoom);

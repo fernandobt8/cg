@@ -23,10 +23,10 @@ public:
 	void addCoordenada(Coordenada* coordenada);
 	list<Coordenada*>* getCoordenadas();
 	list<Coordenada*>* getWindowCoordenadas();
-	void addToAllCoordenadas(Coordenada* coordenada);
-	void multipliqueAllCoordenadas(Matriz* matriz);
-	void subAllWindowCoordenadas(Coordenada* coordenada);
-	void multipliqueAllCPPcoordenadas(Matriz* matriz);
+	void addToCoordenadas(Coordenada* coordenada);
+	void multipliqueCoordenadas(Matriz* matriz);
+	void subWindowCoordenadas(Coordenada* coordenada);
+	void multipliqueCPPcoordenadas(Matriz* matriz);
 
 protected:
 	const char* nome;

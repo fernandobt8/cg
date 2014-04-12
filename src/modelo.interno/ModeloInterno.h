@@ -24,11 +24,12 @@ class ModeloInterno {
 public:
 	ModeloInterno();
 	virtual ~ModeloInterno();
-	void updateCPPcoordenadas();
+	void updateCPPAndWindowCoordenadas();
 	void updateWindowCoordenadas();
 	void addObjeto(ObjetoGeometrico *objeto);
 	void transformeObjeto(char* nome, list<Transformacao* >* transformacoes);
 	void setTamanhoWindow(double width, double height);
+	void rotacioneWindow(double angulo);
 	void moveWindow(double x, double y);
 	void zoomWindow(double value);
 	void printAll();
