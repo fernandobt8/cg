@@ -24,7 +24,7 @@ class ModeloInterno {
 public:
 	ModeloInterno();
 	virtual ~ModeloInterno();
-	void updateCPPAndWindowCoordenadas();
+	void updateCPPCoordenadas();
 	void addObjeto(ObjetoGeometrico *objeto);
 	void transformeObjeto(char* nome, list<Transformacao* >* transformacoes);
 	void setTamanhoWindow(double width, double height);

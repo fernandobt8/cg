@@ -23,17 +23,14 @@ public:
 	void addCoordenada(Coordenada* coordenada);
 	list<Coordenada*>* getWindowCoordenadas();
 	void multipliqueCoordenadas(Matriz* matriz);
-	void subWindowCoordenadas(Coordenada* coordenada);
 	void multipliqueCPPcoordenadas(Matriz* matriz);
 	void printAllcoordenadas();
 	void printAllCPPcoordenadas();
-	void printAllWindowcoordenadas();
 
 protected:
 	const char* nome;
 	list<Coordenada*>* coordenadas;
 	list<Coordenada*>* CPPcoordenadas;
-	list<Coordenada*>* windowCoordenadas;
 };
 
 #endif /* OBJETOGEOMETRICO_H_ */
