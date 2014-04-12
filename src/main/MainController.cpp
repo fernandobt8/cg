@@ -13,6 +13,11 @@ MainController::MainController() {
 	view->show();
 }
 
+void MainController::rotacioneWindow(double angulo){
+	modelo->rotacioneWindow(angulo);
+	view->updateWindow(modelo->window);
+}
+
 void MainController::transformeObjeto(char* nome, list<Transformacao*>* transformacoes){
 	modelo->transformeObjeto(nome, transformacoes);
 	view->updateWindow(modelo->window);

@@ -47,6 +47,7 @@ public slots:
 	void on_adicionarButton_clicked();
 	void on_transformarButton_clicked();
 	void on_windowOkButton_clicked();
+	void on_rotacionarButton_clicked();
 
 private:
 	MainController* controller;
@@ -57,6 +58,7 @@ private:
 	QFrame* WindowFrame;
 	QLineEdit* windowHeightEdit;
 	QLineEdit* windowWidthEdit;
+	QLineEdit* windowRotacaoEdit;
 	QFrame* viewPortFrame;
 	ViewPort* viewPort;
 

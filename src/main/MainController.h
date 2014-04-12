@@ -22,6 +22,7 @@ public:
 	void moveWindow(int tipoMovimento);
 	void setTamanhoWindow(double width, double height);
 	void transformeObjeto(char* nome, list<Transformacao* >* transformacoes);
+	void rotacioneWindow(double angulo);
 
 private:
 	ModeloInterno* modelo;

@@ -40,7 +40,7 @@ void MainView::renderListaObjetosPanel() {
 void MainView::renderWindowPanel() {
 	WindowFrame = new QFrame(this);
 	WindowFrame->setObjectName(QString::fromUtf8("WindowFrame"));
-	WindowFrame->setGeometry(QRect(20, 300, 250, 230));
+	WindowFrame->setGeometry(QRect(20, 260, 250, 260));
 	WindowFrame->setFrameShape(QFrame::WinPanel);
 	WindowFrame->setFrameShadow(QFrame::Raised);
 	QLabel* windowLabel = new QLabel(WindowFrame);
@@ -85,17 +85,26 @@ void MainView::renderControleWindowPanel() {
 	QPushButton* zoomInButton = new QPushButton(WindowFrame);
 	zoomInButton->setObjectName(QString::fromUtf8("zoomInButton"));
 	zoomInButton->setGeometry(QRect(55, 190, 70, 30));
-	zoomInButton->setCursor(QCursor(Qt::PointingHandCursor));
 	QPushButton* zoomOutButton = new QPushButton(WindowFrame);
 	zoomOutButton->setObjectName(QString::fromUtf8("zoomOutButton"));
 	zoomOutButton->setGeometry(QRect(125, 190, 70, 30));
-	zoomOutButton->setCursor(QCursor(Qt::PointingHandCursor));
+	QPushButton* rotacionarButton = new QPushButton(WindowFrame);
+	rotacionarButton->setObjectName(QString::fromUtf8("rotacionarButton"));
+	rotacionarButton->setGeometry(QRect(120, 225, 70, 25));
+	windowRotacaoEdit = new QLineEdit(WindowFrame);
+	windowRotacaoEdit->setObjectName(QString::fromUtf8("windowRotacaoEdit"));
+	windowRotacaoEdit->setGeometry(QRect(63, 225, 50, 25));
+	QLabel* grauLabel = new QLabel(WindowFrame);
+	grauLabel->setObjectName(QString::fromUtf8("grauLabel"));
+	grauLabel->setGeometry(QRect(20, 230, 57, 15));
 	upButton->setText("up");
 	leftButton->setText("left");
 	rightButton->setText("right");
 	downButton->setText("down");
 	zoomInButton->setText("zoom in");
 	zoomOutButton->setText("zoom out");
+	grauLabel->setText("Graus");
+	rotacionarButton->setText("rotacionar");
 }
 
 void MainView::renderViewPortPanel() {
@@ -140,6 +149,11 @@ void MainView::on_zoomOutButton_clicked() {
 void MainView::on_adicionarButton_clicked() {
 	addObjetoWindow = new AdicionarTipoObjetoView(this);
 	addObjetoWindow->show();
+}
+
+
+void MainView::on_rotacionarButton_clicked(){
+	controller->rotacioneWindow(strtod(this->windowRotacaoEdit->text().toUtf8().constData(), NULL));
 }
 
 void MainView::on_transformarButton_clicked() {

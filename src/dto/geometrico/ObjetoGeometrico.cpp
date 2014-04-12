@@ -21,15 +21,6 @@ ObjetoGeometrico::ObjetoGeometrico(const char* nome) {
 	this->windowCoordenadas = new list<Coordenada*>();
 }
 
-void ObjetoGeometrico::addToCoordenadas(Coordenada* coordenada) {
-	list<Coordenada*>::iterator it = coordenadas->begin();
-	for (; it != coordenadas->end(); it++) {
-		Coordenada* current = *it;
-		current->addToX(coordenada->getX());
-		current->addToY(coordenada->getY());
-	}
-}
-
 void ObjetoGeometrico::multipliqueCoordenadas(Matriz* matriz){
 	list<Coordenada*>::iterator it = coordenadas->begin();
 	for (; it != coordenadas->end(); it++) {
@@ -82,16 +73,37 @@ list<Coordenada*>* ObjetoGeometrico::getWindowCoordenadas() {
 	return this->windowCoordenadas;
 }
 
-list<Coordenada*>* ObjetoGeometrico::getCoordenadas() {
-	return this->coordenadas;
-}
-
 const char* ObjetoGeometrico::getNome() {
 	return this->nome;
 }
 
+void ObjetoGeometrico::printAllcoordenadas(){
+	list<Coordenada* >::iterator it = coordenadas->begin();
+	for(; it != coordenadas->end();it++){
+		Coordenada* coordenada = *it;
+		printf("x: %f, y: %f \n", coordenada->getX(), coordenada->getY());
+	}
+}
+
+void ObjetoGeometrico::printAllCPPcoordenadas(){
+	list<Coordenada* >::iterator it = CPPcoordenadas->begin();
+	for(; it != CPPcoordenadas->end();it++){
+		Coordenada* coordenada = *it;
+		printf("x: %f, y: %f \n", coordenada->getX(), coordenada->getY());
+	}
+}
+
+void ObjetoGeometrico::printAllWindowcoordenadas(){
+	list<Coordenada* >::iterator it = windowCoordenadas->begin();
+	for(; it != windowCoordenadas->end();it++){
+		Coordenada* coordenada = *it;
+		printf("x: %f, y: %f \n", coordenada->getX(), coordenada->getY());
+	}
+}
+
 ObjetoGeometrico::~ObjetoGeometrico() {
 	delete coordenadas;
+	delete CPPcoordenadas;
 	delete windowCoordenadas;
 	delete nome;
 }

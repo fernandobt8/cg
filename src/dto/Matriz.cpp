@@ -66,6 +66,15 @@ Matriz* Matriz::getMatrizTransformacao(Coordenada* center, list<Transformacao* >
 	return matriz;
 }
 
+Matriz* Matriz::getMatrizTranslacao(double x, double y){
+	Translacao* trans = new Translacao();
+	trans->setX(x);
+	trans->setY(y);
+	Matriz* matriz = Matriz::getMatrizTranslacao(trans);
+	delete trans;
+	return matriz;
+}
+
 Matriz* Matriz::getMatrizTranslacao(Translacao* translacao){
 	Matriz* matriz = new Matriz(3);
 	matriz->getMatriz()[0][0] = 1;
@@ -105,19 +114,12 @@ Matriz* Matriz::getMatrizRotacao(Coordenada* center, Rotacao* rotacao){
 			x = rotacao->getX();
 			y = rotacao->getY();
 		}
-			Translacao* trans = new Translacao();
-			trans->setX(-x);
-			trans->setY(-y);
-
-			Matriz* transCenter = Matriz::getMatrizTranslacao(trans);
+			Matriz* transCenter = Matriz::getMatrizTranslacao(-x, -y);
 			transCenter->multiplique(matriz);
 
-			trans->setX(x);
-			trans->setY(y);
-			Matriz* transCenterBack = Matriz::getMatrizTranslacao(trans);
+			Matriz* transCenterBack = Matriz::getMatrizTranslacao(x, y);
 			transCenter->multiplique(transCenterBack);
 
-			delete trans;
 			delete matriz;
 			delete transCenterBack;
 			return transCenter;
@@ -126,10 +128,7 @@ Matriz* Matriz::getMatrizRotacao(Coordenada* center, Rotacao* rotacao){
 }
 
 Matriz* Matriz::getMatrizEscalonamento(Coordenada* center, Escalonamento* escalonamento){
-	Translacao* trans = new Translacao();
-	trans->setX(-center->getX());
-	trans->setY(-center->getY());
-	Matriz* transCenter = Matriz::getMatrizTranslacao(trans);
+	Matriz* transCenter = Matriz::getMatrizTranslacao(-center->getX(), -center->getY());
 
 	Matriz* esca = new Matriz(3);
 	esca->getMatriz()[0][0] = escalonamento->getX();
@@ -146,13 +145,9 @@ Matriz* Matriz::getMatrizEscalonamento(Coordenada* center, Escalonamento* escalo
 
 	transCenter->multiplique(esca);
 
-	trans->setX(center->getX());
-	trans->setY(center->getY());
-
-	Matriz* transCenterBack = Matriz::getMatrizTranslacao(trans);
+	Matriz* transCenterBack = Matriz::getMatrizTranslacao(center->getX(), center->getY());
 	transCenter->multiplique(transCenterBack);
 	delete transCenterBack;
-	delete trans;
 	delete esca;
 	return transCenter;
 }

@@ -21,12 +21,13 @@ public:
 	const char* getNome();
 	Coordenada* getCenter();
 	void addCoordenada(Coordenada* coordenada);
-	list<Coordenada*>* getCoordenadas();
 	list<Coordenada*>* getWindowCoordenadas();
-	void addToCoordenadas(Coordenada* coordenada);
 	void multipliqueCoordenadas(Matriz* matriz);
 	void subWindowCoordenadas(Coordenada* coordenada);
 	void multipliqueCPPcoordenadas(Matriz* matriz);
+	void printAllcoordenadas();
+	void printAllCPPcoordenadas();
+	void printAllWindowcoordenadas();
 
 protected:
 	const char* nome;

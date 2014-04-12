@@ -35,6 +35,7 @@ public:
 	static Matriz* getMatrizTransformacao(Coordenada* center, list<Transformacao* >* transformacoes);
 	static Matriz* getMatrizByCoordenada(Coordenada* coordenada);
 	static Matriz* getMatrizTranslacao(Translacao* translacao);
+	static Matriz* getMatrizTranslacao(double x, double y);
 	static Matriz* getMatrizRotacao(Coordenada* center, Rotacao* rotacao);
 	static Matriz* getMatrizEscalonamento(Coordenada* center, Escalonamento* escalonamento);
 	int numLinhas;
