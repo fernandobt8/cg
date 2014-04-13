@@ -11,6 +11,7 @@
 class Transformacao {
 public:
 	Transformacao(char* nome);
+	Transformacao(char* nome, double x, double y);
 	virtual ~Transformacao();
 	double getX();
 	double getY();

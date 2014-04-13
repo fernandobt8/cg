@@ -24,9 +24,9 @@ public:
 	list<ObjetoGeometrico* >* getWindowObjetos();
 	void setWindowObjetos(list<ObjetoGeometrico*>* objetos);
 	void mutipliqueCoordenadas(Matriz* matriz);
-	void mutipliqueCPPcoordenadas(Matriz* matriz);
+	void mutiplyCPPcoordenadas(Matriz* matriz);
 	void move(double x, double y);
-	void zoom(double zoom);
+	void zoom(double zoomX, double zoomY);
 	void setTamanhoWindow(double width, double height);
 	double getWidth();
 	double getHeight();
@@ -34,9 +34,9 @@ public:
 	Coordenada* CPPstart;
 	Coordenada* CPPend;
 	double angulo;
-	Coordenada* start;
 
 private:
+	Coordenada* start;
 	Coordenada* end;
 	list<ObjetoGeometrico* >* objetos;
 

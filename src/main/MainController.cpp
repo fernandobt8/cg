@@ -48,10 +48,10 @@ void MainController::moveWindow(int tipoMovimento) {
 		modelo->moveWindow(10, 0);
 		break;
 	case TipoMovimento::ZOOM_IN:
-		modelo->zoomWindow(0.9);
+		modelo->zoomWindow(0.9, 0.9);
 		break;
 	case TipoMovimento::ZOOM_OUT:
-		modelo->zoomWindow(1.1);
+		modelo->zoomWindow(1.1, 1.1);
 		break;
 	}
 	view->updateWindow(modelo->window);

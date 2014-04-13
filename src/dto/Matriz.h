@@ -29,7 +29,7 @@ public:
 	Matriz(double** matriz, int numLinhas);
 	Matriz(int numLinhas);
 	virtual ~Matriz();
-	void multiplique(Matriz* matriz);
+	void multiply(Matriz* matriz);
 	double** getMatriz();
 	void printAll();
 	static Matriz* getMatrizTransformacao(Coordenada* center, list<Transformacao* >* transformacoes);

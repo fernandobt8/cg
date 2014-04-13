@@ -1,7 +1,7 @@
 #include "MainView.h"
 
 MainView::MainView(MainController* controller) :
-		QWidget(), OnAdicionarObjetoTipoEvent() {
+		QWidget(), OnAdicionarObjetoTipoEvent(), OnOkTransformcaoEvent() {
 	this->controller = controller;
 	if (this->objectName().isEmpty())
 		this->setObjectName(QString::fromUtf8("Widget"));
@@ -146,23 +146,8 @@ void MainView::on_zoomOutButton_clicked() {
 	controller->moveWindow(TipoMovimento::ZOOM_OUT);
 }
 
-void MainView::on_adicionarButton_clicked() {
-	addObjetoWindow = new AdicionarTipoObjetoView(this);
-	addObjetoWindow->show();
-}
-
-
 void MainView::on_rotacionarButton_clicked(){
 	controller->rotacioneWindow(strtod(this->windowRotacaoEdit->text().toUtf8().constData(), NULL));
-}
-
-void MainView::on_transformarButton_clicked() {
-	if(listObjetosPanel->selectedItems().size() == 0){
-		QMessageBox::information(NULL, "Aviso", "Selecione um objeto da lista antes!");
-	}else{
-		transformarWindow = new TransformacaoView(this);
-		transformarWindow->show();
-	}
 }
 
 void MainView::onOkTransformacaoClick(list<Transformacao* >* transformacoes){
@@ -192,6 +177,20 @@ void MainView::OnAdicionarObjetoTipoClick(ObjetoGeometrico *objeto) {
 	this->listObjetosPanel->addItem(item);
 	controller->addObjeto(objeto);
 	delete addObjetoWindow;
+}
+
+void MainView::on_adicionarButton_clicked() {
+	addObjetoWindow = new AdicionarTipoObjetoView(this);
+	addObjetoWindow->show();
+}
+
+void MainView::on_transformarButton_clicked() {
+	if(listObjetosPanel->selectedItems().size() == 0){
+		QMessageBox::information(NULL, "Aviso", "Selecione um objeto da lista antes!");
+	}else{
+		transformarWindow = new TransformacaoView(this);
+		transformarWindow->show();
+	}
 }
 
 MainView::~MainView() {

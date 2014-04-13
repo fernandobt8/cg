@@ -8,11 +8,11 @@
 #include "Translacao.h"
 
 Translacao::Translacao() : Transformacao("Translacao"){
-	// TODO Auto-generated constructor stub
+}
 
+Translacao::Translacao(double x, double y) : Transformacao("Translacao", x, y){
 }
 
 Translacao::~Translacao() {
-	// TODO Auto-generated destructor stub
 }
 

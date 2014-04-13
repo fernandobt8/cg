@@ -25,53 +25,53 @@ void Window::setWindowObjetos(list<ObjetoGeometrico*>* objetos){
 }
 
 void Window::mutipliqueCoordenadas(Matriz* matriz){
-	start->vezesMatriz(matriz);
-	end->vezesMatriz(matriz);
+	start->multiplyByMatriz(matriz);
+	end->multiplyByMatriz(matriz);
 }
 
-void Window::mutipliqueCPPcoordenadas(Matriz* matriz){
+void Window::mutiplyCPPcoordenadas(Matriz* matriz){
 	delete CPPstart;
 	delete CPPend;
 	CPPstart = start->clone();
 	CPPend = end->clone();
-	CPPstart->vezesMatriz(matriz);
-	CPPend->vezesMatriz(matriz);
+	CPPstart->multiplyByMatriz(matriz);
+	CPPend->multiplyByMatriz(matriz);
 }
 
 void Window::move(double x, double y){
 	Coordenada* coor = new Coordenada(x, y);
-	Rotacao* rota = new Rotacao();
-	rota->tipoRotacao = ORIGEM;
-	rota->angulo = this->angulo;
-	Matriz* matriz = Matriz::getMatrizRotacao(NULL, rota);
-	coor->vezesMatriz(matriz);
+	CPPstart->addCoordenada(coor);
+	CPPend->addCoordenada(coor);
 
-	start->addToX(coor->getX());
-	start->addToY(coor->getY());
-	end->addToX(coor->getX());
-	end->addToY(coor->getY());
-	CPPstart->addToX(x);
-	CPPstart->addToY(y);
-	CPPend->addToX(x);
-	CPPend->addToY(y);
+	Rotacao* rota = new Rotacao(this->angulo, ORIGEM);
+	Matriz* matriz = Matriz::getMatrizRotacao(NULL, rota);
+	coor->multiplyByMatriz(matriz);
+	start->addCoordenada(coor);
+	end->addCoordenada(coor);
 	delete coor;
 	delete rota;
 	delete matriz;
 }
 
-void Window::zoom(double zoom){
-	Coordenada* coor = this->getCenter();
-	Escalonamento* esca = new Escalonamento();
-	esca->setX(zoom);
-	esca->setY(zoom);
-	Matriz* matriz = Matriz::getMatrizEscalonamento(coor, esca);
-	start->vezesMatriz(matriz);
-	end->vezesMatriz(matriz);
+void Window::zoom(double zoomX, double zoomY){
+	Coordenada* center = this->getCenter();
+	Escalonamento* esca = new Escalonamento(zoomX, zoomY);
+	Matriz* matriz = Matriz::getMatrizEscalonamento(center, esca);
+	start->multiplyByMatriz(matriz);
+	end->multiplyByMatriz(matriz);
+	center= new Coordenada(0, 0);
+	matriz = Matriz::getMatrizEscalonamento(center, esca);
+	CPPstart->multiplyByMatriz(matriz);
+	CPPend->multiplyByMatriz(matriz);
+	delete center;
+	delete esca;
+	delete matriz;
 }
 
 void Window::setTamanhoWindow(double width, double height){
-	end->setX(start->getX() + width);
-	end->setY(start->getY() + height);
+	double zoomX = width / this->getWidth();
+	double zoomY = height / this->getHeight();
+	this->zoom(zoomX, zoomY);
 }
 
 Coordenada* Window::getCenter(){
@@ -89,6 +89,8 @@ double Window::getHeight(){
 }
 
 Window::~Window() {
+	delete CPPend;
+	delete CPPstart;
 	delete start;
 	delete end;
 }

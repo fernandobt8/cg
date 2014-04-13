@@ -30,7 +30,7 @@ public:
 	void setTamanhoWindow(double width, double height);
 	void rotacioneWindow(double angulo);
 	void moveWindow(double x, double y);
-	void zoomWindow(double value);
+	void zoomWindow(double zoomX, double zoomY);
 	void printAll();
 	class Window* window;
 

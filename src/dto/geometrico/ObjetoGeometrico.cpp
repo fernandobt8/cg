@@ -19,20 +19,20 @@ ObjetoGeometrico::ObjetoGeometrico(const char* nome) {
 	CPPcoordenadas = new list<Coordenada*>();
 }
 
-void ObjetoGeometrico::multipliqueCoordenadas(Matriz* matriz){
+void ObjetoGeometrico::multiplyCoordenadas(Matriz* matriz){
 	list<Coordenada*>::iterator it = coordenadas->begin();
 	for (; it != coordenadas->end(); it++) {
-		static_cast<Coordenada*>(*it)->vezesMatriz(matriz);
+		static_cast<Coordenada*>(*it)->multiplyByMatriz(matriz);
 	}
 }
 
-void ObjetoGeometrico::multipliqueCPPcoordenadas(Matriz* matriz) {
+void ObjetoGeometrico::multiplyCPPcoordenadas(Matriz* matriz) {
 	delete CPPcoordenadas;
 	CPPcoordenadas = new list<Coordenada*>();
 	list<Coordenada*>::iterator it = coordenadas->begin();
 	for (; it != coordenadas->end(); it++) {
 		Coordenada* CPPcoor = static_cast<Coordenada*>(*it)->clone();
-		CPPcoor->vezesMatriz(matriz);
+		CPPcoor->multiplyByMatriz(matriz);
 		CPPcoordenadas->push_back(CPPcoor);
 	}
 }

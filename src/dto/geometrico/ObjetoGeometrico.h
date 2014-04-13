@@ -22,8 +22,8 @@ public:
 	Coordenada* getCenter();
 	void addCoordenada(Coordenada* coordenada);
 	list<Coordenada*>* getWindowCoordenadas();
-	void multipliqueCoordenadas(Matriz* matriz);
-	void multipliqueCPPcoordenadas(Matriz* matriz);
+	void multiplyCoordenadas(Matriz* matriz);
+	void multiplyCPPcoordenadas(Matriz* matriz);
 	void printAllcoordenadas();
 	void printAllCPPcoordenadas();
 

@@ -20,7 +20,7 @@ Matriz::Matriz(int numLinhas){
 	}
 }
 
-void Matriz::multiplique(Matriz* matriz)  {
+void Matriz::multiply(Matriz* matriz)  {
 	double** resultado = new double*[numLinhas];
 	for (int i = 0; i < numLinhas; i++) {
 		resultado[i] = new double[numColunas];
@@ -60,16 +60,14 @@ Matriz* Matriz::getMatrizTransformacao(Coordenada* center, list<Transformacao* >
 		}else if(esca){
 			temp = Matriz::getMatrizEscalonamento(center, esca);
 		}
-		matriz->multiplique(temp);
+		matriz->multiply(temp);
 		delete temp;
 	}
 	return matriz;
 }
 
 Matriz* Matriz::getMatrizTranslacao(double x, double y){
-	Translacao* trans = new Translacao();
-	trans->setX(x);
-	trans->setY(y);
+	Translacao* trans = new Translacao(x, y);
 	Matriz* matriz = Matriz::getMatrizTranslacao(trans);
 	delete trans;
 	return matriz;
@@ -115,10 +113,10 @@ Matriz* Matriz::getMatrizRotacao(Coordenada* center, Rotacao* rotacao){
 			y = rotacao->getY();
 		}
 			Matriz* transCenter = Matriz::getMatrizTranslacao(-x, -y);
-			transCenter->multiplique(matriz);
+			transCenter->multiply(matriz);
 
 			Matriz* transCenterBack = Matriz::getMatrizTranslacao(x, y);
-			transCenter->multiplique(transCenterBack);
+			transCenter->multiply(transCenterBack);
 
 			delete matriz;
 			delete transCenterBack;
@@ -143,10 +141,10 @@ Matriz* Matriz::getMatrizEscalonamento(Coordenada* center, Escalonamento* escalo
 	esca->getMatriz()[2][1] = 0;
 	esca->getMatriz()[2][2] = 1;
 
-	transCenter->multiplique(esca);
+	transCenter->multiply(esca);
 
 	Matriz* transCenterBack = Matriz::getMatrizTranslacao(center->getX(), center->getY());
-	transCenter->multiplique(transCenterBack);
+	transCenter->multiply(transCenterBack);
 	delete transCenterBack;
 	delete esca;
 	return transCenter;

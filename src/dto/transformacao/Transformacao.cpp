@@ -9,6 +9,14 @@
 
 Transformacao::Transformacao(char* nome) {
 	this->nome = nome;
+	x = 0;
+	y = 0;
+}
+
+Transformacao::Transformacao(char* nome, double x, double y){
+	this->nome = nome;
+	this->x = x;
+	this->y = y;
 }
 
 void Transformacao::setX(double x){

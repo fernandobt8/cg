@@ -15,6 +15,7 @@
 class Rotacao : public Transformacao {
 public:
 	Rotacao();
+	Rotacao(double angulo, int tipoRotacao);
 	virtual ~Rotacao();
 	int tipoRotacao; //0-origem 1-centro 2-ponto
 	double angulo;

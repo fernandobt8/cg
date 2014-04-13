@@ -22,9 +22,8 @@ public:
 	double getY();
 	void setX(double x);
 	void setY(double y);
-	void addToX(double x);
-	void addToY(double y);
-	void vezesMatriz(class Matriz* matriz);
+	void addCoordenada(Coordenada* coordenada);
+	void multiplyByMatriz(class Matriz* matriz);
 	Coordenada* clone();
 private:
 	double x;

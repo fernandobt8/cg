@@ -12,6 +12,7 @@
 class Translacao : public Transformacao{
 public:
 	Translacao();
+	Translacao(double x, double y);
 	virtual ~Translacao();
 };
 

@@ -13,25 +13,24 @@ Coordenada::Coordenada(double x, double y) {
 }
 
 Coordenada::Coordenada() {
-
+	x = 0;
+	y = 0;
 }
 
 Coordenada::~Coordenada() {
 }
 
-void Coordenada::vezesMatriz(Matriz* matriz){
+void Coordenada::multiplyByMatriz(Matriz* matriz){
 	Matriz* coordenada = Matriz::getMatrizByCoordenada(this);
-	coordenada->multiplique(matriz);
+	coordenada->multiply(matriz);
 	x = coordenada->getMatriz()[0][0];
 	y = coordenada->getMatriz()[0][1];
+	delete coordenada;
 }
 
-void Coordenada::addToX(double x){
-	this->x += x;
-}
-
-void Coordenada::addToY(double y){
-	this->y += y;
+void Coordenada::addCoordenada(Coordenada* coordenada){
+	this->x += coordenada->getX();
+	this->y += coordenada->getY();
 }
 
 void Coordenada::setX(double x) {

@@ -18,19 +18,17 @@ void ModeloInterno::updateCPPCoordenadas(){
 	Matriz* transOrigem = Matriz::getMatrizTranslacao(-WinCenter->getX(), -WinCenter->getY());
 
 	if(window->angulo / 360 != 0){
-		Rotacao* rotacao = new Rotacao();
-		rotacao->angulo = -window->angulo;
-		rotacao->tipoRotacao = ORIGEM;
+		Rotacao* rotacao = new Rotacao(-window->angulo, ORIGEM);
 		Matriz* matrizRotacao = Matriz::getMatrizRotacao(NULL, rotacao);
-		transOrigem->multiplique(matrizRotacao);
+		transOrigem->multiply(matrizRotacao);
 		delete rotacao;
 		delete matrizRotacao;
 	}
-	window->mutipliqueCPPcoordenadas(transOrigem);
+	window->mutiplyCPPcoordenadas(transOrigem);
 	list<ObjetoGeometrico* >::iterator it = objetos->begin();
 	for (; it != objetos->end(); it++) {
 		ObjetoGeometrico* objeto = *it;
-		objeto->multipliqueCPPcoordenadas(transOrigem);
+		objeto->multiplyCPPcoordenadas(transOrigem);
 	}
 	delete WinCenter;
 	delete transOrigem;
@@ -38,27 +36,25 @@ void ModeloInterno::updateCPPCoordenadas(){
 
 void ModeloInterno::addObjeto(ObjetoGeometrico *objeto){
 	Matriz* transCPP = Matriz::getMatrizTranslacao(window->CPPstart->getX(), window->CPPstart->getY());
-	objeto->multipliqueCPPcoordenadas(transCPP);
+	objeto->multiplyCPPcoordenadas(transCPP);
 	if(window->angulo / 360 != 0){
-		Rotacao* rotacao = new Rotacao();
-		rotacao->tipoRotacao = ORIGEM;
-		rotacao->angulo = window->angulo;
+		Rotacao* rotacao = new Rotacao(window->angulo, ORIGEM);
 		Matriz* matrizRotacao = Matriz::getMatrizRotacao(NULL, rotacao);
-		transCPP->multiplique(matrizRotacao);
+		transCPP->multiply(matrizRotacao);
 		delete rotacao;
 		delete matrizRotacao;
 	}
 	Coordenada* windowCenter = window->getCenter();
 	Matriz* transWindowCenter = Matriz::getMatrizTranslacao(windowCenter->getX(), windowCenter->getY());
-	transCPP->multiplique(transWindowCenter);
-	objeto->multipliqueCoordenadas(transCPP);
-
+	transCPP->multiply(transWindowCenter);
+	objeto->multiplyCoordenadas(transCPP);
 	objetos->push_back(objeto);
 	delete transWindowCenter;
 	delete windowCenter;
 	delete transCPP;
 }
 
+//todo transforma nas coordenadas de window
 void ModeloInterno::transformeObjeto(char* nome, list<Transformacao* >* transformacoes){
 	list<ObjetoGeometrico*>::iterator it = objetos->begin();
 	for(;it != objetos->end(); it++){
@@ -66,7 +62,7 @@ void ModeloInterno::transformeObjeto(char* nome, list<Transformacao* >* transfor
 		if(strcmp(objeto->getNome(), nome) == 0){
 			Coordenada* center = objeto->getCenter();
 			Matriz* matriz = Matriz::getMatrizTransformacao(center, transformacoes);
-			objeto->multipliqueCoordenadas(matriz);
+			objeto->multiplyCoordenadas(matriz);
 			delete matriz;
 			delete center;
 		}
@@ -78,9 +74,7 @@ void ModeloInterno::transformeObjeto(char* nome, list<Transformacao* >* transfor
 void ModeloInterno::rotacioneWindow(double angulo){
 	window->angulo+= angulo;
 	Coordenada* center = window->getCenter();
-	Rotacao* rotacao = new Rotacao();
-	rotacao->tipoRotacao = CENTRO;
-	rotacao->angulo = angulo;
+	Rotacao* rotacao = new Rotacao(angulo, CENTRO);
 	Matriz* matrizRotacao = Matriz::getMatrizRotacao(center, rotacao);
 	window->mutipliqueCoordenadas(matrizRotacao);
 	this->updateCPPCoordenadas();
@@ -93,9 +87,8 @@ void ModeloInterno::moveWindow(double x, double y){
 	window->move(x, y);
 }
 
-void ModeloInterno::zoomWindow(double value){
-	window->zoom(value);
-	this->updateCPPCoordenadas();
+void ModeloInterno::zoomWindow(double zoomX, double zoomY){
+	window->zoom(zoomX, zoomY);
 }
 
 void ModeloInterno::setTamanhoWindow(double width, double height){
