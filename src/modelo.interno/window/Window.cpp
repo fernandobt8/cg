@@ -24,12 +24,12 @@ void Window::setWindowObjetos(list<ObjetoGeometrico*>* objetos){
 	this->objetos = objetos;
 }
 
-void Window::mutipliqueCoordenadas(Matriz* matriz){
+void Window::mutiplyCoordenadas(Matriz* matriz){
 	start->multiplyByMatriz(matriz);
 	end->multiplyByMatriz(matriz);
 }
 
-void Window::mutiplyCPPcoordenadas(Matriz* matriz){
+void Window::mutiplyCoordenadasToCPP(Matriz* matriz){
 	delete CPPstart;
 	delete CPPend;
 	CPPstart = start->clone();
@@ -55,28 +55,31 @@ void Window::move(double x, double y){
 
 void Window::zoom(double zoomX, double zoomY){
 	Coordenada* center = this->getCenter();
-	Escalonamento* esca = new Escalonamento(zoomX, zoomY);
-	Matriz* matriz = Matriz::getMatrizEscalonamento(center, esca);
-	start->multiplyByMatriz(matriz);
-	end->multiplyByMatriz(matriz);
-	center= new Coordenada(0, 0);
-	matriz = Matriz::getMatrizEscalonamento(center, esca);
-	CPPstart->multiplyByMatriz(matriz);
-	CPPend->multiplyByMatriz(matriz);
-	delete center;
-	delete esca;
-	delete matriz;
-}
+	Rotacao* paralelo = new Rotacao(-angulo, ORIGEM);
+	Escalonamento* escalonamento = new Escalonamento(zoomX, zoomY);
 
-void Window::setTamanhoWindow(double width, double height){
-	double zoomX = width / this->getWidth();
-	double zoomY = height / this->getHeight();
-	this->zoom(zoomX, zoomY);
+	Matriz* transOrigem = Matriz::getMatrizTranslacao(-center->getX(), -center->getY());
+	Matriz* rotacaoParalela = Matriz::getMatrizRotacao(NULL, paralelo);
+	Matriz* esca = Matriz::getMatrizEscalonamento(escalonamento);
+	paralelo->angulo = angulo;
+	Matriz* rotacaoNormal = Matriz::getMatrizRotacao(NULL, paralelo);
+	Matriz* transCenter = Matriz::getMatrizTranslacao(center->getX(), center->getY());
+	transOrigem->multiply(rotacaoParalela);
+	transOrigem->multiply(esca);
+	transOrigem->multiply(rotacaoNormal);
+	transOrigem->multiply(transCenter);
+	this->mutiplyCoordenadas(transOrigem);
 }
 
 Coordenada* Window::getCenter(){
 	double x = (start->getX() + end->getX()) / 2;
 	double y = (start->getY() + end->getY()) / 2;
+	return new Coordenada(x, y);
+}
+
+Coordenada* Window::getCenterCPP(){
+	double x = (CPPstart->getX() + CPPend->getX()) / 2;
+	double y = (CPPstart->getY() + CPPend->getY()) / 2;
 	return new Coordenada(x, y);
 }
 

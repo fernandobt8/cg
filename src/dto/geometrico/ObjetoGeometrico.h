@@ -19,11 +19,13 @@ public:
 	ObjetoGeometrico(const char* nome);
 	virtual ~ObjetoGeometrico();
 	const char* getNome();
-	Coordenada* getCenter();
+	Coordenada* getCenterInCPP();
 	void addCoordenada(Coordenada* coordenada);
 	list<Coordenada*>* getWindowCoordenadas();
 	void multiplyCoordenadas(Matriz* matriz);
+	void multiplyCoordenadasToCPP(Matriz* matriz);
 	void multiplyCPPcoordenadas(Matriz* matriz);
+	void multiplyCPPtoCoordenadas(Matriz* matriz);
 	void printAllcoordenadas();
 	void printAllCPPcoordenadas();
 

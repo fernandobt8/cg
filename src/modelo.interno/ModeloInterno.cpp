@@ -13,61 +13,31 @@ ModeloInterno::ModeloInterno() {
 	window->setWindowObjetos(objetos);
 }
 
-void ModeloInterno::updateCPPCoordenadas(){
-	Coordenada* WinCenter = window->getCenter();
-	Matriz* transOrigem = Matriz::getMatrizTranslacao(-WinCenter->getX(), -WinCenter->getY());
-
-	if(window->angulo / 360 != 0){
-		Rotacao* rotacao = new Rotacao(-window->angulo, ORIGEM);
-		Matriz* matrizRotacao = Matriz::getMatrizRotacao(NULL, rotacao);
-		transOrigem->multiply(matrizRotacao);
-		delete rotacao;
-		delete matrizRotacao;
-	}
-	window->mutiplyCPPcoordenadas(transOrigem);
-	list<ObjetoGeometrico* >::iterator it = objetos->begin();
-	for (; it != objetos->end(); it++) {
-		ObjetoGeometrico* objeto = *it;
-		objeto->multiplyCPPcoordenadas(transOrigem);
-	}
-	delete WinCenter;
-	delete transOrigem;
-}
-
 void ModeloInterno::addObjeto(ObjetoGeometrico *objeto){
 	Matriz* transCPP = Matriz::getMatrizTranslacao(window->CPPstart->getX(), window->CPPstart->getY());
-	objeto->multiplyCPPcoordenadas(transCPP);
-	if(window->angulo / 360 != 0){
-		Rotacao* rotacao = new Rotacao(window->angulo, ORIGEM);
-		Matriz* matrizRotacao = Matriz::getMatrizRotacao(NULL, rotacao);
-		transCPP->multiply(matrizRotacao);
-		delete rotacao;
-		delete matrizRotacao;
-	}
-	Coordenada* windowCenter = window->getCenter();
-	Matriz* transWindowCenter = Matriz::getMatrizTranslacao(windowCenter->getX(), windowCenter->getY());
-	transCPP->multiply(transWindowCenter);
-	objeto->multiplyCoordenadas(transCPP);
+	objeto->multiplyCoordenadasToCPP(transCPP);
+	Matriz* matrizWorldCoordinates = this->getMatrizToWorldCoordinates();
+	objeto->multiplyCPPtoCoordenadas(matrizWorldCoordinates);
 	objetos->push_back(objeto);
-	delete transWindowCenter;
-	delete windowCenter;
+	delete matrizWorldCoordinates;
 	delete transCPP;
 }
 
-//todo transforma nas coordenadas de window
 void ModeloInterno::transformeObjeto(char* nome, list<Transformacao* >* transformacoes){
 	list<ObjetoGeometrico*>::iterator it = objetos->begin();
 	for(;it != objetos->end(); it++){
 		ObjetoGeometrico* objeto = *it;
 		if(strcmp(objeto->getNome(), nome) == 0){
-			Coordenada* center = objeto->getCenter();
+			Coordenada* center = objeto->getCenterInCPP();
 			Matriz* matriz = Matriz::getMatrizTransformacao(center, transformacoes);
-			objeto->multiplyCoordenadas(matriz);
+			objeto->multiplyCPPcoordenadas(matriz);
+			Matriz* matrizWorldCoordinates = this->getMatrizToWorldCoordinates();
+			objeto->multiplyCPPtoCoordenadas(matrizWorldCoordinates);
+			delete matrizWorldCoordinates;
 			delete matriz;
 			delete center;
 		}
 	}
-	this->updateCPPCoordenadas();
 	delete transformacoes;
 }
 
@@ -76,7 +46,7 @@ void ModeloInterno::rotacioneWindow(double angulo){
 	Coordenada* center = window->getCenter();
 	Rotacao* rotacao = new Rotacao(angulo, CENTRO);
 	Matriz* matrizRotacao = Matriz::getMatrizRotacao(center, rotacao);
-	window->mutipliqueCoordenadas(matrizRotacao);
+	window->mutiplyCoordenadas(matrizRotacao);
 	this->updateCPPCoordenadas();
 	delete center;
 	delete rotacao;
@@ -89,11 +59,51 @@ void ModeloInterno::moveWindow(double x, double y){
 
 void ModeloInterno::zoomWindow(double zoomX, double zoomY){
 	window->zoom(zoomX, zoomY);
+	this->updateCPPCoordenadas();
 }
 
 void ModeloInterno::setTamanhoWindow(double width, double height){
-	window->setTamanhoWindow(width, height);
-	this->updateCPPCoordenadas();
+	double zoomX = width / window->getWidth();
+	double zoomY = height / window->getHeight();
+	this->zoomWindow(zoomX, zoomY);
+}
+
+void ModeloInterno::updateCPPCoordenadas(){
+	Coordenada* WinCenter = window->getCenter();
+	Matriz* transOrigem = Matriz::getMatrizTranslacao(-WinCenter->getX(), -WinCenter->getY());
+
+	if(window->angulo / 360 != 0){
+		Rotacao* rotacao = new Rotacao(-window->angulo, ORIGEM);
+		Matriz* matrizRotacao = Matriz::getMatrizRotacao(NULL, rotacao);
+		transOrigem->multiply(matrizRotacao);
+		delete rotacao;
+		delete matrizRotacao;
+	}
+	window->mutiplyCoordenadasToCPP(transOrigem);
+	list<ObjetoGeometrico* >::iterator it = objetos->begin();
+	for (; it != objetos->end(); it++) {
+		ObjetoGeometrico* objeto = *it;
+		objeto->multiplyCoordenadasToCPP(transOrigem);
+	}
+	delete WinCenter;
+	delete transOrigem;
+}
+
+Matriz* ModeloInterno::getMatrizToWorldCoordinates(){
+	Coordenada* windowCenter = window->getCenter();
+	Matriz* transWindowCenter = Matriz::getMatrizTranslacao(windowCenter->getX(), windowCenter->getY());
+	if(window->angulo / 360 != 0){
+		Rotacao* rotacao = new Rotacao(window->angulo, ORIGEM);
+		Matriz* matrizRotacao = Matriz::getMatrizRotacao(NULL, rotacao);
+		matrizRotacao->multiply(transWindowCenter);
+		delete rotacao;
+		delete windowCenter;
+		delete transWindowCenter;
+		return matrizRotacao;
+	}else{
+		delete windowCenter;
+		return transWindowCenter;
+	}
 }
 
 void ModeloInterno::printAll(){

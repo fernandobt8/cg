@@ -38,6 +38,7 @@ public:
 	static Matriz* getMatrizTranslacao(double x, double y);
 	static Matriz* getMatrizRotacao(Coordenada* center, Rotacao* rotacao);
 	static Matriz* getMatrizEscalonamento(Coordenada* center, Escalonamento* escalonamento);
+	static Matriz* getMatrizEscalonamento(Escalonamento* escalonamento);
 	int numLinhas;
 
 private:

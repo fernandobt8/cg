@@ -23,14 +23,14 @@ public:
 	virtual ~Window();
 	list<ObjetoGeometrico* >* getWindowObjetos();
 	void setWindowObjetos(list<ObjetoGeometrico*>* objetos);
-	void mutipliqueCoordenadas(Matriz* matriz);
-	void mutiplyCPPcoordenadas(Matriz* matriz);
+	void mutiplyCoordenadas(Matriz* matriz);
+	void mutiplyCoordenadasToCPP(Matriz* matriz);
 	void move(double x, double y);
 	void zoom(double zoomX, double zoomY);
-	void setTamanhoWindow(double width, double height);
 	double getWidth();
 	double getHeight();
 	Coordenada* getCenter();
+	Coordenada* getCenterCPP();
 	Coordenada* CPPstart;
 	Coordenada* CPPend;
 	double angulo;

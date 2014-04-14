@@ -166,7 +166,8 @@ void MainView::on_windowOkButton_clicked() {
 }
 
 void MainView::updateWindow(Window* window) {
-	windowWidthEdit->setText(QString::number(window->getWidth()));
+	double num = window->getWidth();
+	windowWidthEdit->setText(QString::number(num));
 	windowHeightEdit->setText(QString::number(window->getHeight()));
 	viewPort->renderWindow(window);
 }

@@ -24,7 +24,6 @@ class ModeloInterno {
 public:
 	ModeloInterno();
 	virtual ~ModeloInterno();
-	void updateCPPCoordenadas();
 	void addObjeto(ObjetoGeometrico *objeto);
 	void transformeObjeto(char* nome, list<Transformacao* >* transformacoes);
 	void setTamanhoWindow(double width, double height);
@@ -36,6 +35,9 @@ public:
 
 private:
 	list<ObjetoGeometrico*> *objetos;
+	Matriz* getMatrizToWorldCoordinates();
+	void updateCPPCoordenadas();
+
 };
 
 #endif /* MODELOINTERNO_H_ */

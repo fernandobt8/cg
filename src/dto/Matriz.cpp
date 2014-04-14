@@ -127,7 +127,16 @@ Matriz* Matriz::getMatrizRotacao(Coordenada* center, Rotacao* rotacao){
 
 Matriz* Matriz::getMatrizEscalonamento(Coordenada* center, Escalonamento* escalonamento){
 	Matriz* transCenter = Matriz::getMatrizTranslacao(-center->getX(), -center->getY());
+	Matriz* esca = Matriz::getMatrizEscalonamento(escalonamento);
+	transCenter->multiply(esca);
+	Matriz* transCenterBack = Matriz::getMatrizTranslacao(center->getX(), center->getY());
+	transCenter->multiply(transCenterBack);
+	delete transCenterBack;
+	delete esca;
+	return transCenter;
+}
 
+Matriz* Matriz::getMatrizEscalonamento(Escalonamento* escalonamento){
 	Matriz* esca = new Matriz(3);
 	esca->getMatriz()[0][0] = escalonamento->getX();
 	esca->getMatriz()[0][1] = 0;
@@ -140,14 +149,7 @@ Matriz* Matriz::getMatrizEscalonamento(Coordenada* center, Escalonamento* escalo
 	esca->getMatriz()[2][0] = 0;
 	esca->getMatriz()[2][1] = 0;
 	esca->getMatriz()[2][2] = 1;
-
-	transCenter->multiply(esca);
-
-	Matriz* transCenterBack = Matriz::getMatrizTranslacao(center->getX(), center->getY());
-	transCenter->multiply(transCenterBack);
-	delete transCenterBack;
-	delete esca;
-	return transCenter;
+	return esca;
 }
 
 Matriz* Matriz::getMatrizByCoordenada(Coordenada* coordenada){

@@ -26,7 +26,7 @@ void ObjetoGeometrico::multiplyCoordenadas(Matriz* matriz){
 	}
 }
 
-void ObjetoGeometrico::multiplyCPPcoordenadas(Matriz* matriz) {
+void ObjetoGeometrico::multiplyCoordenadasToCPP(Matriz* matriz) {
 	delete CPPcoordenadas;
 	CPPcoordenadas = new list<Coordenada*>();
 	list<Coordenada*>::iterator it = coordenadas->begin();
@@ -37,12 +37,30 @@ void ObjetoGeometrico::multiplyCPPcoordenadas(Matriz* matriz) {
 	}
 }
 
-Coordenada* ObjetoGeometrico::getCenter(){
+void ObjetoGeometrico::multiplyCPPcoordenadas(Matriz* matriz) {
+	list<Coordenada*>::iterator it = CPPcoordenadas->begin();
+	for (; it != CPPcoordenadas->end(); it++) {
+		static_cast<Coordenada*>(*it)->multiplyByMatriz(matriz);
+	}
+}
+
+void ObjetoGeometrico::multiplyCPPtoCoordenadas(Matriz* matriz) {
+	delete coordenadas;
+	coordenadas = new list<Coordenada*>();
+	list<Coordenada*>::iterator it = CPPcoordenadas->begin();
+	for (; it != CPPcoordenadas->end(); it++) {
+		Coordenada* coor = static_cast<Coordenada*>(*it)->clone();
+		coor->multiplyByMatriz(matriz);
+		coordenadas->push_back(coor);
+	}
+}
+
+Coordenada* ObjetoGeometrico::getCenterInCPP(){
 	int numberPoints = 0;
 	double somaX = 0;
 	double somaY = 0;
-	list<Coordenada* >::iterator it = coordenadas->begin();
-	for(; it != coordenadas->end();it++){
+	list<Coordenada* >::iterator it = CPPcoordenadas->begin();
+	for(; it != CPPcoordenadas->end();it++){
 		Coordenada* coordenada = *it;
 		somaX += coordenada->getX();
 		somaY += coordenada->getY();
