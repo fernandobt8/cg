@@ -1,7 +1,7 @@
 #include "MainView.h"
 
 MainView::MainView(MainController* controller) :
-		QWidget(), OnAdicionarObjetoTipoEvent(), OnOkTransformcaoEvent() {
+	OnAdicionarObjetoTipoEvent(), OnOkTransformcaoEvent(), QWidget() {
 	this->controller = controller;
 	if (this->objectName().isEmpty())
 		this->setObjectName(QString::fromUtf8("Widget"));

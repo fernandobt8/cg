@@ -40,9 +40,6 @@ void Window::mutiplyCoordenadasToCPP(Matriz* matriz){
 
 void Window::move(double x, double y){
 	Coordenada* coor = new Coordenada(x, y);
-	CPPstart->addCoordenada(coor);
-	CPPend->addCoordenada(coor);
-
 	Rotacao* rota = new Rotacao(this->angulo, ORIGEM);
 	Matriz* matriz = Matriz::getMatrizRotacao(NULL, rota);
 	coor->multiplyByMatriz(matriz);
@@ -69,6 +66,17 @@ void Window::zoom(double zoomX, double zoomY){
 	transOrigem->multiply(rotacaoNormal);
 	transOrigem->multiply(transCenter);
 	this->mutiplyCoordenadas(transOrigem);
+}
+
+void Window::rotacione(double angulo){
+	this->angulo+= angulo;
+	Coordenada* center = this->getCenter();
+	Rotacao* rotacao = new Rotacao(angulo, CENTRO);
+	Matriz* matrizRotacao = Matriz::getMatrizRotacao(center, rotacao);
+	this->mutiplyCoordenadas(matrizRotacao);
+	delete center;
+	delete rotacao;
+	delete matrizRotacao;
 }
 
 Coordenada* Window::getCenter(){

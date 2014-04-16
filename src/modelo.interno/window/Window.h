@@ -27,6 +27,7 @@ public:
 	void mutiplyCoordenadasToCPP(Matriz* matriz);
 	void move(double x, double y);
 	void zoom(double zoomX, double zoomY);
+	void rotacione(double angulo);
 	double getWidth();
 	double getHeight();
 	Coordenada* getCenter();
