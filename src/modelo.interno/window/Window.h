@@ -30,13 +30,14 @@ public:
 	void rotacione(double angulo);
 	double getWidth();
 	double getHeight();
+	double getAngulo();
 	Coordenada* getCenter();
 	Coordenada* getCenterCPP();
 	Coordenada* CPPstart;
 	Coordenada* CPPend;
-	double angulo;
 
 private:
+	Coordenada* vectorUp;
 	Coordenada* start;
 	Coordenada* end;
 	list<ObjetoGeometrico* >* objetos;

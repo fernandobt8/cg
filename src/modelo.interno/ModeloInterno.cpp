@@ -59,8 +59,9 @@ void ModeloInterno::updateCPPCoordenadas(){
 	Coordenada* WinCenter = window->getCenter();
 	Matriz* transOrigem = Matriz::getMatrizTranslacao(-WinCenter->getX(), -WinCenter->getY());
 
-	if(window->angulo / 360 != 0){
-		Rotacao* rotacao = new Rotacao(-window->angulo, ORIGEM);
+	double angulo = window->getAngulo();
+	if(angulo/ 360 != 0){
+		Rotacao* rotacao = new Rotacao(-angulo, ORIGEM);
 		Matriz* matrizRotacao = Matriz::getMatrizRotacao(NULL, rotacao);
 		transOrigem->multiply(matrizRotacao);
 		delete rotacao;
