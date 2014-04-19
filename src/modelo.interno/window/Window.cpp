@@ -40,46 +40,47 @@ void Window::mutiplyCoordenadasToCPP(Matriz* matriz){
 
 void Window::move(double x, double y){
 	Coordenada* coor = new Coordenada(x, y);
-	Rotacao* rota = new Rotacao(this->getAngulo(), ORIGEM);
-	Matriz* matriz = Matriz::getMatrizRotacao(NULL, rota);
+	Matriz* matriz = new MatrizRotacao(this->getAngulo());
 	coor->multiplyByMatriz(matriz);
 	start->addCoordenada(coor);
 	end->addCoordenada(coor);
 	delete coor;
-	delete rota;
 	delete matriz;
 }
 
 void Window::zoom(double zoomX, double zoomY){
 	Coordenada* center = this->getCenter();
-	Rotacao* paralelo = new Rotacao(-this->getAngulo(), ORIGEM);
-	Escalonamento* escalonamento = new Escalonamento(zoomX, zoomY);
+	double angulo = this->getAngulo();
 
-	Matriz* transOrigem = Matriz::getMatrizTranslacao(-center->getX(), -center->getY());
-	Matriz* rotacaoParalela = Matriz::getMatrizRotacao(NULL, paralelo);
-	Matriz* esca = Matriz::getMatrizEscalonamento(escalonamento);
-	paralelo->angulo = this->getAngulo();
-	Matriz* rotacaoNormal = Matriz::getMatrizRotacao(NULL, paralelo);
-	Matriz* transCenter = Matriz::getMatrizTranslacao(center->getX(), center->getY());
+	Matriz* transOrigem = new MatrizTranslacao(-center->getX(), -center->getY());
+	Matriz* rotacaoParalela = new MatrizRotacao(-angulo);
+	Matriz* esca = new MatrizEscalonamento(zoomX, zoomY);
+	Matriz* rotacaoNormal = new MatrizRotacao(angulo);
+	Matriz* transCenter = new MatrizTranslacao(center->getX(), center->getY());
 	transOrigem->multiply(rotacaoParalela);
 	transOrigem->multiply(esca);
 	transOrigem->multiply(rotacaoNormal);
 	transOrigem->multiply(transCenter);
 	this->mutiplyCoordenadas(transOrigem);
+	delete center;
+	delete transOrigem;
+	delete rotacaoParalela;
+	delete esca;
+	delete rotacaoNormal;
+	delete transCenter;
 }
 
 void Window::rotacione(double angulo){
-	Rotacao* rotacaoVector = new Rotacao(angulo, ORIGEM);
-	Matriz* matrizRotacaoVector = Matriz::getMatrizRotacao(NULL , rotacaoVector);
+	Matriz* matrizRotacaoVector = new MatrizRotacao(angulo);
 	vectorUp->multiplyByMatriz(matrizRotacaoVector);
+
 	Coordenada* center = this->getCenter();
 	Rotacao* rotacao = new Rotacao(angulo, CENTRO);
-	Matriz* matrizRotacao = Matriz::getMatrizRotacao(center, rotacao);
+	Matriz* matrizRotacao = new MatrizRotacao(center, rotacao);
 	this->mutiplyCoordenadas(matrizRotacao);
 	delete center;
 	delete rotacao;
 	delete matrizRotacao;
-	delete rotacaoVector;
 	delete matrizRotacaoVector;
 }
 

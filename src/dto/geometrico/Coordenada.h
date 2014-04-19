@@ -9,7 +9,7 @@
 #define COORDENADA_H_
 
 #include <string.h>
-#include "../Matriz.h"
+#include "../matriz/Matriz.h"
 
 using namespace std;
 

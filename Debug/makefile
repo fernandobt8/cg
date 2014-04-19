@@ -18,8 +18,8 @@ RM := rm -rf
 -include src/modelo.interno/subdir.mk
 -include src/main/subdir.mk
 -include src/dto/transformacao/subdir.mk
+-include src/dto/matriz/subdir.mk
 -include src/dto/geometrico/subdir.mk
--include src/dto/subdir.mk
 -include src/application/subdir.mk
 -include src/adicionar/objetos/reta/subdir.mk
 -include src/adicionar/objetos/ponto/subdir.mk

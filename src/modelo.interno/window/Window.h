@@ -9,11 +9,10 @@
 #define WINDOW_H_
 #include "../../dto/geometrico/Coordenada.h"
 #include "../../dto/geometrico/ObjetoGeometrico.h"
-#include "../../dto/geometrico/Reta.h"
-#include "../../dto/geometrico/Poligono.h"
-#include "../../dto/geometrico/Ponto.h"
-#include "../../dto/Matriz.h"
-#include "../../modelo.interno/ModeloInterno.h"
+#include "../../dto/matriz/Matriz.h"
+#include "../../dto/matriz/MatrizEscalonamento.h"
+#include "../../dto/matriz/MatrizRotacao.h"
+#include "../../dto/matriz/MatrizTranslacao.h"
 #include <list>
 using namespace std;
 

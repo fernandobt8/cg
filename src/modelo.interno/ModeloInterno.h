@@ -9,10 +9,10 @@
 #define MODELOINTERNO_H_
 
 #include "../dto/geometrico/ObjetoGeometrico.h"
-#include "../dto/transformacao/Transformacao.h"
-#include "../dto/transformacao/Rotacao.h"
-#include "../dto/transformacao/Translacao.h"
-#include "../dto/Matriz.h"
+#include "../dto/matriz/Matriz.h"
+#include "../dto/matriz/MatrizRotacao.h"
+#include "../dto/matriz/MatrizTranslacao.h"
+#include "../utils/Utils.h"
 #include "window/Window.h"
 #include <stdio.h>
 #include <stdlib.h>

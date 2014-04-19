@@ -24,7 +24,7 @@ void ModeloInterno::transformeObjeto(char* nome, list<Transformacao* >* transfor
 		ObjetoGeometrico* objeto = *it;
 		if(strcmp(objeto->getNome(), nome) == 0){
 			Coordenada* center = objeto->getCenter();
-			Matriz* matriz = Matriz::getMatrizTransformacao(center, transformacoes);
+			Matriz* matriz = Utils::getMatrizTransformacao(center, transformacoes);
 			objeto->multiplyCoordenadas(matriz);
 			delete matriz;
 			delete center;
@@ -57,14 +57,12 @@ void ModeloInterno::setTamanhoWindow(double width, double height){
 
 void ModeloInterno::updateCPPCoordenadas(){
 	Coordenada* WinCenter = window->getCenter();
-	Matriz* transOrigem = Matriz::getMatrizTranslacao(-WinCenter->getX(), -WinCenter->getY());
+	Matriz* transOrigem = new MatrizTranslacao(-WinCenter->getX(), -WinCenter->getY());
 
 	double angulo = window->getAngulo();
 	if(angulo/ 360 != 0){
-		Rotacao* rotacao = new Rotacao(-angulo, ORIGEM);
-		Matriz* matrizRotacao = Matriz::getMatrizRotacao(NULL, rotacao);
+		Matriz* matrizRotacao = new MatrizRotacao(-angulo);
 		transOrigem->multiply(matrizRotacao);
-		delete rotacao;
 		delete matrizRotacao;
 	}
 	window->mutiplyCoordenadasToCPP(transOrigem);
@@ -81,8 +79,7 @@ void ModeloInterno::printAll(){
 	list<ObjetoGeometrico*>::iterator it = objetos->begin();
 	for(; it!= objetos->end() ; it++){
 		ObjetoGeometrico* o = *it;
-		printf(o->getNome());
-		printf("\n");
+		printf("%s\n", o->getNome());
 	}
 }
 

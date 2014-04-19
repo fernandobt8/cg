@@ -33,8 +33,8 @@ src/modelo.interno/window \
 src/modelo.interno \
 src/main \
 src/dto/transformacao \
+src/dto/matriz \
 src/dto/geometrico \
-src/dto \
 src/application \
 src/adicionar/objetos/reta \
 src/adicionar/objetos/ponto \
