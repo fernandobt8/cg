@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'TransformacaoView.h'
 **
-** Created: Sun Apr 6 13:07:44 2014
+** Created: Sat Apr 19 19:37:34 2014
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -61,7 +61,7 @@ const QMetaObjectExtraData TransformacaoView::staticMetaObjectExtraData = {
 };
 
 const QMetaObject TransformacaoView::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_TransformacaoView,
+    { &QMainWindow::staticMetaObject, qt_meta_stringdata_TransformacaoView,
       qt_meta_data_TransformacaoView, &staticMetaObjectExtraData }
 };
 
@@ -81,12 +81,12 @@ void *TransformacaoView::qt_metacast(const char *_clname)
         return static_cast<void*>(const_cast< TransformacaoView*>(this));
     if (!strcmp(_clname, "OnAdicionarTipoTransformacaoEvent"))
         return static_cast< OnAdicionarTipoTransformacaoEvent*>(const_cast< TransformacaoView*>(this));
-    return QWidget::qt_metacast(_clname);
+    return QMainWindow::qt_metacast(_clname);
 }
 
 int TransformacaoView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QWidget::qt_metacall(_c, _id, _a);
+    _id = QMainWindow::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {

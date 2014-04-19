@@ -10,20 +10,17 @@
 AdicionarPoligono::AdicionarPoligono(QWidget *parent,
 		OnAdicionarObjetoTipoEvent *event) :
 		AdicionarAbstract(parent, event) {
-	adicionarCoordenadaButton = new QPushButton(this);
-	adicionarCoordenadaButton->setObjectName(
-			QString::fromUtf8("adicionarCoordenada"));
-	adicionarCoordenadaButton->setGeometry(QRect(25, 125, 200, 30));
-	adicionarCoordenadaButton->setText(
-			QString::fromUtf8("Adicionar nova coordenada"));
 	coordenadasList = new QListWidget(this);
 	coordenadasList->setObjectName(QString::fromUtf8("coordenadasList"));
-	coordenadasList->setGeometry(QRect(50, 175, 150, 60));
+	coordenadasList->setGeometry(QRect(190, 65, 130, 150));
+	adicionarCoordenadaButton = new QPushButton(this);
+	adicionarCoordenadaButton->setObjectName(QString::fromUtf8("adicionarCoordenada"));
+	adicionarCoordenadaButton->setGeometry(QRect(100, 190, 80, 25));
+	adicionarCoordenadaButton->setText(QString::fromUtf8("Adicionar"));
 	removerCoordenadaButton = new QPushButton(this);
-	removerCoordenadaButton->setObjectName(
-			QString::fromUtf8("removerCoordenada"));
-	removerCoordenadaButton->setGeometry(QRect(25, 255, 200, 30));
-	removerCoordenadaButton->setText(QString::fromUtf8("Remover coordenada"));
+	removerCoordenadaButton->setObjectName(QString::fromUtf8("removerCoordenada"));
+	removerCoordenadaButton->setGeometry(QRect(20, 190, 80, 25));
+	removerCoordenadaButton->setText(QString::fromUtf8("Remover"));
 	coordenadasPoligono = new list<Coordenada*>();
 
 	QMetaObject::connectSlotsByName(this);

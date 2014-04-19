@@ -14,26 +14,26 @@ TransformacaoAbstractView::TransformacaoAbstractView() : QWidget() {
 	labelMovimentacao->setText(QString::fromUtf8("Movimentação"));
 	frame = new QFrame(this);
 	frame->setObjectName(QString::fromUtf8("frame"));
-	frame->setGeometry(QRect(20, 30, 240, 130));
+	frame->setGeometry(QRect(20, 30, 320, 100));
 	frame->setFrameShape(QFrame::WinPanel);
 	frame->setFrameShadow(QFrame::Sunken);
-	xLabel = new QLabel(this);
+	QLabel* xLabel = new QLabel(frame);
 	xLabel->setObjectName(QString::fromUtf8("xLabel"));
-	xLabel->setGeometry(QRect(90, 50, 15, 20));
-	xLabel->setText(QString::fromUtf8("X"));
-	xInput = new QLineEdit(this);
+	xLabel->setGeometry(QRect(10, 30, 10, 25));
+	xLabel->setText(QString::fromUtf8("x"));
+	xInput = new QLineEdit(frame);
 	xInput->setObjectName(QString::fromUtf8("xInput"));
-	xInput->setGeometry(QRect(110, 50, 70, 30));
-	yLabel = new QLabel(this);
+	xInput->setGeometry(QRect(20, 30, 50, 25));
+	QLabel* yLabel = new QLabel(frame);
 	yLabel->setObjectName(QString::fromUtf8("yLabel"));
-	yLabel->setGeometry(QRect(90, 110, 15, 20));
-	yLabel->setText(QString::fromUtf8("Y"));
-	yInput = new QLineEdit(this);
+	yLabel->setGeometry(QRect(80, 30, 10, 25));
+	yLabel->setText(QString::fromUtf8("y"));
+	yInput = new QLineEdit(frame);
 	yInput->setObjectName(QString::fromUtf8("yInput"));
-	yInput->setGeometry(QRect(110, 100, 70, 30));
+	yInput->setGeometry(QRect(90, 30, 50, 25));
 	adicionarButton = new QPushButton(this);
 	adicionarButton->setObjectName(QString::fromUtf8("adicionarButton"));
-	adicionarButton->setGeometry(QRect(250, 260, 100, 30));
+	adicionarButton->setGeometry(QRect(260, 260, 80, 25));
 	adicionarButton->setText(QString::fromUtf8("Adicionar"));
 	QMetaObject::connectSlotsByName(this);
 }
@@ -41,10 +41,6 @@ TransformacaoAbstractView::TransformacaoAbstractView() : QWidget() {
 TransformacaoAbstractView::~TransformacaoAbstractView() {
 	delete frame;
 	delete labelMovimentacao;
-	delete xInput;
-	delete xLabel;
-	delete yInput;
-	delete yLabel;
 	delete adicionarButton;
 }
 

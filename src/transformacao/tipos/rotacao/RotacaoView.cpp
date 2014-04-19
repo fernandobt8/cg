@@ -52,12 +52,12 @@ RotacaoView::RotacaoView(OnAdicionarTipoTransformacaoEvent* event) :
 	xLabel = new QLabel(this);
 	xLabel->setObjectName(QString::fromUtf8("xLabel"));
 	xLabel->setGeometry(QRect(135, 205, 51, 17));
-	xLabel->setText(QString::fromUtf8("X"));
+	xLabel->setText(QString::fromUtf8("x"));
 	xLabel->hide();
 	yLabel = new QLabel(this);
 	yLabel->setObjectName(QString::fromUtf8("yLabel"));
 	yLabel->setGeometry(QRect(135, 230, 51, 17));
-	yLabel->setText(QString::fromUtf8("Y"));
+	yLabel->setText(QString::fromUtf8("y"));
 	yLabel->hide();
 	xInput = new QLineEdit(this);
 	xInput->setObjectName(QString::fromUtf8("xInput"));
@@ -69,7 +69,7 @@ RotacaoView::RotacaoView(OnAdicionarTipoTransformacaoEvent* event) :
 	yInput->hide();
 	adicionarButton = new QPushButton(this);
 	adicionarButton->setObjectName(QString::fromUtf8("adicionarButton"));
-	adicionarButton->setGeometry(QRect(250, 260, 100, 30));
+	adicionarButton->setGeometry(QRect(260, 260, 80, 25));
 	adicionarButton->setText(QString::fromUtf8("Adicionar"));
 
 	QMetaObject::connectSlotsByName(this);

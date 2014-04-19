@@ -11,6 +11,9 @@ MainView::MainView(MainController* controller) :
 	this->renderControleWindowPanel();
 	this->renderViewPortPanel();
 	QMetaObject::connectSlotsByName(this);
+
+	QDesktopWidget *desktop = QApplication::desktop();
+	this->move((desktop->width() - 850) / 2, (desktop->height() - 550) / 2);
 	this->setWindowTitle(QString::fromUtf8("Computação Grafica"));
 }
 
@@ -28,11 +31,11 @@ void MainView::renderListaObjetosPanel() {
 	listObjetosPanel->setGeometry(QRect(10, 30, 230, 150));
 	QPushButton* adicionarButton = new QPushButton(listObjetosFrame);
 	adicionarButton->setObjectName(QString::fromUtf8("adicionarButton"));
-	adicionarButton->setGeometry(QRect(10, 185, 100, 25));
+	adicionarButton->setGeometry(QRect(160, 185, 80, 25));
 	adicionarButton->setText("Adicionar");
 	QPushButton* transformarButton = new QPushButton(listObjetosFrame);
 	transformarButton->setObjectName(QString::fromUtf8("transformarButton"));
-	transformarButton->setGeometry(QRect(140, 185, 100, 25));
+	transformarButton->setGeometry(QRect(10, 185, 80, 25));
 	transformarButton->setText("Transformar");
 	listLabel->setText("Lista de objetos");
 }
@@ -186,12 +189,12 @@ void MainView::on_adicionarButton_clicked() {
 }
 
 void MainView::on_transformarButton_clicked() {
-	if(listObjetosPanel->selectedItems().size() == 0){
-		QMessageBox::information(NULL, "Aviso", "Selecione um objeto da lista antes!");
-	}else{
+	//if(listObjetosPanel->selectedItems().size() == 0){
+	//	QMessageBox::information(NULL, "Aviso", "Selecione um objeto da lista antes!");
+	//}else{
 		transformarWindow = new TransformacaoView(this);
 		transformarWindow->show();
-	}
+	//}
 }
 
 MainView::~MainView() {

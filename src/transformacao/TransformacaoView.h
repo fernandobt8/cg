@@ -12,7 +12,9 @@
 #include <QtGui/QListWidget>
 #include <QtGui/QPushButton>
 #include <QtGui/QTabWidget>
-#include <QtGui/QWidget>
+#include <QtGui/QMainWindow>
+#include <QtGui/QDesktopWidget>
+#include <QtGui/qapplication.h>
 #include "tipos/rotacao/RotacaoView.h"
 #include "tipos/escalonamento/EscalonamentoView.h"
 #include "tipos/translacao/TranslacaoView.h"
@@ -23,7 +25,7 @@
 
 using namespace std;
 
-class TransformacaoView : public QWidget, virtual public OnAdicionarTipoTransformacaoEvent{
+class TransformacaoView : public QMainWindow, virtual public OnAdicionarTipoTransformacaoEvent{
 	Q_OBJECT
 public:
 	TransformacaoView(OnOkTransformcaoEvent* event);

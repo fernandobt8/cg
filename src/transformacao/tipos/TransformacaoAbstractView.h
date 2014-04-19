@@ -27,9 +27,7 @@ protected:
 	QFrame *frame;
 	QLabel *labelMovimentacao;
 	QLineEdit *xInput;
-	QLabel *xLabel;
 	QLineEdit *yInput;
-	QLabel *yLabel;
 	QPushButton *adicionarButton;
 
 };

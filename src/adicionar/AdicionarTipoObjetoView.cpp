@@ -6,20 +6,17 @@ AdicionarTipoObjetoView::AdicionarTipoObjetoView(
 
 	if (this->objectName().isEmpty())
 		this->setObjectName(QString::fromUtf8("AdicionarWindow"));
-	this->resize(270, 400);
-	centralwidget = new QWidget(this);
-	centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-	tabWindow = new QTabWidget(centralwidget);
+	this->resize(500, 300);
+	tabWindow = new QTabWidget(this);
 	tabWindow->setObjectName(QString::fromUtf8("tabWindow"));
-	tabWindow->setGeometry(QRect(10, 10, 250, 380));
-	tabWindow->addTab(new AdicionarPonto(this, event),
-			QString("Ponto"));
-	tabWindow->addTab(new AdicionarReta(this, event),
-			QString("Reta"));
-	tabWindow->addTab(new AdicionarPoligono(this, event),
-			QString("Poligono"));
+	tabWindow->setGeometry(QRect(10, 10, 480, 280));
+	tabWindow->addTab(new AdicionarPonto(this, event), QString("Ponto"));
+	tabWindow->addTab(new AdicionarReta(this, event), QString("Reta"));
+	tabWindow->addTab(new AdicionarPoligono(this, event), QString("Poligono"));
 
-	this->setCentralWidget(centralwidget);
+	QDesktopWidget *desktop = QApplication::desktop();
+	this->move((desktop->width() - 500) / 2, (desktop->height() - 300) / 2);
+	this->setWindowTitle(QString::fromUtf8("Adicionar forma geométrica "));
 }
 
 void AdicionarTipoObjetoView::closeEvent(QCloseEvent* event){
@@ -27,6 +24,6 @@ void AdicionarTipoObjetoView::closeEvent(QCloseEvent* event){
 }
 
 AdicionarTipoObjetoView::~AdicionarTipoObjetoView() {
-	delete centralwidget;
+	delete tabWindow;
 }
 

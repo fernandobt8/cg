@@ -9,8 +9,9 @@
 #define ADICIONARWINDOW_H_
 
 #include "QtGui/qwidget.h"
-#include "QtGui/qwidget.h"
 #include "QtGui/qmainwindow.h"
+#include <QtGui/qapplication.h>
+#include <QtGui/qdesktopwidget.h>
 #include "objetos/ponto/AdicionarPonto.h"
 #include "objetos/reta/AdicionarReta.h"
 #include "objetos/poligono/AdicionarPoligono.h"
@@ -25,7 +26,6 @@ public:
 	virtual void closeEvent(QCloseEvent* event);
 
 private:
-	QWidget *centralwidget;
 	QTabWidget *tabWindow;
 
 };

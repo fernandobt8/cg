@@ -7,38 +7,37 @@
 
 #include "TransformacaoView.h"
 
-TransformacaoView::TransformacaoView(OnOkTransformcaoEvent *event) :
-		QWidget() {
+TransformacaoView::TransformacaoView(OnOkTransformcaoEvent *event) : QMainWindow() {
 	this->event = event;
 	transformacoes = new list<Transformacao*>();
 	if (this->objectName().isEmpty())
 		this->setObjectName(QString::fromUtf8("Transformacoes"));
-	this->setWindowTitle(QString::fromUtf8("Transformacoes"));
-	this->resize(560, 420);
+	this->setWindowTitle(QString::fromUtf8("Transformações"));
+	this->resize(560, 400);
 	transformacaoWidget = new QTabWidget(this);
-	transformacaoWidget->setObjectName(
-			QString::fromUtf8("transformacaoWidget"));
-	transformacaoWidget->setGeometry(QRect(10, 20, 370, 330));
+	transformacaoWidget->setObjectName(QString::fromUtf8("transformacaoWidget"));
+	transformacaoWidget->setGeometry(QRect(10, 10, 370, 330));
 	transformacaoWidget->addTab(new TranslacaoView(this), QString::fromUtf8("Translação"));
 	transformacaoWidget->addTab(new RotacaoView(this), QString::fromUtf8("Rotação"));
-	transformacaoWidget->addTab(new EscalonamentoView(this),
-			QString::fromUtf8("Escalonamento"));
+	transformacaoWidget->addTab(new EscalonamentoView(this), QString::fromUtf8("Escalonamento"));
 	listWidget = new QListWidget(this);
 	listWidget->setObjectName(QString::fromUtf8("listWidget"));
-	listWidget->setGeometry(QRect(400, 40, 141, 321));
+	listWidget->setGeometry(QRect(405, 39, 140, 320));
 	label = new QLabel(this);
 	label->setObjectName(QString::fromUtf8("label"));
-	label->setGeometry(QRect(400, 20, 111, 17));
+	label->setGeometry(QRect(405, 17, 110, 20));
 	label->setText(QString::fromUtf8("Transformações"));
 	okButton = new QPushButton(this);
 	okButton->setObjectName(QString::fromUtf8("okButton"));
-	okButton->setGeometry(QRect(440, 370, 100, 30));
+	okButton->setGeometry(QRect(465, 370, 80, 25));
 	okButton->setText(QString::fromUtf8("OK"));
 	cancelarButton = new QPushButton(this);
 	cancelarButton->setObjectName(QString::fromUtf8("cancelarButton"));
-	cancelarButton->setGeometry(QRect(10, 370, 100, 30));
+	cancelarButton->setGeometry(QRect(385, 370, 80, 25));
 	cancelarButton->setText(QString::fromUtf8("Cancelar"));
 
+	QDesktopWidget *desktop = QApplication::desktop();
+	this->move((desktop->width() - 560) / 2, (desktop->height() - 400) / 2);
 	QMetaObject::connectSlotsByName(this);
 }
 
