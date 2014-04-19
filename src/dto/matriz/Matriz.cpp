@@ -47,24 +47,24 @@ void Matriz::multiply(Matriz* matriz)  {
 	this->matriz = resultado;
 }
 
-void Matriz::printAll(){
-	 for (int i=0; i<numLinhas; i++) {
-	  for (int j=0; j<numColunas; j++) {
-		printf("%f ", matriz[i][j]);
-	  }
-	  printf("\n");
-	}
-}
-
 double** Matriz::getMatriz() {
 	return matriz;
 }
 
 void Matriz::clearMatriz(){
 	for(int i = 0; i < numLinhas; i++){
-		delete[] matriz[i];
+		delete matriz[i];
 	}
-	delete[] matriz;
+	delete matriz;
+}
+
+void Matriz::printAll(){
+	for (int i=0; i<numLinhas; i++) {
+	  for (int j=0; j<numColunas; j++) {
+		printf("%f ", matriz[i][j]);
+	  }
+	  printf("\n");
+	}
 }
 
 Matriz::~Matriz() {

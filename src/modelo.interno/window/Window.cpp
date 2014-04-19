@@ -121,5 +121,6 @@ Window::~Window() {
 	delete CPPstart;
 	delete start;
 	delete end;
+	delete vectorUp;
 }
 

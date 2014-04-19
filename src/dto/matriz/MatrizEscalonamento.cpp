@@ -15,7 +15,6 @@ MatrizEscalonamento::MatrizEscalonamento(Coordenada* center, Escalonamento* esca
 	transCenter->multiply(transCenterBack);
 	this->clearMatriz();
 	matriz = transCenter->getMatriz();
-	delete transCenter;
 	delete transCenterBack;
 }
 

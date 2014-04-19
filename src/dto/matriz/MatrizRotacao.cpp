@@ -27,7 +27,6 @@ MatrizRotacao::MatrizRotacao(Coordenada* center, Rotacao* rotacao) : Matriz(){
 
 			this->clearMatriz();
 			this->matriz = transCenter->getMatriz();
-			delete transCenter;
 			delete transCenterBack;
 	}
 }
