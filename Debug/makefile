@@ -20,6 +20,7 @@ RM := rm -rf
 -include src/dto/transformacao/subdir.mk
 -include src/dto/matriz/subdir.mk
 -include src/dto/geometrico/subdir.mk
+-include src/clipping/subdir.mk
 -include src/application/subdir.mk
 -include src/adicionar/objetos/reta/subdir.mk
 -include src/adicionar/objetos/ponto/subdir.mk

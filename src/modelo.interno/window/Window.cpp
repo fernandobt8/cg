@@ -14,6 +14,7 @@ Window::Window(){
 	CPPstart = new Coordenada(-250, -250);
 	CPPend = new Coordenada(250, 250);
 	objetos = NULL;
+
 }
 
 list<ObjetoGeometrico*>* Window::getWindowObjetos(){

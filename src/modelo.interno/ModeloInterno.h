@@ -31,6 +31,7 @@ public:
 	void moveWindow(double x, double y);
 	void zoomWindow(double zoomX, double zoomY);
 	void printAll();
+	list<ObjetoGeometrico*>* getObjetos();
 	class Window* window;
 
 private:

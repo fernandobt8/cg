@@ -87,3 +87,7 @@ ModeloInterno::~ModeloInterno() {
 	delete objetos;
 	delete window;
 }
+
+list<ObjetoGeometrico*>* ModeloInterno::getObjetos(){
+	return this->objetos;
+}

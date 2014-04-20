@@ -35,6 +35,7 @@ src/main \
 src/dto/transformacao \
 src/dto/matriz \
 src/dto/geometrico \
+src/clipping \
 src/application \
 src/adicionar/objetos/reta \
 src/adicionar/objetos/ponto \

@@ -57,8 +57,13 @@ void MainController::moveWindow(TipoMovimento::Window tipoMovimento) {
 	view->updateWindow(modelo->window);
 }
 
+
+
 MainController::~MainController() {
 	delete modelo;
 	delete view;
 }
 
+list<ObjetoGeometrico*>* MainController::getObjetos() {
+	return this->modelo->getObjetos();
+}
