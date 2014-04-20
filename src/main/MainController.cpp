@@ -33,7 +33,7 @@ void MainController::addObjeto(ObjetoGeometrico* objeto) {
 	view->updateWindow(modelo->window);
 }
 
-void MainController::moveWindow(int tipoMovimento) {
+void MainController::moveWindow(TipoMovimento::Window tipoMovimento) {
 	switch (tipoMovimento) {
 	case TipoMovimento::UP:
 		modelo->moveWindow(0, 10);

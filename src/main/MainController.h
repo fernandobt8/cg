@@ -19,7 +19,7 @@ public:
 	MainController();
 	virtual ~MainController();
 	void addObjeto(ObjetoGeometrico* objeto);
-	void moveWindow(int tipoMovimento);
+	void moveWindow(TipoMovimento::Window tipoMovimento);
 	void setTamanhoWindow(double width, double height);
 	void transformeObjeto(char* nome, list<Transformacao* >* transformacoes);
 	void rotacioneWindow(double angulo);

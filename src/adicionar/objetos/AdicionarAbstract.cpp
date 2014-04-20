@@ -38,11 +38,11 @@ AdicionarAbstract::AdicionarAbstract(QWidget *parent, OnAdicionarObjetoTipoEvent
 	yInput->setGeometry(QRect(120, 90, 50, 25));
 	okButton = new QPushButton(this);
 	okButton->setObjectName(QString::fromUtf8("okButton"));
-	okButton->setGeometry(QRect(100, 225, 80, 25));
+	okButton->setGeometry(QRect(375, 225, 80, 25));
 	okButton->setText(QString::fromUtf8("Ok"));
 	cancelarButton = new QPushButton(this);
 	cancelarButton->setObjectName(QString::fromUtf8("cancelarButton"));
-	cancelarButton->setGeometry(QRect(20, 225, 80, 25));
+	cancelarButton->setGeometry(QRect(295, 225, 80, 25));
 	cancelarButton->setText(QString::fromUtf8("Cancelar"));
 
 	QMetaObject::connectSlotsByName(this);

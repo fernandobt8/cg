@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'AdicionarPoligono.h'
 **
-** Created: Sat Mar 29 13:10:32 2014
+** Created: Sun Apr 20 01:00:28 2014
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_AdicionarPoligono[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -32,13 +32,17 @@ static const uint qt_meta_data_AdicionarPoligono[] = {
 
  // slots: signature, parameters, type, tag, flags
       19,   18,   18,   18, 0x0a,
-      50,   18,   18,   18, 0x0a,
+      58,   50,   18,   18, 0x0a,
+      87,   18,   18,   18, 0x0a,
+     118,   18,   18,   18, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_AdicionarPoligono[] = {
-    "AdicionarPoligono\0\0on_removerCoordenada_clicked()\0"
+    "AdicionarPoligono\0\0on_selectColorButton_clicked()\0"
+    "checked\0on_checkAberto_toggled(bool)\0"
+    "on_removerCoordenada_clicked()\0"
     "on_adicionarCoordenada_clicked()\0"
 };
 
@@ -48,12 +52,13 @@ void AdicionarPoligono::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         Q_ASSERT(staticMetaObject.cast(_o));
         AdicionarPoligono *_t = static_cast<AdicionarPoligono *>(_o);
         switch (_id) {
-        case 0: _t->on_removerCoordenada_clicked(); break;
-        case 1: _t->on_adicionarCoordenada_clicked(); break;
+        case 0: _t->on_selectColorButton_clicked(); break;
+        case 1: _t->on_checkAberto_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 2: _t->on_removerCoordenada_clicked(); break;
+        case 3: _t->on_adicionarCoordenada_clicked(); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObjectExtraData AdicionarPoligono::staticMetaObjectExtraData = {
@@ -88,9 +93,9 @@ int AdicionarPoligono::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 4;
     }
     return _id;
 }

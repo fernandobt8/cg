@@ -11,6 +11,9 @@
 #include "../AdicionarAbstract.h"
 #include <list>
 #include "QtGui/qlistwidget.h"
+#include "QtGui/qcolordialog.h"
+#include <QtGui/qcheckbox.h>
+#include <QtGui/qpalette.h>
 #include "../../../dto/geometrico/Poligono.h"
 #include "../../../utils/Utils.h"
 
@@ -24,10 +27,17 @@ public:
 	virtual ~AdicionarPoligono();
 	virtual void on_okButton_clicked();
 
+public slots:
+	void on_selectColorButton_clicked();
+	void on_checkAberto_toggled(bool checked);
 private:
 	QListWidget *coordenadasList;
 	QPushButton *adicionarCoordenadaButton;
 	QPushButton *removerCoordenadaButton;
+	QCheckBox* checkAberto;
+	QPushButton *selectColorButton;
+	QWidget* panelSelectedColor;
+	QColor color;
 	list<Coordenada*>* coordenadasPoligono;
 
 public slots:

@@ -14,6 +14,7 @@
 #include "../dto/geometrico/Poligono.h"
 #include "../dto/geometrico/Reta.h"
 #include "QtGui/qpainter.h"
+#include <QtGui/qbrush.h>
 #include "../modelo.interno/window/Window.h"
 #include <list>
 
@@ -26,6 +27,10 @@ public:
 	virtual ~ViewPort();
 	void renderWindow(Window* window);
 	virtual void paintEvent(QPaintEvent* event);
+	void drawPonto(QPainter* painter, Ponto* ponto);
+	void drawPoligono(QPainter* painter, Poligono* poligono);
+	void drawReta(QPainter* painter, Reta* reta);
+	void drawViewPort(QPainter* painter);
 
 private:
 	Window* window;

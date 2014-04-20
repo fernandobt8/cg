@@ -9,6 +9,7 @@
 #define POLIGONO_H_
 
 #include <list>
+#include <QtGui/qcolor.h>
 #include "Reta.h"
 #include "ObjetoGeometrico.h"
 
@@ -18,6 +19,9 @@ class Poligono: public ObjetoGeometrico {
 public:
 	Poligono(const char* nome, list<Coordenada*> *coordenadas);
 	virtual ~Poligono();
+	QColor* color;
+	bool aberto;
+
 };
 
 #endif /* POLIGONO_H_ */

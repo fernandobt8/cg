@@ -7,8 +7,9 @@
 
 #ifndef TIPOMOVIMENTO_H_
 #define TIPOMOVIMENTO_H_
-namespace TipoMovimento{
-	 enum {
+class TipoMovimento{
+public :
+	enum Window{
 		UP,
 		LEFT,
 		DOWN,
@@ -16,5 +17,5 @@ namespace TipoMovimento{
 		ZOOM_IN,
 		ZOOM_OUT
 	};
-}
+};
 #endif /* TIPOMOVIMENTO_H_ */

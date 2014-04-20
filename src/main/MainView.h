@@ -37,6 +37,7 @@ public:
 	virtual void OnAdicionarObjetoTipoClick(class ObjetoGeometrico *objeto);
 	virtual void onOkTransformacaoClick(list<Transformacao* >* transformacoes);
 	void updateWindow(Window* window);
+
 public slots:
 	void on_upButton_clicked();
 	void on_rightButton_clicked();
