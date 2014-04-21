@@ -10,7 +10,7 @@
 ModeloInterno::ModeloInterno() {
 	objetos = new list<ObjetoGeometrico*>();
 	this->window = new Window();
-	window->setWindowObjetos(objetos);
+	clipping = new Clipping(window);
 }
 
 void ModeloInterno::addObjeto(ObjetoGeometrico *objeto){
@@ -56,6 +56,7 @@ void ModeloInterno::setTamanhoWindow(double width, double height){
 }
 
 void ModeloInterno::updateCPPCoordenadas(){
+	window->setWindowObjetos(new list<ObjetoGeometrico* >);
 	Coordenada* WinCenter = window->getCenter();
 	Matriz* transOrigem = new MatrizTranslacao(-WinCenter->getX(), -WinCenter->getY());
 
@@ -70,6 +71,7 @@ void ModeloInterno::updateCPPCoordenadas(){
 	for (; it != objetos->end(); it++) {
 		ObjetoGeometrico* objeto = *it;
 		objeto->multiplyCoordenadasToCPP(transOrigem);
+		clipping->clip(objeto);
 	}
 	delete WinCenter;
 	delete transOrigem;

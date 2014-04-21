@@ -21,7 +21,7 @@ public:
 	const char* getNome();
 	Coordenada* getCenter();
 	void addCoordenada(Coordenada* coordenada);
-	list<Coordenada*>* getWindowCoordenadas();
+	list<Coordenada*>* getCPPCoordenadas();
 	void multiplyCoordenadas(Matriz* matriz);
 	void multiplyCoordenadasToCPP(Matriz* matriz);
 	void printAllcoordenadas();

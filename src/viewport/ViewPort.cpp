@@ -49,14 +49,14 @@ void ViewPort::paintEvent(QPaintEvent* event){
 }
 
 void ViewPort::drawPonto(QPainter* painter, Ponto* ponto){
-	Coordenada* pontoVP = calculeCoordenadaVP(ponto->getWindowCoordenadas()->front(), window->CPPstart, window->CPPend);
+	Coordenada* pontoVP = calculeCoordenadaVP(ponto->getCPPCoordenadas()->front(), window->CPPstart, window->CPPend);
 	painter->drawEllipse(pontoVP->getX(),pontoVP->getY(),2,2);
 }
 
 void ViewPort::drawPoligono(QPainter* painter, Poligono* poligono){
 	if(poligono->aberto){
-		list<Coordenada*>::iterator it = poligono->getWindowCoordenadas()->begin();
-		for (; it._M_node != poligono->getWindowCoordenadas()->end()._M_node->_M_prev; it++) {
+		list<Coordenada*>::iterator it = poligono->getCPPCoordenadas()->begin();
+		for (; it._M_node != poligono->getCPPCoordenadas()->end()._M_node->_M_prev; it++) {
 			Coordenada* next = static_cast<_List_node<Coordenada*>*>( it._M_node->_M_next)->_M_data;
 			Coordenada* pontoVP1 = calculeCoordenadaVP(*it, window->CPPstart, window->CPPend);
 			Coordenada* pontoVP2 = calculeCoordenadaVP(next, window->CPPstart, window->CPPend);
@@ -64,8 +64,8 @@ void ViewPort::drawPoligono(QPainter* painter, Poligono* poligono){
 		}
 	}else{
 		QPolygonF polygon = QPolygonF(false);
-		list<Coordenada*>::iterator it = poligono->getWindowCoordenadas()->begin();
-		for (; it!= poligono->getWindowCoordenadas()->end(); it++) {
+		list<Coordenada*>::iterator it = poligono->getCPPCoordenadas()->begin();
+		for (; it!= poligono->getCPPCoordenadas()->end(); it++) {
 			Coordenada* pontoVP1 = calculeCoordenadaVP(*it, window->CPPstart, window->CPPend);
 			polygon.push_back(QPointF(pontoVP1->getX(), pontoVP1->getY()));
 		}
@@ -76,8 +76,8 @@ void ViewPort::drawPoligono(QPainter* painter, Poligono* poligono){
 }
 
 void ViewPort::drawReta(QPainter* painter, Reta* reta){
-	Coordenada* pontoVP1 = calculeCoordenadaVP(reta->getWindowCoordenadas()->front(), window->CPPstart, window->CPPend);
-	Coordenada* pontoVP2 = calculeCoordenadaVP(reta->getWindowCoordenadas()->back(), window->CPPstart, window->CPPend);
+	Coordenada* pontoVP1 = calculeCoordenadaVP(reta->getCPPCoordenadas()->front(), window->CPPstart, window->CPPend);
+	Coordenada* pontoVP2 = calculeCoordenadaVP(reta->getCPPCoordenadas()->back(), window->CPPstart, window->CPPend);
 	painter->drawLine( pontoVP1->getX(), pontoVP1->getY(), pontoVP2->getX(), pontoVP2->getY());
 }
 

@@ -18,14 +18,12 @@ using namespace std;
 
 class Clipping {
 public:
-	Clipping(Window *window, list<ObjetoGeometrico*> *objetos);
+	Clipping(Window *window);
 	virtual ~Clipping();
-	void clip();
+	void clip(ObjetoGeometrico* objeto);
 	void clippingPonto(Ponto* ponto);
 	void clippingReta(Reta* reta);
 	Window *window;
-	list<ObjetoGeometrico*> *objetos;
-	list<ObjetoGeometrico*> *novaLista;
 	void verificarQuadrante(Coordenada *coordenada, bool* RC);
 	Coordenada* retaParcial(bool* RC,Coordenada *coordenadaInicial, Coordenada* coordenadaFinal, Coordenada *novaCoordenada);
 };

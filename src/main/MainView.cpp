@@ -169,11 +169,8 @@ void MainView::on_windowOkButton_clicked() {
 }
 
 void MainView::updateWindow(Window* window) {
-	double num = window->getWidth();
-	windowWidthEdit->setText(QString::number(num));
+	windowWidthEdit->setText(QString::number(window->getWidth()));
 	windowHeightEdit->setText(QString::number(window->getHeight()));
-	Clipping *clipping = new Clipping(window, this->controller->getObjetos());
-	clipping->clip();
 	viewPort->renderWindow(window);
 }
 

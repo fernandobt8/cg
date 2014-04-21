@@ -55,7 +55,7 @@ void ObjetoGeometrico::addCoordenada(Coordenada* coordenada) {
 	coordenadas->push_back(coordenada);
 }
 
-list<Coordenada*>* ObjetoGeometrico::getWindowCoordenadas() {
+list<Coordenada*>* ObjetoGeometrico::getCPPCoordenadas() {
 	return this->CPPcoordenadas;
 }
 
@@ -86,5 +86,6 @@ ObjetoGeometrico::~ObjetoGeometrico() {
 }
 
 void ObjetoGeometrico::setCPPCoordenadas(list<Coordenada*>* CPPcoordenadas) {
+	delete this->CPPcoordenadas;
 	this->CPPcoordenadas = CPPcoordenadas;
 }
