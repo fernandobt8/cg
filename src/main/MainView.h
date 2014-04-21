@@ -26,7 +26,7 @@
 #include "../api/OnOkTransformcaoEvent.h"
 #include "../dto/transformacao/Transformacao.h"
 #include "../utils/Utils.h"
-#include "../clipping/ClippingPonto.h"
+#include "../clipping/Clipping.h"
 
 using namespace std;
 

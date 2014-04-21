@@ -26,6 +26,7 @@ public:
 	void multiplyCoordenadasToCPP(Matriz* matriz);
 	void printAllcoordenadas();
 	void printAllCPPcoordenadas();
+	void setCPPCoordenadas(list<Coordenada*>* CPPcoordenadas);
 
 protected:
 	const char* nome;

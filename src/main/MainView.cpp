@@ -172,8 +172,8 @@ void MainView::updateWindow(Window* window) {
 	double num = window->getWidth();
 	windowWidthEdit->setText(QString::number(num));
 	windowHeightEdit->setText(QString::number(window->getHeight()));
-	ClippingPonto *clippingPonto = new ClippingPonto();
-	clippingPonto->clip(window, this->controller->getObjetos());
+	Clipping *clipping = new Clipping(window, this->controller->getObjetos());
+	clipping->clip();
 	viewPort->renderWindow(window);
 }
 

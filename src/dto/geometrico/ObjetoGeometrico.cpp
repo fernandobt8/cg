@@ -85,3 +85,6 @@ ObjetoGeometrico::~ObjetoGeometrico() {
 	delete nome;
 }
 
+void ObjetoGeometrico::setCPPCoordenadas(list<Coordenada*>* CPPcoordenadas) {
+	this->CPPcoordenadas = CPPcoordenadas;
+}
