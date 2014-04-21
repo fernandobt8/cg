@@ -41,13 +41,7 @@ void Clipping::clippingPonto(Ponto* ponto) {
 }
 
 void Clipping::clippingReta(Reta *reta) {
-	Coordenada *coordenada1 = reta->getCPPCoordenadas()->front();
-	Coordenada *coordenada2 = reta->getCPPCoordenadas()->back();
-	if(clippingLine(coordenada1, coordenada2)){
-		list<Coordenada*>* CPPcoordenadas = new list<Coordenada*>();
-		CPPcoordenadas->push_back(coordenada1);
-		CPPcoordenadas->push_back(coordenada2);
-		reta->setCPPCoordenadas(CPPcoordenadas);
+	if(clippingLine(reta->getCPPCoordenadas()->front(), reta->getCPPCoordenadas()->back())){
 		window->getWindowObjetos()->push_back(reta);
 	}
 }
@@ -63,13 +57,9 @@ bool Clipping::clippingLine(Coordenada* coordenada1, Coordenada* coordenada2){
 	verificarQuadrante(coordenada2, RC2);
 	if (!(RC1[acima] || RC1[abaixo] || RC1[direita] || RC1[esquerda]) && !(RC2[acima] || RC2[abaixo] || RC2[direita] || RC2[esquerda])) {
 		return true;
-	} else {
-		if (!((RC1[acima] && RC2[acima]) || (RC1[abaixo] && RC2[abaixo]) || (RC1[direita] && RC2[direita]) || (RC1[esquerda] && RC2[esquerda]))) {
-			Coordenada* coordenadaInicial = coordenada1->clone();
-			Coordenada* coordenadaFinal = coordenada2->clone();
-			return clippingCoordenada(RC1, coordenadaInicial, coordenadaFinal, coordenada1) |
-					clippingCoordenada(RC2, coordenadaInicial, coordenadaFinal, coordenada2);
-		}
+	} else if (!((RC1[acima] && RC2[acima]) || (RC1[abaixo] && RC2[abaixo]) || (RC1[direita] && RC2[direita]) || (RC1[esquerda] && RC2[esquerda]))){
+		return clippingCoordenada(RC1, coordenada1, coordenada2, coordenada1) |
+				clippingCoordenada(RC2, coordenada1, coordenada2, coordenada2);
 	}
 	return false;
 }
