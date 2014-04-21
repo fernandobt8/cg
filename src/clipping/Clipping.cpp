@@ -17,12 +17,13 @@ Clipping::~Clipping() {
 
 void Clipping::clip(ObjetoGeometrico* objeto) {
 	Ponto* ponto = dynamic_cast<Ponto*>(objeto);
+	Reta* reta = dynamic_cast<Reta*>(objeto);
+	Poligono* poligono = dynamic_cast<Poligono*>(objeto);
 	if (ponto) {
 		clippingPonto(ponto);
-	}
-	Reta* reta = dynamic_cast<Reta*>(objeto);
-	if (reta) {
+	} else if (reta) {
 		clippingReta(reta);
+	} else if(poligono){
 	}
 }
 
@@ -40,56 +41,87 @@ void Clipping::clippingPonto(Ponto* ponto) {
 }
 
 void Clipping::clippingReta(Reta *reta) {
-	bool RC1[4] = { false };
-	bool RC2[4] = { false };
 	Coordenada *coordenada1 = reta->getCPPCoordenadas()->front();
 	Coordenada *coordenada2 = reta->getCPPCoordenadas()->back();
+	if(clippingLine(coordenada1, coordenada2)){
+		list<Coordenada*>* CPPcoordenadas = new list<Coordenada*>();
+		CPPcoordenadas->push_back(coordenada1);
+		CPPcoordenadas->push_back(coordenada2);
+		reta->setCPPCoordenadas(CPPcoordenadas);
+		window->getWindowObjetos()->push_back(reta);
+	}
+}
+
+void Clipping::clippingPoligono(Poligono* poligono){
+
+}
+
+bool Clipping::clippingLine(Coordenada* coordenada1, Coordenada* coordenada2){
+	bool RC1[4] = { false };
+	bool RC2[4] = { false };
 	verificarQuadrante(coordenada1, RC1);
 	verificarQuadrante(coordenada2, RC2);
-	if (!(RC1[0] || RC1[1] || RC1[2] || RC1[3]) && !(RC2[0] || RC2[1] || RC2[2] || RC2[3])) {
-		window->getWindowObjetos()->push_back(reta);
+	if (!(RC1[acima] || RC1[abaixo] || RC1[direita] || RC1[esquerda]) && !(RC2[acima] || RC2[abaixo] || RC2[direita] || RC2[esquerda])) {
+		return true;
 	} else {
-		if (!((RC1[0] && RC2[0]) || (RC1[1] && RC2[1]) || (RC1[2] && RC2[2]) || (RC1[3] && RC2[3]))) {
-			list<Coordenada*>* CPPcoordenadas = new list<Coordenada*>();
-			CPPcoordenadas->push_back(retaParcial(RC1, coordenada1, coordenada2, coordenada1->clone()));
-			CPPcoordenadas->push_back(retaParcial(RC2, coordenada1, coordenada2, coordenada2->clone()));
-			reta->setCPPCoordenadas(CPPcoordenadas);
-			window->getWindowObjetos()->push_back(reta);
+		if (!((RC1[acima] && RC2[acima]) || (RC1[abaixo] && RC2[abaixo]) || (RC1[direita] && RC2[direita]) || (RC1[esquerda] && RC2[esquerda]))) {
+			Coordenada* coordenadaInicial = coordenada1->clone();
+			Coordenada* coordenadaFinal = coordenada2->clone();
+			return clippingCoordenada(RC1, coordenadaInicial, coordenadaFinal, coordenada1) |
+					clippingCoordenada(RC2, coordenadaInicial, coordenadaFinal, coordenada2);
 		}
 	}
+	return false;
+}
+
+bool Clipping::clippingCoordenada(bool* RC, Coordenada *coordenadaInicial, Coordenada* coordenadaFinal, Coordenada *clippingCoordenada) {
+	double m = (coordenadaFinal->getY() - coordenadaInicial->getY()) / (coordenadaFinal->getX() - coordenadaInicial->getX());
+	bool clipping = false;
+	if (RC[acima]) {
+		double xCima = coordenadaInicial->getX() + 1/m * (window->CPPend->getY() - coordenadaInicial->getY());
+		if(xCima >= window->CPPstart->getX() && xCima <= window->CPPend->getX()){
+			clippingCoordenada->setX(xCima);
+			clippingCoordenada->setY(window->CPPend->getY());
+			clipping = true;
+		}
+	}
+	if (RC[abaixo]) {
+		double xBaixo = coordenadaInicial->getX() + 1/m * (window->CPPstart->getY() - coordenadaInicial->getY());
+		if(xBaixo >= window->CPPstart->getX() && xBaixo <= window->CPPend->getX()){
+			clippingCoordenada->setY(window->CPPstart->getY());
+			clippingCoordenada->setX(xBaixo);
+			clipping = true;
+		}
+	}
+	if (RC[direita]) {
+		double yDireita = m* (window->CPPend->getX() - coordenadaInicial->getX()) + coordenadaInicial->getY();
+		if(yDireita >= window->CPPstart->getY() && yDireita <= window->CPPend->getY()){
+			clippingCoordenada->setX(window->CPPend->getX());
+			clippingCoordenada->setY(yDireita);
+			clipping = true;
+		}
+	}
+	if (RC[esquerda]) {
+		double yEsquerda = m* (window->CPPstart->getX() - coordenadaInicial->getX()) + coordenadaInicial->getY();
+		if(yEsquerda >= window->CPPstart->getY() && yEsquerda <= window->CPPend->getY()){
+			clippingCoordenada->setX(window->CPPstart->getX());
+			clippingCoordenada->setY(yEsquerda);
+			clipping = true;
+		}
+	}
+	return clipping;
 }
 
 void Clipping::verificarQuadrante(Coordenada* coordenada, bool* RC) {
 	if (coordenada->getY() > window->CPPend->getY())
-		RC[0] = true;
+		RC[acima] = true;
 	if (coordenada->getY() < window->CPPstart->getY()) {
-		RC[1] = true;
+		RC[abaixo] = true;
 	}
 	if (coordenada->getX() > window->CPPend->getX()) {
-		RC[2] = true;
+		RC[direita] = true;
 	}
 	if (coordenada->getX() < window->CPPstart->getX()) {
-		RC[3] = true;
+		RC[esquerda] = true;
 	}
-}
-
-Coordenada* Clipping::retaParcial(bool* RC, Coordenada *coordenadaInicial, Coordenada* coordenadaFinal, Coordenada *novaCoordenada) {
-	double m = (coordenadaFinal->getY() - coordenadaInicial->getY()) / (coordenadaFinal->getX() - coordenadaInicial->getX());
-	if (RC[0]) {
-		novaCoordenada->setY(window->CPPend->getY());
-		novaCoordenada->setX(coordenadaInicial->getX() + 1/m * (window->CPPend->getY() - coordenadaInicial->getY()));
-	}
-	if (RC[1]) {
-		novaCoordenada->setY(window->CPPstart->getY());
-		novaCoordenada->setX(coordenadaInicial->getX() + 1/m * (window->CPPstart->getY() - coordenadaInicial->getY()));
-	}
-	if (RC[2]) {
-		novaCoordenada->setX(window->CPPend->getX());
-		novaCoordenada->setY(m* (window->CPPend->getX() - coordenadaInicial->getX()) + coordenadaInicial->getY());
-	}
-	if (RC[3]) {
-		novaCoordenada->setX(window->CPPstart->getX());
-		novaCoordenada->setY(m* (window->CPPstart->getX() - coordenadaInicial->getX()) + coordenadaInicial->getY());
-	}
-	return novaCoordenada;
 }

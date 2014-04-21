@@ -12,7 +12,13 @@
 #include "../modelo.interno/window/Window.h"
 #include "../dto/geometrico/Ponto.h"
 #include "../dto/geometrico/Reta.h"
+#include "../dto/geometrico/Poligono.h"
 #include <stdio.h>
+
+#define acima 0
+#define abaixo 1
+#define direita 2
+#define esquerda 3
 
 using namespace std;
 
@@ -21,11 +27,15 @@ public:
 	Clipping(Window *window);
 	virtual ~Clipping();
 	void clip(ObjetoGeometrico* objeto);
+
+private:
+	Window *window;
 	void clippingPonto(Ponto* ponto);
 	void clippingReta(Reta* reta);
-	Window *window;
+	void clippingPoligono(Poligono* poligono);
+	bool clippingLine(Coordenada* inicial, Coordenada* final);
 	void verificarQuadrante(Coordenada *coordenada, bool* RC);
-	Coordenada* retaParcial(bool* RC,Coordenada *coordenadaInicial, Coordenada* coordenadaFinal, Coordenada *novaCoordenada);
+	bool clippingCoordenada(bool* RC,Coordenada *coordenadaInicial, Coordenada* coordenadaFinal, Coordenada *novaCoordenada);
 };
 
 #endif /* CLIPPINGPONTO_H_ */
