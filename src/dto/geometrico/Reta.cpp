@@ -11,6 +11,14 @@ Reta::Reta(const char *nome, list<Coordenada*>* coordenadas) : ObjetoGeometrico(
 }
 Reta::Reta(const char *nome) : ObjetoGeometrico(nome) {
 }
+
+Reta* Reta::clone(){
+	Reta* r = new Reta(Utils::cloneChar(this->getNome()));
+	r->getCPPCoordenadas()->push_back(this->CPPcoordenadas->front()->clone());
+	r->getCPPCoordenadas()->push_back(this->CPPcoordenadas->back()->clone());
+	return r;
+}
+
 Reta::~Reta() {
 }
 

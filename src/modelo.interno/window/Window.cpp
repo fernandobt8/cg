@@ -21,8 +21,13 @@ list<ObjetoGeometrico*>* Window::getWindowObjetos(){
 	return objetos;
 }
 
-void Window::setWindowObjetos(list<ObjetoGeometrico*>* objetos){
-	this->objetos = objetos;
+void Window::addWindowObjeto(ObjetoGeometrico* objeto){
+	this->objetos->push_back(objeto);
+}
+
+void Window::clearWindowObjetos(){
+	delete objetos;
+	objetos = new list<ObjetoGeometrico* >();
 }
 
 void Window::mutiplyCoordenadas(Matriz* matriz){

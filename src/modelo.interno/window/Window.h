@@ -21,7 +21,7 @@ public:
 	Window();
 	virtual ~Window();
 	list<ObjetoGeometrico* >* getWindowObjetos();
-	void setWindowObjetos(list<ObjetoGeometrico*>* objetos);
+	void addWindowObjeto(ObjetoGeometrico* objeto);
 	void mutiplyCoordenadas(Matriz* matriz);
 	void mutiplyCoordenadasToCPP(Matriz* matriz);
 	void move(double x, double y);
@@ -30,6 +30,7 @@ public:
 	double getWidth();
 	double getHeight();
 	double getAngulo();
+	void clearWindowObjetos();
 	Coordenada* getCenter();
 	Coordenada* getCenterCPP();
 	Coordenada* CPPstart;

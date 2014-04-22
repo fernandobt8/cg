@@ -56,7 +56,7 @@ void ModeloInterno::setTamanhoWindow(double width, double height){
 }
 
 void ModeloInterno::updateCPPCoordenadas(){
-	window->setWindowObjetos(new list<ObjetoGeometrico* >);
+	window->clearWindowObjetos();
 	Coordenada* WinCenter = window->getCenter();
 	Matriz* transOrigem = new MatrizTranslacao(-WinCenter->getX(), -WinCenter->getY());
 

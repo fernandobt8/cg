@@ -9,6 +9,7 @@
 #define RETA_H_
 
 #include "ObjetoGeometrico.h"
+#include "../../utils/Utils.h"
 #include <list>
 
 using namespace std;
@@ -17,6 +18,7 @@ class Reta: public ObjetoGeometrico {
 public:
 	Reta(const char *nome, list<Coordenada*>* coordenadas);
 	Reta(const char *nome);
+	Reta* clone();
 	virtual ~Reta();
 };
 

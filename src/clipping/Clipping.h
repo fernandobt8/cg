@@ -32,7 +32,7 @@ private:
 	Window *window;
 	void clippingPonto(Ponto* ponto);
 	void clippingReta(Reta* reta);
-	void clippingPoligono(Poligono* poligono);
+	void clippingPoligonoAberto(Poligono* poligono);
 	bool clippingLine(Coordenada* inicial, Coordenada* final);
 	void verificarQuadrante(Coordenada *coordenada, bool* RC);
 	bool clippingCoordenada(bool* RC,Coordenada *coordenadaInicial, Coordenada* coordenadaFinal, Coordenada *novaCoordenada);

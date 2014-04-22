@@ -20,10 +20,15 @@ void Clipping::clip(ObjetoGeometrico* objeto) {
 	Reta* reta = dynamic_cast<Reta*>(objeto);
 	Poligono* poligono = dynamic_cast<Poligono*>(objeto);
 	if (ponto) {
-		clippingPonto(ponto);
+		clippingPonto(ponto->clone());
 	} else if (reta) {
-		clippingReta(reta);
+		clippingReta(reta->clone());
 	} else if(poligono){
+		if(poligono->aberto){
+			this->clippingPoligonoAberto(poligono);
+		}else{
+			//completar
+		}
 	}
 }
 
@@ -36,18 +41,28 @@ void Clipping::clippingPonto(Ponto* ponto) {
 	bool yStart = window->CPPstart->getY() <= y;
 	bool yEnd = window->CPPend->getY() >= y;
 	if (xStart && xEnd && yStart && yEnd) {
-		window->getWindowObjetos()->push_back(ponto);
+		window->addWindowObjeto(ponto);
 	}
 }
 
 void Clipping::clippingReta(Reta *reta) {
 	if(clippingLine(reta->getCPPCoordenadas()->front(), reta->getCPPCoordenadas()->back())){
-		window->getWindowObjetos()->push_back(reta);
+		window->addWindowObjeto(reta);
 	}
 }
 
-void Clipping::clippingPoligono(Poligono* poligono){
-
+void Clipping::clippingPoligonoAberto(Poligono* poligono){
+	list<Coordenada*>::iterator it = poligono->getCPPCoordenadas()->begin();
+	for (; it._M_node != poligono->getCPPCoordenadas()->end()._M_node->_M_prev; it++) {
+		Coordenada* current = static_cast<Coordenada*>(*it)->clone();
+		Coordenada* next = static_cast<_List_node<Coordenada*>*>( it._M_node->_M_next)->_M_data->clone();
+		if(clippingLine(current, next)){
+			Reta* r = new Reta(Utils::cloneChar(poligono->getNome()));
+			r->getCPPCoordenadas()->push_back(current);
+			r->getCPPCoordenadas()->push_back(next);
+			window->addWindowObjeto(r);
+		}
+	}
 }
 
 bool Clipping::clippingLine(Coordenada* coordenada1, Coordenada* coordenada2){
