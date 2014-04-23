@@ -52,3 +52,8 @@ Coordenada* Coordenada::clone(){
 	return new Coordenada(x, y);
 }
 
+bool Coordenada::equal(Coordenada* coordenada) {
+	if(this->x == coordenada->x && this->y == coordenada->y)
+		return true;
+	return false;
+}

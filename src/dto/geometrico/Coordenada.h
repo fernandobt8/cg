@@ -24,6 +24,7 @@ public:
 	void setY(double y);
 	void addCoordenada(Coordenada* coordenada);
 	void multiplyByMatriz(class Matriz* matriz);
+	bool equal(Coordenada* coordenada);
 	Coordenada* clone();
 private:
 	double x;
