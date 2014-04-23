@@ -32,16 +32,21 @@ void Clipping::clip(ObjetoGeometrico* objeto) {
 	}
 }
 
-bool Clipping::clippingPonto(Ponto* ponto) {
+void Clipping::clippingPonto(Ponto* ponto) {
 	list<Coordenada*> *coordenadas = ponto->getCPPCoordenadas();
 	double x = coordenadas->front()->getX();
 	double y = coordenadas->front()->getY();
+	if(verificarPonto(x, y)){
+		window->addWindowObjeto(ponto);
+	}
+}
+
+bool Clipping::verificarPonto(double x, double y){
 	bool xStart = window->CPPstart->getX() <= x;
 	bool xEnd = window->CPPend->getX() >= x;
 	bool yStart = window->CPPstart->getY() <= y;
 	bool yEnd = window->CPPend->getY() >= y;
 	if (xStart && xEnd && yStart && yEnd) {
-		window->addWindowObjeto(ponto);
 		return true;
 	}
 	return false;
@@ -74,7 +79,23 @@ void Clipping::clippingPoligonoFechado(Poligono* poligono) {
 	list<Coordenada*> *windowVertices;
 	list<Coordenada*> *poligonoVertices;
 	preencherListas(windowVertices, poligonoVertices, poligono);
+	list<Coordenada*>::iterator it = poligonoVertices->begin();
+	Coordenada *visitado;
+	for(; it != poligonoVertices->end(); it++){
+		Coordenada *next = static_cast<_List_node<Coordenada*>*>(it._M_node->_M_next)->_M_data;
+		if(verificarPonto(next->getX(), next->getY()) || next->isInterseccao()){
+			if((*it)->isInterseccao()){
+				visitado = (*it);
+				continue;
+			}
+		}
+	}
+}
 
+void Clipping::percorrerListaPoligono() {
+}
+
+void Clipping::percorrerListaWindow() {
 }
 
 void Clipping::preencherListas(list<Coordenada*> *windowVertices,
@@ -97,10 +118,12 @@ void Clipping::preencherListas(list<Coordenada*> *windowVertices,
 		poligonoVertices->push_back(current);
 		if (clippingLine(currentClone, nextClone)) {
 			if (!current->equal(currentClone)) {
+				currentClone->setIsInterseccao(true);
 				poligonoVertices->push_back(currentClone);
 				verificarInterseccaoWindow(currentClone, windowVertices);
 			}
 			if (!next->equal(nextClone)) {
+				nextClone->setIsInterseccao(true);
 				poligonoVertices->push_back(nextClone);
 				verificarInterseccaoWindow(nextClone, windowVertices);
 			}

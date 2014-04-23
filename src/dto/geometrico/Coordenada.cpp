@@ -57,3 +57,11 @@ bool Coordenada::equal(Coordenada* coordenada) {
 		return true;
 	return false;
 }
+
+bool Coordenada::isInterseccao() {
+	return this->interseccao;
+}
+
+bool Coordenada::setIsInterseccao(bool isInterseccao) {
+	this->interseccao = isInterseccao;
+}

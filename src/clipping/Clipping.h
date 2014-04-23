@@ -30,7 +30,8 @@ public:
 
 private:
 	Window *window;
-	bool clippingPonto(Ponto* ponto);
+	void clippingPonto(Ponto* ponto);
+	bool verificarPonto(double x, double y);
 	void clippingReta(Reta* reta);
 	void clippingPoligonoAberto(Poligono* poligono);
 	void clippingPoligonoFechado(Poligono* poligono);
@@ -39,6 +40,8 @@ private:
 	bool clippingLine(Coordenada* inicial, Coordenada* final);
 	void verificarQuadrante(Coordenada *coordenada, bool* RC);
 	bool clippingCoordenada(bool* RC,Coordenada *coordenadaInicial, Coordenada* coordenadaFinal, Coordenada *novaCoordenada);
+	void percorrerListaPoligono();
+	void percorrerListaWindow();
 };
 
 #endif /* CLIPPINGPONTO_H_ */
