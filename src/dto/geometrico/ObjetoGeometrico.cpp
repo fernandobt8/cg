@@ -27,7 +27,7 @@ void ObjetoGeometrico::multiplyCoordenadas(Matriz* matriz){
 }
 
 void ObjetoGeometrico::multiplyCoordenadasToCPP(Matriz* matriz) {
-	delete CPPcoordenadas;
+	Utils::destroyList(CPPcoordenadas);
 	CPPcoordenadas = new list<Coordenada*>();
 	list<Coordenada*>::iterator it = coordenadas->begin();
 	for (; it != coordenadas->end(); it++) {
@@ -80,12 +80,7 @@ void ObjetoGeometrico::printAllCPPcoordenadas(){
 }
 
 ObjetoGeometrico::~ObjetoGeometrico() {
-	delete coordenadas;
-	delete CPPcoordenadas;
+	Utils::destroyList(coordenadas);
+	Utils::destroyList(CPPcoordenadas);
 	delete nome;
-}
-
-void ObjetoGeometrico::setCPPCoordenadas(list<Coordenada*>* CPPcoordenadas) {
-	delete this->CPPcoordenadas;
-	this->CPPcoordenadas = CPPcoordenadas;
 }

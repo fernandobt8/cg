@@ -100,7 +100,7 @@ AdicionarPoligono::~AdicionarPoligono() {
 	delete checkAberto;
 	delete selectColorButton;
 	delete panelSelectedColor;
-	delete coordenadasPoligono;
+	Utils::destroyList(coordenadasPoligono);
 	delete adicionarCoordenadaButton;
 	delete coordenadasList;
 	delete removerCoordenadaButton;

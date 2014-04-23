@@ -13,6 +13,7 @@
 #include "../dto/matriz/MatrizEscalonamento.h"
 #include "../dto/matriz/MatrizRotacao.h"
 #include "../dto/matriz/MatrizTranslacao.h"
+#include <list>
 
 class Utils {
 public:
@@ -20,6 +21,17 @@ public:
 		char* copy = new char[strlen(value)+1];
 		strcpy(copy, value);
 		return copy;
+	}
+
+	template<typename T>
+	static void destroyList(list<T* > *lista){
+		T* c = lista->front();
+		while(!lista->empty()){
+			delete c;
+			lista->pop_front();
+			c = lista->front();
+		}
+		delete lista;
 	}
 
 	static Matriz* getMatrizTransformacao(Coordenada* center, list<Transformacao* >* transformacoes){

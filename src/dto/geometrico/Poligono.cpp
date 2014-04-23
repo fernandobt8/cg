@@ -11,6 +11,7 @@ Poligono::Poligono(const char* nome, list<Coordenada*> *coordenadas) : ObjetoGeo
 }
 
 Poligono::~Poligono() {
+	delete color;
 }
 
 

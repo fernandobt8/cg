@@ -64,6 +64,3 @@ MainController::~MainController() {
 	delete view;
 }
 
-list<ObjetoGeometrico*>* MainController::getObjetos() {
-	return this->modelo->getObjetos();
-}

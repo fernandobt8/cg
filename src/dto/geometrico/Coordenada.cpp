@@ -21,11 +21,10 @@ Coordenada::~Coordenada() {
 }
 
 void Coordenada::multiplyByMatriz(Matriz* matriz){
-	Matriz* coordenada = new Matriz(this);
-	coordenada->multiply(matriz);
-	x = coordenada->getMatriz()[0][0];
-	y = coordenada->getMatriz()[0][1];
-	delete coordenada;
+	Matriz coordenada = Matriz(this);
+	coordenada.multiply(matriz);
+	x = coordenada.getMatriz()[0][0];
+	y = coordenada.getMatriz()[0][1];
 }
 
 void Coordenada::addCoordenada(Coordenada* coordenada){

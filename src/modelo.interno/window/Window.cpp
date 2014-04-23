@@ -13,7 +13,7 @@ Window::Window(){
 	end = new Coordenada(500, 500);
 	CPPstart = new Coordenada(-250, -250);
 	CPPend = new Coordenada(250, 250);
-	objetos = NULL;
+	objetos = new list<ObjetoGeometrico* >();
 
 }
 
@@ -26,7 +26,7 @@ void Window::addWindowObjeto(ObjetoGeometrico* objeto){
 }
 
 void Window::clearWindowObjetos(){
-	delete objetos;
+	Utils::destroyList(objetos);
 	objetos = new list<ObjetoGeometrico* >();
 }
 
@@ -128,5 +128,6 @@ Window::~Window() {
 	delete start;
 	delete end;
 	delete vectorUp;
+	Utils::destroyList(objetos);
 }
 

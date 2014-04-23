@@ -10,6 +10,7 @@
 
 #include "../AdicionarAbstract.h"
 #include <list>
+#include "QtCore/qlist.h"
 #include "QtGui/qlistwidget.h"
 #include "QtGui/qcolordialog.h"
 #include <QtGui/qcheckbox.h>

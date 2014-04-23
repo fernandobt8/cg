@@ -9,6 +9,7 @@
 #define OBJETOGEOMETRICO_H_
 
 #include "Coordenada.h"
+#include "../../utils/Utils.h"
 #include <list>
 
 using namespace std;
@@ -26,7 +27,6 @@ public:
 	void multiplyCoordenadasToCPP(Matriz* matriz);
 	void printAllcoordenadas();
 	void printAllCPPcoordenadas();
-	void setCPPCoordenadas(list<Coordenada*>* CPPcoordenadas);
 
 protected:
 	const char* nome;
