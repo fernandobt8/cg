@@ -32,7 +32,7 @@ void Clipping::clip(ObjetoGeometrico* objeto) {
 	}
 }
 
-void Clipping::clippingPonto(Ponto* ponto) {
+bool Clipping::clippingPonto(Ponto* ponto) {
 	list<Coordenada*> *coordenadas = ponto->getCPPCoordenadas();
 	double x = coordenadas->front()->getX();
 	double y = coordenadas->front()->getY();
@@ -42,7 +42,9 @@ void Clipping::clippingPonto(Ponto* ponto) {
 	bool yEnd = window->CPPend->getY() >= y;
 	if (xStart && xEnd && yStart && yEnd) {
 		window->addWindowObjeto(ponto);
+		return true;
 	}
+	return false;
 }
 
 void Clipping::clippingReta(Reta *reta) {
@@ -69,44 +71,59 @@ void Clipping::clippingPoligonoAberto(Poligono* poligono) {
 }
 
 void Clipping::clippingPoligonoFechado(Poligono* poligono) {
-	list<Coordenada*> obj;
-	list<Coordenada*> clip;
-	list<Coordenada*> links;
-	Coordenada* linkInterseccoes;
-	Coordenada *current, *interseccao1;
-	Coordenada *next, *interseccao2;
+	list<Coordenada*> *windowVertices;
+	list<Coordenada*> *poligonoVertices;
+	preencherListas(windowVertices, poligonoVertices, poligono);
+
+}
+
+void Clipping::preencherListas(list<Coordenada*> *windowVertices,
+		list<Coordenada*> *poligonoVertices, Poligono* poligono) {
+	Coordenada *A = this->window->CPPstart->clone();
+	Coordenada *C = this->window->CPPend->clone();
+	Coordenada *B = new Coordenada(A->getX(), C->getY());
+	Coordenada *D = new Coordenada(C->getX(), A->getY());
+	windowVertices->push_back(A);
+	windowVertices->push_back(B);
+	windowVertices->push_back(C);
+	windowVertices->push_back(D);
 	list<Coordenada*>::iterator it = poligono->getCPPCoordenadas()->begin();
 	for (; it._M_node != poligono->getCPPCoordenadas()->end()._M_node->_M_prev;
 			it++) {
-		linkInterseccoes = new Coordenada[1];
-		current = static_cast<Coordenada*>(*it)->clone();
-		next = static_cast<_List_node<Coordenada*>*>(it._M_node->_M_next)->_M_data->clone();
-		obj.push_back(current);
-		clip.push_back(current->clone());
-		interseccao1 = current->clone();
-		interseccao2 = next->clone();
-		if (clippingLine(interseccao1, interseccao2)) {
-			if (!current->equal(interseccao1)) {
-				Coordenada* cloneInterseccao =interseccao1->clone();
-				linkInterseccoes[0] = interseccao1;
-				linkInterseccoes[1] = cloneInterseccao;
-				links.push_back(linkInterseccoes);
-				obj.push_back(interseccao1);
-				clip.push_back(cloneInterseccao);
+		Coordenada* current = static_cast<Coordenada*>(*it)->clone();
+		Coordenada* next = static_cast<_List_node<Coordenada*>*>(it._M_node->_M_next)->_M_data->clone();
+		Coordenada* currentClone = current->clone();
+		Coordenada* nextClone = next->clone();
+		poligonoVertices->push_back(current);
+		if (clippingLine(currentClone, nextClone)) {
+			if (!current->equal(currentClone)) {
+				poligonoVertices->push_back(currentClone);
+				verificarInterseccaoWindow(currentClone, windowVertices);
 			}
-			if (!next->equal(interseccao2)) {
-				Coordenada* cloneInterseccao =interseccao2->clone();
-				linkInterseccoes[0] = interseccao1;
-				linkInterseccoes[1] = cloneInterseccao;
-				links.push_back(linkInterseccoes);
-				obj.push_back(interseccao2);
-				clip.push_back(cloneInterseccao);
+			if (!next->equal(nextClone)) {
+				poligonoVertices->push_back(nextClone);
+				verificarInterseccaoWindow(nextClone, windowVertices);
 			}
 		}
-		obj.push_back(next);
-		clip.push_back(next->clone());
+		poligonoVertices->push_back(next);
 	}
+}
 
+void Clipping::verificarInterseccaoWindow(Coordenada* atual, list<Coordenada*>* windowVertices) {
+	list<Coordenada*>::iterator it = windowVertices->begin();
+	for(; it != windowVertices->end(); it++){
+		if(atual->getX() == (*it)->clone()->getX()){
+			windowVertices->insert(++it, atual);
+			return;
+		}
+	}
+	it = ++windowVertices->begin();
+	for(; it != windowVertices->end(); it++){
+		if(atual->getY() == (*it)->clone()->getY()){
+			windowVertices->insert(++it, atual);
+			return;
+		}
+	}
 }
 
 bool Clipping::clippingLine(Coordenada* coordenada1, Coordenada* coordenada2) {

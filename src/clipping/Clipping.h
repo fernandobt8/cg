@@ -30,10 +30,12 @@ public:
 
 private:
 	Window *window;
-	void clippingPonto(Ponto* ponto);
+	bool clippingPonto(Ponto* ponto);
 	void clippingReta(Reta* reta);
 	void clippingPoligonoAberto(Poligono* poligono);
 	void clippingPoligonoFechado(Poligono* poligono);
+	void preencherListas(list<Coordenada*> *windowVertices,	list<Coordenada*> *poligonoVertices, Poligono* poligono);
+	void verificarInterseccaoWindow(Coordenada* atual, list<Coordenada*> *windowVertices);
 	bool clippingLine(Coordenada* inicial, Coordenada* final);
 	void verificarQuadrante(Coordenada *coordenada, bool* RC);
 	bool clippingCoordenada(bool* RC,Coordenada *coordenadaInicial, Coordenada* coordenadaFinal, Coordenada *novaCoordenada);
