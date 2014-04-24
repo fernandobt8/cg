@@ -14,6 +14,7 @@
 #include "../dto/geometrico/Reta.h"
 #include "../dto/geometrico/Poligono.h"
 #include <stdio.h>
+#include "../utils/Utils.h"
 
 #define acima 0
 #define abaixo 1
@@ -40,8 +41,8 @@ private:
 	bool clippingLine(Coordenada* inicial, Coordenada* final);
 	void verificarQuadrante(Coordenada *coordenada, bool* RC);
 	bool clippingCoordenada(bool* RC,Coordenada *coordenadaInicial, Coordenada* coordenadaFinal, Coordenada *novaCoordenada);
-	void percorrerListaPoligono();
-	void percorrerListaWindow();
+	void percorrerListaPoligono(list<Coordenada*> *poligonoVertices, list<Coordenada*> *windowVertices, list<Coordenada*> *novosVertices, Coordenada *atual);
+	void percorrerListaWindow(list<Coordenada*> *poligonoVertices, list<Coordenada*> *windowVertices, list<Coordenada*> *novosVertices, Coordenada *atual);
 };
 
 #endif /* CLIPPINGPONTO_H_ */
