@@ -45,6 +45,20 @@ public:
 		newList->sort(sortList);
 	}
 
+	static void splice(list<Coordenada* >* destino, list<Coordenada* >* origem, Coordenada* afterPosition){
+		list<Coordenada* >::iterator pos = destino->begin();
+		for(; pos != destino->end(); pos++){
+			if(afterPosition == *pos){
+				break;
+			}
+		}
+		pos++;
+		list<Coordenada* >::iterator it = origem->begin();
+		for(; it != origem->end(); it++){
+			destino->insert(pos, *it);
+		}
+	}
+
 	static bool compareEqualY(Coordenada* coordenada1, Coordenada* coordenada2){
 		return coordenada1->getY() == coordenada2->getY();
 	}
