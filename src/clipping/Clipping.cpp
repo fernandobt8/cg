@@ -36,12 +36,12 @@ void Clipping::clippingPonto(Ponto* ponto) {
 	list<Coordenada*> *coordenadas = ponto->getCPPCoordenadas();
 	double x = coordenadas->front()->getX();
 	double y = coordenadas->front()->getY();
-	if(verificarPonto(x, y)){
+	if (verificarPonto(x, y)) {
 		window->addWindowObjeto(ponto);
 	}
 }
 
-bool Clipping::verificarPonto(double x, double y){
+bool Clipping::verificarPonto(double x, double y) {
 	bool xStart = window->CPPstart->getX() <= x;
 	bool xEnd = window->CPPend->getX() >= x;
 	bool yStart = window->CPPstart->getY() <= y;
@@ -77,24 +77,63 @@ void Clipping::clippingPoligonoAberto(Poligono* poligono) {
 
 void Clipping::clippingPoligonoFechado(Poligono* poligono) {
 	list<Coordenada*> *poligonoVertices = preencherPoligonoLista(poligono);
+	list<Coordenada*> *novosVertices;
 	list<Coordenada*> *windowVertices = preencherWindowLista(poligono, poligonoVertices);
 	list<Coordenada*>::iterator it = poligonoVertices->begin();
-	Coordenada *visitado;
-	for(; it != poligonoVertices->end(); it++){
-		Coordenada *next = static_cast<_List_node<Coordenada*>*>(it._M_node->_M_next)->_M_data;
-		if(verificarPonto(next->getX(), next->getY()) || next->isInterseccao()){
-			if((*it)->isInterseccao()){
-				visitado = (*it);
-				continue;
+	for (; it != poligonoVertices->end(); it++) {
+		Coordenada *atual = (*it);
+		if (atual->isInterseccao()) {
+			Coordenada *next =
+					static_cast<_List_node<Coordenada*>*>(it._M_node->_M_next)->_M_data;
+			if (verificarPonto(next->getX(), next->getY())
+					|| next->isInterseccao()) {
+				atual->setVisitado(true);
+				novosVertices->push_back(atual);
+				percorrerListaPoligono(poligonoVertices, windowVertices,
+						novosVertices, atual);
+			}
+		}
+	}
+	Poligono *poligonoNovo = new Poligono(poligono->getNome(), novosVertices);
+	window->addWindowObjeto(poligonoNovo);
+}
+
+void Clipping::percorrerListaPoligono(list<Coordenada*> *poligonoVertices,
+		list<Coordenada*> *windowVertices, list<Coordenada*> *novosVertices,
+		Coordenada* anterior) {
+	list<Coordenada*>::iterator it = poligonoVertices->begin();
+	advance(it, Utils::getObject(poligonoVertices, anterior) + 1);
+	for (; it != poligonoVertices->end(); it++) {
+		Coordenada *atual = (*it);
+		atual->setVisitado(true);
+		novosVertices->push_back(atual);
+		if (!atual->isVisitado()) {
+			if (atual->isInterseccao()) {
+				atual->setVisitado(true);
+				percorrerListaWindow(poligonoVertices, windowVertices,
+						novosVertices, atual);
 			}
 		}
 	}
 }
 
-void Clipping::percorrerListaPoligono() {
-}
-
-void Clipping::percorrerListaWindow() {
+void Clipping::percorrerListaWindow(list<Coordenada*> *poligonoVertices,
+		list<Coordenada*> *windowVertices, list<Coordenada*> *novosVertices,
+		Coordenada *anterior) {
+	list<Coordenada*>::iterator it = windowVertices->begin();
+	advance(it, Utils::getObject(windowVertices, anterior) + 1);
+	for (; it != windowVertices->end(); it++) {
+		Coordenada *atual = (*it);
+		atual->setVisitado(true);
+		novosVertices->push_back(atual);
+		if (!atual->isVisitado()) {
+			if (atual->isInterseccao()) {
+				atual->setVisitado(true);
+				percorrerListaPoligono(poligonoVertices, windowVertices,
+						novosVertices, atual);
+			}
+		}
+	}
 }
 
 list<Coordenada*>* Clipping::preencherPoligonoLista(Poligono* poligono) {

@@ -14,6 +14,7 @@
 #include "../dto/geometrico/Reta.h"
 #include "../dto/geometrico/Poligono.h"
 #include <stdio.h>
+#include "../utils/Utils.h"
 
 #define acima 0
 #define abaixo 1
@@ -43,8 +44,8 @@ private:
 
 	list<Coordenada*>* preencherPoligonoLista(Poligono* poligono);
 	list<Coordenada*>* preencherWindowLista(Poligono* poligono, list<Coordenada*>* poligonoVertices);
-	void percorrerListaPoligono();
-	void percorrerListaWindow();
+	void percorrerListaPoligono(list<Coordenada*> *poligonoVertices, list<Coordenada*> *windowVertices, list<Coordenada*> *novosVertices, Coordenada *atual);
+	void percorrerListaWindow(list<Coordenada*> *poligonoVertices, list<Coordenada*> *windowVertices, list<Coordenada*> *novosVertices, Coordenada *atual);
 };
 
 #endif /* CLIPPINGPONTO_H_ */

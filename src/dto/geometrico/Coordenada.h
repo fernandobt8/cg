@@ -23,7 +23,9 @@ public:
 	void setX(double x);
 	void setY(double y);
 	bool isInterseccao();
-	bool setIsInterseccao(bool isInterseccao);
+	bool isVisitado();
+	void setInterseccao(bool isInterseccao);
+	void setVisitado(bool isVisitado);
 	void addCoordenada(Coordenada* coordenada);
 	void multiplyByMatriz(class Matriz* matriz);
 	bool equal(Coordenada* coordenada);
@@ -31,7 +33,7 @@ public:
 private:
 	double x;
 	double y;
-	bool interseccao;
+	bool interseccao, visitado;
 };
 
 #endif /* COORDENADA_H_ */

@@ -48,6 +48,14 @@ double Coordenada::getY() {
 	return this->y;
 }
 
+bool Coordenada::isVisitado() {
+	return visitado;
+}
+
+void Coordenada::setVisitado(bool isVisitado) {
+	this->visitado = isVisitado;
+}
+
 Coordenada* Coordenada::clone(){
 	return new Coordenada(x, y);
 }
@@ -62,6 +70,6 @@ bool Coordenada::isInterseccao() {
 	return this->interseccao;
 }
 
-bool Coordenada::setIsInterseccao(bool isInterseccao) {
+void Coordenada::setInterseccao(bool isInterseccao) {
 	this->interseccao = isInterseccao;
 }
