@@ -173,19 +173,23 @@ list<Coordenada*>* Clipping::preencherWindowLista(Poligono* poligono, list<Coord
 	windowVertices->push_back(D);
 	list<Coordenada* > *inter = new list<Coordenada* >();
 	Utils::monteList(poligonoVertices, inter, A, Utils::compareMenorY, Utils::compareEqualX);
-	windowVertices->splice(++windowVertices->begin(), *inter);
+	Utils::splice(windowVertices, inter, A);
+	delete inter;
 
 	list<Coordenada* > *inter2 = new list<Coordenada* >();
 	Utils::monteList(poligonoVertices, inter2, B, Utils::compareMenorX, Utils::compareEqualY);
-	windowVertices->splice(Utils::getIteratorInObject(windowVertices, C), *inter2);
+	Utils::splice(windowVertices, inter2, B);
+	delete inter2;
 
 	list<Coordenada* > *inter3 = new list<Coordenada* >();
 	Utils::monteList(poligonoVertices, inter3, C, Utils::compareMaiorX, Utils::compareEqualX);
-	windowVertices->splice(Utils::getIteratorInObject(windowVertices, D), *inter3);
+	Utils::splice(windowVertices, inter3, C);
+	delete inter3;
 
 	list<Coordenada* > *inter4 = new list<Coordenada* >();
 	Utils::monteList(poligonoVertices, inter4, D, Utils::compareMaiorY, Utils::compareEqualY);
-	windowVertices->splice(windowVertices->end(), *inter4);
+	Utils::splice(windowVertices, inter4, D);
+	delete inter4;
 	return windowVertices;
 }
 
