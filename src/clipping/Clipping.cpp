@@ -89,11 +89,8 @@ void Clipping::clippingPoligonoFechado(Poligono* poligono) {
 			}
 		}
 	}
-	Utils::printListaCoordenada(novosVertices);
-	Poligono *poligonoNovo = new Poligono(Utils::cloneChar(poligono->getNome()));
 	poligono->setCPPCoordenadas(novosVertices);
-	poligonoNovo->color = new QColor(*poligono->color);
-	window->addWindowObjeto(poligonoNovo);
+	window->addWindowObjeto(poligono);
 }
 
 void Clipping::percorrerListaPoligono(list<Coordenada*> *poligonoVertices, list<Coordenada*> *windowVertices, list<Coordenada*> *novosVertices, int index) {
@@ -115,6 +112,7 @@ void Clipping::percorrerListaPoligono(list<Coordenada*> *poligonoVertices, list<
 		it++;
 		next = *it;
 		}
+		return;
 	}
 	percorrerListaWindow(poligonoVertices, windowVertices, novosVertices, 0);
 }
@@ -138,6 +136,7 @@ void Clipping::percorrerListaWindow(list<Coordenada*> *poligonoVertices, list<Co
 			it++;
 			next = *it;
 		}
+		return;
 	}
 	percorrerListaWindow(poligonoVertices, windowVertices, novosVertices, 0);
 }
