@@ -34,6 +34,41 @@ public:
 		delete lista;
 	}
 
+	template<typename Sort, typename Equal>
+	static void monteList(list<Coordenada* >* poligonoVertices, list<Coordenada* > newList, Coordenada* coorWindow, Sort sortList, Equal igualdade){
+		list<Coordenada* >::iterator it = poligonoVertices->begin();
+		for(; it != poligonoVertices->end(); it++){
+			if(igualdade(coorWindow, *it)){
+				newList.push_back(*it);
+			}
+		}
+		newList.sort(sortList);
+	}
+
+	static bool compareEqualY(Coordenada* coordenada1, Coordenada* coordenada2){
+		return coordenada1->getY() == coordenada2->getY();
+	}
+
+	static bool compareEqualX(Coordenada* coordenada1, Coordenada* coordenada2){
+		return coordenada1->getX() == coordenada2->getX();
+	}
+
+	static bool compareMenorY(Coordenada* coordenada1, Coordenada* coordenada2){
+		return coordenada1->getY() < coordenada2->getY();
+	}
+
+	static bool compareMenorX(Coordenada* coordenada1, Coordenada* coordenada2){
+		return coordenada1->getX() < coordenada2->getX();
+	}
+
+	static bool compareMaiorY(Coordenada* coordenada1, Coordenada* coordenada2){
+		return coordenada1->getY() > coordenada2->getY();
+	}
+
+	static bool compareMaiorX(Coordenada* coordenada1, Coordenada* coordenada2){
+		return coordenada1->getX() > coordenada2->getX();
+	}
+
 	static Matriz* getMatrizTransformacao(Coordenada* center, list<Transformacao* >* transformacoes){
 		Matriz* matriz = Utils::getMatrizByTransformacao(center, transformacoes->front());
 		list<Transformacao* >::iterator it = _List_iterator<Transformacao* >(transformacoes->begin()._M_node->_M_next);

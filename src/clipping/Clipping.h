@@ -30,16 +30,19 @@ public:
 
 private:
 	Window *window;
-	void clippingPonto(Ponto* ponto);
 	bool verificarPonto(double x, double y);
+
 	void clippingReta(Reta* reta);
+	void clippingPonto(Ponto* ponto);
 	void clippingPoligonoAberto(Poligono* poligono);
 	void clippingPoligonoFechado(Poligono* poligono);
-	void preencherListas(list<Coordenada*> *windowVertices,	list<Coordenada*> *poligonoVertices, Poligono* poligono);
-	void verificarInterseccaoWindow(Coordenada* atual, list<Coordenada*> *windowVertices);
+
 	bool clippingLine(Coordenada* inicial, Coordenada* final);
-	void verificarQuadrante(Coordenada *coordenada, bool* RC);
 	bool clippingCoordenada(bool* RC,Coordenada *coordenadaInicial, Coordenada* coordenadaFinal, Coordenada *novaCoordenada);
+	void verificarQuadrante(Coordenada *coordenada, bool* RC);
+
+	list<Coordenada*>* preencherPoligonoLista(Poligono* poligono);
+	list<Coordenada*>* preencherWindowLista(Poligono* poligono, list<Coordenada*>* poligonoVertices);
 	void percorrerListaPoligono();
 	void percorrerListaWindow();
 };

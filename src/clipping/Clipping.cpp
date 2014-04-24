@@ -63,7 +63,7 @@ void Clipping::clippingPoligonoAberto(Poligono* poligono) {
 	list<Coordenada*>::iterator it = poligono->getCPPCoordenadas()->begin();
 	for (; it._M_node != poligono->getCPPCoordenadas()->end()._M_node->_M_prev;
 			it++) {
-		Coordenada* current = static_cast<Coordenada*>(*it)->clone();
+		Coordenada* current = (*it)->clone();
 		Coordenada* next =
 				static_cast<_List_node<Coordenada*>*>(it._M_node->_M_next)->_M_data->clone();
 		if (clippingLine(current, next)) {
@@ -76,9 +76,8 @@ void Clipping::clippingPoligonoAberto(Poligono* poligono) {
 }
 
 void Clipping::clippingPoligonoFechado(Poligono* poligono) {
-	list<Coordenada*> *windowVertices;
-	list<Coordenada*> *poligonoVertices;
-	preencherListas(windowVertices, poligonoVertices, poligono);
+	list<Coordenada*> *poligonoVertices = preencherPoligonoLista(poligono);
+	list<Coordenada*> *windowVertices = preencherWindowLista(poligono, poligonoVertices);
 	list<Coordenada*>::iterator it = poligonoVertices->begin();
 	Coordenada *visitado;
 	for(; it != poligonoVertices->end(); it++){
@@ -98,8 +97,33 @@ void Clipping::percorrerListaPoligono() {
 void Clipping::percorrerListaWindow() {
 }
 
-void Clipping::preencherListas(list<Coordenada*> *windowVertices,
-		list<Coordenada*> *poligonoVertices, Poligono* poligono) {
+list<Coordenada*>* Clipping::preencherPoligonoLista(Poligono* poligono) {
+	list<Coordenada*>* poligonoVertices = new list<Coordenada* >();
+	list<Coordenada*>::iterator it = poligono->getCPPCoordenadas()->begin();
+	for (; it._M_node != poligono->getCPPCoordenadas()->end()._M_node->_M_prev;
+			it++) {
+		Coordenada* current = (*it)->clone();
+		Coordenada* next = static_cast<_List_node<Coordenada*>*>(it._M_node->_M_next)->_M_data->clone();
+		Coordenada* nextClone = next->clone();
+		Coordenada* currentClone = current->clone();
+		poligonoVertices->push_back(current);
+		if (clippingLine(currentClone, nextClone)) {
+			if (!current->equal(currentClone)) {
+				currentClone->setIsInterseccao(true);
+				poligonoVertices->push_back(currentClone);
+			}
+			if (!next->equal(nextClone)) {
+				nextClone->setIsInterseccao(true);
+				poligonoVertices->push_back(nextClone);
+			}
+		}
+		poligonoVertices->push_back(next);
+	}
+	return poligonoVertices;
+}
+
+list<Coordenada*>* Clipping::preencherWindowLista(Poligono* poligono, list<Coordenada*>* poligonoVertices) {
+	list<Coordenada*>* windowVertices = new list<Coordenada*>();
 	Coordenada *A = this->window->CPPstart->clone();
 	Coordenada *C = this->window->CPPend->clone();
 	Coordenada *B = new Coordenada(A->getX(), C->getY());
@@ -108,46 +132,25 @@ void Clipping::preencherListas(list<Coordenada*> *windowVertices,
 	windowVertices->push_back(B);
 	windowVertices->push_back(C);
 	windowVertices->push_back(D);
-	list<Coordenada*>::iterator it = poligono->getCPPCoordenadas()->begin();
-	for (; it._M_node != poligono->getCPPCoordenadas()->end()._M_node->_M_prev;
-			it++) {
-		Coordenada* current = static_cast<Coordenada*>(*it)->clone();
-		Coordenada* next = static_cast<_List_node<Coordenada*>*>(it._M_node->_M_next)->_M_data->clone();
-		Coordenada* currentClone = current->clone();
-		Coordenada* nextClone = next->clone();
-		poligonoVertices->push_back(current);
-		if (clippingLine(currentClone, nextClone)) {
-			if (!current->equal(currentClone)) {
-				currentClone->setIsInterseccao(true);
-				poligonoVertices->push_back(currentClone);
-				verificarInterseccaoWindow(currentClone, windowVertices);
-			}
-			if (!next->equal(nextClone)) {
-				nextClone->setIsInterseccao(true);
-				poligonoVertices->push_back(nextClone);
-				verificarInterseccaoWindow(nextClone, windowVertices);
-			}
-		}
-		poligonoVertices->push_back(next);
-	}
+	list<Coordenada* > inter = list<Coordenada* >();
+	Utils::monteList(poligonoVertices, inter, A, Utils::compareMenorY, Utils::compareEqualX);
+	windowVertices->splice(++inter.begin(), inter);
+
+	list<Coordenada* > inter2 = list<Coordenada* >();
+	Utils::monteList(poligonoVertices, inter, B, Utils::compareMenorX, Utils::compareEqualY);
+	windowVertices->splice(++++inter.begin(), inter2);
+
+	list<Coordenada* > inter3 = list<Coordenada* >();
+	Utils::monteList(poligonoVertices, inter, C, Utils::compareMaiorX, Utils::compareEqualX);
+	windowVertices->splice(++inter.begin(), inter3);
+
+	list<Coordenada* > inter4 = list<Coordenada* >();
+	Utils::monteList(poligonoVertices, inter, D, Utils::compareMaiorY, Utils::compareEqualY);
+	windowVertices->splice(++inter.begin(), inter4);
+	return windowVertices;
 }
 
-void Clipping::verificarInterseccaoWindow(Coordenada* atual, list<Coordenada*>* windowVertices) {
-	list<Coordenada*>::iterator it = windowVertices->begin();
-	for(; it != windowVertices->end(); it++){
-		if(atual->getX() == (*it)->clone()->getX()){
-			windowVertices->insert(++it, atual);
-			return;
-		}
-	}
-	it = ++windowVertices->begin();
-	for(; it != windowVertices->end(); it++){
-		if(atual->getY() == (*it)->clone()->getY()){
-			windowVertices->insert(++it, atual);
-			return;
-		}
-	}
-}
+
 
 bool Clipping::clippingLine(Coordenada* coordenada1, Coordenada* coordenada2) {
 	bool RC1[4] = { false };
