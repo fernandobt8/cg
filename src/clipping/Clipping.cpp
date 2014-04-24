@@ -99,9 +99,9 @@ void Clipping::percorrerListaPoligono(list<Coordenada*> *poligonoVertices, list<
 	advance(it, Utils::getIndexObject(poligonoVertices, anterior) + 1);
 	for (; it != poligonoVertices->end(); it++) {
 		Coordenada *atual = (*it);
-		atual->setVisitado(true);
 		novosVertices->push_back(atual);
 		if (!atual->isVisitado()) {
+			atual->setVisitado(true);
 			if (atual->isInterseccao()) {
 				atual->setVisitado(true);
 				percorrerListaWindow(poligonoVertices, windowVertices, novosVertices, atual);
@@ -115,9 +115,9 @@ void Clipping::percorrerListaWindow(list<Coordenada*> *poligonoVertices, list<Co
 	advance(it, Utils::getIndexObject(windowVertices, anterior) + 1);
 	for (; it != windowVertices->end(); it++) {
 		Coordenada *atual = (*it);
-		atual->setVisitado(true);
 		novosVertices->push_back(atual);
 		if (!atual->isVisitado()) {
+			atual->setVisitado(true);
 			if (atual->isInterseccao()) {
 				atual->setVisitado(true);
 				percorrerListaPoligono(poligonoVertices, windowVertices, novosVertices, atual);
@@ -128,14 +128,18 @@ void Clipping::percorrerListaWindow(list<Coordenada*> *poligonoVertices, list<Co
 
 list<Coordenada*>* Clipping::preencherPoligonoLista(Poligono* poligono) {
 	list<Coordenada*>* poligonoVertices = new list<Coordenada* >();
+	poligono->getCPPCoordenadas()->push_back(poligono->getCPPCoordenadas()->front());
 	list<Coordenada*>::iterator it = poligono->getCPPCoordenadas()->begin();
+	bool needClipping = false;
+	Coordenada* current = (*it)->clone();
+	poligonoVertices->push_back(current);
 	for (; it._M_node != poligono->getCPPCoordenadas()->end()._M_node->_M_prev; it++) {
-		Coordenada* current = (*it)->clone();
+		current = (*it)->clone();
 		Coordenada* next = static_cast<_List_node<Coordenada*>*>(it._M_node->_M_next)->_M_data->clone();
 		Coordenada* nextClone = next->clone();
 		Coordenada* currentClone = current->clone();
-		poligonoVertices->push_back(current);
 		if (clippingLine(currentClone, nextClone)) {
+			needClipping = true;
 			if (!current->equal(currentClone)) {
 				currentClone->setInterseccao(true);
 				poligonoVertices->push_back(currentClone);
@@ -147,7 +151,12 @@ list<Coordenada*>* Clipping::preencherPoligonoLista(Poligono* poligono) {
 		}
 		poligonoVertices->push_back(next);
 	}
-	return poligonoVertices;
+	poligono->getCPPCoordenadas()->pop_back();
+	poligonoVertices->pop_back();
+	if(needClipping)
+		return poligonoVertices;
+	else
+		return NULL;
 }
 
 list<Coordenada*>* Clipping::preencherWindowLista(Poligono* poligono, list<Coordenada*>* poligonoVertices) {
@@ -160,21 +169,21 @@ list<Coordenada*>* Clipping::preencherWindowLista(Poligono* poligono, list<Coord
 	windowVertices->push_back(B);
 	windowVertices->push_back(C);
 	windowVertices->push_back(D);
-	list<Coordenada* > inter = list<Coordenada* >();
+	list<Coordenada* > *inter = new list<Coordenada* >();
 	Utils::monteList(poligonoVertices, inter, A, Utils::compareMenorY, Utils::compareEqualX);
-	windowVertices->splice(++windowVertices->begin(), inter);
+	windowVertices->splice(++windowVertices->begin(), *inter);
 
-	list<Coordenada* > inter2 = list<Coordenada* >();
-	Utils::monteList(poligonoVertices, inter, B, Utils::compareMenorX, Utils::compareEqualY);
-	windowVertices->splice(Utils::getIteratorInObject(windowVertices, C), inter2);
+	list<Coordenada* > *inter2 = new list<Coordenada* >();
+	Utils::monteList(poligonoVertices, inter2, B, Utils::compareMenorX, Utils::compareEqualY);
+	windowVertices->splice(Utils::getIteratorInObject(windowVertices, C), *inter2);
 
-	list<Coordenada* > inter3 = list<Coordenada* >();
-	Utils::monteList(poligonoVertices, inter, C, Utils::compareMaiorX, Utils::compareEqualX);
-	windowVertices->splice(Utils::getIteratorInObject(windowVertices, D), inter3);
+	list<Coordenada* > *inter3 = new list<Coordenada* >();
+	Utils::monteList(poligonoVertices, inter3, C, Utils::compareMaiorX, Utils::compareEqualX);
+	windowVertices->splice(Utils::getIteratorInObject(windowVertices, D), *inter3);
 
-	list<Coordenada* > inter4 = list<Coordenada* >();
-	Utils::monteList(poligonoVertices, inter, D, Utils::compareMaiorY, Utils::compareEqualY);
-	windowVertices->splice(windowVertices->end(), inter4);
+	list<Coordenada* > *inter4 = new list<Coordenada* >();
+	Utils::monteList(poligonoVertices, inter4, D, Utils::compareMaiorY, Utils::compareEqualY);
+	windowVertices->splice(windowVertices->end(), *inter4);
 	return windowVertices;
 }
 

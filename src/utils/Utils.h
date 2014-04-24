@@ -35,14 +35,14 @@ public:
 	}
 
 	template<typename Sort, typename Equal>
-	static void monteList(list<Coordenada* >* poligonoVertices, list<Coordenada* > newList, Coordenada* coorWindow, Sort sortList, Equal igualdade){
+	static void monteList(list<Coordenada* >* poligonoVertices, list<Coordenada* > *newList, Coordenada* coorWindow, Sort sortList, Equal igualdade){
 		list<Coordenada* >::iterator it = poligonoVertices->begin();
 		for(; it != poligonoVertices->end(); it++){
 			if(igualdade(coorWindow, *it)){
-				newList.push_back(*it);
+				newList->push_back(*it);
 			}
 		}
-		newList.sort(sortList);
+		newList->sort(sortList);
 	}
 
 	static bool compareEqualY(Coordenada* coordenada1, Coordenada* coordenada2){
@@ -120,6 +120,14 @@ public:
 			}
 		}
 		throw "object not found";
+	}
+
+	static void printListaCoordenada(list<Coordenada*> *lista) {
+		_List_iterator<Coordenada*> it = lista->begin();
+		for (; it != lista->end(); it++){
+			printf("X: %f, Y: %f\n", (*it)->getX(), (*it)->getY());
+		}
+		printf("\n");
 	}
 };
 
