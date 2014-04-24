@@ -35,14 +35,14 @@ public:
 	}
 
 	template<typename Sort, typename Equal>
-	static void monteList(list<Coordenada* >* poligonoVertices, list<Coordenada* > *newList, Coordenada* coorWindow, Sort sortList, Equal igualdade){
-		list<Coordenada* >::iterator it = poligonoVertices->begin();
-		for(; it != poligonoVertices->end(); it++){
-			if(igualdade(coorWindow, *it)){
-				newList->push_back(*it);
+	static void montListByConditionAndOrder(list<Coordenada* >* origem, list<Coordenada* > *destino, Coordenada* equalAThis, Equal equalCondition, Sort sortList){
+		list<Coordenada* >::iterator it = origem->begin();
+		for(; it != origem->end(); it++){
+			if(equalCondition(equalAThis, *it)){
+				destino->push_back(*it);
 			}
 		}
-		newList->sort(sortList);
+		destino->sort(sortList);
 	}
 
 	static void splice(list<Coordenada* >* destino, list<Coordenada* >* origem, Coordenada* afterPosition){

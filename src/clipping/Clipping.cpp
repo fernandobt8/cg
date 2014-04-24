@@ -172,22 +172,22 @@ list<Coordenada*>* Clipping::preencherWindowLista(Poligono* poligono, list<Coord
 	windowVertices->push_back(C);
 	windowVertices->push_back(D);
 	list<Coordenada* > *inter = new list<Coordenada* >();
-	Utils::monteList(poligonoVertices, inter, A, Utils::compareMenorY, Utils::compareEqualX);
+	Utils::montListByConditionAndOrder(poligonoVertices, inter, A,  Utils::compareEqualX, Utils::compareMenorY);
 	Utils::splice(windowVertices, inter, A);
 	delete inter;
 
 	list<Coordenada* > *inter2 = new list<Coordenada* >();
-	Utils::monteList(poligonoVertices, inter2, B, Utils::compareMenorX, Utils::compareEqualY);
+	Utils::montListByConditionAndOrder(poligonoVertices, inter2, B, Utils::compareEqualY, Utils::compareMenorX);
 	Utils::splice(windowVertices, inter2, B);
 	delete inter2;
 
 	list<Coordenada* > *inter3 = new list<Coordenada* >();
-	Utils::monteList(poligonoVertices, inter3, C, Utils::compareMaiorX, Utils::compareEqualX);
+	Utils::montListByConditionAndOrder(poligonoVertices, inter3, C, Utils::compareEqualX, Utils::compareMaiorX);
 	Utils::splice(windowVertices, inter3, C);
 	delete inter3;
 
 	list<Coordenada* > *inter4 = new list<Coordenada* >();
-	Utils::monteList(poligonoVertices, inter4, D, Utils::compareMaiorY, Utils::compareEqualY);
+	Utils::montListByConditionAndOrder(poligonoVertices, inter4, D, Utils::compareEqualY, Utils::compareMaiorY);
 	Utils::splice(windowVertices, inter4, D);
 	delete inter4;
 	return windowVertices;
