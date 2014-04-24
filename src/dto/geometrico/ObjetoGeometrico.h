@@ -23,6 +23,7 @@ public:
 	Coordenada* getCenter();
 	void addCoordenada(Coordenada* coordenada);
 	list<Coordenada*>* getCPPCoordenadas();
+	void setCPPCoordenadas(list<Coordenada*>* CPPcoordenadas);
 	void multiplyCoordenadas(Matriz* matriz);
 	void multiplyCoordenadasToCPP(Matriz* matriz);
 	void printAllcoordenadas();

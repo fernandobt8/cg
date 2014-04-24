@@ -99,15 +99,27 @@ public:
 		return matriz;
 	}
 
-	template<typename T> static int getObject(list<T*> *lista, T* value) {
-		list<T*>::iterator it = lista->begin();
+	template<typename T>
+	static int getIndexObject(list<T*> *lista, T* object) {
+		_List_iterator<T*> it = lista->begin();
 		int count = 0;
 		for (; it != lista->end(); it++, count++) {
-			if (value == (*it)) {
+			if (object == (*it)) {
 				return count;
 			}
 		}
 		return -1;
+	}
+
+	template<typename T>
+	static _List_iterator<T*> getIteratorInObject(list<T*> *lista, T* object) {
+		_List_iterator<T*> it = lista->begin();
+		for (; it != lista->end(); it++){
+			if (object == (*it)) {
+				return it;
+			}
+		}
+		throw "object not found";
 	}
 };
 

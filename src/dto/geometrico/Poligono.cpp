@@ -8,6 +8,13 @@
 #include "Poligono.h"
 
 Poligono::Poligono(const char* nome, list<Coordenada*> *coordenadas) : ObjetoGeometrico(nome, coordenadas){
+	aberto = false;
+}
+
+Poligono::Poligono(const char* nome) : ObjetoGeometrico(nome){
+	coordenadas = new list<Coordenada*>();
+	CPPcoordenadas = new list<Coordenada*>();
+	aberto = false;
 }
 
 Poligono::~Poligono() {

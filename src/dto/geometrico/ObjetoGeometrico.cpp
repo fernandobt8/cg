@@ -26,6 +26,11 @@ void ObjetoGeometrico::multiplyCoordenadas(Matriz* matriz){
 	}
 }
 
+void ObjetoGeometrico::setCPPCoordenadas(list<Coordenada*>* CPPcoordenadas){
+	Utils::destroyList(this->CPPcoordenadas);
+	this->CPPcoordenadas = CPPcoordenadas;
+}
+
 void ObjetoGeometrico::multiplyCoordenadasToCPP(Matriz* matriz) {
 	Utils::destroyList(CPPcoordenadas);
 	CPPcoordenadas = new list<Coordenada*>();

@@ -10,11 +10,15 @@
 Coordenada::Coordenada(double x, double y) {
 	this->x = x;
 	this->y = y;
+	this->interseccao = false;
+	this->visitado = false;
 }
 
 Coordenada::Coordenada() {
 	x = 0;
 	y = 0;
+	this->interseccao = false;
+	this->visitado = false;
 }
 
 Coordenada::~Coordenada() {
@@ -61,7 +65,7 @@ Coordenada* Coordenada::clone(){
 }
 
 bool Coordenada::equal(Coordenada* coordenada) {
-	if(this->x == coordenada->x && this->y == coordenada->y)
+	if(this->x == coordenada->getX() && this->y == coordenada->getY())
 		return true;
 	return false;
 }
