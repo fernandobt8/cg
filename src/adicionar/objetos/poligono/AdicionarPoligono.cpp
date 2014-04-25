@@ -36,6 +36,10 @@ AdicionarPoligono::AdicionarPoligono(QWidget *parent,
 	panelSelectedColor->setGeometry(QRect(340, 130, 110, 50));
 	panelSelectedColor->setAutoFillBackground(true);
 	panelSelectedColor->setPalette(QPalette(QPalette::Background, Qt::white));
+	QLabel* label = new QLabel(this);
+	label->setObjectName(QString::fromUtf8("label"));
+	label->setGeometry(QRect(20, 115, 110, 25));
+	label->setText(QString::fromUtf8("*Sentido horário."));
 	color = QColor("white");
 	QMetaObject::connectSlotsByName(this);
 }
