@@ -60,11 +60,11 @@ public:
 	}
 
 	static bool compareEqualY(Coordenada* coordenada1, Coordenada* coordenada2){
-		return coordenada1->getY() == coordenada2->getY();
+		return coordenada1->getY() == coordenada2->getY() && coordenada2->isInterseccao();
 	}
 
 	static bool compareEqualX(Coordenada* coordenada1, Coordenada* coordenada2){
-		return coordenada1->getX() == coordenada2->getX();
+		return coordenada1->getX() == coordenada2->getX() && coordenada2->isInterseccao();
 	}
 
 	static bool compareMenorY(Coordenada* coordenada1, Coordenada* coordenada2){
