@@ -78,28 +78,32 @@ void Clipping::clippingPoligonoFechado(Poligono* poligono) {
 		list<Coordenada*> *windowVertices = preencherWindowLista(poligono, poligonoVertices);
 		list<Coordenada*> *novosVertices = new list<Coordenada*>();
 		list<Coordenada*>::iterator it = poligonoVertices->begin();
-		for (; it != poligonoVertices->end(); it++) {
+		bool keepGooing = true;
+		Coordenada* first = NULL;
+		while (keepGooing) {
 			Coordenada *atual = (*it);
-			if (!atual->isVisitado() && atual->isInterseccao()) {
-				it++;
-				Coordenada *next;
-				if(it != poligonoVertices->end())
-					next = *it;
-				else
-					next = poligonoVertices->front();
-				if (verificarPonto(next->getX(), next->getY()) || next->isInterseccao()) {
-					atual->setVisitado(true);
-					novosVertices->push_back(atual);
-					int index = Utils::getIndexObject(poligonoVertices, atual);
-					percorrerListaPoligono(poligonoVertices, windowVertices, novosVertices, index);
+			keepGooing = atual != first;
+			it++;
+			if(it == poligonoVertices->end()){
+				it = poligonoVertices->begin();
+			}
+			Coordenada *next = *it;
+			if (!atual->isVisitado() && atual->isInterseccao() && (verificarPonto(next->getX(), next->getY()) || (next->isInterseccao()))) {
+				if(first == NULL){
+					first = atual;
 				}
-				it--;
+				atual->setVisitado(true);
+				novosVertices->push_back(atual);
+				int index = Utils::getIndexObject(poligonoVertices, atual);
+				percorrerListaPoligono(poligonoVertices, windowVertices, novosVertices, index);
+
+				Poligono *poligonoNovo = new Poligono(Utils::cloneChar(poligono->getNome()));
+				poligonoNovo->setCPPCoordenadas(novosVertices);
+				poligonoNovo->color = new QColor(*poligono->color);
+				window->addWindowObjeto(poligonoNovo);
+				novosVertices = new list<Coordenada* >();
 			}
 		}
-		Poligono *poligonoNovo = new Poligono(Utils::cloneChar(poligono->getNome()));
-		poligonoNovo->setCPPCoordenadas(novosVertices);
-		poligonoNovo->color = new QColor(*poligono->color);
-		window->addWindowObjeto(poligonoNovo);
 	}else {
 		Poligono *poligonoNovo = new Poligono(Utils::cloneChar(poligono->getNome()));
 		poligonoNovo->setCPPCoordenadas(poligonoVertices);
