@@ -44,8 +44,8 @@ private:
 
 	list<Coordenada*>* preencherPoligonoLista(Poligono* poligono);
 	list<Coordenada*>* preencherWindowLista(Poligono* poligono, list<Coordenada*>* poligonoVertices);
-	void percorrerListaPoligono(list<Coordenada*> *poligonoVertices, list<Coordenada*> *windowVertices, list<Coordenada*> *novosVertices, Coordenada *atual);
-	void percorrerListaWindow(list<Coordenada*> *poligonoVertices, list<Coordenada*> *windowVertices, list<Coordenada*> *novosVertices, Coordenada *atual);
+	void percorrerListaPoligono(list<Coordenada*> *poligonoVertices, list<Coordenada*> *windowVertices, list<Coordenada*> *novosVertices, int index);
+	void percorrerListaWindow(list<Coordenada*> *poligonoVertices, list<Coordenada*> *windowVertices, list<Coordenada*> *novosVertices, int index);
 };
 
 #endif /* CLIPPINGPONTO_H_ */
