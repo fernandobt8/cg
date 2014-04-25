@@ -42,7 +42,7 @@ private:
 	bool clippingCoordenada(bool* RC,Coordenada *coordenadaInicial, Coordenada* coordenadaFinal, Coordenada *novaCoordenada);
 	void verificarQuadrante(Coordenada *coordenada, bool* RC);
 
-	list<Coordenada*>* preencherPoligonoLista(Poligono* poligono);
+	bool preencherPoligonoLista(Poligono* poligono, list<Coordenada*> *poligonoVertices);
 	list<Coordenada*>* preencherWindowLista(Poligono* poligono, list<Coordenada*>* poligonoVertices);
 	void percorrerListaPoligono(list<Coordenada*> *poligonoVertices, list<Coordenada*> *windowVertices, list<Coordenada*> *novosVertices, int index);
 	void percorrerListaWindow(list<Coordenada*> *poligonoVertices, list<Coordenada*> *windowVertices, list<Coordenada*> *novosVertices, int index);
