@@ -91,8 +91,10 @@ void Clipping::clippingPoligonoFechado(Poligono* poligono) {
 			}
 		}
 	}
-	poligono->setCPPCoordenadas(novosVertices);
-	window->addWindowObjeto(poligono);
+	Poligono *poligonoNovo = new Poligono(Utils::cloneChar(poligono->getNome()));
+	poligonoNovo->setCPPCoordenadas(novosVertices);
+	poligonoNovo->color = new QColor(*poligono->color);
+	window->addWindowObjeto(poligonoNovo);
 }
 
 void Clipping::percorrerListaPoligono(list<Coordenada*> *poligonoVertices, list<Coordenada*> *windowVertices, list<Coordenada*> *novosVertices, int index) {
