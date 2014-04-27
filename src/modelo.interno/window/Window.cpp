@@ -26,7 +26,7 @@ void Window::addWindowObjeto(ObjetoGeometrico* objeto){
 }
 
 void Window::clearWindowObjetos(){
-	Utils::destroyList(objetos);
+	ListUtils::destroyList(objetos);
 	objetos = new list<ObjetoGeometrico* >();
 }
 
@@ -128,6 +128,6 @@ Window::~Window() {
 	delete start;
 	delete end;
 	delete vectorUp;
-	Utils::destroyList(objetos);
+	ListUtils::destroyList(objetos);
 }
 

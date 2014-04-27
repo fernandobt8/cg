@@ -31,7 +31,7 @@ void ModeloInterno::transformeObjeto(char* nome, list<Transformacao* >* transfor
 		}
 	}
 	this->updateCPPCoordenadas();
-	Utils::destroyList(transformacoes);
+	ListUtils::destroyList(transformacoes);
 }
 
 void ModeloInterno::rotacioneWindow(double angulo){
@@ -86,7 +86,7 @@ void ModeloInterno::printAll(){
 }
 
 ModeloInterno::~ModeloInterno() {
-	Utils::destroyList(objetos);
+	ListUtils::destroyList(objetos);
 	delete window;
 }
 

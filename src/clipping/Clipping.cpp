@@ -94,7 +94,7 @@ void Clipping::clippingPoligonoFechado(Poligono* poligono) {
 				}
 				atual->setVisitado(true);
 				novosVertices->push_back(atual);
-				int index = Utils::getIndexObject(poligonoVertices, atual);
+				int index = ListUtils::getIndexObject(poligonoVertices, atual);
 				percorrerListaPoligono(poligonoVertices, windowVertices, novosVertices, index);
 
 				Poligono *poligonoNovo = new Poligono(Utils::cloneChar(poligono->getNome()));
@@ -124,7 +124,7 @@ void Clipping::percorrerListaPoligono(list<Coordenada*> *poligonoVertices, list<
 			next->setVisitado(true);
 			novosVertices->push_back(next);
 			if (next->isInterseccao()) {
-				int index = Utils::getIndexObject(windowVertices, next);
+				int index = ListUtils::getIndexObject(windowVertices, next);
 				percorrerListaWindow(poligonoVertices, windowVertices, novosVertices, index);
 				return;
 			}
@@ -152,7 +152,7 @@ void Clipping::percorrerListaWindow(list<Coordenada*> *poligonoVertices, list<Co
 			next->setVisitado(true);
 			novosVertices->push_back(next);
 			if (next->isInterseccao()) {
-				int index = Utils::getIndexObject(poligonoVertices, next);
+				int index = ListUtils::getIndexObject(poligonoVertices, next);
 				percorrerListaPoligono(poligonoVertices, windowVertices, novosVertices, index);
 				return;
 			}
@@ -208,30 +208,27 @@ list<Coordenada*>* Clipping::preencherWindowLista(Poligono* poligono, list<Coord
 	windowVertices->push_back(B);
 	windowVertices->push_back(C);
 	windowVertices->push_back(D);
-	list<Coordenada* > *inter = new list<Coordenada* >();
-	Utils::montListByConditionAndOrder(poligonoVertices, inter, A,  Utils::compareEqualX, Utils::compareMenorY);
-	Utils::splice(windowVertices, inter, A);
+	list<Coordenada* > *inter = ListUtils::montListByConditionAndOrder(poligonoVertices, A,
+			CoordenadaUtils::compareEqualXAndIsInterseccao, CoordenadaUtils::compareMenorY);
+	ListUtils::splice(windowVertices, inter, A);
 	delete inter;
 
-	list<Coordenada* > *inter2 = new list<Coordenada* >();
-	Utils::montListByConditionAndOrder(poligonoVertices, inter2, B, Utils::compareEqualY, Utils::compareMenorX);
-	Utils::splice(windowVertices, inter2, B);
+	list<Coordenada* > *inter2 = ListUtils::montListByConditionAndOrder(poligonoVertices, B,
+			CoordenadaUtils::compareEqualYAndIsInterseccao, CoordenadaUtils::compareMenorX);
+	ListUtils::splice(windowVertices, inter2, B);
 	delete inter2;
 
-	list<Coordenada* > *inter3 = new list<Coordenada* >();
-	Utils::montListByConditionAndOrder(poligonoVertices, inter3, C, Utils::compareEqualX, Utils::compareMaiorY);
-	Utils::splice(windowVertices, inter3, C);
+	list<Coordenada* > *inter3 = ListUtils::montListByConditionAndOrder(poligonoVertices, C,
+			CoordenadaUtils::compareEqualXAndIsInterseccao, CoordenadaUtils::compareMaiorY);
+	ListUtils::splice(windowVertices, inter3, C);
 	delete inter3;
 
-	list<Coordenada* > *inter4 = new list<Coordenada* >();
-	Utils::montListByConditionAndOrder(poligonoVertices, inter4, D, Utils::compareEqualY, Utils::compareMaiorX);
-	Utils::splice(windowVertices, inter4, D);
+	list<Coordenada* > *inter4 = ListUtils::montListByConditionAndOrder(poligonoVertices, D,
+			CoordenadaUtils::compareEqualYAndIsInterseccao, CoordenadaUtils::compareMaiorX);
+	ListUtils::splice(windowVertices, inter4, D);
 	delete inter4;
-
 	return windowVertices;
 }
-
-
 
 bool Clipping::clippingLine(Coordenada* coordenada1, Coordenada* coordenada2) {
 	bool RC1[4] = { false };

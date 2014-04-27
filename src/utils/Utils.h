@@ -23,66 +23,6 @@ public:
 		return copy;
 	}
 
-	template<typename T>
-	static void destroyList(list<T*> *lista) {
-		T* c = lista->front();
-		while (!lista->empty()) {
-			delete c;
-			lista->pop_front();
-			c = lista->front();
-		}
-		delete lista;
-	}
-
-	template<typename Sort, typename Equal>
-	static void montListByConditionAndOrder(list<Coordenada* >* origem, list<Coordenada* > *destino, Coordenada* equalAThis, Equal equalCondition, Sort sortList){
-		list<Coordenada* >::iterator it = origem->begin();
-		for(; it != origem->end(); it++){
-			if(equalCondition(equalAThis, *it)){
-				destino->push_back(*it);
-			}
-		}
-		destino->sort(sortList);
-	}
-
-	static void splice(list<Coordenada* >* destino, list<Coordenada* >* origem, Coordenada* afterPosition){
-		list<Coordenada* >::iterator pos = destino->begin();
-		for(; pos != destino->end(); pos++){
-			if(afterPosition == *pos){
-				break;
-			}
-		}
-		pos++;
-		list<Coordenada* >::iterator it = origem->begin();
-		for(; it != origem->end(); it++){
-			destino->insert(pos, *it);
-		}
-	}
-
-	static bool compareEqualY(Coordenada* coordenada1, Coordenada* coordenada2){
-		return coordenada1->getY() == coordenada2->getY() && coordenada2->isInterseccao();
-	}
-
-	static bool compareEqualX(Coordenada* coordenada1, Coordenada* coordenada2){
-		return coordenada1->getX() == coordenada2->getX() && coordenada2->isInterseccao();
-	}
-
-	static bool compareMenorY(Coordenada* coordenada1, Coordenada* coordenada2){
-		return coordenada1->getY() < coordenada2->getY();
-	}
-
-	static bool compareMenorX(Coordenada* coordenada1, Coordenada* coordenada2){
-		return coordenada1->getX() < coordenada2->getX();
-	}
-
-	static bool compareMaiorY(Coordenada* coordenada1, Coordenada* coordenada2){
-		return coordenada1->getY() > coordenada2->getY();
-	}
-
-	static bool compareMaiorX(Coordenada* coordenada1, Coordenada* coordenada2){
-		return coordenada1->getX() > coordenada2->getX();
-	}
-
 	static Matriz* getMatrizTransformacao(Coordenada* center,
 			list<Transformacao*>* transformacoes) {
 		Matriz* matriz = Utils::getMatrizByTransformacao(center,
@@ -111,29 +51,6 @@ public:
 			matriz = new MatrizEscalonamento(center, esca);
 		}
 		return matriz;
-	}
-
-	template<typename T>
-	static int getIndexObject(list<T*> *lista, T* object) {
-		_List_iterator<T*> it = lista->begin();
-		int count = 0;
-		for (; it != lista->end(); it++, count++) {
-			if (object == (*it)) {
-				return count;
-			}
-		}
-		return -1;
-	}
-
-	template<typename T>
-	static _List_iterator<T*> getIteratorInObject(list<T*> *lista, T* object) {
-		_List_iterator<T*> it = lista->begin();
-		for (; it != lista->end(); it++){
-			if (object == (*it)) {
-				return it;
-			}
-		}
-		throw "object not found";
 	}
 
 	static void printListaCoordenada(list<Coordenada*> *lista) {

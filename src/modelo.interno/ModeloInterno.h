@@ -12,7 +12,6 @@
 #include "../dto/matriz/Matriz.h"
 #include "../dto/matriz/MatrizRotacao.h"
 #include "../dto/matriz/MatrizTranslacao.h"
-#include "../utils/Utils.h"
 #include "window/Window.h"
 #include "../clipping/Clipping.h"
 #include <stdio.h>

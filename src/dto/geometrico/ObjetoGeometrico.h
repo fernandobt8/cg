@@ -9,7 +9,7 @@
 #define OBJETOGEOMETRICO_H_
 
 #include "Coordenada.h"
-#include "../../utils/Utils.h"
+#include "../../utils/ListUtils.h"
 #include <list>
 
 using namespace std;

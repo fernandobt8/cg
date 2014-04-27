@@ -15,6 +15,8 @@
 #include "../dto/geometrico/Poligono.h"
 #include <stdio.h>
 #include "../utils/Utils.h"
+#include "../utils/ListUtils.h"
+#include "../utils/CoordenadaUtils.h"
 
 #define acima 0
 #define abaixo 1

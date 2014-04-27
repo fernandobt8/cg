@@ -9,15 +9,11 @@
 #define ADICIONARPOLIGONO_H_
 
 #include "../AdicionarAbstract.h"
-#include <list>
-#include "QtCore/qlist.h"
 #include "QtGui/qlistwidget.h"
 #include "QtGui/qcolordialog.h"
 #include <QtGui/qcheckbox.h>
 #include <QtGui/qpalette.h>
 #include "../../../dto/geometrico/Poligono.h"
-#include "../../../utils/Utils.h"
-
 
 using namespace std;
 
