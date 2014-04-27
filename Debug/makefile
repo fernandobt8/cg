@@ -25,6 +25,7 @@ RM := rm -rf
 -include src/adicionar/objetos/reta/subdir.mk
 -include src/adicionar/objetos/ponto/subdir.mk
 -include src/adicionar/objetos/poligono/subdir.mk
+-include src/adicionar/objetos/curva/subdir.mk
 -include src/adicionar/objetos/subdir.mk
 -include src/adicionar/subdir.mk
 -include subdir.mk
