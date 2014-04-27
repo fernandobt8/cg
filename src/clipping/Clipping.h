@@ -17,11 +17,8 @@
 #include "../utils/Utils.h"
 #include "../utils/ListUtils.h"
 #include "../utils/CoordenadaUtils.h"
+#include "Quadrante.h"
 
-#define acima 0
-#define abaixo 1
-#define direita 2
-#define esquerda 3
 
 using namespace std;
 
