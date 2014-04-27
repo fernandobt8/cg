@@ -23,7 +23,7 @@ public:
 		return copy;
 	}
 
-	static bool isBetweenValues(double start, double end, double value){
+	static bool isBetween(double start, double end, double value){
 		return value >= start && value <= end;
 	}
 

@@ -33,23 +33,9 @@ void Clipping::clip(ObjetoGeometrico* objeto) {
 }
 
 void Clipping::clippingPonto(Ponto* ponto) {
-	list<Coordenada*> *coordenadas = ponto->getCPPCoordenadas();
-	double x = coordenadas->front()->getX();
-	double y = coordenadas->front()->getY();
-	if (verificarPonto(x, y)) {
+	if (CoordenadaUtils::isDentroWindow(ponto->getCPPCoordenadas()->front(), window)) {
 		window->addWindowObjeto(ponto);
 	}
-}
-
-bool Clipping::verificarPonto(double x, double y) {
-	bool xStart = window->CPPstart->getX() <= x;
-	bool xEnd = window->CPPend->getX() >= x;
-	bool yStart = window->CPPstart->getY() <= y;
-	bool yEnd = window->CPPend->getY() >= y;
-	if (xStart && xEnd && yStart && yEnd) {
-		return true;
-	}
-	return false;
 }
 
 void Clipping::clippingReta(Reta *reta) {
@@ -88,7 +74,7 @@ void Clipping::clippingPoligonoFechado(Poligono* poligono) {
 				it = poligonoVertices->begin();
 			}
 			Coordenada *next = *it;
-			if (!atual->isVisitado() && atual->isInterseccao() && (verificarPonto(next->getX(), next->getY()) || (next->isInterseccao()))) {
+			if (!atual->isVisitado() && atual->isInterseccao() && (CoordenadaUtils::isDentroWindow(next, window) || next->isInterseccao())) {
 				if(first == NULL){
 					first = atual;
 				}

@@ -40,7 +40,7 @@ public:
 		bool clipping = false;
 		if (RC[Quadrante::acima]) {
 			double xCima = coordenadaInicial->getX() + 1 / m * (window->CPPend->getY() - coordenadaInicial->getY());
-			if (Utils::isBetweenValues(window->CPPstart->getX(), window->CPPend->getX(), xCima)) {
+			if (Utils::isBetween(window->CPPstart->getX(), window->CPPend->getX(), xCima)) {
 				clippingCoordenada->setX(xCima);
 				clippingCoordenada->setY(window->CPPend->getY());
 				clipping = true;
@@ -48,7 +48,7 @@ public:
 		}
 		if (RC[Quadrante::abaixo]) {
 			double xBaixo = coordenadaInicial->getX() + 1 / m * (window->CPPstart->getY() - coordenadaInicial->getY());
-			if (Utils::isBetweenValues(window->CPPstart->getX(), window->CPPend->getX(), xBaixo)) {
+			if (Utils::isBetween(window->CPPstart->getX(), window->CPPend->getX(), xBaixo)) {
 				clippingCoordenada->setY(window->CPPstart->getY());
 				clippingCoordenada->setX(xBaixo);
 				clipping = true;
@@ -56,7 +56,7 @@ public:
 		}
 		if (RC[Quadrante::direita]) {
 			double yDireita = m * (window->CPPend->getX() - coordenadaInicial->getX()) + coordenadaInicial->getY();
-			if (Utils::isBetweenValues(window->CPPstart->getY(), window->CPPend->getY(), yDireita)) {
+			if (Utils::isBetween(window->CPPstart->getY(), window->CPPend->getY(), yDireita)) {
 				clippingCoordenada->setX(window->CPPend->getX());
 				clippingCoordenada->setY(yDireita);
 				clipping = true;
@@ -64,7 +64,7 @@ public:
 		}
 		if (RC[Quadrante::esquerda]) {
 			double yEsquerda = m * (window->CPPstart->getX() - coordenadaInicial->getX()) + coordenadaInicial->getY();
-			if (Utils::isBetweenValues(window->CPPstart->getY(), window->CPPend->getY(), yEsquerda)) {
+			if (Utils::isBetween(window->CPPstart->getY(), window->CPPend->getY(), yEsquerda)) {
 				clippingCoordenada->setX(window->CPPstart->getX());
 				clippingCoordenada->setY(yEsquerda);
 				clipping = true;
@@ -87,6 +87,14 @@ public:
 			RC[Quadrante::esquerda] = true;
 		}
 		return RC;
+	}
+
+	static bool isDentroWindow(Coordenada* coordenada, Window* window) {
+		if (Utils::isBetween(window->CPPstart->getX(), window->CPPend->getX(), coordenada->getX())
+				&& Utils::isBetween(window->CPPstart->getY(), window->CPPend->getY(), coordenada->getY())) {
+			return true;
+		}
+		return false;
 	}
 };
 #endif
