@@ -35,7 +35,8 @@ public:
 		return coordenada1->getX() > coordenada2->getX();
 	}
 
-	static bool clippingCoordenada(vector<bool> RC, Coordenada *coordenadaInicial, Coordenada* coordenadaFinal, Coordenada *clippingCoordenada, Window* window){
+	static bool clippingCoordenada(vector<bool> RC, Coordenada *coordenadaInicial, Coordenada* coordenadaFinal,
+			Coordenada *clippingCoordenada, Window* window){
 		double m = (coordenadaFinal->getY() - coordenadaInicial->getY()) / (coordenadaFinal->getX() - coordenadaInicial->getX());
 		bool clipping = false;
 		if (RC[Quadrante::acima]) {

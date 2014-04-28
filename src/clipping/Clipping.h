@@ -19,7 +19,6 @@
 #include "../utils/CoordenadaUtils.h"
 #include "Quadrante.h"
 
-
 using namespace std;
 
 class Clipping {
@@ -38,13 +37,12 @@ private:
 	void clippingPoligonoFechado(Poligono* poligono);
 
 	bool clippingLine(Coordenada* inicial, Coordenada* final);
-	bool clippingCoordenada(bool* RC,Coordenada *coordenadaInicial, Coordenada* coordenadaFinal, Coordenada *novaCoordenada);
-	void verificarQuadrante(Coordenada *coordenada, bool* RC);
+	template<typename Equals, typename Sort>
+	void addListToList(list<Coordenada* >* poligonoVertices, list<Coordenada*>* windowVertices, Coordenada* coordenada, Equals equals, Sort sort);
 
 	bool preencherPoligonoLista(Poligono* poligono, list<Coordenada*> *poligonoVertices);
 	list<Coordenada*>* preencherWindowLista(Poligono* poligono, list<Coordenada*>* poligonoVertices);
-	void percorrerListaPoligono(list<Coordenada*> *poligonoVertices, list<Coordenada*> *windowVertices, list<Coordenada*> *novosVertices, int index);
-	void percorrerListaWindow(list<Coordenada*> *poligonoVertices, list<Coordenada*> *windowVertices, list<Coordenada*> *novosVertices, int index);
+	void percorrerLista(list<Coordenada* >* followList, list<Coordenada*>* goList, list<Coordenada*>* novaLista,  _List_iterator<Coordenada*> iterator);
 };
 
 #endif /* CLIPPINGPONTO_H_ */

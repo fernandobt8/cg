@@ -27,12 +27,9 @@ public:
 		return value >= start && value <= end;
 	}
 
-	static Matriz* getMatrizTransformacao(Coordenada* center,
-			list<Transformacao*>* transformacoes) {
-		Matriz* matriz = Utils::getMatrizByTransformacao(center,
-				transformacoes->front());
-		list<Transformacao*>::iterator it = _List_iterator<Transformacao*>(
-				transformacoes->begin()._M_node->_M_next);
+	static Matriz* getMatrizTransformacao(Coordenada* center, list<Transformacao*>* transformacoes) {
+		Matriz* matriz = Utils::getMatrizByTransformacao(center, transformacoes->front());
+		list<Transformacao*>::iterator it = _List_iterator<Transformacao*>( transformacoes->begin()._M_node->_M_next);
 		for (; it != transformacoes->end(); it++) {
 			Matriz* temp = Utils::getMatrizByTransformacao(center, *it);
 			matriz->multiply(temp);
@@ -41,8 +38,7 @@ public:
 		return matriz;
 	}
 
-	static Matriz* getMatrizByTransformacao(Coordenada* center,
-			Transformacao* transformacao) {
+	static Matriz* getMatrizByTransformacao(Coordenada* center, Transformacao* transformacao) {
 		Matriz* matriz;
 		Translacao* trans = dynamic_cast<Translacao*>(transformacao);
 		Rotacao* rotacao = dynamic_cast<Rotacao*>(transformacao);
