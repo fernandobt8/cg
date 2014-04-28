@@ -7,7 +7,7 @@ using namespace std;
 
 class CoordenadaUtils{
 public:
-	static bool isVisitado(Coordenada* coordenada){
+	static bool notVisitado(Coordenada* coordenada){
 		return !coordenada->isVisitado();
 	}
 

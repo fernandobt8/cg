@@ -40,8 +40,8 @@ private:
 	template<typename Equals, typename Sort>
 	void addListToList(list<Coordenada* >* poligonoVertices, list<Coordenada*>* windowVertices, Coordenada* coordenada, Equals equals, Sort sort);
 
-	bool preencherPoligonoLista(Poligono* poligono, list<Coordenada*> *poligonoVertices);
-	list<Coordenada*>* preencherWindowLista(Poligono* poligono, list<Coordenada*>* poligonoVertices);
+	list<Coordenada*>* getPoligonoLista(Poligono* poligono);
+	list<Coordenada*>* getWindowLista(list<Coordenada*>* poligonoVertices);
 	void percorrerLista(list<Coordenada* >* followList, list<Coordenada*>* goList, list<Coordenada*>* novaLista,  _List_iterator<Coordenada*> iterator);
 };
 

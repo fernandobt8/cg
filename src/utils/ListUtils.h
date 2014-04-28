@@ -60,6 +60,15 @@ public:
 		throw "object not found";
 	}
 
+	template<typename ListType>
+	static _List_iterator<ListType*> incrementIteratorCircular(list<ListType* >* lista, _List_iterator<ListType*> iterator){
+		iterator++;
+		if(iterator == lista->end()){
+			return lista->begin();
+		}
+		return iterator;
+	}
+
 	template<typename SortCondition, typename EqualCondition, typename ListType>
 	static list<ListType* >* montListByConditionAndOrder(list<ListType* >* origem, ListType* equalAThis, EqualCondition equalCondition, SortCondition sortList){
 		list<ListType* >* destino = new list<ListType*>();

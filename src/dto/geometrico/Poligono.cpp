@@ -9,12 +9,23 @@
 
 Poligono::Poligono(const char* nome, list<Coordenada*> *coordenadas) : ObjetoGeometrico(nome, coordenadas){
 	aberto = false;
+	color = NULL;
 }
 
 Poligono::Poligono(const char* nome) : ObjetoGeometrico(nome){
-	coordenadas = new list<Coordenada*>();
-	CPPcoordenadas = new list<Coordenada*>();
 	aberto = false;
+	color = NULL;
+}
+
+Poligono* Poligono::clone(){
+	Poligono *poligonoNovo = new Poligono(Utils::cloneChar(nome));
+	poligonoNovo->color = this->color ? new QColor(*this->color) : NULL;
+	list<Coordenada* >* newList = new list<Coordenada*>();
+	for(list<Coordenada*>::iterator it = CPPcoordenadas->begin(); it != CPPcoordenadas->end(); it++){
+		newList->push_back((*it)->clone());
+	}
+	poligonoNovo->setCPPCoordenadas(newList);
+	return poligonoNovo;
 }
 
 Poligono::~Poligono() {

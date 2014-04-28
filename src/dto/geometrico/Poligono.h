@@ -20,6 +20,7 @@ public:
 	Poligono(const char* nome, list<Coordenada*> *coordenadas);
 	Poligono(const char* nome);
 	virtual ~Poligono();
+	Poligono* clone();
 	QColor* color;
 	bool aberto;
 

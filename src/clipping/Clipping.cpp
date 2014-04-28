@@ -59,49 +59,40 @@ void Clipping::clippingPoligonoAberto(Poligono* poligono) {
 }
 
 void Clipping::clippingPoligonoFechado(Poligono* poligono) {
-	list<Coordenada*> *poligonoVertices = new list<Coordenada* >();
-	if(preencherPoligonoLista(poligono, poligonoVertices)){
-		list<Coordenada*> *windowVertices = preencherWindowLista(poligono, poligonoVertices);
+	list<Coordenada*> *poligonoVertices = getPoligonoLista(poligono);
+	if(poligonoVertices->size() > poligono->getCPPCoordenadas()->size()){
+		list<Coordenada*> *windowVertices = getWindowLista(poligonoVertices);
 		list<Coordenada*> *novosVertices = new list<Coordenada*>();
 		list<Coordenada*>::iterator it = poligonoVertices->begin();
-		bool keepGooing = true;
 		Coordenada* first = NULL;
-		while (keepGooing) {
+		while (true) {
 			Coordenada *atual = (*it);
-			keepGooing = atual != first;
-			it++;
-			if(it == poligonoVertices->end()){
-				it = poligonoVertices->begin();
-			}
-			Coordenada *next = *it;
-			if (!atual->isVisitado() && atual->isInterseccao() && (CoordenadaUtils::isDentroWindow(next, window) || next->isInterseccao())) {
-				if(first == NULL){
+			if(atual == first)
+				return;
+			it = ListUtils::incrementIteratorCircular(poligonoVertices, it);
+			if (!atual->isVisitado() && atual->isInterseccao() && CoordenadaUtils::isDentroWindow(*it, window)) {
+				if(!first)
 					first = atual;
-				}
 				atual->setVisitado(true);
 				novosVertices->push_back(atual);
 				percorrerLista(poligonoVertices, windowVertices, novosVertices, ListUtils::getIteratorInObject(poligonoVertices, atual));
 
-				Poligono *poligonoNovo = new Poligono(Utils::cloneChar(poligono->getNome()));
+				Poligono *poligonoNovo = poligono->clone();
 				poligonoNovo->setCPPCoordenadas(novosVertices);
-				poligonoNovo->color = new QColor(*poligono->color);
 				window->addWindowObjeto(poligonoNovo);
 				novosVertices = new list<Coordenada* >();
 			}
 		}
-	}else {
-		Poligono *poligonoNovo = new Poligono(Utils::cloneChar(poligono->getNome()));
-		poligonoNovo->setCPPCoordenadas(poligonoVertices);
-		poligonoNovo->color = new QColor(*poligono->color);
-		window->addWindowObjeto(poligonoNovo);
-	}
+		delete novosVertices;
+		ListUtils::destroyListByCondition(windowVertices, CoordenadaUtils::notVisitado);
+	}else
+		window->addWindowObjeto(poligono->clone());
+	ListUtils::destroyListByCondition(poligonoVertices, CoordenadaUtils::notVisitado);
 }
 
 void Clipping::percorrerLista(list<Coordenada* >* followList, list<Coordenada*>* goList, list<Coordenada*>* novaLista, _List_iterator<Coordenada*> it){
 	while(true){
-		it++;
-		if(it == followList->end())
-			it = followList->begin();
+		it = ListUtils::incrementIteratorCircular(followList, it);
 		if(!(*it)->isVisitado()){
 			(*it)->setVisitado(true);
 			novaLista->push_back(*it);
@@ -112,6 +103,51 @@ void Clipping::percorrerLista(list<Coordenada* >* followList, list<Coordenada*>*
 		}else
 			return;
 	}
+}
+
+list<Coordenada*>* Clipping::getPoligonoLista(Poligono* poligono){
+	list<Coordenada*>* poligonoVertices = new list<Coordenada*>();
+	list<Coordenada*>::iterator it = poligono->getCPPCoordenadas()->begin();
+	poligono->getCPPCoordenadas()->push_back(poligono->getCPPCoordenadas()->front());
+	poligonoVertices->push_back((*it)->clone());
+	for (; it._M_node != poligono->getCPPCoordenadas()->end()._M_node->_M_prev; it++) {
+		Coordenada* currentClone = (*it)->clone();
+		Coordenada* next = static_cast<_List_node<Coordenada*>*>(it._M_node->_M_next)->_M_data->clone();
+		Coordenada* nextClone = next->clone();
+		if (clippingLine(currentClone, nextClone)) {
+			if (!(*it)->equal(currentClone)) {
+				currentClone->setInterseccao(true);
+				poligonoVertices->push_back(currentClone);
+			}else
+				delete currentClone;
+			if (!next->equal(nextClone)) {
+				nextClone->setInterseccao(true);
+				poligonoVertices->push_back(nextClone);
+			}else
+				delete nextClone;
+		}
+		poligonoVertices->push_back(next);
+	}
+	poligono->getCPPCoordenadas()->pop_back();
+	poligonoVertices->pop_back();
+	return poligonoVertices;
+}
+
+list<Coordenada*>* Clipping::getWindowLista(list<Coordenada*>* poligonoVertices) {
+	list<Coordenada*>* windowVertices = new list<Coordenada*>();
+	Coordenada *A = this->window->CPPstart->clone();
+	Coordenada *C = this->window->CPPend->clone();
+	Coordenada *B = new Coordenada(A->getX(), C->getY());
+	Coordenada *D = new Coordenada(C->getX(), A->getY());
+	windowVertices->push_back(A);
+	windowVertices->push_back(B);
+	windowVertices->push_back(C);
+	windowVertices->push_back(D);
+	this->addListToList(poligonoVertices, windowVertices, A, CoordenadaUtils::compareEqualXAndIsInterseccao, CoordenadaUtils::compareMenorY);
+	this->addListToList(poligonoVertices, windowVertices, B, CoordenadaUtils::compareEqualYAndIsInterseccao, CoordenadaUtils::compareMenorX);
+	this->addListToList(poligonoVertices, windowVertices, C, CoordenadaUtils::compareEqualXAndIsInterseccao, CoordenadaUtils::compareMaiorY);
+	this->addListToList(poligonoVertices, windowVertices, D, CoordenadaUtils::compareEqualYAndIsInterseccao, CoordenadaUtils::compareMaiorX);
+	return windowVertices;
 }
 
 template<typename Equals, typename Sort>
