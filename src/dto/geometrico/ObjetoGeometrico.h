@@ -25,7 +25,7 @@ public:
 	list<Coordenada*>* getCPPCoordenadas();
 	void setCPPCoordenadas(list<Coordenada*>* CPPcoordenadas);
 	void multiplyCoordenadas(Matriz* matriz);
-	void multiplyCoordenadasToCPP(Matriz* matriz);
+	virtual void multiplyCoordenadasToCPP(Matriz* matriz);
 	void printAllcoordenadas();
 	void printAllCPPcoordenadas();
 
