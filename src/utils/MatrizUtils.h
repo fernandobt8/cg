@@ -22,17 +22,17 @@ public:
 		return matrizT;
 	}
 
-	static Matriz* getMatrizGeometria(Coordenada* p1, Coordenada* r1, Coordenada* p4, Coordenada* r4){
+	static Matriz* getMatrizGeometria(Coordenada* p1, Coordenada* p2, Coordenada* p3, Coordenada* p4){
 		Matriz* matriz = new Matriz(4, 2);
 		matriz->getMatriz()[0][0] = p1->getX();
-		matriz->getMatriz()[1][0] = p4->getX();
-		matriz->getMatriz()[2][0] = r1->getX();
-		matriz->getMatriz()[3][0] = r4->getX();
+		matriz->getMatriz()[1][0] = p2->getX();
+		matriz->getMatriz()[2][0] = p3->getX();
+		matriz->getMatriz()[3][0] = p4->getX();
 
 		matriz->getMatriz()[0][1] = p1->getY();
-		matriz->getMatriz()[1][1] = p4->getY();
-		matriz->getMatriz()[2][1] = r1->getY();
-		matriz->getMatriz()[3][1] = r4->getY();
+		matriz->getMatriz()[1][1] = p2->getY();
+		matriz->getMatriz()[2][1] = p3->getY();
+		matriz->getMatriz()[3][1] = p4->getY();
 		return matriz;
 	}
 

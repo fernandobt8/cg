@@ -40,6 +40,8 @@ void AdicionarCurva::on_okButton_clicked() {
 void AdicionarCurva::on_adicionarCoordenada_clicked() {
 	AdicionarPoligono::on_adicionarCoordenada_clicked();
 	Coordenada* coordenada = new Coordenada();
+	coordenada->setX(strtod(this->x2Input->text().toUtf8().data(), NULL));
+	coordenada->setY(strtod(this->y2Input->text().toUtf8().data(), NULL));
 	this->coordenadasObjeto->push_back(coordenada);
 
 	QListWidgetItem * item = new QListWidgetItem();

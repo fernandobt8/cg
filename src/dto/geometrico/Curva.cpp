@@ -21,11 +21,11 @@ void Curva::multiplyCoordenadasToCPP(Matriz* matriz){
 	list<Coordenada*>::iterator it = CPPcoordenadas->begin();
 	while(it._M_node != CPPcoordenadas->end()._M_node->_M_prev->_M_prev){
 		Coordenada* p1 = *it;
-		Coordenada* r1 = *++it;
+		Coordenada* p2 = *++it;
 		Coordenada* p4 = *++it;
-		Coordenada* r4 = *++it;
-		Matriz* matrizG = MatrizUtils::getMatrizGeometria(p1, r1, p4, r4);
-		for(double t = 0.01; t < 1; t += 0.01){
+		Coordenada* p3 = *++it;
+		Matriz* matrizG = MatrizUtils::getMatrizGeometria(p1, p2, p3, p4);
+		for(double t = 0; t < 1; t += 0.01){
 			Matriz* matrizBF = MatrizUtils::getMatrizBlendingFunction(t);
 			matrizBF->multiply(matrizG);
 			newPontos->push_back(new Coordenada(matrizBF->getMatriz()[0][0], matrizBF->getMatriz()[0][1]));
