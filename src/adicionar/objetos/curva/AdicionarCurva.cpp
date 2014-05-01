@@ -38,22 +38,11 @@ void AdicionarCurva::on_okButton_clicked() {
 }
 
 void AdicionarCurva::on_adicionarCoordenada_clicked() {
+	AdicionarPoligono::on_adicionarCoordenada_clicked();
 	Coordenada* coordenada = new Coordenada();
-	coordenada->setX(strtod(this->xInput->text().toUtf8().data(), NULL));
-	coordenada->setY(strtod(this->yInput->text().toUtf8().data(), NULL));
-	this->coordenadasObjeto->push_back(coordenada);
-	coordenada = new Coordenada();
-	coordenada->setX(strtod(this->x2Input->text().toUtf8().data(), NULL));
-	coordenada->setY(strtod(this->y2Input->text().toUtf8().data(), NULL));
 	this->coordenadasObjeto->push_back(coordenada);
 
 	QListWidgetItem * item = new QListWidgetItem();
-	QString sX(this->xInput->text().toUtf8().data());
-	QString sV(", ");
-	QString sY(this->yInput->text().toUtf8().data());
-	item->setText(sX + sV + sY);
-	this->coordenadasList->addItem(item);
-	item = new QListWidgetItem();
 	QString sX2(this->x2Input->text().toUtf8().data());
 	QString sV2(", ");
 	QString sY2(this->y2Input->text().toUtf8().data());
