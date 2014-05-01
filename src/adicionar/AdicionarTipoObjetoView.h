@@ -15,11 +15,11 @@
 #include "objetos/ponto/AdicionarPonto.h"
 #include "objetos/reta/AdicionarReta.h"
 #include "objetos/poligono/AdicionarPoligono.h"
+#include "objetos/curva/AdicionarCurva.h"
 
 using namespace std;
 
 class AdicionarTipoObjetoView: public QMainWindow {
-Q_OBJECT
 public:
 	AdicionarTipoObjetoView(OnAdicionarObjetoTipoEvent *event);
 	virtual ~AdicionarTipoObjetoView();

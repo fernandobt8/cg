@@ -9,16 +9,33 @@
 
 Matriz::Matriz() {
 	this->numLinhas = 3;
+	this->numColunas = 3;
+	matriz = new double*[numLinhas];
 	this->initializeMatriz();
 }
 
-Matriz::Matriz(int numLinhas){
+Matriz::Matriz(int numLinhas, int numColunas) {
 	this->numLinhas = numLinhas;
+	this->numColunas = numColunas;
+	matriz = new double*[numLinhas];
 	this->initializeMatriz();
+}
+
+Matriz::Matriz(double t){
+	this->numColunas = 1;
+	this->numLinhas = 4;
+	matriz = new double*[numLinhas];
+	this->initializeMatriz();
+	matriz[0][0] = pow(t, 3);
+	matriz[1][0] = pow(t, 2);
+	matriz[2][0] = t;
+	matriz[3][0] = 1;
 }
 
 Matriz::Matriz(Coordenada* coordenada){
 	this->numLinhas = 1;
+	this->numColunas = 3;
+	matriz = new double*[numLinhas];
 	this->initializeMatriz();
 	matriz[0][0] = coordenada->getX();
 	matriz[0][1] = coordenada->getY();
@@ -26,7 +43,6 @@ Matriz::Matriz(Coordenada* coordenada){
 }
 
 void Matriz::initializeMatriz(){
-	matriz = new double*[numLinhas];
 	for(int i = 0; i < numLinhas; i++){
 		matriz[i] = new double[numColunas];
 	}
@@ -35,8 +51,8 @@ void Matriz::initializeMatriz(){
 void Matriz::multiply(Matriz* matriz)  {
 	double** resultado = new double*[numLinhas];
 	for (int i = 0; i < numLinhas; i++) {
-		resultado[i] = new double[numColunas];
-		for (int j = 0; j < numColunas; j++) {
+		resultado[i] = new double[matriz->numColunas];
+		for (int j = 0; j < matriz->numColunas; j++) {
 			resultado[i][j] = 0;
 			for (int k = 0; k < numColunas; k++) {
 				resultado[i][j] = resultado[i][j] + (this->matriz[i][k] * matriz->getMatriz()[k][j]);
@@ -44,6 +60,7 @@ void Matriz::multiply(Matriz* matriz)  {
 		}
 	}
 	this->clearMatriz();
+	this->numColunas = matriz->numColunas;
 	this->matriz = resultado;
 }
 

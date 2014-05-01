@@ -13,12 +13,8 @@
 
 class MatrizEscalonamento : public Matriz{
 public:
-	MatrizEscalonamento(Coordenada* center, Escalonamento* escalonamento);
 	MatrizEscalonamento(double x, double y);
 	virtual ~MatrizEscalonamento();
-
-private:
-	void initialize(double x, double y);
 };
 
 #endif /* MATRIZESCALONAMENTO_H_ */

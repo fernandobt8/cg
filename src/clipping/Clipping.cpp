@@ -112,7 +112,7 @@ list<Coordenada*>* Clipping::getPoligonoLista(Poligono* poligono){
 	poligonoVertices->push_back((*it)->clone());
 	for (; it._M_node != poligono->getCPPCoordenadas()->end()._M_node->_M_prev; it++) {
 		Coordenada* currentClone = (*it)->clone();
-		Coordenada* next = static_cast<_List_node<Coordenada*>*>(it._M_node->_M_next)->_M_data->clone();
+		Coordenada* next = ListUtils::getDataForwardIterator(it, 1)->clone();
 		Coordenada* nextClone = next->clone();
 		if (clippingLine(currentClone, nextClone)) {
 			if (!(*it)->equal(currentClone)) {

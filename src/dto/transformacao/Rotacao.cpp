@@ -9,10 +9,10 @@
 
 Rotacao::Rotacao() : Transformacao("Rotação") {
 	this->angulo = 0;
-	this->tipoRotacao = CENTRO;
+	this->tipoRotacao = Rotacao::CENTRO;
 }
 
-Rotacao::Rotacao(double angulo, int tipoRotacao) : Transformacao("Rotação") {
+Rotacao::Rotacao(double angulo, Rotacao::Tipo tipoRotacao) : Transformacao("Rotação") {
 	this->angulo = angulo;
 	this->tipoRotacao = tipoRotacao;
 }

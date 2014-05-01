@@ -9,7 +9,6 @@
 #define MATRIZ_H_
 
 #define PI 3.14159265
-#define numColunas 3
 #include "../geometrico/Coordenada.h"
 #include <math.h>
 #include <stdio.h>
@@ -20,7 +19,8 @@ class Coordenada;
 class Matriz {
 public:
 	Matriz();
-	Matriz(int numLinhas);
+	Matriz(double t);
+	Matriz(int numLinhas, int numColunas);
 	Matriz(Coordenada* coordenada);
 	virtual ~Matriz();
 	void multiply(Matriz* matriz);
@@ -29,6 +29,7 @@ public:
 
 protected:
 	int numLinhas;
+	int numColunas;
 	double** matriz;
 	void initializeMatriz();
 	void clearMatriz();

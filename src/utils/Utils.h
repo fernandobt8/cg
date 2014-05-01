@@ -13,6 +13,7 @@
 #include "../dto/matriz/MatrizEscalonamento.h"
 #include "../dto/matriz/MatrizRotacao.h"
 #include "../dto/matriz/MatrizTranslacao.h"
+#include "MatrizUtils.h"
 #include <list>
 
 class Utils {
@@ -32,7 +33,7 @@ public:
 		list<Transformacao*>::iterator it = _List_iterator<Transformacao*>( transformacoes->begin()._M_node->_M_next);
 		for (; it != transformacoes->end(); it++) {
 			Matriz* temp = Utils::getMatrizByTransformacao(center, *it);
-			matriz->multiply(temp);
+			matriz->multiply(*temp);
 			delete temp;
 		}
 		return matriz;
@@ -46,9 +47,9 @@ public:
 		if (trans) {
 			matriz = new MatrizTranslacao(trans);
 		} else if (rotacao) {
-			matriz = new MatrizRotacao(center, rotacao);
+			matriz = MatrizUtils::getFullMatrizRotacao(center, rotacao);
 		} else if (esca) {
-			matriz = new MatrizEscalonamento(center, esca);
+			matriz = MatrizUtils::getFullMatrizEscalonamento(center, esca);
 		}
 		return matriz;
 	}

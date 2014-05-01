@@ -14,6 +14,14 @@ using namespace std;
 class ListUtils{
 public:
 	template<typename ListType>
+	static ListType* getDataForwardIterator(_List_iterator<ListType*> iterator, int forward){
+		advance(iterator, forward);
+		ListType* temp = *iterator;
+		advance(iterator, -forward);
+		return temp;
+	}
+
+	template<typename ListType>
 	static void destroyList(list<ListType*> *lista) {
 		ListType* c = lista->front();
 		while (!lista->empty()) {

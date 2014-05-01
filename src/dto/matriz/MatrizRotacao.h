@@ -13,12 +13,8 @@
 
 class MatrizRotacao : public Matriz {
 public:
-	MatrizRotacao(Coordenada* center, Rotacao* rotacao);
 	MatrizRotacao(double angulo);
 	virtual ~MatrizRotacao();
-
-private:
-	void initialize(double angulo);
 };
 
 #endif /* MATRIZROTACAO_H_ */

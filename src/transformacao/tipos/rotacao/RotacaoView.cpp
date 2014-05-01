@@ -81,11 +81,11 @@ void RotacaoView::on_adicionarButton_clicked() {
 	rotacao->setY(strtod(this->yInput->text().toUtf8().data(), NULL));
 	rotacao->angulo = strtod(this->anguloInput->text().toUtf8().data(), NULL);
 	if(origemButton->isChecked()){
-		rotacao->tipoRotacao = ORIGEM;
+		rotacao->tipoRotacao = Rotacao::ORIGEM;
 	}else if(centroButton->isChecked()){
-		rotacao->tipoRotacao = CENTRO;
+		rotacao->tipoRotacao = Rotacao::CENTRO;
 	}else if(pontoButton->isChecked()){
-		rotacao->tipoRotacao = PONTO;
+		rotacao->tipoRotacao = Rotacao::PONTO;
 	}
 	event->onAdicionarTipoTransformacaoClick(rotacao);
 }
