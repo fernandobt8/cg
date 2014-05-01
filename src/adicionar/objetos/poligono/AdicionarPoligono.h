@@ -27,19 +27,20 @@ public:
 public slots:
 	void on_selectColorButton_clicked();
 	void on_checkAberto_toggled(bool checked);
-private:
+protected:
 	QListWidget *coordenadasList;
 	QPushButton *adicionarCoordenadaButton;
 	QPushButton *removerCoordenadaButton;
 	QCheckBox* checkAberto;
 	QPushButton *selectColorButton;
 	QWidget* panelSelectedColor;
+	QLabel* sentidoHorario;
 	QColor color;
-	list<Coordenada*>* coordenadasPoligono;
+	list<Coordenada*>* coordenadasObjeto;
 
 public slots:
 	void on_removerCoordenada_clicked();
-	void on_adicionarCoordenada_clicked();
+	virtual void on_adicionarCoordenada_clicked();
 };
 
 #endif /* ADICIONARPOLIGONO_H_ */

@@ -8,17 +8,18 @@
 #ifndef ADICIONARCURVA_H_
 #define ADICIONARCURVA_H_
 
-#include "../AdicionarAbstract.h"
+#include "../poligono/AdicionarPoligono.h"
 #include "QtGui/qlineedit.h"
 #include "QtGui/qlabel.h"
 #include "../../../utils/Utils.h"
 #include "../../../dto/geometrico/Curva.h"
 
-class AdicionarCurva : virtual public AdicionarAbstract {
+class AdicionarCurva : public AdicionarPoligono {
 public:
 	AdicionarCurva(QWidget *parent, OnAdicionarObjetoTipoEvent *event);
 	virtual ~AdicionarCurva();
-	virtual void on_okButton_clicked();
+	void on_okButton_clicked();
+	void on_adicionarCoordenada_clicked();
 
 private:
 	QLabel *x2Label;
@@ -26,10 +27,6 @@ private:
 	QLineEdit *x2Input;
 	QLineEdit *y2Input;
 	QLabel *pontoControle;
-	QLabel *x3Label;
-	QLabel *y3Label;
-	QLineEdit *x3Input;
-	QLineEdit *y3Input;
 
 };
 
