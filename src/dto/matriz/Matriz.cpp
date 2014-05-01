@@ -10,32 +10,28 @@
 Matriz::Matriz() {
 	this->numLinhas = 3;
 	this->numColunas = 3;
-	matriz = new double*[numLinhas];
 	this->initializeMatriz();
 }
 
 Matriz::Matriz(int numLinhas, int numColunas) {
 	this->numLinhas = numLinhas;
 	this->numColunas = numColunas;
-	matriz = new double*[numLinhas];
 	this->initializeMatriz();
 }
 
 Matriz::Matriz(double t){
-	this->numColunas = 1;
-	this->numLinhas = 4;
-	matriz = new double*[numLinhas];
+	this->numColunas = 4;
+	this->numLinhas = 1;
 	this->initializeMatriz();
 	matriz[0][0] = pow(t, 3);
-	matriz[1][0] = pow(t, 2);
-	matriz[2][0] = t;
-	matriz[3][0] = 1;
+	matriz[0][1] = pow(t, 2);
+	matriz[0][2] = t;
+	matriz[0][3] = 1;
 }
 
 Matriz::Matriz(Coordenada* coordenada){
 	this->numLinhas = 1;
 	this->numColunas = 3;
-	matriz = new double*[numLinhas];
 	this->initializeMatriz();
 	matriz[0][0] = coordenada->getX();
 	matriz[0][1] = coordenada->getY();
@@ -43,6 +39,7 @@ Matriz::Matriz(Coordenada* coordenada){
 }
 
 void Matriz::initializeMatriz(){
+	matriz = new double*[numLinhas];
 	for(int i = 0; i < numLinhas; i++){
 		matriz[i] = new double[numColunas];
 	}
@@ -70,9 +67,9 @@ double** Matriz::getMatriz() {
 
 void Matriz::clearMatriz(){
 	for(int i = 0; i < numLinhas; i++){
-		delete matriz[i];
+		delete[] matriz[i];
 	}
-	delete matriz;
+	delete[] matriz;
 }
 
 void Matriz::printAll(){
@@ -82,6 +79,7 @@ void Matriz::printAll(){
 	  }
 	  printf("\n");
 	}
+	printf("\n");
 }
 
 Matriz::~Matriz() {

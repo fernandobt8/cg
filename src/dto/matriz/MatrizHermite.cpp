@@ -30,5 +30,4 @@ MatrizHermite::MatrizHermite() : Matriz(4, 4){
 }
 
 MatrizHermite::~MatrizHermite() {
-	// TODO Auto-generated destructor stub
 }

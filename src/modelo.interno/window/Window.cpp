@@ -58,22 +58,17 @@ void Window::zoom(double zoomX, double zoomY){
 	Coordenada* center = this->getCenter();
 	double angulo = this->getAngulo();
 
-	Matriz* transOrigem = new MatrizTranslacao(-center->getX(), -center->getY());
-	Matriz* rotacaoParalela = new MatrizRotacao(-angulo);
-	Matriz* esca = new MatrizEscalonamento(zoomX, zoomY);
-	Matriz* rotacaoNormal = new MatrizRotacao(angulo);
-	Matriz* transCenter = new MatrizTranslacao(center->getX(), center->getY());
-	transOrigem->multiply(rotacaoParalela);
-	transOrigem->multiply(esca);
-	transOrigem->multiply(rotacaoNormal);
-	transOrigem->multiply(transCenter);
-	this->mutiplyCoordenadas(transOrigem);
+	MatrizTranslacao transOrigem(-center->getX(), -center->getY());
+	MatrizRotacao rotacaoParalela(-angulo);
+	MatrizEscalonamento esca(zoomX, zoomY);
+	MatrizRotacao rotacaoNormal(angulo);
+	MatrizTranslacao transCenter(center->getX(), center->getY());
+	transOrigem.multiply(&rotacaoParalela);
+	transOrigem.multiply(&esca);
+	transOrigem.multiply(&rotacaoNormal);
+	transOrigem.multiply(&transCenter);
+	this->mutiplyCoordenadas(&transOrigem);
 	delete center;
-	delete transOrigem;
-	delete rotacaoParalela;
-	delete esca;
-	delete rotacaoNormal;
-	delete transCenter;
 }
 
 void Window::rotacione(double angulo){
@@ -81,8 +76,8 @@ void Window::rotacione(double angulo){
 	vectorUp->multiplyByMatriz(matrizRotacaoVector);
 
 	Coordenada* center = this->getCenter();
-	Rotacao* rotacao = new Rotacao(angulo, CENTRO);
-	Matriz* matrizRotacao = new MatrizRotacao(center, rotacao);
+	Rotacao* rotacao = new Rotacao(angulo, Rotacao::CENTRO);
+	Matriz* matrizRotacao = MatrizUtils::getFullMatrizRotacao(center, rotacao);
 	this->mutiplyCoordenadas(matrizRotacao);
 	delete center;
 	delete rotacao;

@@ -10,12 +10,30 @@
 #include "../dto/matriz/MatrizEscalonamento.h"
 #include "../dto/matriz/MatrizRotacao.h"
 #include "../dto/matriz/MatrizTranslacao.h"
+#include "../dto/matriz/MatrizHermite.h"
 
 class MatrizUtils{
 public:
 	static Matriz* getMatrizBlendingFunction(double t){
-		Matriz matrizT = Matriz(t);
+		Matriz* matrizT = new Matriz(t);
+		Matriz* matrizH = new MatrizHermite();
+		matrizT->multiply( matrizH);
+		delete matrizH;
+		return matrizT;
+	}
 
+	static Matriz* getMatrizGeometria(Coordenada* p1, Coordenada* r1, Coordenada* p4, Coordenada* r4){
+		Matriz* matriz = new Matriz(4, 2);
+		matriz->getMatriz()[0][0] = p1->getX();
+		matriz->getMatriz()[1][0] = p4->getX();
+		matriz->getMatriz()[2][0] = r1->getX();
+		matriz->getMatriz()[3][0] = r4->getX();
+
+		matriz->getMatriz()[0][1] = p1->getY();
+		matriz->getMatriz()[1][1] = p4->getY();
+		matriz->getMatriz()[2][1] = r1->getY();
+		matriz->getMatriz()[3][1] = r4->getY();
+		return matriz;
 	}
 
 	static Matriz* getFullMatrizRotacao(Coordenada* center, Rotacao* rotacao){
@@ -46,6 +64,32 @@ public:
 		MatrizTranslacao transCenterBack(center->getX(), center->getY());
 		transCenter->multiply(&transCenterBack);
 		return transCenter;
+	}
+
+	static Matriz* getMatrizTransformacao(Coordenada* center, list<Transformacao*>* transformacoes) {
+		Matriz* matriz = MatrizUtils::getMatrizByTransformacao(center, transformacoes->front());
+		list<Transformacao*>::iterator it = _List_iterator<Transformacao*>( transformacoes->begin()._M_node->_M_next);
+		for (; it != transformacoes->end(); it++) {
+			Matriz* temp = MatrizUtils::getMatrizByTransformacao(center, *it);
+			matriz->multiply(temp);
+			delete temp;
+		}
+		return matriz;
+	}
+
+	static Matriz* getMatrizByTransformacao(Coordenada* center, Transformacao* transformacao) {
+		Matriz* matriz;
+		Translacao* trans = dynamic_cast<Translacao*>(transformacao);
+		Rotacao* rotacao = dynamic_cast<Rotacao*>(transformacao);
+		Escalonamento* esca = dynamic_cast<Escalonamento*>(transformacao);
+		if (trans) {
+			matriz = new MatrizTranslacao(trans);
+		} else if (rotacao) {
+			matriz = MatrizUtils::getFullMatrizRotacao(center, rotacao);
+		} else if (esca) {
+			matriz = MatrizUtils::getFullMatrizEscalonamento(center, esca);
+		}
+		return matriz;
 	}
 };
 

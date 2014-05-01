@@ -24,7 +24,7 @@ void ModeloInterno::transformeObjeto(char* nome, list<Transformacao* >* transfor
 		ObjetoGeometrico* objeto = *it;
 		if(strcmp(objeto->getNome(), nome) == 0){
 			Coordenada* center = objeto->getCenter();
-			Matriz* matriz = Utils::getMatrizTransformacao(center, transformacoes);
+			Matriz* matriz = MatrizUtils::getMatrizTransformacao(center, transformacoes);
 			objeto->multiplyCoordenadas(matriz);
 			delete matriz;
 			delete center;

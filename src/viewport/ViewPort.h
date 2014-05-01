@@ -13,6 +13,7 @@
 #include "../dto/geometrico/Ponto.h"
 #include "../dto/geometrico/Poligono.h"
 #include "../dto/geometrico/Reta.h"
+#include "../dto/geometrico/Curva.h"
 #include "QtGui/qpainter.h"
 #include <QtGui/qbrush.h>
 #include "../modelo.interno/window/Window.h"
@@ -30,13 +31,14 @@ public:
 	void drawPonto(QPainter* painter, Ponto* ponto);
 	void drawPoligono(QPainter* painter, Poligono* poligono);
 	void drawReta(QPainter* painter, Reta* reta);
+	void drawCurva(QPainter* painter, Curva* curva);
 	void drawViewPort(QPainter* painter);
 
 private:
 	Window* window;
 	Coordenada* start;
 	Coordenada* end;
-	Coordenada* calculeCoordenadaVP(Coordenada* pontoObjeto, Coordenada* startWindow, Coordenada* endWindow);
+	void calculeCoordenadaVP(Coordenada* pontoObjeto);
 };
 
 #endif /* VIEWPORT_H_ */

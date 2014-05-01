@@ -13,6 +13,7 @@
 #include "../dto/geometrico/Ponto.h"
 #include "../dto/geometrico/Reta.h"
 #include "../dto/geometrico/Poligono.h"
+#include "../dto/geometrico/Curva.h"
 #include <stdio.h>
 #include "../utils/Utils.h"
 #include "../utils/ListUtils.h"

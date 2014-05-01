@@ -46,11 +46,6 @@ void AdicionarCurva::on_okButton_clicked() {
 	coordenada3->setX(atoi(this->x3Input->text().toUtf8().constData()));
 	coordenada3->setY(atoi(this->y3Input->text().toUtf8().constData()));
 
-	Curva *curva = new Curva(Utils::cloneChar(this->nomeInput->text().toUtf8().data()));
-	curva->addCoordenada(coordenada1);
-	curva->addCoordenada(coordenada2);
-
-	addEvent->OnAdicionarObjetoTipoClick(curva);
 }
 
 AdicionarCurva::~AdicionarCurva() {

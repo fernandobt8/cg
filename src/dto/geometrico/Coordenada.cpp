@@ -25,7 +25,7 @@ Coordenada::~Coordenada() {
 }
 
 void Coordenada::multiplyByMatriz(Matriz* matriz){
-	Matriz coordenada = Matriz(this);
+	Matriz coordenada(this);
 	coordenada.multiply(matriz);
 	x = coordenada.getMatriz()[0][0];
 	y = coordenada.getMatriz()[0][1];

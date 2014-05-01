@@ -19,6 +19,7 @@ void Clipping::clip(ObjetoGeometrico* objeto) {
 	Ponto* ponto = dynamic_cast<Ponto*>(objeto);
 	Reta* reta = dynamic_cast<Reta*>(objeto);
 	Poligono* poligono = dynamic_cast<Poligono*>(objeto);
+	Curva* curva = dynamic_cast<Curva*>(objeto);
 	if (ponto) {
 		clippingPonto(ponto->clone());
 	} else if (reta) {
@@ -29,6 +30,8 @@ void Clipping::clip(ObjetoGeometrico* objeto) {
 		} else {
 			this->clippingPoligonoFechado(poligono);
 		}
+	} else if(curva){
+		window->addWindowObjeto(curva->clone());
 	}
 }
 
