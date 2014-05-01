@@ -5,9 +5,9 @@
  *      Author: fernandobt8
  */
 
-#include "MatrizHermite.h"
+#include "MatrizBezier.h"
 
-MatrizHermite::MatrizHermite() : Matriz(4, 4){
+MatrizBezier::MatrizBezier() : Matriz(4, 4){
 	matriz[0][0] = -1;
 	matriz[0][1] = 3;
 	matriz[0][2] = -3;
@@ -29,5 +29,5 @@ MatrizHermite::MatrizHermite() : Matriz(4, 4){
 	matriz[3][3] = 0;
 }
 
-MatrizHermite::~MatrizHermite() {
+MatrizBezier::~MatrizBezier() {
 }

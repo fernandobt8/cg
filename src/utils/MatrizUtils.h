@@ -10,15 +10,15 @@
 #include "../dto/matriz/MatrizEscalonamento.h"
 #include "../dto/matriz/MatrizRotacao.h"
 #include "../dto/matriz/MatrizTranslacao.h"
-#include "../dto/matriz/MatrizHermite.h"
+#include "../dto/matriz/MatrizBezier.h"
 
 class MatrizUtils{
 public:
 	static Matriz* getMatrizBlendingFunction(double t){
 		Matriz* matrizT = new Matriz(t);
-		Matriz* matrizH = new MatrizHermite();
-		matrizT->multiply( matrizH);
-		delete matrizH;
+		Matriz* matrizB = new MatrizBezier();
+		matrizT->multiply( matrizB);
+		delete matrizB;
 		return matrizT;
 	}
 
