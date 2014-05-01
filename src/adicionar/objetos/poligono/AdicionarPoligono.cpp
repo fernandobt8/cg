@@ -21,7 +21,7 @@ AdicionarPoligono::AdicionarPoligono(QWidget *parent,
 	removerCoordenadaButton->setObjectName(QString::fromUtf8("removerCoordenada"));
 	removerCoordenadaButton->setGeometry(QRect(20, 190, 80, 25));
 	removerCoordenadaButton->setText(QString::fromUtf8("Remover"));
-	coordenadasPoligono = new list<Coordenada*>();
+	coordenadasObjeto = new list<Coordenada*>();
 
 	checkAberto = new QCheckBox(this);
 	checkAberto->setObjectName(QString::fromUtf8("checkAberto"));
@@ -36,10 +36,10 @@ AdicionarPoligono::AdicionarPoligono(QWidget *parent,
 	panelSelectedColor->setGeometry(QRect(340, 130, 110, 50));
 	panelSelectedColor->setAutoFillBackground(true);
 	panelSelectedColor->setPalette(QPalette(QPalette::Background, Qt::white));
-	QLabel* label = new QLabel(this);
-	label->setObjectName(QString::fromUtf8("label"));
-	label->setGeometry(QRect(20, 115, 110, 25));
-	label->setText(QString::fromUtf8("*Sentido horário."));
+	sentidoHorario = new QLabel(this);
+	sentidoHorario->setObjectName(QString::fromUtf8("label"));
+	sentidoHorario->setGeometry(QRect(20, 115, 110, 25));
+	sentidoHorario->setText(QString::fromUtf8("*Sentido horário."));
 	color = QColor("white");
 	QMetaObject::connectSlotsByName(this);
 }
@@ -64,8 +64,8 @@ void AdicionarPoligono::on_checkAberto_toggled(bool checked){
 
 void AdicionarPoligono::on_okButton_clicked() {
 	list<Coordenada*>* novaLista = new list<Coordenada*>();
-	list<Coordenada*>::iterator it = coordenadasPoligono->begin();
-	while (it != coordenadasPoligono->end()) {
+	list<Coordenada*>::iterator it = coordenadasObjeto->begin();
+	while (it != coordenadasObjeto->end()) {
 		novaLista->push_back(static_cast<Coordenada*>(*it)->clone());
 		it++;
 	}
@@ -89,7 +89,7 @@ void AdicionarPoligono::on_adicionarCoordenada_clicked() {
 	Coordenada* coordenada = new Coordenada();
 	coordenada->setX(strtod(this->xInput->text().toUtf8().data(), NULL));
 	coordenada->setY(strtod(this->yInput->text().toUtf8().data(), NULL));
-	this->coordenadasPoligono->push_back(coordenada);
+	this->coordenadasObjeto->push_back(coordenada);
 
 	QListWidgetItem * item = new QListWidgetItem();
 	QString sX(this->xInput->text().toUtf8().data());
@@ -104,7 +104,7 @@ AdicionarPoligono::~AdicionarPoligono() {
 	delete checkAberto;
 	delete selectColorButton;
 	delete panelSelectedColor;
-	ListUtils::destroyList(coordenadasPoligono);
+	ListUtils::destroyList(coordenadasObjeto);
 	delete adicionarCoordenadaButton;
 	delete coordenadasList;
 	delete removerCoordenadaButton;
