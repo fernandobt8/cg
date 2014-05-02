@@ -30,12 +30,12 @@ public:
 
 private:
 	Window *window;
-	bool verificarPonto(double x, double y);
 
 	void clippingReta(Reta* reta);
 	void clippingPonto(Ponto* ponto);
-	void clippingPoligonoAberto(Poligono* poligono);
+	void clippingObjetoGeometricoToRetas(ObjetoGeometrico* poligono);
 	void clippingPoligonoFechado(Poligono* poligono);
+	void clippingCurva(Curva *curva);
 
 	bool clippingLine(Coordenada* inicial, Coordenada* final);
 	template<typename Equals, typename Sort>

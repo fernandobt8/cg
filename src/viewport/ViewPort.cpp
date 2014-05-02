@@ -53,9 +53,12 @@ void ViewPort::paintEvent(QPaintEvent* event){
 
 void ViewPort::drawCurva(QPainter* painter, Curva* curva){
 	list<Coordenada*>::iterator it = curva->getCPPCoordenadas()->begin();
-	for (; it!= curva->getCPPCoordenadas()->end(); it++) {
-		calculeCoordenadaVP(*it);
-		painter->drawEllipse((*it)->getX(),(*it)->getY(),1,1);
+	curva->printAllCPPcoordenadas();
+	calculeCoordenadaVP(*it);
+	for (; it._M_node != curva->getCPPCoordenadas()->end()._M_node->_M_prev; it++) {
+		Coordenada* next = ListUtils::getDataForwardIterator(it, 1);
+		calculeCoordenadaVP(next);
+		painter->drawLine((*it)->getX(), (*it)->getY(), next->getX(), next->getY());
 	}
 }
 
