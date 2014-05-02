@@ -29,17 +29,13 @@ void Curva::multiplyCoordenadasToCPP(Matriz* matriz){
 		Coordenada* p3 = *++it;
 		primeiro = false;
 		Matriz* matrizG = MatrizUtils::getMatrizGeometria(p1, p2, p3, p4);
-		for(double t = 0; t < 1; t += 0.02){
+		for(double t = 0; t < 1.00001; t += 0.05){
 			Matriz* matrizBF = MatrizUtils::getMatrizBlendingFunction(t);
 			matrizBF->multiply(matrizG);
 			newPontos->push_back(new Coordenada(matrizBF->getMatriz()[0][0], matrizBF->getMatriz()[0][1]));
 			delete matrizBF;
 		}
-		Matriz* matrizBF = MatrizUtils::getMatrizBlendingFunction(1);
-		matrizBF->multiply(matrizG);
-		newPontos->push_back(new Coordenada(matrizBF->getMatriz()[0][0], matrizBF->getMatriz()[0][1]));
-		delete matrizBF;
-		advance(it, -1);
+		it--;
 	}
 	this->setCPPCoordenadas(newPontos);
 }

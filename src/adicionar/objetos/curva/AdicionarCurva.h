@@ -24,6 +24,7 @@ public:
 private:
 	QLabel *x2Label;
 	QLabel *y2Label;
+	QLabel *avisoLabel;
 	QLineEdit *x2Input;
 	QLineEdit *y2Input;
 	QLabel *pontoControle;

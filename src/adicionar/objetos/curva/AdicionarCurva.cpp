@@ -23,6 +23,13 @@ AdicionarCurva::AdicionarCurva(QWidget *parent,	OnAdicionarObjetoTipoEvent *even
 	y2Label->setText(QString::fromUtf8("y"));
 	y2Input = new QLineEdit(this);
 	y2Input->setGeometry(QRect(120, 140, 50, 25));
+	avisoLabel = new QLabel(this);
+	avisoLabel->setObjectName(QString::fromUtf8("avisoLabel"));
+	avisoLabel->setGeometry(QRect(330, 65, 130, 25));
+	avisoLabel->setText(QString::fromUtf8("Mínimo 4 pontos!"));
+	checkAberto->hide();
+	selectColorButton->hide();
+	panelSelectedColor->hide();
 
 }
 
@@ -30,7 +37,7 @@ void AdicionarCurva::on_okButton_clicked() {
 	list<Coordenada*>* novaLista = new list<Coordenada*>();
 	list<Coordenada*>::iterator it = coordenadasObjeto->begin();
 	while (it != coordenadasObjeto->end()) {
-		novaLista->push_back(static_cast<Coordenada*>(*it)->clone());
+		novaLista->push_back((*it)->clone());
 		it++;
 	}
 	Curva *p = new Curva(Utils::cloneChar(this->nomeInput->text().toUtf8().data()), novaLista);
@@ -54,6 +61,11 @@ void AdicionarCurva::on_adicionarCoordenada_clicked() {
 }
 
 AdicionarCurva::~AdicionarCurva() {
-
+	delete x2Label;
+	delete y2Label;
+	delete avisoLabel;
+	delete x2Input;
+	delete y2Input;
+	delete pontoControle;
 }
 

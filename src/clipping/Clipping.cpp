@@ -31,7 +31,7 @@ void Clipping::clip(ObjetoGeometrico* objeto) {
 			this->clippingPoligonoFechado(poligono);
 		}
 	} else if(curva){
-		this->clippingObjetoGeometricoToRetas(curva->clone());
+		this->clippingObjetoGeometricoToRetas(curva);
 	}
 }
 
@@ -51,12 +51,15 @@ void Clipping::clippingObjetoGeometricoToRetas(ObjetoGeometrico* objeto) {
 	list<Coordenada*>::iterator it = objeto->getCPPCoordenadas()->begin();
 	for (; it._M_node != objeto->getCPPCoordenadas()->end()._M_node->_M_prev; it++) {
 		Coordenada* current = (*it)->clone();
-		Coordenada* next = static_cast<_List_node<Coordenada*>*>(it._M_node->_M_next)->_M_data->clone();
+		Coordenada* next =  ListUtils::getDataForwardIterator(it, 1)->clone();
 		if (clippingLine(current, next)) {
 			Reta* r = new Reta(Utils::cloneChar(objeto->getNome()));
 			r->getCPPCoordenadas()->push_back(current);
 			r->getCPPCoordenadas()->push_back(next);
 			window->addWindowObjeto(r);
+		}else{
+			delete current;
+			delete next;
 		}
 	}
 }

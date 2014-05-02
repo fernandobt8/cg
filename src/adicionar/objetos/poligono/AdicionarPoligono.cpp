@@ -66,7 +66,7 @@ void AdicionarPoligono::on_okButton_clicked() {
 	list<Coordenada*>* novaLista = new list<Coordenada*>();
 	list<Coordenada*>::iterator it = coordenadasObjeto->begin();
 	while (it != coordenadasObjeto->end()) {
-		novaLista->push_back(static_cast<Coordenada*>(*it)->clone());
+		novaLista->push_back((*it)->clone());
 		it++;
 	}
 	Poligono *p = new Poligono(Utils::cloneChar(this->nomeInput->text().toUtf8().data()), novaLista);
