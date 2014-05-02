@@ -33,7 +33,7 @@ private:
 
 	void clippingReta(Reta* reta);
 	void clippingPonto(Ponto* ponto);
-	void clippingPoligonoAberto(Poligono* poligono);
+	void clippingObjetoGeometricoToRetas(ObjetoGeometrico* poligono);
 	void clippingPoligonoFechado(Poligono* poligono);
 	void clippingCurva(Curva *curva);
 

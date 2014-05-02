@@ -26,12 +26,12 @@ void Clipping::clip(ObjetoGeometrico* objeto) {
 		clippingReta(reta->clone());
 	} else if (poligono) {
 		if (poligono->aberto) {
-			this->clippingPoligonoAberto(poligono);
+			this->clippingObjetoGeometricoToRetas(poligono);
 		} else {
 			this->clippingPoligonoFechado(poligono);
 		}
 	} else if(curva){
-		window->addWindowObjeto(curva->clone());
+		this->clippingObjetoGeometricoToRetas(curva->clone());
 	}
 }
 
@@ -47,13 +47,13 @@ void Clipping::clippingReta(Reta *reta) {
 	}
 }
 
-void Clipping::clippingPoligonoAberto(Poligono* poligono) {
-	list<Coordenada*>::iterator it = poligono->getCPPCoordenadas()->begin();
-	for (; it._M_node != poligono->getCPPCoordenadas()->end()._M_node->_M_prev; it++) {
+void Clipping::clippingObjetoGeometricoToRetas(ObjetoGeometrico* objeto) {
+	list<Coordenada*>::iterator it = objeto->getCPPCoordenadas()->begin();
+	for (; it._M_node != objeto->getCPPCoordenadas()->end()._M_node->_M_prev; it++) {
 		Coordenada* current = (*it)->clone();
 		Coordenada* next = static_cast<_List_node<Coordenada*>*>(it._M_node->_M_next)->_M_data->clone();
 		if (clippingLine(current, next)) {
-			Reta* r = new Reta(Utils::cloneChar(poligono->getNome()));
+			Reta* r = new Reta(Utils::cloneChar(objeto->getNome()));
 			r->getCPPCoordenadas()->push_back(current);
 			r->getCPPCoordenadas()->push_back(next);
 			window->addWindowObjeto(r);
@@ -91,22 +91,6 @@ void Clipping::clippingPoligonoFechado(Poligono* poligono) {
 	}else
 		window->addWindowObjeto(poligono->clone());
 	ListUtils::destroyListByCondition(poligonoVertices, CoordenadaUtils::notVisitado);
-}
-
-void Clipping::clippingCurva(Curva* curva) {
-	list<Coordenada*>::iterator it = curva->getCPPCoordenadas()->begin();
-	list<Coordenada*> *novasCoordenadas = new list<Coordenada*>();
-	for (; it._M_node != curva->getCPPCoordenadas()->end()._M_node->_M_prev; it++) {
-		Coordenada* next = ListUtils::getDataForwardIterator(it, 1);
-		if (clippingLine(*it, next)) {
-			Reta* r = new Reta(Utils::cloneChar(curva->getNome()));
-			r->getCPPCoordenadas()->push_back(*it);
-			r->getCPPCoordenadas()->push_back(next);
-			window->addWindowObjeto(r);
-		}
-	}
-	curva->setCPPCoordenadas(novasCoordenadas);
-	window->addWindowObjeto(curva->clone());
 }
 
 void Clipping::percorrerLista(list<Coordenada* >* followList, list<Coordenada*>* goList, list<Coordenada*>* novaLista, _List_iterator<Coordenada*> it){
