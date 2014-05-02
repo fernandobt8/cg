@@ -10,6 +10,7 @@
 #include "ObjetoGeometrico.h"
 #include "../../utils/MatrizUtils.h"
 #include "../../utils/Utils.h"
+#include "../../utils/CoordenadaUtils.h"
 
 class Curva : public ObjetoGeometrico{
 public:

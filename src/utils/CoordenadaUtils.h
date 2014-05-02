@@ -1,6 +1,7 @@
 #ifndef COORDENADAUTILS_H_
 #define COORDENADAUTILS_H_
 #include "../clipping/Quadrante.h"
+#include "../modelo.interno/window/Window.h"
 #include <vector>
 
 using namespace std;
@@ -96,6 +97,17 @@ public:
 			return true;
 		}
 		return false;
+	}
+
+	static void invertVector(Coordenada* inicial, Coordenada* final){
+		Matriz* matrizTransCenter = new MatrizTranslacao(-inicial->getX(), -inicial->getY());
+		final->multiplyByMatriz(matrizTransCenter);
+		final->setX(-final->getX());
+		final->setY(-final->getY());
+		delete matrizTransCenter;
+		matrizTransCenter = new MatrizTranslacao(inicial->getX(), inicial->getY());
+		final->multiplyByMatriz(matrizTransCenter);
+		delete matrizTransCenter;
 	}
 };
 #endif
