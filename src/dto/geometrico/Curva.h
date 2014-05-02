@@ -19,6 +19,11 @@ public:
 	virtual ~Curva();
 	void multiplyCoordenadasToCPP(Matriz* matriz);
 	Curva* clone();
+	bool BSplines;
+
+private:
+	void blendingFunction();
+	void forwardDifferences();
 
 };
 

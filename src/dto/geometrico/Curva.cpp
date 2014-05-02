@@ -8,15 +8,23 @@
 #include "Curva.h"
 
 Curva::Curva(char* nome, list<Coordenada*>* coordenadas) : ObjetoGeometrico(nome, coordenadas){
-
+	BSplines = false;
 }
 
 Curva::Curva(char* nome) : ObjetoGeometrico(nome){
-
+	BSplines = false;
 }
 
 void Curva::multiplyCoordenadasToCPP(Matriz* matriz){
 	ObjetoGeometrico::multiplyCoordenadasToCPP(matriz);
+	if(BSplines){
+		this->forwardDifferences();
+	}else{
+		this->blendingFunction();
+	}
+}
+
+void Curva::blendingFunction(){
 	list<Coordenada*>* newPontos = new list<Coordenada* >();
 	list<Coordenada*>::iterator it = CPPcoordenadas->begin();
 	bool primeiro = true;
@@ -38,6 +46,10 @@ void Curva::multiplyCoordenadasToCPP(Matriz* matriz){
 		it--;
 	}
 	this->setCPPCoordenadas(newPontos);
+}
+
+void Curva::forwardDifferences(){
+
 }
 
 Curva* Curva::clone(){

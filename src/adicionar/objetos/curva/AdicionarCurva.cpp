@@ -25,8 +25,12 @@ AdicionarCurva::AdicionarCurva(QWidget *parent,	OnAdicionarObjetoTipoEvent *even
 	y2Input->setGeometry(QRect(120, 140, 50, 25));
 	avisoLabel = new QLabel(this);
 	avisoLabel->setObjectName(QString::fromUtf8("avisoLabel"));
-	avisoLabel->setGeometry(QRect(330, 65, 130, 25));
+	avisoLabel->setGeometry(QRect(190, 45, 100, 25));
 	avisoLabel->setText(QString::fromUtf8("Mínimo 4 pontos!"));
+	checkBSplines = new QCheckBox(this);
+	checkBSplines->setObjectName(QString::fromUtf8("checkBSplines"));
+	checkBSplines->setGeometry(QRect(340, 75, 130, 25));
+	checkBSplines->setText(QString::fromUtf8("B-Splines"));
 	checkAberto->hide();
 	selectColorButton->hide();
 	panelSelectedColor->hide();
@@ -41,6 +45,7 @@ void AdicionarCurva::on_okButton_clicked() {
 		it++;
 	}
 	Curva *p = new Curva(Utils::cloneChar(this->nomeInput->text().toUtf8().data()), novaLista);
+	p->BSplines = checkBSplines->isChecked();
 	addEvent->OnAdicionarObjetoTipoClick(p);
 }
 

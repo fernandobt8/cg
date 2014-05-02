@@ -28,6 +28,7 @@ private:
 	QLineEdit *x2Input;
 	QLineEdit *y2Input;
 	QLabel *pontoControle;
+	QCheckBox* checkBSplines;
 
 };
 
