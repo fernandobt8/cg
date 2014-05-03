@@ -14,16 +14,20 @@
 
 class Curva : public ObjetoGeometrico{
 public:
+	enum Desenhe{
+		BLENDING_FUNCTION,
+		FORWARD_DIFFERENCE,
+	};
 	Curva(char* nome, list<Coordenada*>* coordenadas);
 	Curva(char* nome);
 	virtual ~Curva();
 	void multiplyCoordenadasToCPP(Matriz* matriz);
 	Curva* clone();
-	bool BSplines;
-
+	bool bSpline;
+	Curva::Desenhe algoritmo;
 private:
-	void blendingFunction();
-	void forwardDifferences();
+	void bezier();
+	void bSplines();
 
 };
 

@@ -11,18 +11,6 @@ ModeloInterno::ModeloInterno() {
 	objetos = new list<ObjetoGeometrico*>();
 	this->window = new Window();
 	clipping = new Clipping(window);
-	Reta* r = new Reta(Utils::cloneChar("aaa"));
-	r->addCoordenada(new Coordenada(100, 0));
-	r->addCoordenada(new Coordenada(100, 500));
-	Reta* r2 = new Reta(Utils::cloneChar("baaa"));
-	r2->addCoordenada(new Coordenada(400, 0));
-	r2->addCoordenada(new Coordenada(400, 500));
-	Reta* r3 = new Reta(Utils::cloneChar("bbaaa"));
-	r3->addCoordenada(new Coordenada(0, 250));
-	r3->addCoordenada(new Coordenada(500, 250));
-	objetos->push_back(r);
-	objetos->push_back(r2);
-	objetos->push_back(r3);
 }
 
 void ModeloInterno::addObjeto(ObjetoGeometrico *objeto){

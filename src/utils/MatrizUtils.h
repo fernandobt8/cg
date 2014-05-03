@@ -16,12 +16,16 @@
 
 class MatrizUtils{
 public:
-	static Matriz* getMatrizBlendingFunction(double t){
+	static Matriz* getMatrizBlendingFunction(double t, Matriz* matrizTipoCurva){
 		Matriz* matrizT = new Matriz(t);
-		Matriz* matrizB = new MatrizBezier();
-		matrizT->multiply( matrizB);
-		delete matrizB;
+		matrizT->multiply( matrizTipoCurva);
 		return matrizT;
+	}
+
+	static Matriz* getMatrizForwardDifference(double delta, Matriz* matrizTipoCurva){
+		Matriz* matrizD = new MatrizDelta(delta);
+		matrizD->multiply( matrizTipoCurva);
+		return matrizD;
 	}
 
 	static Matriz* getMatrizGeometria(Coordenada* p1, Coordenada* p2, Coordenada* p3, Coordenada* p4){

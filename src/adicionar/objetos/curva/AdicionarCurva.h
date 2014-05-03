@@ -11,6 +11,7 @@
 #include "../poligono/AdicionarPoligono.h"
 #include "QtGui/qlineedit.h"
 #include "QtGui/qlabel.h"
+#include "QtGui/qradiobutton.h"
 #include "../../../utils/Utils.h"
 #include "../../../dto/geometrico/Curva.h"
 
@@ -29,6 +30,8 @@ private:
 	QLineEdit *x2Input;
 	QLineEdit *y2Input;
 	QLabel *pontoControle;
+	QRadioButton* blendingFuctionButton;
+	QRadioButton* forwardDifferenceButton;
 	bool bSpline;
 
 };

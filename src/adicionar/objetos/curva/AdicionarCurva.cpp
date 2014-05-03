@@ -28,6 +28,15 @@ AdicionarCurva::AdicionarCurva(QWidget *parent,	OnAdicionarObjetoTipoEvent *even
 	avisoLabel->setGeometry(QRect(190, 45, 100, 25));
 	avisoLabel->setText(QString::fromUtf8("Mínimo 4 pontos!"));
 	checkAberto->setText(QString::fromUtf8("B-Splines"));
+	blendingFuctionButton = new QRadioButton(this);
+	blendingFuctionButton->setObjectName(QString::fromUtf8("blendingFuctionButton"));
+	blendingFuctionButton->setGeometry(QRect(340, 100, 130, 25));
+	blendingFuctionButton->setText(QString::fromUtf8("Blending Fuction"));
+	blendingFuctionButton->setChecked(true);
+	forwardDifferenceButton = new QRadioButton(this);
+	forwardDifferenceButton->setObjectName(QString::fromUtf8("forwardDifferenceButton"));
+	forwardDifferenceButton->setGeometry(QRect(340, 130, 130, 25));
+	forwardDifferenceButton->setText(QString::fromUtf8("Forward Difference"));
 	selectColorButton->hide();
 	panelSelectedColor->hide();
 
@@ -58,7 +67,8 @@ void AdicionarCurva::on_okButton_clicked() {
 		it++;
 	}
 	Curva *p = new Curva(Utils::cloneChar(this->nomeInput->text().toUtf8().data()), novaLista);
-	p->BSplines = checkAberto->isChecked();
+	p->bSpline = checkAberto->isChecked();
+	p->algoritmo = blendingFuctionButton->isChecked() ? Curva::BLENDING_FUNCTION : Curva::FORWARD_DIFFERENCE;
 	addEvent->OnAdicionarObjetoTipoClick(p);
 }
 
