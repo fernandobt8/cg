@@ -44,12 +44,43 @@ void Curva::blendingFunction(){
 			delete matrizBF;
 		}
 		it--;
+		delete matrizG;
 	}
 	this->setCPPCoordenadas(newPontos);
 }
 
 void Curva::forwardDifferences(){
-
+	list<Coordenada*>* newPontos = new list<Coordenada* >();
+	list<Coordenada*>::iterator it = CPPcoordenadas->begin();
+	while(it._M_node != CPPcoordenadas->end()._M_node->_M_prev->_M_prev->_M_prev){
+		Coordenada* p1 = *it;
+		Coordenada* p2 = *++it;
+		Coordenada* p3 = *++it;
+		Coordenada* p4 = *++it;
+		Matriz* matrizDelta = new MatrizDelta(0.02);
+		Matriz* matrizBS = new MatrizBSplines();
+		Matriz* matrizG = MatrizUtils::getMatrizGeometria(p1, p2, p3, p4);
+		matrizDelta->multiply(matrizBS);
+		matrizDelta->multiply(matrizG);
+		double** matrizR = matrizDelta->getMatriz();
+		newPontos->push_back(new Coordenada(matrizR[0][0], matrizR[0][1]));
+		for (int i = 0; i < 1.0/0.02; ++i) {
+			//x's
+			matrizR[0][0] = matrizR[0][0] + matrizR[1][0];
+			matrizR[1][0] = matrizR[1][0] + matrizR[2][0];
+			matrizR[2][0] = matrizR[2][0] + matrizR[3][0];
+			//y's
+			matrizR[0][1] = matrizR[0][1] + matrizR[1][1];
+			matrizR[1][1] = matrizR[1][1] + matrizR[2][1];
+			matrizR[2][1] = matrizR[2][1] + matrizR[3][1];
+			newPontos->push_back(new Coordenada(matrizR[0][0], matrizR[0][1]));
+		}
+		delete matrizG;
+		delete matrizBS;
+		delete matrizDelta;
+		advance(it, -2);
+	}
+	this->setCPPCoordenadas(newPontos);
 }
 
 Curva* Curva::clone(){

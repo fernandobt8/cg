@@ -20,6 +20,7 @@ public:
 	virtual ~AdicionarCurva();
 	void on_okButton_clicked();
 	void on_adicionarCoordenada_clicked();
+	void on_checkAberto_toggled(bool checked);
 
 private:
 	QLabel *x2Label;
@@ -28,7 +29,7 @@ private:
 	QLineEdit *x2Input;
 	QLineEdit *y2Input;
 	QLabel *pontoControle;
-	QCheckBox* checkBSplines;
+	bool bSpline;
 
 };
 

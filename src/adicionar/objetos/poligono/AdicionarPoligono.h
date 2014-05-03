@@ -26,7 +26,7 @@ public:
 
 public slots:
 	void on_selectColorButton_clicked();
-	void on_checkAberto_toggled(bool checked);
+	virtual void on_checkAberto_toggled(bool checked);
 protected:
 	QListWidget *coordenadasList;
 	QPushButton *adicionarCoordenadaButton;

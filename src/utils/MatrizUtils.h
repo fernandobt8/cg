@@ -11,6 +11,8 @@
 #include "../dto/matriz/MatrizRotacao.h"
 #include "../dto/matriz/MatrizTranslacao.h"
 #include "../dto/matriz/MatrizBezier.h"
+#include "../dto/matriz/MatrizBSplines.h"
+#include "../dto/matriz/MatrizDelta.h"
 
 class MatrizUtils{
 public:
