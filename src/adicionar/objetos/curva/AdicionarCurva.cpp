@@ -30,12 +30,12 @@ AdicionarCurva::AdicionarCurva(QWidget *parent,	OnAdicionarObjetoTipoEvent *even
 	checkAberto->setText(QString::fromUtf8("B-Splines"));
 	blendingFuctionButton = new QRadioButton(this);
 	blendingFuctionButton->setObjectName(QString::fromUtf8("blendingFuctionButton"));
-	blendingFuctionButton->setGeometry(QRect(340, 100, 130, 25));
+	blendingFuctionButton->setGeometry(QRect(330, 100, 160, 25));
 	blendingFuctionButton->setText(QString::fromUtf8("Blending Fuction"));
 	blendingFuctionButton->setChecked(true);
 	forwardDifferenceButton = new QRadioButton(this);
 	forwardDifferenceButton->setObjectName(QString::fromUtf8("forwardDifferenceButton"));
-	forwardDifferenceButton->setGeometry(QRect(340, 130, 130, 25));
+	forwardDifferenceButton->setGeometry(QRect(330, 130, 160, 25));
 	forwardDifferenceButton->setText(QString::fromUtf8("Forward Difference"));
 	selectColorButton->hide();
 	panelSelectedColor->hide();

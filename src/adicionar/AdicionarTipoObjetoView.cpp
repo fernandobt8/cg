@@ -6,9 +6,9 @@ AdicionarTipoObjetoView::AdicionarTipoObjetoView(
 
 	if (this->objectName().isEmpty())
 		this->setObjectName(QString::fromUtf8("AdicionarWindow"));
-	this->resize(490, 320);
+	this->resize(520, 320);
 	tabWindow = new QTabWidget(this);
-	tabWindow->setGeometry(QRect(10, 10, 465, 300));
+	tabWindow->setGeometry(QRect(10, 10, 500, 300));
 	tabWindow->addTab(new AdicionarPonto(this, event), QString("Ponto"));
 	tabWindow->addTab(new AdicionarReta(this, event), QString("Reta"));
 	tabWindow->addTab(new AdicionarPoligono(this, event), QString("Poligono"));
