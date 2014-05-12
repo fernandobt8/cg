@@ -23,7 +23,8 @@ public:
 		for(double t = 0; t < 1.00001; t += 0.05){
 			Matriz* matrizBF = MatrizUtils::getMatrizBlendingFunction(t, matrizTipoCurva);
 			matrizBF->multiply(matrizG);
-			listCoordenads->push_back(new Coordenada(matrizBF->getMatriz()[0][0], matrizBF->getMatriz()[0][1]));
+			double** matrizR = matrizBF->getMatriz();
+			listCoordenads->push_back(new Coordenada(matrizR[0][0], matrizR[0][1], matrizR[0][2]));
 			delete matrizBF;
 		}
 	}
@@ -33,7 +34,7 @@ public:
 		Matriz* matrizG = MatrizUtils::getMatrizGeometria(p1, p2, p3, p4);
 		matrizDelta->multiply(matrizG);
 		double** matrizR = matrizDelta->getMatriz();
-		listCoordenads->push_back(new Coordenada(matrizR[0][0], matrizR[0][1]));
+		listCoordenads->push_back(new Coordenada(matrizR[0][0], matrizR[0][1], matrizR[0][2]));
 		for (int i = 0; i < 1.0/0.02; ++i) {
 			//x's
 			matrizR[0][0] = matrizR[0][0] + matrizR[1][0];
@@ -43,7 +44,7 @@ public:
 			matrizR[0][1] = matrizR[0][1] + matrizR[1][1];
 			matrizR[1][1] = matrizR[1][1] + matrizR[2][1];
 			matrizR[2][1] = matrizR[2][1] + matrizR[3][1];
-			listCoordenads->push_back(new Coordenada(matrizR[0][0], matrizR[0][1]));
+			listCoordenads->push_back(new Coordenada(matrizR[0][0], matrizR[0][1], matrizR[0][2]));
 		}
 		delete matrizG;
 		delete matrizDelta;

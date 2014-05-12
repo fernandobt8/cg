@@ -10,8 +10,8 @@
 ViewPort::ViewPort(QWidget* parent): QWidget(parent)  {
 	this->setAutoFillBackground(true);
 	this->setPalette(QPalette(QPalette::Background, Qt::white));
-	start = new Coordenada(10, 10);
-	end = new Coordenada(470, 470);
+	start = new Coordenada(10, 10, 0);
+	end = new Coordenada(470, 470, 0);
 	window = NULL;
 }
 

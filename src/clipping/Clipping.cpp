@@ -143,8 +143,8 @@ list<Coordenada*>* Clipping::getWindowLista(list<Coordenada*>* poligonoVertices)
 	list<Coordenada*>* windowVertices = new list<Coordenada*>();
 	Coordenada *A = this->window->CPPstart->clone();
 	Coordenada *C = this->window->CPPend->clone();
-	Coordenada *B = new Coordenada(A->getX(), C->getY());
-	Coordenada *D = new Coordenada(C->getX(), A->getY());
+	Coordenada *B = new Coordenada(A->getX(), C->getY(), 0);
+	Coordenada *D = new Coordenada(C->getX(), A->getY(), 0);
 	windowVertices->push_back(A);
 	windowVertices->push_back(B);
 	windowVertices->push_back(C);

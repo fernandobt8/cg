@@ -8,11 +8,11 @@
 #include "Window.h"
 
 Window::Window(){
-	start = new Coordenada(0, 0);
-	vectorUp = new Coordenada(0,1);
-	end = new Coordenada(500, 500);
-	CPPstart = new Coordenada(-250, -250);
-	CPPend = new Coordenada(250, 250);
+	start = new Coordenada(0, 0, 0);
+	vectorUp = new Coordenada(0, 0, 1);
+	end = new Coordenada(0, 500, 500);
+	CPPstart = new Coordenada(0, -250, -250);
+	CPPend = new Coordenada(0, 250, 250);
 	objetos = new list<ObjetoGeometrico* >();
 
 }
@@ -44,8 +44,8 @@ void Window::mutiplyCoordenadasToCPP(Matriz* matriz){
 	CPPend->multiplyByMatriz(matriz);
 }
 
-void Window::move(double x, double y){
-	Coordenada* coor = new Coordenada(x, y);
+void Window::move(double x, double y, double z){
+	Coordenada* coor = new Coordenada(x, y, z);
 	Matriz* matriz = new MatrizRotacao(this->getAngulo());
 	coor->multiplyByMatriz(matriz);
 	start->addCoordenada(coor);
@@ -88,13 +88,15 @@ void Window::rotacione(double angulo){
 Coordenada* Window::getCenter(){
 	double x = (start->getX() + end->getX()) / 2;
 	double y = (start->getY() + end->getY()) / 2;
-	return new Coordenada(x, y);
+	double z = (start->getZ() + end->getZ()) / 2;
+	return new Coordenada(x, y, z);
 }
 
 Coordenada* Window::getCenterCPP(){
 	double x = (CPPstart->getX() + CPPend->getX()) / 2;
 	double y = (CPPstart->getY() + CPPend->getY()) / 2;
-	return new Coordenada(x, y);
+	double z = (CPPstart->getZ() + CPPend->getZ()) / 2;
+	return new Coordenada(x, y, z);
 }
 
 double Window::getAngulo(){

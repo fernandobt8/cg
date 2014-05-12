@@ -28,7 +28,7 @@ public:
 	void transformeObjeto(char* nome, list<Transformacao* >* transformacoes);
 	void setTamanhoWindow(double width, double height);
 	void rotacioneWindow(double angulo);
-	void moveWindow(double x, double y);
+	void moveWindow(double x, double y, double z);
 	void zoomWindow(double zoomX, double zoomY);
 	void printAll();
 	list<ObjetoGeometrico*>* getObjetos();

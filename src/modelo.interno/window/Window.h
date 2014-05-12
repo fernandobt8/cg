@@ -25,7 +25,7 @@ public:
 	void addWindowObjeto(ObjetoGeometrico* objeto);
 	void mutiplyCoordenadas(Matriz* matriz);
 	void mutiplyCoordenadasToCPP(Matriz* matriz);
-	void move(double x, double y);
+	void move(double x, double y, double z);
 	void zoom(double zoomX, double zoomY);
 	void rotacione(double angulo);
 	double getWidth();

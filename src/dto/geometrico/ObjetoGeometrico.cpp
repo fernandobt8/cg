@@ -46,14 +46,15 @@ Coordenada* ObjetoGeometrico::getCenter(){
 	int numberPoints = 0;
 	double somaX = 0;
 	double somaY = 0;
+	double somaZ = 0;
 	list<Coordenada* >::iterator it = coordenadas->begin();
 	for(; it != coordenadas->end();it++){
-		Coordenada* coordenada = *it;
-		somaX += coordenada->getX();
-		somaY += coordenada->getY();
+		somaX += (*it)->getX();
+		somaY += (*it)->getY();
+		somaZ += (*it)->getZ();
 		numberPoints++;
 	}
-	return new Coordenada(somaX/numberPoints, somaY/numberPoints);
+	return new Coordenada(somaX/numberPoints, somaY/numberPoints, somaZ/numberPoints);
 }
 
 void ObjetoGeometrico::addCoordenada(Coordenada* coordenada) {

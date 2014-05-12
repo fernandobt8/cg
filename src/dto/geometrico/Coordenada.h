@@ -15,13 +15,15 @@ using namespace std;
 
 class Coordenada {
 public:
-	Coordenada(double x, double y);
+	Coordenada(double x, double y, double z);
 	Coordenada();
 	virtual ~Coordenada();
 	double getX();
 	double getY();
+	double getZ();
 	void setX(double x);
 	void setY(double y);
+	void setZ(double z);
 	bool isInterseccao();
 	bool isVisitado();
 	void setInterseccao(bool isInterseccao);
@@ -30,9 +32,13 @@ public:
 	void multiplyByMatriz(class Matriz* matriz);
 	bool equal(Coordenada* coordenada);
 	Coordenada* clone();
+
+
+
 private:
 	double x;
 	double y;
+	double z;
 	bool interseccao, visitado;
 };
 

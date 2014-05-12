@@ -39,8 +39,8 @@ void ModeloInterno::rotacioneWindow(double angulo){
 	this->updateCPPCoordenadas();
 }
 
-void ModeloInterno::moveWindow(double x, double y){
-	window->move(x, y);
+void ModeloInterno::moveWindow(double x, double y, double z){
+	window->move(x, y, z);
 	this->updateCPPCoordenadas();
 }
 

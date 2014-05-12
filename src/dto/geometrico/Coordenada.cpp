@@ -7,9 +7,10 @@
 
 #include "Coordenada.h"
 
-Coordenada::Coordenada(double x, double y) {
+Coordenada::Coordenada(double x, double y, double z) {
 	this->x = x;
 	this->y = y;
+	this->z = z;
 	this->interseccao = false;
 	this->visitado = false;
 }
@@ -17,6 +18,7 @@ Coordenada::Coordenada(double x, double y) {
 Coordenada::Coordenada() {
 	x = 0;
 	y = 0;
+	z = 0;
 	this->interseccao = false;
 	this->visitado = false;
 }
@@ -44,6 +46,14 @@ void Coordenada::setY(double y) {
 	this->y = y;
 }
 
+void Coordenada::setZ(double z) {
+	this->z = z;
+}
+
+double Coordenada::getZ(){
+	return z;
+}
+
 double Coordenada::getX() {
 	return this->x;
 }
@@ -61,11 +71,11 @@ void Coordenada::setVisitado(bool isVisitado) {
 }
 
 Coordenada* Coordenada::clone(){
-	return new Coordenada(x, y);
+	return new Coordenada(x, y, z);
 }
 
 bool Coordenada::equal(Coordenada* coordenada) {
-	if(this->x == coordenada->getX() && this->y == coordenada->getY())
+	if(this->x == coordenada->x && this->y == coordenada->y && this->z == coordenada->z)
 		return true;
 	return false;
 }
