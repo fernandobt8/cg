@@ -7,7 +7,7 @@
 
 #include "Escalonamento.h"
 
-Escalonamento::Escalonamento(double x, double y) : Transformacao("Escalonamento", x, y) {
+Escalonamento::Escalonamento(double x, double y, double z) : Transformacao("Escalonamento", x, y, z) {
 }
 
 Escalonamento::Escalonamento() : Transformacao("Escalonamento"){

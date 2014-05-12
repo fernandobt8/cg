@@ -10,7 +10,7 @@
 Translacao::Translacao() : Transformacao("Translacao"){
 }
 
-Translacao::Translacao(double x, double y) : Transformacao("Translacao", x, y){
+Translacao::Translacao(double x, double y, double z) : Transformacao("Translacao", x, y, z){
 }
 
 Translacao::~Translacao() {

@@ -10,11 +10,13 @@
 Rotacao::Rotacao() : Transformacao("Rotação") {
 	this->angulo = 0;
 	this->tipoRotacao = Rotacao::CENTRO;
+	this->around = Rotacao::AROUND_X;
 }
 
-Rotacao::Rotacao(double angulo, Rotacao::Tipo tipoRotacao) : Transformacao("Rotação") {
+Rotacao::Rotacao(double angulo, Rotacao::Tipo tipoRotacao, Rotacao::Round around) : Transformacao("Rotação") {
 	this->angulo = angulo;
 	this->tipoRotacao = tipoRotacao;
+	this->around = around;
 }
 
 Rotacao::~Rotacao() {

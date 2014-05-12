@@ -13,7 +13,7 @@
 #include "../../dto/matriz/MatrizEscalonamento.h"
 #include "../../dto/matriz/MatrizRotacao.h"
 #include "../../dto/matriz/MatrizTranslacao.h"
-#include "../../utils/MatrizUtils.h"
+#include "../../utils/Utils.h"
 #include <list>
 using namespace std;
 

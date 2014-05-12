@@ -13,7 +13,7 @@
 
 class MatrizEscalonamento : public Matriz{
 public:
-	MatrizEscalonamento(double x, double y);
+	MatrizEscalonamento(double x, double y, double z);
 	virtual ~MatrizEscalonamento();
 };
 

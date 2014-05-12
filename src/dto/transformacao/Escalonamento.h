@@ -12,7 +12,7 @@
 class Escalonamento : public Transformacao{
 public:
 	Escalonamento();
-	Escalonamento(double x, double y);
+	Escalonamento(double x, double y, double z);
 	virtual ~Escalonamento();
 };
 

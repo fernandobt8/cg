@@ -8,7 +8,6 @@
 #ifndef MATRIZ_H_
 #define MATRIZ_H_
 
-#define PI 3.14159265
 #include "../geometrico/Coordenada.h"
 #include <math.h>
 #include <stdio.h>

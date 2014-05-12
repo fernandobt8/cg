@@ -10,10 +10,13 @@
 #include "Matriz.h"
 #include "MatrizTranslacao.h"
 #include "../transformacao/Rotacao.h"
+#include "../../utils/Utils.h"
+
+class Utils;
 
 class MatrizRotacao : public Matriz {
 public:
-	MatrizRotacao(double angulo);
+	MatrizRotacao(double angulo, Rotacao::Round around);
 	virtual ~MatrizRotacao();
 };
 

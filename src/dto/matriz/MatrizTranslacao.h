@@ -13,11 +13,11 @@
 class MatrizTranslacao : public Matriz{
 public:
 	MatrizTranslacao(Translacao* translacao);
-	MatrizTranslacao(double x, double y);
+	MatrizTranslacao(double x, double y, double z);
 	virtual ~MatrizTranslacao();
 
 private:
-	void initialize(double x, double y);
+	void initialize(double x, double y, double z);
 };
 
 #endif /* MATRIZTRANSLACAO_H_ */

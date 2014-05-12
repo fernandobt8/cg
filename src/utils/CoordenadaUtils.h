@@ -100,12 +100,13 @@ public:
 	}
 
 	static void invertVector(Coordenada* inicial, Coordenada* final){
-		Matriz* matrizTransCenter = new MatrizTranslacao(-inicial->getX(), -inicial->getY());
+		Matriz* matrizTransCenter = new MatrizTranslacao(-inicial->getX(), -inicial->getY(), -inicial->getZ());
 		final->multiplyByMatriz(matrizTransCenter);
 		final->setX(-final->getX());
 		final->setY(-final->getY());
+		final->setZ(-final->getZ());
 		delete matrizTransCenter;
-		matrizTransCenter = new MatrizTranslacao(inicial->getX(), inicial->getY());
+		matrizTransCenter = new MatrizTranslacao(inicial->getX(), inicial->getY(), inicial->getZ());
 		final->multiplyByMatriz(matrizTransCenter);
 		delete matrizTransCenter;
 	}

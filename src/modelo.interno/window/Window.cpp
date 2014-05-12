@@ -46,43 +46,43 @@ void Window::mutiplyCoordenadasToCPP(Matriz* matriz){
 
 void Window::move(double x, double y, double z){
 	Coordenada* coor = new Coordenada(x, y, z);
-	Matriz* matriz = new MatrizRotacao(this->getAngulo());
-	coor->multiplyByMatriz(matriz);
+//	Matriz* matriz = new MatrizRotacao(this->getAngulo());
+//	coor->multiplyByMatriz(matriz);
 	start->addCoordenada(coor);
 	end->addCoordenada(coor);
 	delete coor;
-	delete matriz;
+//	delete matriz;
 }
 
 void Window::zoom(double zoomX, double zoomY){
 	Coordenada* center = this->getCenter();
 	double angulo = this->getAngulo();
 
-	MatrizTranslacao transOrigem(-center->getX(), -center->getY());
-	MatrizRotacao rotacaoParalela(-angulo);
-	MatrizEscalonamento esca(zoomX, zoomY);
-	MatrizRotacao rotacaoNormal(angulo);
-	MatrizTranslacao transCenter(center->getX(), center->getY());
-	transOrigem.multiply(&rotacaoParalela);
+	MatrizTranslacao transOrigem(-center->getX(), -center->getY(), -center->getZ());
+//	MatrizRotacao rotacaoParalela(-angulo);
+	MatrizEscalonamento esca(zoomX, zoomY, 1);
+//	MatrizRotacao rotacaoNormal(angulo);
+	MatrizTranslacao transCenter(center->getX(), center->getY(), center->getZ());
+//	transOrigem.multiply(&rotacaoParalela);
 	transOrigem.multiply(&esca);
-	transOrigem.multiply(&rotacaoNormal);
+//	transOrigem.multiply(&rotacaoNormal);
 	transOrigem.multiply(&transCenter);
 	this->mutiplyCoordenadas(&transOrigem);
 	delete center;
 }
 
 void Window::rotacione(double angulo){
-	Matriz* matrizRotacaoVector = new MatrizRotacao(angulo);
-	vectorUp->multiplyByMatriz(matrizRotacaoVector);
+//	Matriz* matrizRotacaoVector = new MatrizRotacao(angulo);
+//	vectorUp->multiplyByMatriz(matrizRotacaoVector);
 
-	Coordenada* center = this->getCenter();
-	Rotacao* rotacao = new Rotacao(angulo, Rotacao::CENTRO);
-	Matriz* matrizRotacao = MatrizUtils::getFullMatrizRotacao(center, rotacao);
-	this->mutiplyCoordenadas(matrizRotacao);
-	delete center;
-	delete rotacao;
-	delete matrizRotacao;
-	delete matrizRotacaoVector;
+//	Coordenada* center = this->getCenter();
+//	Rotacao* rotacao = new Rotacao(angulo, Rotacao::CENTRO);
+//	Matriz* matrizRotacao = MatrizUtils::getFullMatrizRotacao(center, rotacao);
+//	this->mutiplyCoordenadas(matrizRotacao);
+//	delete center;
+//	delete rotacao;
+//	delete matrizRotacao;
+//	delete matrizRotacaoVector;
 }
 
 Coordenada* Window::getCenter(){
@@ -103,7 +103,7 @@ double Window::getAngulo(){
 	//grau = arccos(v1 * v2) / (||v1|| * ||v2||)
 	double dividendo = (0 * vectorUp->getX()) + (1 * vectorUp->getY());
 	double divisor =  sqrt(pow(0, 2)+pow(1, 2)) * sqrt(pow(vectorUp->getX(), 2) + pow(vectorUp->getY(), 2));
-	double angulo = 180 * ( acos(dividendo / divisor) / PI );
+	double angulo = Utils::convertRaianosToGraus(acos(dividendo / divisor));
 	if(vectorUp->getX() > 0){
 		return angulo;
 	}else{
