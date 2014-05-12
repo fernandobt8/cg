@@ -8,8 +8,8 @@
 #include "Matriz.h"
 
 Matriz::Matriz() {
-	this->numLinhas = 3;
-	this->numColunas = 3;
+	this->numLinhas = 4;
+	this->numColunas = 4;
 	this->initializeMatriz();
 }
 
@@ -31,11 +31,12 @@ Matriz::Matriz(double t){
 
 Matriz::Matriz(Coordenada* coordenada){
 	this->numLinhas = 1;
-	this->numColunas = 3;
+	this->numColunas = 4;
 	this->initializeMatriz();
 	matriz[0][0] = coordenada->getX();
 	matriz[0][1] = coordenada->getY();
-	matriz[0][2] = 1;
+	matriz[0][2] = coordenada->getZ();
+	matriz[0][3] = 1;
 }
 
 void Matriz::initializeMatriz(){

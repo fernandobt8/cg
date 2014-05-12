@@ -31,11 +31,13 @@ void Coordenada::multiplyByMatriz(Matriz* matriz){
 	coordenada.multiply(matriz);
 	x = coordenada.getMatriz()[0][0];
 	y = coordenada.getMatriz()[0][1];
+	z = coordenada.getMatriz()[0][2];
 }
 
 void Coordenada::addCoordenada(Coordenada* coordenada){
 	this->x += coordenada->getX();
 	this->y += coordenada->getY();
+	this->z += coordenada->getZ();
 }
 
 void Coordenada::setX(double x) {

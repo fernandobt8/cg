@@ -33,12 +33,8 @@ public:
 	bool equal(Coordenada* coordenada);
 	Coordenada* clone();
 
-
-
 private:
-	double x;
-	double y;
-	double z;
+	double x, y, z;
 	bool interseccao, visitado;
 };
 
