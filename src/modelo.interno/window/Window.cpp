@@ -64,34 +64,26 @@ void Window::move(double x, double y, double z){
 }
 
 void Window::zoom(double zoomX, double zoomY){
-	Coordenada* center = this->getCenter();
-
-
-	MatrizTranslacao transOrigem(-center->getX(), -center->getY(), -center->getZ());
-//	MatrizRotacao rotacaoParalela(-angulo);
 	MatrizEscalonamento esca(zoomX, zoomY, 1);
-//	MatrizRotacao rotacaoNormal(angulo);
-	MatrizTranslacao transCenter(center->getX(), center->getY(), center->getZ());
-//	transOrigem.multiply(&rotacaoParalela);
-	transOrigem.multiply(&esca);
-//	transOrigem.multiply(&rotacaoNormal);
-	transOrigem.multiply(&transCenter);
-	this->mutiplyCoordenadas(&transOrigem);
-	delete center;
+	NormalizadorWindow* normalizador = this->getNormalizador();
+	Matriz* norma = normalizador->getMatrizNormalizacao();
+	norma->multiply(&esca);
+	norma->multiply(normalizador->getMatrizDesnormalizacao());
+	this->mutiplyCoordenadas(norma);
 }
 
-void Window::rotacione(double angulo){
-//	Matriz* matrizRotacaoVector = new MatrizRotacao(angulo);
-//	vectorUp->multiplyByMatriz(matrizRotacaoVector);
+void Window::rotacione(double angulo, Rotacao::Round around){
+	Matriz* matrizRotacao = new MatrizRotacao(angulo, around);
+	vectorUp->multiplyByMatriz(matrizRotacao);
+	VPN->multiplyByMatriz(matrizRotacao);
 
-//	Coordenada* center = this->getCenter();
-//	Rotacao* rotacao = new Rotacao(angulo, Rotacao::CENTRO);
-//	Matriz* matrizRotacao = MatrizUtils::getFullMatrizRotacao(center, rotacao);
-//	this->mutiplyCoordenadas(matrizRotacao);
-//	delete center;
-//	delete rotacao;
-//	delete matrizRotacao;
-//	delete matrizRotacaoVector;
+	NormalizadorWindow* normalizador = this->getNormalizador();
+	Matriz* norma = normalizador->getMatrizNormalizacao();
+	norma->multiply(matrizRotacao);
+	norma->multiply(normalizador->getMatrizDesnormalizacao());
+	this->mutiplyCoordenadas(norma);
+	delete normalizador;
+	delete matrizRotacao;
 }
 
 Coordenada* Window::getCenter(){
@@ -108,26 +100,9 @@ Coordenada* Window::getCenterCPP(){
 	return new Coordenada(x, y, z);
 }
 
-Matriz* Window::getMatrizNormalizacao(){
-	Coordenada* vectorUpC = vectorUp->clone();
-	Coordenada* VPNC = VPN->clone();
-
-	double anguloXY = Utils::getAnguloPlanoXY(vectorUpC);
-	Matriz* matrizXY = new MatrizRotacao(anguloXY, Rotacao::AROUND_X);
-	vectorUpC->multiplyByMatriz(matrizXY);
-
-	double anguloZY = Utils::getAnguloPlanoZY(vectorUpC);
-	Matriz* matrizZY = new MatrizRotacao(anguloZY, Rotacao::AROUND_Z);
-
-	matrizXY->multiply(matrizZY);
-	VPNC->multiplyByMatriz(matrizXY);
-
-	double anguloFrente = Utils::getAnguloPlanoYZ(VPNC);
-	Matriz* matrizYZ = new MatrizRotacao(anguloFrente, Rotacao::AROUND_Y);
-	matrizXY->multiply(matrizYZ);
-	return matrizXY;
+NormalizadorWindow* Window::getNormalizador(){
+	return new NormalizadorWindow(this->getCenter(), vectorUp->clone(), VPN->clone());
 }
-
 double Window::getWidth(){
 	return CPPend->getX() - CPPstart->getX();
 }

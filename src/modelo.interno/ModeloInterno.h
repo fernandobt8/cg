@@ -27,7 +27,7 @@ public:
 	void addObjeto(ObjetoGeometrico *objeto);
 	void transformeObjeto(char* nome, list<Transformacao* >* transformacoes);
 	void setTamanhoWindow(double width, double height);
-	void rotacioneWindow(double angulo);
+	void rotacioneWindow(double angulo, Rotacao::Round around);
 	void moveWindow(double x, double y, double z);
 	void zoomWindow(double zoomX, double zoomY);
 	void printAll();

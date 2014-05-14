@@ -150,7 +150,7 @@ void MainView::on_zoomOutButton_clicked() {
 }
 
 void MainView::on_rotacionarButton_clicked(){
-	controller->rotacioneWindow(strtod(this->windowRotacaoEdit->text().toUtf8().constData(), NULL));
+	controller->rotacioneWindow(strtod(this->windowRotacaoEdit->text().toUtf8().constData(), NULL), Rotacao::AROUND_X);
 }
 
 void MainView::onOkTransformacaoClick(list<Transformacao* >* transformacoes){

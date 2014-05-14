@@ -34,8 +34,8 @@ void ModeloInterno::transformeObjeto(char* nome, list<Transformacao* >* transfor
 	ListUtils::destroyList(transformacoes);
 }
 
-void ModeloInterno::rotacioneWindow(double angulo){
-	window->rotacione(angulo);
+void ModeloInterno::rotacioneWindow(double angulo, Rotacao::Round around){
+	window->rotacione(angulo, around);
 	this->updateCPPCoordenadas();
 }
 
@@ -57,22 +57,15 @@ void ModeloInterno::setTamanhoWindow(double width, double height){
 
 void ModeloInterno::updateCPPCoordenadas(){
 	window->clearWindowObjetos();
-	Coordenada* WinCenter = window->getCenter();
-	Matriz* transOrigem = new MatrizTranslacao(-WinCenter->getX(), -WinCenter->getY(), -WinCenter->getZ());
-	transOrigem->printAll();
-	Matriz* matrizRotacao = window->getMatrizNormalizacao();
-	transOrigem->multiply(matrizRotacao);
-
-	window->mutiplyCoordenadasToCPP(transOrigem);
+	NormalizadorWindow* normalizador = window->getNormalizador();
+	window->mutiplyCoordenadasToCPP(normalizador->getMatrizNormalizacao());
 	list<ObjetoGeometrico* >::iterator it = objetos->begin();
 	for (; it != objetos->end(); it++) {
 		ObjetoGeometrico* objeto = *it;
-		objeto->multiplyCoordenadasToCPP(transOrigem);
-		objeto->printAllCPPcoordenadas();
+		objeto->multiplyCoordenadasToCPP(normalizador->getMatrizNormalizacao());
 		clipping->clip(objeto);
 	}
-	delete WinCenter;
-	delete transOrigem;
+	delete normalizador;
 }
 
 void ModeloInterno::printAll(){

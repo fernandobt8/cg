@@ -13,8 +13,8 @@ MainController::MainController() {
 	view->show();
 }
 
-void MainController::rotacioneWindow(double angulo){
-	modelo->rotacioneWindow(angulo);
+void MainController::rotacioneWindow(double angulo, Rotacao::Round around){
+	modelo->rotacioneWindow(angulo, around);
 	view->updateWindow(modelo->window);
 }
 

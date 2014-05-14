@@ -9,11 +9,11 @@
 #define WINDOW_H_
 #include "../../dto/geometrico/Coordenada.h"
 #include "../../dto/geometrico/ObjetoGeometrico.h"
-#include "../../dto/matriz/Matriz.h"
 #include "../../dto/matriz/MatrizEscalonamento.h"
 #include "../../dto/matriz/MatrizRotacao.h"
 #include "../../dto/matriz/MatrizTranslacao.h"
 #include "../../utils/Utils.h"
+#include "NormalizadorWindow.h"
 #include <list>
 using namespace std;
 
@@ -27,10 +27,10 @@ public:
 	void mutiplyCoordenadasToCPP(Matriz* matriz);
 	void move(double x, double y, double z);
 	void zoom(double zoomX, double zoomY);
-	void rotacione(double angulo);
+	void rotacione(double angulo, Rotacao::Round around);
 	double getWidth();
 	double getHeight();
-	Matriz* getMatrizNormalizacao();
+	NormalizadorWindow* getNormalizador();
 	void clearWindowObjetos();
 	Coordenada* getCenter();
 	Coordenada* getCenterCPP();
