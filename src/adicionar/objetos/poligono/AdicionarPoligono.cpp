@@ -89,13 +89,15 @@ void AdicionarPoligono::on_adicionarCoordenada_clicked() {
 	Coordenada* coordenada = new Coordenada();
 	coordenada->setX(strtod(this->xInput->text().toUtf8().data(), NULL));
 	coordenada->setY(strtod(this->yInput->text().toUtf8().data(), NULL));
+	coordenada->setZ(strtod(this->zInput->text().toUtf8().data(), NULL));
 	this->coordenadasObjeto->push_back(coordenada);
 
 	QListWidgetItem * item = new QListWidgetItem();
 	QString sX(this->xInput->text().toUtf8().data());
-	QString sV(", ");
 	QString sY(this->yInput->text().toUtf8().data());
-	item->setText(sX + sV + sY);
+	QString sZ(this->zInput->text().toUtf8().data());
+	QString sV(", ");
+	item->setText(sX + sV + sY + sV + sZ);
 	this->coordenadasList->addItem(item);
 
 }

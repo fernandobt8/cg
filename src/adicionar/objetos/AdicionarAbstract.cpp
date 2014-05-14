@@ -66,8 +66,10 @@ AdicionarAbstract::~AdicionarAbstract() {
 	delete coordenadasLabel;
 	delete xLabel;
 	delete yLabel;
+	delete zLabel;
 	delete xInput;
 	delete yInput;
+	delete zInput;
 	delete okButton;
 	delete cancelarButton;
 }

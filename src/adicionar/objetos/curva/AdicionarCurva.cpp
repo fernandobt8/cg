@@ -53,14 +53,18 @@ void AdicionarCurva::on_checkAberto_toggled(bool checked){
 	if(checked){
 		x2Input->hide();
 		y2Input->hide();
+		z2Input->hide();
 		x2Label->hide();
 		y2Label->hide();
+		z2Label->hide();
 		pontoControle->hide();
 	}else{
 		x2Input->show();
 		y2Input->show();
+		z2Input->show();
 		x2Label->show();
 		y2Label->show();
+		z2Label->show();
 		pontoControle->show();
 	}
 	bSpline = checkAberto->isChecked();
@@ -85,13 +89,15 @@ void AdicionarCurva::on_adicionarCoordenada_clicked() {
 		Coordenada* coordenada = new Coordenada();
 		coordenada->setX(strtod(this->x2Input->text().toUtf8().data(), NULL));
 		coordenada->setY(strtod(this->y2Input->text().toUtf8().data(), NULL));
+		coordenada->setZ(strtod(this->z2Input->text().toUtf8().data(), NULL));
 		this->coordenadasObjeto->push_back(coordenada);
 
 		QListWidgetItem * item = new QListWidgetItem();
 		QString sX2(this->x2Input->text().toUtf8().data());
-		QString sV2(", ");
 		QString sY2(this->y2Input->text().toUtf8().data());
-		item->setText(sX2 + sV2 + sY2);
+		QString sZ2(this->z2Input->text().toUtf8().data());
+		QString sV2(", ");
+		item->setText(sX2 + sV2 + sY2 + sV2 + sZ2);
 		this->coordenadasList->addItem(item);
 	}
 }
@@ -99,9 +105,11 @@ void AdicionarCurva::on_adicionarCoordenada_clicked() {
 AdicionarCurva::~AdicionarCurva() {
 	delete x2Label;
 	delete y2Label;
+	delete z2Label;
 	delete avisoLabel;
 	delete x2Input;
 	delete y2Input;
+	delete z2Input;
 	delete pontoControle;
 }
 

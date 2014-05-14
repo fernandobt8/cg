@@ -36,10 +36,12 @@ void AdicionarReta::on_okButton_clicked() {
 	Coordenada* coordenada1 = new Coordenada();
 	coordenada1->setX(atoi(this->xInput->text().toUtf8().constData()));
 	coordenada1->setY(atoi(this->yInput->text().toUtf8().constData()));
+	coordenada1->setZ(atoi(this->zInput->text().toUtf8().constData()));
 
 	Coordenada* coordenada2  = new Coordenada();
 	coordenada2->setX(atoi(this->x2Input->text().toUtf8().constData()));
 	coordenada2->setY(atoi(this->y2Input->text().toUtf8().constData()));
+	coordenada2->setZ(atoi(this->z2Input->text().toUtf8().constData()));
 	Reta* reta = new Reta(Utils::cloneChar(this->nomeInput->text().toUtf8().data()));
 	reta->addCoordenada(coordenada1);
 	reta->addCoordenada(coordenada2);
@@ -49,6 +51,8 @@ void AdicionarReta::on_okButton_clicked() {
 AdicionarReta::~AdicionarReta() {
 	delete x2Label;
 	delete y2Label;
+	delete z2Label;
 	delete x2Input;
 	delete y2Input;
+	delete z2Input;
 }
