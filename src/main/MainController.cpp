@@ -36,16 +36,16 @@ void MainController::addObjeto(ObjetoGeometrico* objeto) {
 void MainController::moveWindow(TipoMovimento::Window tipoMovimento) {
 	switch (tipoMovimento) {
 	case TipoMovimento::UP:
-		modelo->moveWindow(0, 0, 10);
+		modelo->moveWindow(0, 10, 0);
 		break;
 	case TipoMovimento::LEFT:
-		modelo->moveWindow(0, -10, 0);
+		modelo->moveWindow(-10, 0, 0);
 		break;
 	case TipoMovimento::DOWN:
-		modelo->moveWindow(0, 0, -10);
+		modelo->moveWindow(0, -10, 0);
 		break;
 	case TipoMovimento::RIGHT:
-		modelo->moveWindow(0, 10, 0);
+		modelo->moveWindow(10, 0, 0);
 		break;
 	case TipoMovimento::ZOOM_IN:
 		modelo->zoomWindow(0.9, 0.9);

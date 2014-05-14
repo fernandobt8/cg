@@ -55,12 +55,14 @@ void Window::mutiplyCoordenadasToCPP(Matriz* matriz){
 
 void Window::move(double x, double y, double z){
 	Coordenada* coor = new Coordenada(x, y, z);
-//	Matriz* matriz = new MatrizRotacao(this->getAngulo());
-//	coor->multiplyByMatriz(matriz);
+	NormalizadorWindow* normalizador = this->getNormalizador();
+	Matriz* matriz = normalizador->getMatrizAnguloWindow();
+	coor->multiplyByMatriz(matriz);
 	start->addCoordenada(coor);
 	end->addCoordenada(coor);
 	delete coor;
-//	delete matriz;
+	delete matriz;
+	delete normalizador;
 }
 
 void Window::zoom(double zoomX, double zoomY){
