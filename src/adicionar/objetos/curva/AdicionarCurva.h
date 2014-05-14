@@ -26,9 +26,11 @@ public:
 private:
 	QLabel *x2Label;
 	QLabel *y2Label;
+	QLabel *z2Label;
 	QLabel *avisoLabel;
 	QLineEdit *x2Input;
 	QLineEdit *y2Input;
+	QLineEdit *z2Input;
 	QLabel *pontoControle;
 	QRadioButton* blendingFuctionButton;
 	QRadioButton* forwardDifferenceButton;

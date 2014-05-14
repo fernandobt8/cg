@@ -12,10 +12,10 @@ AdicionarPoligono::AdicionarPoligono(QWidget *parent,
 		AdicionarAbstract(parent, event) {
 	coordenadasList = new QListWidget(this);
 	coordenadasList->setObjectName(QString::fromUtf8("coordenadasList"));
-	coordenadasList->setGeometry(QRect(190, 65, 130, 150));
+	coordenadasList->setGeometry(QRect(260, 65, 130, 150));
 	adicionarCoordenadaButton = new QPushButton(this);
 	adicionarCoordenadaButton->setObjectName(QString::fromUtf8("adicionarCoordenada"));
-	adicionarCoordenadaButton->setGeometry(QRect(100, 190, 80, 25));
+	adicionarCoordenadaButton->setGeometry(QRect(165, 190, 80, 25));
 	adicionarCoordenadaButton->setText(QString::fromUtf8("Adicionar"));
 	removerCoordenadaButton = new QPushButton(this);
 	removerCoordenadaButton->setObjectName(QString::fromUtf8("removerCoordenada"));
@@ -25,15 +25,15 @@ AdicionarPoligono::AdicionarPoligono(QWidget *parent,
 
 	checkAberto = new QCheckBox(this);
 	checkAberto->setObjectName(QString::fromUtf8("checkAberto"));
-	checkAberto->setGeometry(QRect(340, 75, 130, 25));
+	checkAberto->setGeometry(QRect(410, 75, 130, 25));
 	checkAberto->setText(QString::fromUtf8("Aberto"));
 	selectColorButton = new QPushButton(this);
 	selectColorButton->setObjectName(QString::fromUtf8("selectColorButton"));
-	selectColorButton->setGeometry(QRect(340, 100, 110, 25));
+	selectColorButton->setGeometry(QRect(410, 170, 110, 25));
 	selectColorButton->setText(QString::fromUtf8("Selecionar Cor"));
 	panelSelectedColor = new QWidget(this);
 	panelSelectedColor->setObjectName(QString::fromUtf8("panelSelectedColor"));
-	panelSelectedColor->setGeometry(QRect(340, 130, 110, 50));
+	panelSelectedColor->setGeometry(QRect(410, 110, 110, 50));
 	panelSelectedColor->setAutoFillBackground(true);
 	panelSelectedColor->setPalette(QPalette(QPalette::Background, Qt::white));
 	sentidoHorario = new QLabel(this);

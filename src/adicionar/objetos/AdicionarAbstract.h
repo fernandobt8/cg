@@ -26,8 +26,10 @@ protected:
 	QLabel *coordenadasLabel;
 	QLabel *xLabel;
 	QLabel *yLabel;
+	QLabel *zLabel;
 	QLineEdit *xInput;
 	QLineEdit *yInput;
+	QLineEdit *zInput;
 	QPushButton *okButton;
 	QPushButton *cancelarButton;
 	OnAdicionarObjetoTipoEvent *addEvent;

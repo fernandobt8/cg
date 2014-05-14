@@ -18,11 +18,18 @@ AdicionarReta::AdicionarReta(QWidget *parent, OnAdicionarObjetoTipoEvent *event)
 	x2Input->setGeometry(QRect(30, 125, 50, 25));
 	y2Label = new QLabel(this);
 	y2Label->setObjectName(QString::fromUtf8("label_2"));
-	y2Label->setGeometry(QRect(110, 125, 10, 25));
+	y2Label->setGeometry(QRect(100, 125, 10, 25));
 	y2Label->setText(QString::fromUtf8("y"));
 	y2Input = new QLineEdit(this);
 	y2Input->setObjectName(QString::fromUtf8("yTextFieldPonto"));
-	y2Input->setGeometry(QRect(120, 125, 50, 25));
+	y2Input->setGeometry(QRect(110, 125, 50, 25));
+	z2Label = new QLabel(this);
+	z2Label->setObjectName(QString::fromUtf8("label_2"));
+	z2Label->setGeometry(QRect(180, 125, 10, 25));
+	z2Label->setText(QString::fromUtf8("z"));
+	z2Input = new QLineEdit(this);
+	z2Input->setObjectName(QString::fromUtf8("yTextFieldPonto"));
+	z2Input->setGeometry(QRect(190, 125, 50, 25));
 }
 
 void AdicionarReta::on_okButton_clicked() {

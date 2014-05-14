@@ -23,8 +23,10 @@ public:
 private:
 	QLabel *x2Label;
 	QLabel *y2Label;
+	QLabel *z2Label;
 	QLineEdit *x2Input;
 	QLineEdit *y2Input;
+	QLineEdit *z2Input;
 
 };
 
