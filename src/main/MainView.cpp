@@ -25,7 +25,7 @@ void MainView::renderListaObjetosPanel() {
 	listObjetosFrame->setFrameShadow(QFrame::Raised);
 	QLabel* listLabel = new QLabel(listObjetosFrame);
 	listLabel->setObjectName(QString::fromUtf8("listLabel"));
-	listLabel->setGeometry(QRect(10, 10, 100, 15));
+	listLabel->setGeometry(QRect(10, 10, 120, 15));
 	listObjetosPanel = new QListWidget(listObjetosFrame);
 	listObjetosPanel->setObjectName(QString::fromUtf8("listaObjetos"));
 	listObjetosPanel->setGeometry(QRect(10, 30, 230, 150));
@@ -35,7 +35,7 @@ void MainView::renderListaObjetosPanel() {
 	adicionarButton->setText("Adicionar");
 	QPushButton* transformarButton = new QPushButton(listObjetosFrame);
 	transformarButton->setObjectName(QString::fromUtf8("transformarButton"));
-	transformarButton->setGeometry(QRect(10, 185, 80, 25));
+	transformarButton->setGeometry(QRect(10, 185, 90, 25));
 	transformarButton->setText("Transformar");
 	listLabel->setText("Lista de objetos");
 }
@@ -87,27 +87,27 @@ void MainView::renderControleWindowPanel() {
 	downButton->setGeometry(QRect(100, 155, 50, 30));
 	QPushButton* zoomInButton = new QPushButton(WindowFrame);
 	zoomInButton->setObjectName(QString::fromUtf8("zoomInButton"));
-	zoomInButton->setGeometry(QRect(55, 190, 70, 30));
+	zoomInButton->setGeometry(QRect(50, 190, 80, 30));
 	QPushButton* zoomOutButton = new QPushButton(WindowFrame);
 	zoomOutButton->setObjectName(QString::fromUtf8("zoomOutButton"));
-	zoomOutButton->setGeometry(QRect(125, 190, 70, 30));
+	zoomOutButton->setGeometry(QRect(125, 190, 80, 30));
 	QPushButton* rotacionarButton = new QPushButton(WindowFrame);
 	rotacionarButton->setObjectName(QString::fromUtf8("rotacionarButton"));
-	rotacionarButton->setGeometry(QRect(120, 225, 70, 25));
+	rotacionarButton->setGeometry(QRect(130, 225, 90, 25));
 	windowRotacaoEdit = new QLineEdit(WindowFrame);
 	windowRotacaoEdit->setObjectName(QString::fromUtf8("windowRotacaoEdit"));
-	windowRotacaoEdit->setGeometry(QRect(63, 225, 50, 25));
+	windowRotacaoEdit->setGeometry(QRect(75, 225, 50, 25));
 	QLabel* grauLabel = new QLabel(WindowFrame);
 	grauLabel->setObjectName(QString::fromUtf8("grauLabel"));
-	grauLabel->setGeometry(QRect(20, 230, 57, 15));
-	upButton->setText("up");
-	leftButton->setText("left");
-	rightButton->setText("right");
-	downButton->setText("down");
-	zoomInButton->setText("zoom in");
-	zoomOutButton->setText("zoom out");
+	grauLabel->setGeometry(QRect(30, 230, 57, 15));
+	upButton->setText("Up");
+	leftButton->setText("Left");
+	rightButton->setText("Right");
+	downButton->setText("Down");
+	zoomInButton->setText("Zoom in");
+	zoomOutButton->setText("Zoom out");
 	grauLabel->setText("Graus");
-	rotacionarButton->setText("rotacionar");
+	rotacionarButton->setText("Rotacionar");
 }
 
 void MainView::renderViewPortPanel() {
