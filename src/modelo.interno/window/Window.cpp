@@ -8,13 +8,22 @@
 #include "Window.h"
 
 Window::Window(){
+	vectorUp = new Coordenada(0, 1, 0);
+	VPN = new Coordenada(0, 0, 1);
 	start = new Coordenada(0, 0, 0);
-	vectorUp = new Coordenada(0, 0, 1);
-	end = new Coordenada(0, 500, 500);
-	CPPstart = new Coordenada(0, -250, -250);
-	CPPend = new Coordenada(0, 250, 250);
+	end = new Coordenada(500, 500, 0);
+	CPPstart = new Coordenada(-250, -250, 0);
+	CPPend = new Coordenada(250, 250, 0);
 	objetos = new list<ObjetoGeometrico* >();
 
+//	Coordenada* p =new Coordenada(5 ,5,5);
+//	double angulo = Utils::getAnguloPlanoXY(p);
+//	double angulo2 = Utils::getAnguloPlanoZY(p);
+//	Matriz* ro = new MatrizRotacao(angulo, Rotacao::AROUND_X);
+//	p->multiplyByMatriz(ro);
+//	p->print();
+//	double angulo3 = Utils::getAnguloPlanoZY(p);
+//	p->print();
 }
 
 list<ObjetoGeometrico*>* Window::getWindowObjetos(){
@@ -56,7 +65,7 @@ void Window::move(double x, double y, double z){
 
 void Window::zoom(double zoomX, double zoomY){
 	Coordenada* center = this->getCenter();
-	double angulo = this->getAngulo();
+
 
 	MatrizTranslacao transOrigem(-center->getX(), -center->getY(), -center->getZ());
 //	MatrizRotacao rotacaoParalela(-angulo);
@@ -99,16 +108,24 @@ Coordenada* Window::getCenterCPP(){
 	return new Coordenada(x, y, z);
 }
 
-double Window::getAngulo(){
-	//grau = arccos(v1 * v2) / (||v1|| * ||v2||)
-	double dividendo = (0 * vectorUp->getX()) + (1 * vectorUp->getY());
-	double divisor =  sqrt(pow(0, 2)+pow(1, 2)) * sqrt(pow(vectorUp->getX(), 2) + pow(vectorUp->getY(), 2));
-	double angulo = Utils::convertRaianosToGraus(acos(dividendo / divisor));
-	if(vectorUp->getX() > 0){
-		return angulo;
-	}else{
-		return -angulo;
-	}
+Matriz* Window::getMatrizNormalizacao(){
+	Coordenada* vectorUpC = vectorUp->clone();
+	Coordenada* VPNC = VPN->clone();
+
+	double anguloXY = Utils::getAnguloPlanoXY(vectorUpC);
+	Matriz* matrizXY = new MatrizRotacao(anguloXY, Rotacao::AROUND_X);
+	vectorUpC->multiplyByMatriz(matrizXY);
+
+	double anguloZY = Utils::getAnguloPlanoZY(vectorUpC);
+	Matriz* matrizZY = new MatrizRotacao(anguloZY, Rotacao::AROUND_Z);
+
+	matrizXY->multiply(matrizZY);
+	VPNC->multiplyByMatriz(matrizXY);
+
+	double anguloFrente = Utils::getAnguloPlanoYZ(VPNC);
+	Matriz* matrizYZ = new MatrizRotacao(anguloFrente, Rotacao::AROUND_Y);
+	matrizXY->multiply(matrizYZ);
+	return matrizXY;
 }
 
 double Window::getWidth(){

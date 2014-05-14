@@ -89,3 +89,8 @@ bool Coordenada::isInterseccao() {
 void Coordenada::setInterseccao(bool isInterseccao) {
 	this->interseccao = isInterseccao;
 }
+
+void Coordenada::print(){
+	printf("%f, %f, %f\n", x, y, z);
+
+}

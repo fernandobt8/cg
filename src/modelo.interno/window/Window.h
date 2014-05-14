@@ -30,7 +30,7 @@ public:
 	void rotacione(double angulo);
 	double getWidth();
 	double getHeight();
-	double getAngulo();
+	Matriz* getMatrizNormalizacao();
 	void clearWindowObjetos();
 	Coordenada* getCenter();
 	Coordenada* getCenterCPP();
@@ -39,6 +39,7 @@ public:
 
 private:
 	Coordenada* vectorUp;
+	Coordenada* VPN;
 	Coordenada* start;
 	Coordenada* end;
 	list<ObjetoGeometrico* >* objetos;

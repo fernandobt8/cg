@@ -72,14 +72,14 @@ const char* ObjetoGeometrico::getNome() {
 void ObjetoGeometrico::printAllcoordenadas(){
 	list<Coordenada* >::iterator it = coordenadas->begin();
 	for(; it != coordenadas->end();it++){
-		printf("%f, %f, %f\n", (*it)->getX(), (*it)->getY(), (*it)->getZ());
+		(*it)->print();
 	}
 }
 
 void ObjetoGeometrico::printAllCPPcoordenadas(){
 	list<Coordenada* >::iterator it = CPPcoordenadas->begin();
 	for(; it != CPPcoordenadas->end();it++){
-		printf("%f, %f, %f\n", (*it)->getX(), (*it)->getY(), (*it)->getZ());
+		(*it)->print();
 	}
 }
 

@@ -31,6 +31,7 @@ public:
 	void addCoordenada(Coordenada* coordenada);
 	void multiplyByMatriz(class Matriz* matriz);
 	bool equal(Coordenada* coordenada);
+	void print();
 	Coordenada* clone();
 
 private:
