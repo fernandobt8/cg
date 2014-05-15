@@ -20,7 +20,7 @@ MainView::MainView(MainController* controller) :
 void MainView::renderListaObjetosPanel() {
 	listObjetosFrame = new QFrame(this);
 	listObjetosFrame->setObjectName(QString::fromUtf8("listFrame"));
-	listObjetosFrame->setGeometry(QRect(20, 20, 250, 220));
+	listObjetosFrame->setGeometry(QRect(20, 5, 250, 220));
 	listObjetosFrame->setFrameShape(QFrame::WinPanel);
 	listObjetosFrame->setFrameShadow(QFrame::Raised);
 	QLabel* listLabel = new QLabel(listObjetosFrame);
@@ -43,7 +43,7 @@ void MainView::renderListaObjetosPanel() {
 void MainView::renderWindowPanel() {
 	WindowFrame = new QFrame(this);
 	WindowFrame->setObjectName(QString::fromUtf8("WindowFrame"));
-	WindowFrame->setGeometry(QRect(20, 260, 250, 260));
+	WindowFrame->setGeometry(QRect(20, 240, 250, 295));
 	WindowFrame->setFrameShape(QFrame::WinPanel);
 	WindowFrame->setFrameShadow(QFrame::Raised);
 	QLabel* windowLabel = new QLabel(WindowFrame);
@@ -75,37 +75,58 @@ void MainView::renderWindowPanel() {
 void MainView::renderControleWindowPanel() {
 	QPushButton* upButton = new QPushButton(WindowFrame);
 	upButton->setObjectName(QString::fromUtf8("upButton"));
-	upButton->setGeometry(QRect(100, 95, 50, 30));
+	upButton->setGeometry(QRect(70, 95, 50, 30));
 	QPushButton* leftButton = new QPushButton(WindowFrame);
 	leftButton->setObjectName(QString::fromUtf8("leftButton"));
-	leftButton->setGeometry(QRect(50, 125, 50, 30));
+	leftButton->setGeometry(QRect(20, 125, 50, 30));
 	QPushButton* rightButton = new QPushButton(WindowFrame);
 	rightButton->setObjectName(QString::fromUtf8("rightButton"));
-	rightButton->setGeometry(QRect(150, 125, 50, 30));
+	rightButton->setGeometry(QRect(120, 125, 50, 30));
 	QPushButton* downButton = new QPushButton(WindowFrame);
 	downButton->setObjectName(QString::fromUtf8("downButton"));
-	downButton->setGeometry(QRect(100, 155, 50, 30));
+	downButton->setGeometry(QRect(70, 155, 50, 30));
+	QPushButton* forthButton = new QPushButton(WindowFrame);
+	forthButton->setObjectName(QString::fromUtf8("forthButton"));
+	forthButton->setGeometry(QRect(180, 95, 50, 30));
+	QPushButton* backButton = new QPushButton(WindowFrame);
+	backButton->setObjectName(QString::fromUtf8("backButton"));
+	backButton->setGeometry(QRect(180, 155, 50, 30));
 	QPushButton* zoomInButton = new QPushButton(WindowFrame);
 	zoomInButton->setObjectName(QString::fromUtf8("zoomInButton"));
-	zoomInButton->setGeometry(QRect(50, 190, 80, 30));
+	zoomInButton->setGeometry(QRect(20, 190, 70, 30));
 	QPushButton* zoomOutButton = new QPushButton(WindowFrame);
 	zoomOutButton->setObjectName(QString::fromUtf8("zoomOutButton"));
-	zoomOutButton->setGeometry(QRect(125, 190, 80, 30));
+	zoomOutButton->setGeometry(QRect(100, 190, 70, 30));
+	xRadio = new QRadioButton(WindowFrame);
+	xRadio->setObjectName(QString::fromUtf8("xRadio"));
+	xRadio->setGeometry(QRect(20, 230, 50, 25));
+	xRadio->setChecked(true);
+	yRadio = new QRadioButton(WindowFrame);
+	yRadio->setObjectName(QString::fromUtf8("yRadio"));
+	yRadio->setGeometry(QRect(70, 230, 50, 25));
+	zRadio = new QRadioButton(WindowFrame);
+	zRadio->setObjectName(QString::fromUtf8("zRadio"));
+	zRadio->setGeometry(QRect(120, 230, 50, 25));
 	QPushButton* rotacionarButton = new QPushButton(WindowFrame);
 	rotacionarButton->setObjectName(QString::fromUtf8("rotacionarButton"));
-	rotacionarButton->setGeometry(QRect(130, 225, 90, 25));
+	rotacionarButton->setGeometry(QRect(120, 260, 90, 25));
 	windowRotacaoEdit = new QLineEdit(WindowFrame);
 	windowRotacaoEdit->setObjectName(QString::fromUtf8("windowRotacaoEdit"));
-	windowRotacaoEdit->setGeometry(QRect(75, 225, 50, 25));
+	windowRotacaoEdit->setGeometry(QRect(65, 260, 50, 25));
 	QLabel* grauLabel = new QLabel(WindowFrame);
 	grauLabel->setObjectName(QString::fromUtf8("grauLabel"));
-	grauLabel->setGeometry(QRect(30, 230, 57, 15));
+	grauLabel->setGeometry(QRect(20, 265, 57, 15));
 	upButton->setText("Up");
 	leftButton->setText("Left");
 	rightButton->setText("Right");
 	downButton->setText("Down");
+	forthButton->setText("Forth");
+	backButton->setText("Back");
 	zoomInButton->setText("Zoom in");
 	zoomOutButton->setText("Zoom out");
+	xRadio->setText("X");
+	yRadio->setText("Y");
+	zRadio->setText("Z");
 	grauLabel->setText("Graus");
 	rotacionarButton->setText("Rotacionar");
 }
@@ -141,6 +162,14 @@ void MainView::on_leftButton_clicked() {
 	controller->moveWindow(TipoMovimento::LEFT);
 }
 
+void MainView::on_forthButton_clicked() {
+	controller->moveWindow(TipoMovimento::FORTH);
+}
+
+void MainView::on_backButton_clicked() {
+	controller->moveWindow(TipoMovimento::BACK);
+}
+
 void MainView::on_zoomInButton_clicked() {
 	controller->moveWindow(TipoMovimento::ZOOM_IN);
 }
@@ -150,7 +179,8 @@ void MainView::on_zoomOutButton_clicked() {
 }
 
 void MainView::on_rotacionarButton_clicked(){
-	controller->rotacioneWindow(strtod(this->windowRotacaoEdit->text().toUtf8().constData(), NULL), Rotacao::AROUND_X);
+	Rotacao::Round r = xRadio->isChecked() ? Rotacao::AROUND_X : yRadio->isChecked() ? Rotacao::AROUND_Y : Rotacao::AROUND_Z;
+	controller->rotacioneWindow(strtod(this->windowRotacaoEdit->text().toUtf8().constData(), NULL), r);
 }
 
 void MainView::onOkTransformacaoClick(list<Transformacao* >* transformacoes){

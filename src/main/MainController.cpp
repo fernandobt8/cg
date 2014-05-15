@@ -47,6 +47,12 @@ void MainController::moveWindow(TipoMovimento::Window tipoMovimento) {
 	case TipoMovimento::RIGHT:
 		modelo->moveWindow(10, 0, 0);
 		break;
+	case TipoMovimento::FORTH:
+		modelo->moveWindow(0, 0, 10);
+		break;
+	case TipoMovimento::BACK:
+		modelo->moveWindow(0, 0, -10);
+		break;
 	case TipoMovimento::ZOOM_IN:
 		modelo->zoomWindow(0.9, 0.9);
 		break;

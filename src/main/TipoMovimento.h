@@ -14,6 +14,8 @@ public :
 		LEFT,
 		DOWN,
 		RIGHT,
+		FORTH,
+		BACK,
 		ZOOM_IN,
 		ZOOM_OUT
 	};

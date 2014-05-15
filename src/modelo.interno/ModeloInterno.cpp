@@ -58,14 +58,16 @@ void ModeloInterno::setTamanhoWindow(double width, double height){
 void ModeloInterno::updateCPPCoordenadas(){
 	window->clearWindowObjetos();
 	NormalizadorWindow* normalizador = window->getNormalizador();
-	window->mutiplyCoordenadasToCPP(normalizador->getMatrizNormalizacao());
+	Matriz* norma = normalizador->getMatrizNormalizacao();
+	window->mutiplyCoordenadasToCPP(norma);
 	list<ObjetoGeometrico* >::iterator it = objetos->begin();
 	for (; it != objetos->end(); it++) {
 		ObjetoGeometrico* objeto = *it;
-		objeto->multiplyCoordenadasToCPP(normalizador->getMatrizNormalizacao());
+		objeto->multiplyCoordenadasToCPP(norma);
 		clipping->clip(objeto);
 	}
 	delete normalizador;
+	delete norma;
 }
 
 void ModeloInterno::printAll(){

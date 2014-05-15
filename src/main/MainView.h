@@ -43,6 +43,8 @@ public slots:
 	void on_rightButton_clicked();
 	void on_downButton_clicked();
 	void on_leftButton_clicked();
+	void on_forthButton_clicked();
+	void on_backButton_clicked();
 	void on_zoomInButton_clicked();
 	void on_zoomOutButton_clicked();
 	void on_adicionarButton_clicked();
@@ -62,6 +64,9 @@ private:
 	QLineEdit* windowRotacaoEdit;
 	QFrame* viewPortFrame;
 	ViewPort* viewPort;
+	QRadioButton* xRadio;
+	QRadioButton* yRadio;
+	QRadioButton* zRadio;
 
 	void renderListaObjetosPanel();
 	void renderWindowPanel();

@@ -32,12 +32,11 @@ public:
 	double getHeight();
 	NormalizadorWindow* getNormalizador();
 	void clearWindowObjetos();
-	Coordenada* getCenter();
-	Coordenada* getCenterCPP();
 	Coordenada* CPPstart;
 	Coordenada* CPPend;
 
 private:
+	Coordenada* windowCenter;
 	Coordenada* vectorUp;
 	Coordenada* VPN;
 	Coordenada* start;
