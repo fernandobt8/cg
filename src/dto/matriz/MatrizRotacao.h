@@ -16,7 +16,7 @@ class Utils;
 
 class MatrizRotacao : public Matriz {
 public:
-	MatrizRotacao(double angulo, Rotacao::Around around);
+	MatrizRotacao(double angulo, Rotacao::Round around);
 	virtual ~MatrizRotacao();
 };
 
