@@ -19,6 +19,27 @@ Rotacao::Rotacao(double angulo, Rotacao::Tipo tipoRotacao, Rotacao::Round around
 	this->around = around;
 }
 
+void Rotacao::setXFinal(double final) {
+	xFinal = final;
+}
+
+void Rotacao::setYFinal(double final) {
+	yFinal = final;
+}
+
+void Rotacao::setZFinal(double final) {
+	zFinal = final;
+}
+
+Vetor* Rotacao::getVetor(){
+	Coordenada* inicial = new Coordenada(x, y, z);
+	Coordenada* final = new Coordenada(xFinal, yFinal, zFinal);
+	Vetor* vetor = new Vetor(inicial, final);
+	return vetor;
+}
+
+
+
 Rotacao::~Rotacao() {
 }
 

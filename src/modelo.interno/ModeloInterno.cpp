@@ -23,11 +23,13 @@ void ModeloInterno::transformeObjeto(char* nome, list<Transformacao* >* transfor
 	for(;it != objetos->end(); it++){
 		ObjetoGeometrico* objeto = *it;
 		if(strcmp(objeto->getNome(), nome) == 0){
-			Coordenada* center = objeto->getCenter();
-			Matriz* matriz = MatrizUtils::getMatrizTransformacao(center, transformacoes);
+			Coordenada* inicial = new Coordenada(objeto->getCenter()->getX(), objeto->getCenter()->getY(), objeto->getCenter()->getZ());
+			Coordenada* final = new Coordenada(objeto->getPontoFinal()->getX(), objeto->getPontoFinal()->getY(), objeto->getPontoFinal()->getZ());
+			Vetor *vetor = new Vetor(inicial, final);
+			Matriz* matriz = MatrizUtils::getMatrizTransformacao(vetor, transformacoes);
 			objeto->multiplyCoordenadas(matriz);
 			delete matriz;
-			delete center;
+			delete vetor;
 		}
 	}
 	this->updateCPPCoordenadas();

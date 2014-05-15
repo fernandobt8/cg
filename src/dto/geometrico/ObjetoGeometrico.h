@@ -21,6 +21,7 @@ public:
 	virtual ~ObjetoGeometrico();
 	const char* getNome();
 	Coordenada* getCenter();
+	Coordenada* getPontoFinal();
 	void addCoordenada(Coordenada* coordenada);
 	list<Coordenada*>* getCPPCoordenadas();
 	void setCPPCoordenadas(list<Coordenada*>* CPPcoordenadas);

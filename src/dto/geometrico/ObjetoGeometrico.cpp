@@ -88,3 +88,7 @@ ObjetoGeometrico::~ObjetoGeometrico() {
 	ListUtils::destroyList(CPPcoordenadas);
 	delete nome;
 }
+
+Coordenada* ObjetoGeometrico::getPontoFinal() {
+	this->coordenadas->back();
+}

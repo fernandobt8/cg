@@ -13,6 +13,7 @@
 #include "../dto/matriz/MatrizBezier.h"
 #include "../dto/matriz/MatrizBSplines.h"
 #include "../dto/matriz/MatrizDelta.h"
+#include "../dto/geometrico/Vetor.h"
 
 class MatrizUtils{
 public:
@@ -35,18 +36,18 @@ public:
 		return matriz;
 	}
 
-	static Matriz* getMatrizTransformacao(Coordenada* center, list<Transformacao*>* transformacoes) {
-		Matriz* matriz = MatrizUtils::getMatrizByTransformacao(center, transformacoes->front());
+	static Matriz* getMatrizTransformacao(Vetor* vetor, list<Transformacao*>* transformacoes) {
+		Matriz* matriz = MatrizUtils::getMatrizByTransformacao(vetor, transformacoes->front());
 		list<Transformacao*>::iterator it = _List_iterator<Transformacao*>( transformacoes->begin()._M_node->_M_next);
 		for (; it != transformacoes->end(); it++) {
-			Matriz* temp = MatrizUtils::getMatrizByTransformacao(center, *it);
+			Matriz* temp = MatrizUtils::getMatrizByTransformacao(vetor, *it);
 			matriz->multiply(temp);
 			delete temp;
 		}
 		return matriz;
 	}
 
-	static Matriz* getMatrizByTransformacao(Coordenada* center, Transformacao* transformacao) {
+	static Matriz* getMatrizByTransformacao(Vetor* vetor, Transformacao* transformacao) {
 		Matriz* matriz;
 		Translacao* trans = dynamic_cast<Translacao*>(transformacao);
 		Rotacao* rotacao = dynamic_cast<Rotacao*>(transformacao);
@@ -54,34 +55,52 @@ public:
 		if (trans) {
 			matriz = new MatrizTranslacao(trans);
 		} else if (rotacao) {
-			matriz = MatrizUtils::getFullMatrizRotacao(center, rotacao);
+			if(rotacao->tipoRotacao == Rotacao::CENTRO)
+				matriz = MatrizUtils::getFullMatrizRotacao(vetor, rotacao);
+			else
+				matriz = MatrizUtils::getFullMatrizRotacao(rotacao->getVetor(), rotacao);
 		} else if (esca) {
-			matriz = MatrizUtils::getFullMatrizEscalonamento(center, esca);
+			matriz = MatrizUtils::getFullMatrizEscalonamento(vetor->getCoordenadaInicial(), esca);
 		}
 		return matriz;
 	}
 
-	static Matriz* getFullMatrizRotacao(Coordenada* center, Rotacao* rotacao){
+	static Matriz* getFullMatrizRotacao(Vetor* vetor, Rotacao* rotacao){
 		MatrizRotacao* matrizRotacao = new MatrizRotacao(rotacao->angulo, rotacao->around);
 		if(rotacao->tipoRotacao != Rotacao::ORIGEM){
-			double x, y, z;
-			if(rotacao->tipoRotacao == Rotacao::CENTRO){
-				x = center->getX();
-				y = center->getY();
-				z = center->getZ();
-			} else if(rotacao->tipoRotacao == Rotacao::PONTO){
-				x = rotacao->getX();
-				y = rotacao->getY();
-				z = rotacao->getZ();
-			}
-				Matriz* transCenter = new MatrizTranslacao(-x, -y, -z);
-				transCenter->multiply(matrizRotacao);
-				MatrizTranslacao transCenterBack(x, y, z);
-				transCenter->multiply(&transCenterBack);
-				delete matrizRotacao;
-				return transCenter;
+			double x, y,z;
+			Coordenada *centro = getCenter(vetor);
+			x = centro->getX();
+			y = centro->getY();
+			z = centro->getZ();
+
+			Matriz* transCenter = new MatrizTranslacao(-x, -y, -z);
+			transCenter->multiply(matrizRotacao);
+			double anguloXY = Utils::getAnguloPlanoXY(vetor->getCoordenadaFinal());
+			MatrizRotacao matrizXY(anguloXY, Rotacao::AROUND_X);
+			transCenter->multiply(&matrizXY);
+			double anguloZY = Utils::getAnguloPlanoZY(vetor->getCoordenadaFinal());
+			MatrizRotacao matrizZY(anguloZY, Rotacao::AROUND_Z);
+			transCenter->multiply(&matrizZY);
+			MatrizRotacao matrizY(rotacao->angulo, Rotacao::AROUND_Y);
+			transCenter->multiply(&matrizY);
+			MatrizRotacao matrizZYBack(-anguloZY, Rotacao::AROUND_Z);
+			transCenter->multiply(&matrizZYBack);
+			MatrizRotacao matrizXYBack(-anguloXY, Rotacao::AROUND_X);
+			transCenter->multiply(&matrizXYBack);
+			MatrizTranslacao transCenterBack(x, y, z);
+			transCenter->multiply(&transCenterBack);
+			delete matrizRotacao;
+			return transCenter;
 		}
 		return matrizRotacao;
+	}
+
+	static Coordenada* getCenter(Vetor *vetor){
+		double somaX = vetor->getCoordenadaInicial()->getX() + vetor->getCoordenadaFinal()->getX();
+		double somaY = vetor->getCoordenadaInicial()->getY() + vetor->getCoordenadaFinal()->getY();
+		double somaZ = vetor->getCoordenadaInicial()->getZ() + vetor->getCoordenadaFinal()->getZ();
+		return new Coordenada(somaX/2, somaY/2, somaZ/2);
 	}
 
 	static Matriz* getFullMatrizEscalonamento(Coordenada* center, Escalonamento* escalonamento){
