@@ -38,8 +38,6 @@ Vetor* Rotacao::getVetor(){
 	return vetor;
 }
 
-
-
 Rotacao::~Rotacao() {
 }
 

@@ -40,7 +40,7 @@ RotacaoView::RotacaoView(OnAdicionarTipoTransformacaoEvent* event) :
 	grausXLabel->setGeometry(QRect(90, 170, 15, 25));
 	grausXLabel->setText(QString::fromUtf8("º"));
 	pontoLabel = new QLabel(this);
-	pontoLabel->setGeometry(QRect(20, 210, 51, 17));
+	pontoLabel->setGeometry(QRect(20, 210, 100, 17));
 	pontoLabel->setText(QString::fromUtf8("Ponto"));
 	pontoLabel->hide();
 	x1Label = new QLabel(this);
@@ -100,6 +100,9 @@ void RotacaoView::on_adicionarButton_clicked() {
 		rotacao->tipoRotacao = Rotacao::ORIGEM;
 	}else if(centroButton->isChecked()){
 		rotacao->tipoRotacao = Rotacao::CENTRO;
+		rotacao->setXFinal(strtod(this->x1Input->text().toUtf8().data(), NULL));
+		rotacao->setYFinal(strtod(this->y1Input->text().toUtf8().data(), NULL));
+		rotacao->setZFinal(strtod(this->z1Input->text().toUtf8().data(), NULL));
 	}else if(pontoButton->isChecked()){
 		rotacao->tipoRotacao = Rotacao::PONTO;
 		rotacao->setX(strtod(this->x1Input->text().toUtf8().data(), NULL));
@@ -114,6 +117,7 @@ void RotacaoView::on_adicionarButton_clicked() {
 
 void RotacaoView::on_pontoButton_toggled(bool checked) {
 	if (checked) {
+		pontoLabel->setText(QString::fromUtf8("Pontos"));
 		pontoLabel->show();
 		x1Input->show();
 		y1Input->show();
@@ -142,6 +146,31 @@ void RotacaoView::on_pontoButton_toggled(bool checked) {
 		y2Label->hide();
 		z2Label->hide();
 	}
+}
+
+void RotacaoView::on_centroButton_toggled(bool checked) {
+	if (checked) {
+		pontoLabel->setText(QString::fromUtf8("Ponto final"));
+		pontoLabel->show();
+		x1Input->show();
+		y1Input->show();
+		z1Input->show();
+		x1Label->show();
+		y1Label->show();
+		z1Label->show();
+	} else {
+		pontoLabel->hide();
+		x1Input->hide();
+		y1Input->hide();
+		z1Input->hide();
+		x1Label->hide();
+		y1Label->hide();
+		z1Label->hide();
+	}
+}
+
+void RotacaoView::pontoVisibility(bool checked){
+
 }
 
 RotacaoView::~RotacaoView() {

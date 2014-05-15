@@ -30,6 +30,7 @@ public:
 
 public slots:
 	void on_pontoButton_toggled(bool checked);
+	void on_centroButton_toggled(bool checked);
 	void on_adicionarButton_clicked();
 
 private:
@@ -53,6 +54,7 @@ private:
 	QLabel *z2Label;
 	QPushButton *adicionarButton;
 	OnAdicionarTipoTransformacaoEvent* event;
+	void pontoVisibility(bool checked);
 };
 
 #endif /* ROTACAOVIEW_H_ */
