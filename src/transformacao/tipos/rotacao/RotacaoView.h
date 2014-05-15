@@ -16,12 +16,16 @@
 #include <QtGui/QPushButton>
 #include "../../../api/OnAdicionarTipoTransformacaoEvent.h"
 #include "../../../dto/transformacao/Rotacao.h"
+#include <list>
+
+using namespace std;
 
 class RotacaoView: public QWidget {
 Q_OBJECT
 public:
 	RotacaoView(OnAdicionarTipoTransformacaoEvent* event);
 	virtual ~RotacaoView();
+	void getAround(Rotacao *rotacao, int indice);
 
 
 public slots:
@@ -30,18 +34,19 @@ public slots:
 
 private:
 	QFrame *frame;
-	QLabel *operacoesLabel;
-	QLabel *anguloLabel;
-	QLabel *grausLabel;
 	QRadioButton *origemButton;
 	QRadioButton *centroButton;
 	QRadioButton *pontoButton;
-	QLineEdit *anguloInput;
+	QLineEdit *anguloXInput;
+	QLineEdit *anguloYInput;
+	QLineEdit *anguloZInput;
 	QLineEdit *xInput;
 	QLineEdit *yInput;
+	QLineEdit *zInput;
 	QLabel *pontoLabel;
 	QLabel *xLabel;
 	QLabel *yLabel;
+	QLabel *zLabel;
 	QPushButton *adicionarButton;
 	OnAdicionarTipoTransformacaoEvent* event;
 };

@@ -22,7 +22,7 @@ TransformacaoView::TransformacaoView(OnOkTransformcaoEvent *event) : QMainWindow
 	transformacaoWidget->addTab(new EscalonamentoView(this), QString::fromUtf8("Escalonamento"));
 	listWidget = new QListWidget(this);
 	listWidget->setObjectName(QString::fromUtf8("listWidget"));
-	listWidget->setGeometry(QRect(405, 39, 140, 320));
+	listWidget->setGeometry(QRect(405, 40, 140, 300));
 	label = new QLabel(this);
 	label->setObjectName(QString::fromUtf8("label"));
 	label->setGeometry(QRect(405, 17, 110, 20));

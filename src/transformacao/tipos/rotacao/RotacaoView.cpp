@@ -11,12 +11,10 @@ RotacaoView::RotacaoView(OnAdicionarTipoTransformacaoEvent* event) :
 		QWidget() {
 	this->event = event;
 	frame = new QFrame(this);
-	frame->setObjectName(QString::fromUtf8("frame"));
 	frame->setGeometry(QRect(20, 30, 320, 100));
 	frame->setFrameShape(QFrame::WinPanel);
 	frame->setFrameShadow(QFrame::Sunken);
-	operacoesLabel = new QLabel(this);
-	operacoesLabel->setObjectName(QString::fromUtf8("operacoesLabel"));
+	QLabel *operacoesLabel = new QLabel(this);
 	operacoesLabel->setGeometry(QRect(30, 10, 80, 20));
 	operacoesLabel->setText(QString::fromUtf8("Operações"));
 	origemButton = new QRadioButton(this);
@@ -33,93 +31,139 @@ RotacaoView::RotacaoView(OnAdicionarTipoTransformacaoEvent* event) :
 	pontoButton->setGeometry(QRect(40, 100, 291, 22));
 	pontoButton->setText(
 			QString::fromUtf8("Rotacionar sobre um ponto especifico"));
-	anguloLabel = new QLabel(this);
-	anguloLabel->setObjectName(QString::fromUtf8("anguloLabel"));
-	anguloLabel->setGeometry(QRect(30, 155, 141, 20));
+	QLabel *anguloLabel = new QLabel(this);
+	anguloLabel->setGeometry(QRect(30, 140, 141, 20));
 	anguloLabel->setText(QString::fromUtf8("Ângulo de rotação:"));
-	anguloInput = new QLineEdit(this);
-	anguloInput->setObjectName(QString::fromUtf8("anguloInput"));
-	anguloInput->setGeometry(QRect(150, 155, 60, 25));
-	grausLabel = new QLabel(this);
-	grausLabel->setObjectName(QString::fromUtf8("grausLabel"));
-	grausLabel->setGeometry(QRect(210, 155, 15, 15));
-	grausLabel->setText(QString::fromUtf8("º"));
+	QLabel *anguloXLabel = new QLabel(this);
+	anguloXLabel->setGeometry(QRect(30, 170, 10, 25));
+	anguloXLabel->setText(QString::fromUtf8("x"));
+	anguloXInput = new QLineEdit(this);
+	anguloXInput->setGeometry(QRect(40, 170, 60, 25));
+	QLabel *grausXLabel = new QLabel(this);
+	grausXLabel->setGeometry(QRect(100, 170, 15, 25));
+	grausXLabel->setText(QString::fromUtf8("º"));
+	QLabel *anguloYLabel = new QLabel(this);
+	anguloYLabel->setGeometry(QRect(120, 170, 10, 25));
+	anguloYLabel->setText(QString::fromUtf8("y"));
+	anguloYInput = new QLineEdit(this);
+	anguloYInput->setGeometry(QRect(130, 170, 60, 25));
+	QLabel *grausYLabel = new QLabel(this);
+	grausYLabel->setGeometry(QRect(190, 170, 15, 25));
+	grausYLabel->setText(QString::fromUtf8("º"));
+	QLabel *anguloZLabel = new QLabel(this);
+	anguloZLabel->setGeometry(QRect(210, 170, 10, 25));
+	anguloZLabel->setText(QString::fromUtf8("z"));
+	anguloZInput = new QLineEdit(this);
+	anguloZInput->setGeometry(QRect(220, 170, 60, 25));
+	QLabel *grausZLabel = new QLabel(this);
+	grausZLabel->setGeometry(QRect(280, 170, 15, 25));
+	grausZLabel->setText(QString::fromUtf8("º"));
 	pontoLabel = new QLabel(this);
-	pontoLabel->setObjectName(QString::fromUtf8("pontoLabel"));
-	pontoLabel->setGeometry(QRect(30, 205, 51, 17));
+	pontoLabel->setGeometry(QRect(30, 210, 51, 17));
 	pontoLabel->setText(QString::fromUtf8("Ponto"));
 	pontoLabel->hide();
 	xLabel = new QLabel(this);
-	xLabel->setObjectName(QString::fromUtf8("xLabel"));
-	xLabel->setGeometry(QRect(135, 205, 51, 17));
+	xLabel->setGeometry(QRect(30, 230, 10, 25));
 	xLabel->setText(QString::fromUtf8("x"));
 	xLabel->hide();
 	yLabel = new QLabel(this);
-	yLabel->setObjectName(QString::fromUtf8("yLabel"));
-	yLabel->setGeometry(QRect(135, 230, 51, 17));
+	yLabel->setGeometry(QRect(120, 230, 10, 25));
 	yLabel->setText(QString::fromUtf8("y"));
 	yLabel->hide();
+	zLabel = new QLabel(this);
+	zLabel->setGeometry(QRect(210, 230, 10, 25));
+	zLabel->setText(QString::fromUtf8("z"));
+	zLabel->hide();
 	xInput = new QLineEdit(this);
-	xInput->setObjectName(QString::fromUtf8("xInput"));
-	xInput->setGeometry(QRect(150, 200, 60, 25));
+	xInput->setGeometry(QRect(40, 230, 60, 25));
 	xInput->hide();
 	yInput = new QLineEdit(this);
-	yInput->setObjectName(QString::fromUtf8("yInput"));
-	yInput->setGeometry(QRect(150, 225, 60, 25));
+	yInput->setGeometry(QRect(130, 230, 60, 25));
 	yInput->hide();
+	zInput = new QLineEdit(this);
+	zInput->setGeometry(QRect(220, 230, 60, 25));
+	zInput->hide();
 	adicionarButton = new QPushButton(this);
 	adicionarButton->setObjectName(QString::fromUtf8("adicionarButton"));
-	adicionarButton->setGeometry(QRect(260, 260, 80, 25));
+	adicionarButton->setGeometry(QRect(280, 265, 80, 25));
 	adicionarButton->setText(QString::fromUtf8("Adicionar"));
 
 	QMetaObject::connectSlotsByName(this);
 }
 
 void RotacaoView::on_adicionarButton_clicked() {
-	Rotacao* rotacao = new Rotacao();
-	rotacao->setX(strtod(this->xInput->text().toUtf8().data(), NULL));
-	rotacao->setY(strtod(this->yInput->text().toUtf8().data(), NULL));
-	rotacao->angulo = strtod(this->anguloInput->text().toUtf8().data(), NULL);
-	if(origemButton->isChecked()){
-		rotacao->tipoRotacao = Rotacao::ORIGEM;
-	}else if(centroButton->isChecked()){
-		rotacao->tipoRotacao = Rotacao::CENTRO;
-	}else if(pontoButton->isChecked()){
-		rotacao->tipoRotacao = Rotacao::PONTO;
-	}
+	for(int i = 0; i < 3; i++){
+		Rotacao* rotacao = new Rotacao();
+		getAround(rotacao, i);
+		if(origemButton->isChecked()){
+			rotacao->tipoRotacao = Rotacao::ORIGEM;
+		}else if(centroButton->isChecked()){
+			rotacao->tipoRotacao = Rotacao::CENTRO;
+		}else if(pontoButton->isChecked()){
+			rotacao->tipoRotacao = Rotacao::PONTO;
+			rotacao->setX(strtod(this->xInput->text().toUtf8().data(), NULL));
+			rotacao->setY(strtod(this->yInput->text().toUtf8().data(), NULL));
+			rotacao->setZ(strtod(this->zInput->text().toUtf8().data(), NULL));
+		}
 	event->onAdicionarTipoTransformacaoClick(rotacao);
+	}
+}
+
+void RotacaoView::getAround(Rotacao *rotacao, int indice){
+	switch(indice){
+		case 0:{
+			rotacao->angulo = strtod(this->anguloXInput->text().toUtf8().data(), NULL);
+			rotacao->around = Rotacao::AROUND_X;
+			break;
+		}
+		case 1:{
+			rotacao->angulo = strtod(this->anguloYInput->text().toUtf8().data(), NULL);
+			rotacao->around = Rotacao::AROUND_Y;
+			break;
+		}
+		case 2:{
+			rotacao->angulo = strtod(this->anguloZInput->text().toUtf8().data(), NULL);
+			rotacao->around = Rotacao::AROUND_Z;
+			break;
+		}
+	}
+
 }
 
 void RotacaoView::on_pontoButton_toggled(bool checked) {
 	if (checked) {
 		xInput->show();
 		yInput->show();
+		zInput->show();
 		pontoLabel->show();
 		xLabel->show();
 		yLabel->show();
+		zLabel->show();
 	} else {
 		xInput->hide();
 		yInput->hide();
+		zInput->hide();
 		pontoLabel->hide();
 		xLabel->hide();
 		yLabel->hide();
+		zLabel->hide();
 	}
 }
 
 RotacaoView::~RotacaoView() {
 	delete frame;
-	delete operacoesLabel;
-	delete anguloLabel;
-	delete grausLabel;
 	delete origemButton;
 	delete centroButton;
 	delete pontoButton;
-	delete anguloInput;
+	delete anguloXInput;
+	delete anguloYInput;
+	delete anguloZInput;
 	delete xInput;
 	delete yInput;
+	delete adicionarButton;
 	delete pontoLabel;
 	delete xLabel;
 	delete yLabel;
-	delete adicionarButton;
+	delete zLabel;
 }
 
