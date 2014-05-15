@@ -28,6 +28,7 @@ protected:
 	QLabel *labelMovimentacao;
 	QLineEdit *xInput;
 	QLineEdit *yInput;
+	QLineEdit *zInput;
 	QPushButton *adicionarButton;
 
 };

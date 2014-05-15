@@ -31,9 +31,16 @@ TransformacaoAbstractView::TransformacaoAbstractView() : QWidget() {
 	yInput = new QLineEdit(frame);
 	yInput->setObjectName(QString::fromUtf8("yInput"));
 	yInput->setGeometry(QRect(90, 30, 50, 25));
+	QLabel* zLabel = new QLabel(frame);
+	zLabel->setObjectName(QString::fromUtf8("label_3"));
+	zLabel->setGeometry(QRect(150, 30, 10, 25));
+	zLabel->setText(QString::fromUtf8("z"));
+	zInput = new QLineEdit(frame);
+	zInput->setObjectName(QString::fromUtf8("zTextFieldPonto"));
+	zInput->setGeometry(QRect(160, 30, 50, 25));
 	adicionarButton = new QPushButton(this);
 	adicionarButton->setObjectName(QString::fromUtf8("adicionarButton"));
-	adicionarButton->setGeometry(QRect(260, 260, 80, 25));
+	adicionarButton->setGeometry(QRect(280, 265, 80, 25));
 	adicionarButton->setText(QString::fromUtf8("Adicionar"));
 	QMetaObject::connectSlotsByName(this);
 }

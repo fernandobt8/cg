@@ -8,7 +8,7 @@
 #include "MatrizRotacao.h"
 
 
-MatrizRotacao::MatrizRotacao(double angulo,  Rotacao::Round around) : Matriz(){
+MatrizRotacao::MatrizRotacao(double angulo,  Rotacao::Around around) : Matriz(){
 	double radianos = Utils::convertGrausToRadianos(angulo);
 	bool aroundX = around == Rotacao::AROUND_X;
 	bool aroundY = around == Rotacao::AROUND_Y;

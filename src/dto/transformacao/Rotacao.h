@@ -16,13 +16,13 @@ public:
 		CENTRO,
 		PONTO,
 	} tipoRotacao;
-	enum Round{
+	enum Around {
 		AROUND_X,
 		AROUND_Y,
 		AROUND_Z,
 	} around;
 	Rotacao();
-	Rotacao(double angulo,  Rotacao::Tipo tipoRotacao, Rotacao::Round around);
+	Rotacao(double angulo, Rotacao::Tipo tipoRotacao, Rotacao::Around around);
 	virtual ~Rotacao();
 	double angulo;
 };

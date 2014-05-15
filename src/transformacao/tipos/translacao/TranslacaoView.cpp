@@ -15,6 +15,7 @@ void TranslacaoView::on_adicionarButton_clicked(){
 	Translacao* trans = new Translacao();
 	trans->setX(strtod(this->xInput->text().toUtf8().data(), NULL));
 	trans->setY(strtod(this->yInput->text().toUtf8().data(), NULL));
+	trans->setZ(strtod(this->zInput->text().toUtf8().data(), NULL));
 	event->onAdicionarTipoTransformacaoClick(trans);
 }
 
