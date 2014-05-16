@@ -63,40 +63,42 @@ public:
 	}
 
 	static Matriz* getFullMatrizRotacao(Coordenada* ponto, Rotacao* rotacao){
-		MatrizRotacao* matrizRotacao = new MatrizRotacao(rotacao->angulo, rotacao->around);
-		if(rotacao->tipoRotacao != Rotacao::ORIGEM){
-			if(rotacao->tipoRotacao == Rotacao::CENTRO){
-				rotacao->setX(ponto->getX());
-				rotacao->setY(ponto->getY());
-				rotacao->setZ(ponto->getZ());
-			}
-			Coordenada* pontoFinal = rotacao->getVetor()->getCoordenadaFinal();
-			Matriz* transCenter = new MatrizTranslacao(-rotacao->getX(), -rotacao->getY(), -rotacao->getZ());
-			pontoFinal->multiplyByMatriz(transCenter);
-
-			double anguloXY = Utils::getAnguloPlanoXY(pontoFinal);
-			MatrizRotacao matrizXY(anguloXY, Rotacao::AROUND_X);
-			pontoFinal->multiplyByMatriz(&matrizXY);
-			transCenter->multiply(&matrizXY);
-
-			double anguloZY = Utils::getAnguloPlanoZY(pontoFinal);
-			MatrizRotacao matrizZY(anguloZY, Rotacao::AROUND_Z);
-			transCenter->multiply(&matrizZY);
-			transCenter->multiply(matrizRotacao);
-			pontoFinal->multiplyByMatriz(&matrizZY);
-			pontoFinal->print();
-
-			MatrizRotacao matrizZYBack(-anguloZY, Rotacao::AROUND_Z);
-			transCenter->multiply(&matrizZYBack);
-
-			MatrizRotacao matrizXYBack(-anguloXY, Rotacao::AROUND_X);
-			transCenter->multiply(&matrizXYBack);
-
-			MatrizTranslacao transCenterBack(rotacao->getX(), rotacao->getY(), rotacao->getZ());
-			transCenter->multiply(&transCenterBack);
-			delete matrizRotacao;
-			return transCenter;
+		MatrizRotacao* matrizRotacao = new MatrizRotacao(rotacao->angulo,
+				rotacao->around);
+		if (rotacao->tipoRotacao == Rotacao::CENTRO) {
+			rotacao->setX(ponto->getX());
+			rotacao->setY(ponto->getY());
+			rotacao->setZ(ponto->getZ());
 		}
+		Coordenada* pontoFinal = rotacao->getVetor()->getCoordenadaFinal();
+		Matriz* transCenter = new MatrizTranslacao(-rotacao->getX(),
+				-rotacao->getY(), -rotacao->getZ());
+		pontoFinal->multiplyByMatriz(transCenter);
+
+		double anguloXY = Utils::getAnguloPlanoXY(pontoFinal);
+		MatrizRotacao matrizXY(anguloXY, Rotacao::AROUND_X);
+		pontoFinal->multiplyByMatriz(&matrizXY);
+		transCenter->multiply(&matrizXY);
+
+		double anguloZY = Utils::getAnguloPlanoZY(pontoFinal);
+		MatrizRotacao matrizZY(anguloZY, Rotacao::AROUND_Z);
+		transCenter->multiply(&matrizZY);
+		transCenter->multiply(matrizRotacao);
+		pontoFinal->multiplyByMatriz(&matrizZY);
+		pontoFinal->print();
+
+		MatrizRotacao matrizZYBack(-anguloZY, Rotacao::AROUND_Z);
+		transCenter->multiply(&matrizZYBack);
+
+		MatrizRotacao matrizXYBack(-anguloXY, Rotacao::AROUND_X);
+		transCenter->multiply(&matrizXYBack);
+
+		MatrizTranslacao transCenterBack(rotacao->getX(), rotacao->getY(),
+				rotacao->getZ());
+		transCenter->multiply(&transCenterBack);
+		delete matrizRotacao;
+		return transCenter;
+
 		return matrizRotacao;
 	}
 
