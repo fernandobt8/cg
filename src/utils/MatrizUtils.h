@@ -65,44 +65,39 @@ public:
 	static Matriz* getFullMatrizRotacao(Coordenada* ponto, Rotacao* rotacao){
 		MatrizRotacao* matrizRotacao = new MatrizRotacao(rotacao->angulo, rotacao->around);
 		if(rotacao->tipoRotacao != Rotacao::ORIGEM){
-			double x, y,z;
-			Coordenada *centro;
 			if(rotacao->tipoRotacao == Rotacao::CENTRO){
 				rotacao->setX(ponto->getX());
 				rotacao->setY(ponto->getY());
 				rotacao->setZ(ponto->getZ());
 			}
-			centro = getCenter(rotacao->getVetor()->getCoordenadaInicial(), rotacao->getVetor()->getCoordenadaFinal());
-			x = centro->getX();
-			y = centro->getY();
-			z = centro->getZ();
-			Matriz* transCenter = new MatrizTranslacao(-x, -y, -z);
-			transCenter->multiply(matrizRotacao);
-			double anguloXY = Utils::getAnguloPlanoXY(rotacao->getVetor()->getCoordenadaFinal());
+			Coordenada* pontoFinal = rotacao->getVetor()->getCoordenadaFinal();
+			Matriz* transCenter = new MatrizTranslacao(-rotacao->getX(), -rotacao->getY(), -rotacao->getZ());
+			pontoFinal->multiplyByMatriz(transCenter);
+
+			double anguloXY = Utils::getAnguloPlanoXY(pontoFinal);
 			MatrizRotacao matrizXY(anguloXY, Rotacao::AROUND_X);
+			pontoFinal->multiplyByMatriz(&matrizXY);
 			transCenter->multiply(&matrizXY);
-			double anguloZY = Utils::getAnguloPlanoZY(rotacao->getVetor()->getCoordenadaFinal());
+
+			double anguloZY = Utils::getAnguloPlanoZY(pontoFinal);
 			MatrizRotacao matrizZY(anguloZY, Rotacao::AROUND_Z);
 			transCenter->multiply(&matrizZY);
-			MatrizRotacao matrizY(rotacao->angulo, Rotacao::AROUND_Y);
-			transCenter->multiply(&matrizY);
+			transCenter->multiply(matrizRotacao);
+			pontoFinal->multiplyByMatriz(&matrizZY);
+			pontoFinal->print();
+
 			MatrizRotacao matrizZYBack(-anguloZY, Rotacao::AROUND_Z);
 			transCenter->multiply(&matrizZYBack);
+
 			MatrizRotacao matrizXYBack(-anguloXY, Rotacao::AROUND_X);
 			transCenter->multiply(&matrizXYBack);
-			MatrizTranslacao transCenterBack(x, y, z);
+
+			MatrizTranslacao transCenterBack(rotacao->getX(), rotacao->getY(), rotacao->getZ());
 			transCenter->multiply(&transCenterBack);
 			delete matrizRotacao;
 			return transCenter;
 		}
 		return matrizRotacao;
-	}
-
-	static Coordenada* getCenter(Coordenada *coordenada1, Coordenada *coordenada2){
-		double somaX = coordenada1->getX() + coordenada2->getX();
-		double somaY = coordenada1->getY() + coordenada2->getY();
-		double somaZ = coordenada1->getZ() + coordenada2->getZ();
-		return new Coordenada(somaX/2, somaY/2, somaZ/2);
 	}
 
 	static Matriz* getFullMatrizEscalonamento(Coordenada* center, Escalonamento* escalonamento){
