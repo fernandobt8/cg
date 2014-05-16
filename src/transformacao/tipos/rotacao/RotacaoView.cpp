@@ -27,7 +27,7 @@ RotacaoView::RotacaoView(OnAdicionarTipoTransformacaoEvent* event) :
 	pontoButton->setObjectName(QString::fromUtf8("pontoButton"));
 	pontoButton->setGeometry(QRect(40, 70, 281, 20));
 	pontoButton->setText(
-			QString::fromUtf8("Rotacionar sobre um ponto especifico"));
+			QString::fromUtf8("Rotacionar sobre um vetor específico"));
 	QLabel *anguloLabel = new QLabel(this);
 	anguloLabel->setGeometry(QRect(20, 120, 141, 20));
 	anguloLabel->setText(QString::fromUtf8("Ângulo de rotação:"));
