@@ -30,12 +30,10 @@ public:
 
 public slots:
 	void on_pontoButton_toggled(bool checked);
-	void on_centroButton_toggled(bool checked);
 	void on_adicionarButton_clicked();
 
 private:
 	QFrame *frame;
-	QRadioButton *origemButton;
 	QRadioButton *centroButton;
 	QRadioButton *pontoButton;
 	QLineEdit *anguloInput;
@@ -54,7 +52,6 @@ private:
 	QLabel *z2Label;
 	QPushButton *adicionarButton;
 	OnAdicionarTipoTransformacaoEvent* event;
-	void pontoVisibility(bool checked);
 };
 
 #endif /* ROTACAOVIEW_H_ */

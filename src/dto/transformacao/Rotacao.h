@@ -13,7 +13,6 @@
 class Rotacao : public Transformacao {
 public:
 	enum Tipo{
-		ORIGEM,
 		CENTRO,
 		PONTO,
 	} tipoRotacao;
