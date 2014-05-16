@@ -11,33 +11,33 @@ Rotacao::Rotacao() : Transformacao("Rotação") {
 	this->angulo = 0;
 	this->tipoRotacao = Rotacao::CENTRO;
 	this->around = Rotacao::AROUND_Y;
+	this->coordenadaFinal = new Coordenada();
 }
 
 Rotacao::Rotacao(double angulo, Rotacao::Tipo tipoRotacao, Rotacao::Round around) : Transformacao("Rotação") {
 	this->angulo = angulo;
 	this->tipoRotacao = tipoRotacao;
 	this->around = around;
+	this->coordenadaFinal = new Coordenada();
 }
 
 void Rotacao::setXFinal(double final) {
-	xFinal = final;
+	coordenadaFinal->setX(final);
 }
 
 void Rotacao::setYFinal(double final) {
-	yFinal = final;
+	coordenadaFinal->setY(final);
 }
 
 void Rotacao::setZFinal(double final) {
-	zFinal = final;
+	coordenadaFinal->setZ(final);
 }
 
-Vetor* Rotacao::getVetor(){
-	Coordenada* inicial = new Coordenada(x, y, z);
-	Coordenada* final = new Coordenada(xFinal, yFinal, zFinal);
-	Vetor* vetor = new Vetor(inicial, final);
-	return vetor;
+Coordenada* Rotacao::getCoordenadaFinal(){
+	return coordenadaFinal;
 }
 
 Rotacao::~Rotacao() {
+	delete coordenadaFinal;
 }
 

@@ -8,7 +8,7 @@
 #ifndef ROTACAO_H_
 #define ROTACAO_H_
 #include "Transformacao.h"
-#include "../../dto/geometrico/Vetor.h"
+#include "../geometrico/Coordenada.h"
 
 class Rotacao : public Transformacao {
 public:
@@ -28,9 +28,9 @@ public:
 	void setXFinal(double final);
 	void setYFinal(double final);
 	void setZFinal(double final);
-	Vetor* getVetor();
+	Coordenada* getCoordenadaFinal();
 	double angulo;
-	double xFinal, yFinal, zFinal;
+	Coordenada* coordenadaFinal;
 };
 
 #endif /* ROTACAO_H_ */

@@ -13,7 +13,6 @@
 #include "../dto/matriz/MatrizBezier.h"
 #include "../dto/matriz/MatrizBSplines.h"
 #include "../dto/matriz/MatrizDelta.h"
-#include "../dto/geometrico/Vetor.h"
 
 class MatrizUtils{
 public:
@@ -69,7 +68,7 @@ public:
 			rotacao->setY(ponto->getY());
 			rotacao->setZ(ponto->getZ());
 		}
-		Coordenada* pontoFinal = rotacao->getVetor()->getCoordenadaFinal();
+		Coordenada* pontoFinal = rotacao->getCoordenadaFinal();
 		Matriz* transCenter = new MatrizTranslacao(-rotacao->getX(), -rotacao->getY(), -rotacao->getZ());
 		pontoFinal->multiplyByMatriz(transCenter);
 
@@ -82,8 +81,6 @@ public:
 		MatrizRotacao matrizZY(anguloZY, Rotacao::AROUND_Z);
 		transCenter->multiply(&matrizZY);
 		transCenter->multiply(&matrizRotacao);
-		pontoFinal->multiplyByMatriz(&matrizZY);
-		pontoFinal->print();
 
 		MatrizRotacao matrizZYBack(-anguloZY, Rotacao::AROUND_Z);
 		transCenter->multiply(&matrizZYBack);
