@@ -30,6 +30,7 @@ public:
 	void rotacione(double angulo, Rotacao::Round around);
 	double getWidth();
 	double getHeight();
+	Coordenada* getCenter();
 	NormalizadorWindow* getNormalizador();
 	void clearWindowObjetos();
 	Coordenada* CPPstart;

@@ -47,8 +47,8 @@ public:
 	static double getAnguloBetweenVectors(Coordenada* coor1, Coordenada* coor2){
 		//grau = arccos(v1 * v2) / (||v1|| * ||v2||)
 		double dividendo = (coor1->getX() * coor2->getX()) + (coor1->getY() * coor2->getY()) + (coor1->getZ() * coor2->getZ());
-		double divisor =  sqrt(pow(coor1->getY(), 2) + pow(coor1->getZ(), 2)) *
-				sqrt(pow(coor2->getY(), 2) + pow(coor2->getZ(), 2));
+		double divisor =  sqrt(pow(coor1->getX(), 2) + pow(coor1->getY(), 2) + pow(coor1->getZ(), 2)) *
+				sqrt(pow(coor2->getX(), 2) + pow(coor2->getY(), 2) + pow(coor2->getZ(), 2));
 		return Utils::convertRaianosToGraus(acos(dividendo / divisor));
 	}
 

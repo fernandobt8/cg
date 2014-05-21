@@ -92,6 +92,9 @@ double Window::getHeight(){
 	return CPPend->getY() - CPPstart->getY();
 }
 
+Coordenada* Window::getCenter(){
+	return this->windowCenter;
+}
 Window::~Window() {
 	delete CPPend;
 	delete CPPstart;

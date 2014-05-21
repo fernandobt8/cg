@@ -14,6 +14,7 @@
 #include "../dto/matriz/MatrizTranslacao.h"
 #include "window/Window.h"
 #include "../clipping/Clipping.h"
+#include "window/Perspectiva.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <list>
@@ -36,7 +37,9 @@ public:
 
 private:
 	Clipping* clipping;
+	Perspectiva *perspectiva;
 	list<ObjetoGeometrico*> *objetos;
+	Coordenada* cop;
 	Matriz* getMatrizToWorldCoordinates();
 	void updateCPPCoordenadas();
 

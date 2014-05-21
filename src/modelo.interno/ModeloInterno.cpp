@@ -11,6 +11,8 @@ ModeloInterno::ModeloInterno() {
 	objetos = new list<ObjetoGeometrico*>();
 	this->window = new Window();
 	clipping = new Clipping(window);
+	perspectiva = new Perspectiva();
+	cop = new Coordenada(0, 0, 10);
 }
 
 void ModeloInterno::addObjeto(ObjetoGeometrico *objeto){
@@ -60,12 +62,17 @@ void ModeloInterno::updateCPPCoordenadas(){
 	NormalizadorWindow* normalizador = window->getNormalizador();
 	Matriz* norma = normalizador->getMatrizNormalizacao();
 	window->mutiplyCoordenadasToCPP(norma);
+	perspectiva->projetar(this->cop, this->window);
 	list<ObjetoGeometrico* >::iterator it = objetos->begin();
 	for (; it != objetos->end(); it++) {
 		ObjetoGeometrico* objeto = *it;
 		objeto->multiplyCoordenadasToCPP(norma);
+		objeto->printAllCPPcoordenadas();
+		perspectiva->projetarObjeto(objeto);
+		objeto->printAllCPPcoordenadas();
 		clipping->clip(objeto);
 	}
+	perspectiva->normalizar(this->cop, this->window);
 	delete normalizador;
 	delete norma;
 }
