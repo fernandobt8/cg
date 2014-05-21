@@ -46,7 +46,7 @@ AdicionarCurva::AdicionarCurva(QWidget *parent,	OnAdicionarObjetoTipoEvent *even
 	forwardDifferenceButton->setText(QString::fromUtf8("Forward Difference"));
 	selectColorButton->hide();
 	panelSelectedColor->hide();
-
+	bSpline = false;
 }
 
 void AdicionarCurva::on_checkAberto_toggled(bool checked){

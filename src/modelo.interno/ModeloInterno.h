@@ -39,7 +39,6 @@ private:
 	Clipping* clipping;
 	Perspectiva *perspectiva;
 	list<ObjetoGeometrico*> *objetos;
-	Coordenada* cop;
 	Matriz* getMatrizToWorldCoordinates();
 	void updateCPPCoordenadas();
 
