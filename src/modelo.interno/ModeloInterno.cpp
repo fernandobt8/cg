@@ -15,6 +15,10 @@ ModeloInterno::ModeloInterno() {
 	m->printAll();
 	m->invert();
 	m->printAll();
+	Matriz* g = MatrizUtils::getMatrizCoeficienteLinha(3.3);
+	g->printAll();
+	g->invert();
+	g->printAll();
 }
 
 void ModeloInterno::addObjeto(ObjetoGeometrico *objeto){

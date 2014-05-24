@@ -53,15 +53,20 @@ void Matriz::multiply(Matriz* matriz)  {
 }
 
 void Matriz::invert(){
+	double** resultado = new double*[numColunas];
+	for(int i = 0; i < numColunas; i++){
+		resultado[i] = new double[numLinhas];
+	}
 	for (int i = 0; i < numLinhas; i++) {
-		for (int j = i+1; j < numColunas; j++) {
-			if (j != i) {
-				double aux = matriz[i][j];
-				matriz[i][j] = matriz[j][i];
-				matriz[j][i] = aux;
-			}
+		for (int j = 0; j < numColunas; j++) {
+			resultado[j][i] = matriz[i][j];
 		}
 	}
+	this->clearMatriz();
+	this->matriz = resultado;
+	int temp = numLinhas;
+	numLinhas = numColunas;
+	numColunas = temp;
 }
 
 double** Matriz::getMatriz() {
@@ -76,6 +81,7 @@ void Matriz::clearMatriz(){
 }
 
 void Matriz::printAll(){
+	printf("Matriz %ix%i\n", numLinhas, numColunas);
 	for (int i=0; i<numLinhas; i++) {
 	  for (int j=0; j<numColunas; j++) {
 		printf("%f ", matriz[i][j]);

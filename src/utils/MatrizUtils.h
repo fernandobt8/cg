@@ -23,6 +23,7 @@ public:
 		matriz->getMatriz()[0][1] = pow(coeficiente, 2);
 		matriz->getMatriz()[0][2] = coeficiente;
 		matriz->getMatriz()[0][3] = 1;
+		return matriz;
 	}
 
 	static Matriz* getMatrizGeometria(Coordenada* p1, Coordenada* p2, Coordenada* p3, Coordenada* p4){
