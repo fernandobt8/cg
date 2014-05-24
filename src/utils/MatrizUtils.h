@@ -45,6 +45,23 @@ public:
 		return matriz;
 	}
 
+	template<typename returnValue>
+	static Matriz* getMatrizGeometria(_List_iterator<Coordenada*> it, returnValue valueToMatriz){
+		Matriz* matriz = new Matriz(4, 4);
+		double** m = matriz->getMatriz();
+		it--;
+		for(int j = 0; j < 4; j++){
+			m[0][j] = valueToMatriz((*++it));
+			m[1][j] = valueToMatriz((*++it));
+		}
+		for(int j = 0; j < 4; j++){
+			m[3][j] = valueToMatriz((*++it));
+			m[2][j] = valueToMatriz((*++it));
+		}
+		advance(it, -15);
+		return matriz;
+	}
+
 	static Matriz* getMatrizTransformacao(Coordenada* ponto, list<Transformacao*>* transformacoes) {
 		Matriz* matriz = MatrizUtils::getMatrizByTransformacao(ponto, transformacoes->front());
 		list<Transformacao*>::iterator it = _List_iterator<Transformacao*>( transformacoes->begin()._M_node->_M_next);

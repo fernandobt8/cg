@@ -86,7 +86,7 @@ void ObjetoGeometrico::printAllCPPcoordenadas(){
 ObjetoGeometrico::~ObjetoGeometrico() {
 	ListUtils::destroyList(coordenadas);
 	ListUtils::destroyList(CPPcoordenadas);
-	delete nome;
+	//FIXME delete nome;
 }
 
 Coordenada* ObjetoGeometrico::getPontoFinal() {

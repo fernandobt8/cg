@@ -9,6 +9,7 @@
 #define MODELOINTERNO_H_
 
 #include "../dto/geometrico/ObjetoGeometrico.h"
+#include "../dto/geometrico/Curva3D.h"
 #include "../dto/matriz/Matriz.h"
 #include "../dto/matriz/MatrizRotacao.h"
 #include "../dto/matriz/MatrizTranslacao.h"

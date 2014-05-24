@@ -8,6 +8,18 @@ using namespace std;
 
 class CoordenadaUtils{
 public:
+	static double returnX(Coordenada* coordenada){
+		return coordenada->getX();
+	}
+
+	static double returnY(Coordenada* coordenada){
+		return coordenada->getY();
+	}
+
+	static double returnZ(Coordenada* coordenada){
+		return coordenada->getZ();
+	}
+
 	static bool notVisitado(Coordenada* coordenada){
 		return !coordenada->isVisitado();
 	}

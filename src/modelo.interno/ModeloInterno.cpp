@@ -11,6 +11,33 @@ ModeloInterno::ModeloInterno() {
 	objetos = new list<ObjetoGeometrico*>();
 	this->window = new Window();
 	clipping = new Clipping(window);
+	list<Coordenada* >* l = new list<Coordenada*>();
+	l->push_back(new Coordenada(50, 50 , 50));
+	l->push_back(new Coordenada(150, 50 , 50));
+
+	l->push_back(new Coordenada(51, 150 , 50));
+	l->push_back(new Coordenada(151,150 , 50));
+
+	l->push_back(new Coordenada(52, 250 , 50));
+	l->push_back(new Coordenada(152,250 , 50));
+
+	l->push_back(new Coordenada(53, 350 , 50));
+	l->push_back(new Coordenada(153,350 , 50));
+
+
+	l->push_back(new Coordenada(350, 50 , 50));
+	l->push_back(new Coordenada(250, 50 , 50));
+
+	l->push_back(new Coordenada(351, 150 , 50));
+	l->push_back(new Coordenada(251, 150 , 50));
+
+	l->push_back(new Coordenada(352, 250 , 50));
+	l->push_back(new Coordenada(252, 250 , 50));
+
+	l->push_back(new Coordenada(353, 350 , 50));
+	l->push_back(new Coordenada(253, 350 , 50));
+	Curva3D* c = new Curva3D("aaaa", l);
+	objetos->push_back(c);
 }
 
 void ModeloInterno::addObjeto(ObjetoGeometrico *objeto){
