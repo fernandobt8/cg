@@ -11,6 +11,10 @@ ModeloInterno::ModeloInterno() {
 	objetos = new list<ObjetoGeometrico*>();
 	this->window = new Window();
 	clipping = new Clipping(window);
+	Matriz* m = new MatrizBezier();
+	m->printAll();
+	m->invert();
+	m->printAll();
 }
 
 void ModeloInterno::addObjeto(ObjetoGeometrico *objeto){

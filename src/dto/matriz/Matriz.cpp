@@ -19,16 +19,6 @@ Matriz::Matriz(int numLinhas, int numColunas) {
 	this->initializeMatriz();
 }
 
-Matriz::Matriz(double t){
-	this->numColunas = 4;
-	this->numLinhas = 1;
-	this->initializeMatriz();
-	matriz[0][0] = pow(t, 3);
-	matriz[0][1] = pow(t, 2);
-	matriz[0][2] = t;
-	matriz[0][3] = 1;
-}
-
 Matriz::Matriz(Coordenada* coordenada){
 	this->numLinhas = 1;
 	this->numColunas = 4;
@@ -60,6 +50,18 @@ void Matriz::multiply(Matriz* matriz)  {
 	this->clearMatriz();
 	this->numColunas = matriz->numColunas;
 	this->matriz = resultado;
+}
+
+void Matriz::invert(){
+	for (int i = 0; i < numLinhas; i++) {
+		for (int j = i+1; j < numColunas; j++) {
+			if (j != i) {
+				double aux = matriz[i][j];
+				matriz[i][j] = matriz[j][i];
+				matriz[j][i] = aux;
+			}
+		}
+	}
 }
 
 double** Matriz::getMatriz() {

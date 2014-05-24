@@ -18,11 +18,11 @@ class Coordenada;
 class Matriz {
 public:
 	Matriz();
-	Matriz(double t);
 	Matriz(int numLinhas, int numColunas);
 	Matriz(Coordenada* coordenada);
 	virtual ~Matriz();
 	void multiply(Matriz* matriz);
+	void invert();
 	double** getMatriz();
 	void printAll();
 

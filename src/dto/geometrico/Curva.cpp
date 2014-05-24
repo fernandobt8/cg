@@ -71,7 +71,7 @@ void Curva::bSplines(){
 void Curva::gerarPontosBlendingFunction(list<Coordenada*>* listCoordenads, Matriz* matrizTipoCurva, Coordenada* p1, Coordenada* p2, Coordenada* p3, Coordenada* p4){
 	Matriz* matrizG = MatrizUtils::getMatrizGeometria(p1, p2, p3, p4);
 	for(double t = 0; t < 1.00001; t += 0.05){
-		Matriz* matrizT = new Matriz(t);
+		Matriz* matrizT = MatrizUtils::getMatrizCoeficienteLinha(t);
 		matrizT->multiply( matrizTipoCurva);
 		matrizT->multiply(matrizG);
 		double** matrizR = matrizT->getMatriz();

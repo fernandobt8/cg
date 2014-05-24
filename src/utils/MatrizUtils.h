@@ -13,9 +13,18 @@
 #include "../dto/matriz/MatrizBezier.h"
 #include "../dto/matriz/MatrizBSplines.h"
 #include "../dto/matriz/MatrizDelta.h"
+#include <math.h>
 
 class MatrizUtils{
 public:
+	static Matriz* getMatrizCoeficienteLinha(double coeficiente){
+		Matriz* matriz = new Matriz(1, 4);
+		matriz->getMatriz()[0][0] = pow(coeficiente, 3);
+		matriz->getMatriz()[0][1] = pow(coeficiente, 2);
+		matriz->getMatriz()[0][2] = coeficiente;
+		matriz->getMatriz()[0][3] = 1;
+	}
+
 	static Matriz* getMatrizGeometria(Coordenada* p1, Coordenada* p2, Coordenada* p3, Coordenada* p4){
 		Matriz* matriz = new Matriz(4, 3);
 		matriz->getMatriz()[0][0] = p1->getX();
