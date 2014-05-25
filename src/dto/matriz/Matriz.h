@@ -25,6 +25,7 @@ public:
 	void invert();
 	double** getMatriz();
 	void printAll();
+	Matriz* clone();
 
 protected:
 	int numLinhas;

@@ -58,7 +58,6 @@ public:
 			m[3][j] = valueToMatriz((*++it));
 			m[2][j] = valueToMatriz((*++it));
 		}
-		advance(it, -15);
 		return matriz;
 	}
 

@@ -17,8 +17,10 @@ public:
 	Curva3D(char* nome, list<Coordenada* >* coordenadas);
 	void multiplyCoordenadasToCPP(Matriz* matriz);
 	Matriz* getMatriz(double s, Matriz* m, Matriz* g, Matriz* mT);
+	void invertPontosControle(_List_iterator<Coordenada*> it);
 	list<list<Coordenada*>*>* getPontosInS();
 	list<list<Coordenada*>*>* getPontosInT();
+	void clearPontos();
 	virtual ~Curva3D();
 private:
 	list<list<Coordenada*>*>* pontosInS;

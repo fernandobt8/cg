@@ -20,18 +20,32 @@ void Clipping::clip(ObjetoGeometrico* objeto) {
 	Reta* reta = dynamic_cast<Reta*>(objeto);
 	Poligono* poligono = dynamic_cast<Poligono*>(objeto);
 	Curva* curva = dynamic_cast<Curva*>(objeto);
+	Curva3D* curva3d = dynamic_cast<Curva3D*>(objeto);
 	if (ponto) {
 		clippingPonto(ponto->clone());
 	} else if (reta) {
 		clippingReta(reta->clone());
 	} else if (poligono) {
 		if (poligono->aberto) {
-			this->clippingObjetoGeometricoToRetas(poligono);
+			this->clippingObjetoGeometricoToRetas(poligono->getCPPCoordenadas());
 		} else {
 			this->clippingPoligonoFechado(poligono);
 		}
 	} else if(curva){
-		this->clippingObjetoGeometricoToRetas(curva);
+		this->clippingObjetoGeometricoToRetas(curva->getCPPCoordenadas());
+	} else if(curva3d){
+		this->clippingCurva3D(curva3d);
+	}
+}
+
+void Clipping::clippingCurva3D(Curva3D *curva){
+	list<list<Coordenada*>*>::iterator itS = curva->getPontosInS()->begin();
+	for( ; itS != curva->getPontosInS()->end(); itS++){
+		this->clippingObjetoGeometricoToRetas((*itS));
+	}
+	list<list<Coordenada*>*>::iterator itT = curva->getPontosInT()->begin();
+	for( ; itT != curva->getPontosInT()->end(); itT++){
+		this->clippingObjetoGeometricoToRetas((*itT));
 	}
 }
 
@@ -47,13 +61,15 @@ void Clipping::clippingReta(Reta *reta) {
 	}
 }
 
-void Clipping::clippingObjetoGeometricoToRetas(ObjetoGeometrico* objeto) {
-	list<Coordenada*>::iterator it = objeto->getCPPCoordenadas()->begin();
-	for (; it._M_node != objeto->getCPPCoordenadas()->end()._M_node->_M_prev; it++) {
+void Clipping::clippingObjetoGeometricoToRetas(list<Coordenada*>* pontos) {
+	list<Coordenada*>::iterator it = pontos->begin();
+	for (; it._M_node != pontos->end()._M_node->_M_prev; it++) {
 		Coordenada* current = (*it)->clone();
 		Coordenada* next =  ListUtils::getDataForwardIterator(it, 1)->clone();
 		if (clippingLine(current, next)) {
-			Reta* r = new Reta(Utils::cloneChar(objeto->getNome()));
+			char* nomeC = new char[5];
+			nomeC = "reta";
+			Reta* r = new Reta(Utils::cloneChar(nomeC));
 			r->getCPPCoordenadas()->push_back(current);
 			r->getCPPCoordenadas()->push_back(next);
 			window->addWindowObjeto(r);

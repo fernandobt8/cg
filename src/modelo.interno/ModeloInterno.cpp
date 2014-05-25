@@ -13,29 +13,42 @@ ModeloInterno::ModeloInterno() {
 	clipping = new Clipping(window);
 	list<Coordenada* >* l = new list<Coordenada*>();
 	l->push_back(new Coordenada(50, 50 , 50));
-	l->push_back(new Coordenada(150, 50 , 50));
+	l->push_back(new Coordenada(150, 50 , 250));
 
 	l->push_back(new Coordenada(51, 150 , 50));
-	l->push_back(new Coordenada(151,150 , 50));
+	l->push_back(new Coordenada(151,150 , 250));
 
 	l->push_back(new Coordenada(52, 250 , 50));
-	l->push_back(new Coordenada(152,250 , 50));
+	l->push_back(new Coordenada(152,250 , 250));
 
 	l->push_back(new Coordenada(53, 350 , 50));
-	l->push_back(new Coordenada(153,350 , 50));
+	l->push_back(new Coordenada(153,350 , 250));
 
 
 	l->push_back(new Coordenada(350, 50 , 50));
-	l->push_back(new Coordenada(250, 50 , 50));
+	l->push_back(new Coordenada(250, 50 , 250));
 
 	l->push_back(new Coordenada(351, 150 , 50));
-	l->push_back(new Coordenada(251, 150 , 50));
+	l->push_back(new Coordenada(251, 150 , 250));
 
 	l->push_back(new Coordenada(352, 250 , 50));
-	l->push_back(new Coordenada(252, 250 , 50));
+	l->push_back(new Coordenada(252, 250 , 250));
 
 	l->push_back(new Coordenada(353, 350 , 50));
-	l->push_back(new Coordenada(253, 350 , 50));
+	l->push_back(new Coordenada(253, 350 , 250));
+
+
+	l->push_back(new Coordenada(550, 50 , 50));
+	l->push_back(new Coordenada(450, 50 , -150));
+
+	l->push_back(new Coordenada(551, 150 , 50));
+	l->push_back(new Coordenada(451, 150 , -150));
+
+	l->push_back(new Coordenada(552, 250 , 50));
+	l->push_back(new Coordenada(452, 250 , -150));
+
+	l->push_back(new Coordenada(553, 350 , 50));
+	l->push_back(new Coordenada(453, 350 , -150));
 	Curva3D* c = new Curva3D("aaaa", l);
 	objetos->push_back(c);
 }

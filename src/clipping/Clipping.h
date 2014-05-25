@@ -14,6 +14,7 @@
 #include "../dto/geometrico/Reta.h"
 #include "../dto/geometrico/Poligono.h"
 #include "../dto/geometrico/Curva.h"
+#include "../dto/geometrico/Curva3D.h"
 #include <stdio.h>
 #include "../utils/Utils.h"
 #include "../utils/ListUtils.h"
@@ -33,9 +34,10 @@ private:
 
 	void clippingReta(Reta* reta);
 	void clippingPonto(Ponto* ponto);
-	void clippingObjetoGeometricoToRetas(ObjetoGeometrico* poligono);
+	void clippingObjetoGeometricoToRetas(list<Coordenada*>* pontos);
 	void clippingPoligonoFechado(Poligono* poligono);
 	void clippingCurva(Curva *curva);
+	void clippingCurva3D(Curva3D *curva);
 
 	bool clippingLine(Coordenada* inicial, Coordenada* final);
 	template<typename Equals, typename Sort>

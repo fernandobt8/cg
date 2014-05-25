@@ -69,6 +69,16 @@ void Matriz::invert(){
 	numColunas = temp;
 }
 
+Matriz* Matriz::clone(){
+	Matriz* m = new Matriz(numLinhas, numColunas);
+	for(int i = 0; i < numLinhas; i++){
+		for(int j = 0; j < numColunas; j++){
+			m->getMatriz()[i][j] = matriz[i][j];
+		}
+	}
+	return m;
+}
+
 double** Matriz::getMatriz() {
 	return matriz;
 }
