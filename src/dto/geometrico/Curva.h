@@ -25,8 +25,8 @@ public:
 	Curva* clone();
 	bool bSpline;
 	Curva::Desenhe algoritmo;
-	static void gerarPontosBlendingFunction(list<Coordenada*>* listCoordenads, Matriz* matrizTipoCurva, Coordenada* p1, Coordenada* p2, Coordenada* p3, Coordenada* p4);
-	static void gerarPontosForwardDifference(list<Coordenada*>* listCoordenads, Matriz* matrizTipoCurva, Coordenada* p1, Coordenada* p2, Coordenada* p3, Coordenada* p4);
+	void gerarPontosBlendingFunction(list<Coordenada*>* listCoordenads, Matriz* matrizTipoCurva, Coordenada* p1, Coordenada* p2, Coordenada* p3, Coordenada* p4);
+	void gerarPontosForwardDifference(list<Coordenada*>* listCoordenads, Matriz* matrizTipoCurva, Coordenada* p1, Coordenada* p2, Coordenada* p3, Coordenada* p4);
 private:
 	void bezier();
 	void bSplines();

@@ -46,7 +46,7 @@ public:
 	}
 
 	template<typename returnValue>
-	static Matriz* getMatrizGeometria(_List_iterator<Coordenada*> it, returnValue valueToMatriz){
+	static Matriz* getMatrizGeometriaBezier(_List_iterator<Coordenada*> it, returnValue valueToMatriz){
 		Matriz* matriz = new Matriz(4, 4);
 		double** m = matriz->getMatriz();
 		it--;
@@ -57,6 +57,18 @@ public:
 		for(int j = 0; j < 4; j++){
 			m[3][j] = valueToMatriz((*++it));
 			m[2][j] = valueToMatriz((*++it));
+		}
+		return matriz;
+	}
+
+	template<typename returnValue>
+	static Matriz* getMatrizGeometriaSplines(_List_iterator<Coordenada*> it, returnValue valueToMatriz){
+		Matriz* matriz = new Matriz(4, 4);
+		double** m = matriz->getMatriz();
+		for(int i = 0; i < 4; i++){
+			for(int j = 0; j < 4; j++){
+				m[i][j] = valueToMatriz(*it++);
+			}
 		}
 		return matriz;
 	}

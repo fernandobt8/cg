@@ -14,9 +14,16 @@
 
 class Curva3D : public ObjetoGeometrico{
 public:
+	enum Tipo{
+		BEZIER,
+		SPLINES,
+	}tipoCuva;
 	Curva3D(char* nome, list<Coordenada* >* coordenadas);
 	void multiplyCoordenadasToCPP(Matriz* matriz);
-	Matriz* getMatriz(double s, Matriz* m, Matriz* g, Matriz* mT);
+	void bezier();
+	void splines();
+	void blendingFunction(Matriz* M, Matriz* gX, Matriz* gY, Matriz* gZ);
+	Matriz* getMatrizS(double s, Matriz* m, Matriz* g, Matriz* mT);
 	void invertPontosControle(_List_iterator<Coordenada*> it);
 	list<list<Coordenada*>*>* getPontosInS();
 	list<list<Coordenada*>*>* getPontosInT();

@@ -40,9 +40,9 @@ void Curva::bezier(){
 		Coordenada* p3 = *++it;
 		primeiro = false;
 		if(algoritmo == Curva::BLENDING_FUNCTION)
-			Curva::gerarPontosBlendingFunction(newPontos, bezier, p1, p2, p3, p4);
+			this->gerarPontosBlendingFunction(newPontos, bezier, p1, p2, p3, p4);
 		else
-			Curva::gerarPontosForwardDifference(newPontos, bezier, p1, p2, p3, p4);
+			this->gerarPontosForwardDifference(newPontos, bezier, p1, p2, p3, p4);
 		it--;
 	}
 	delete bezier;
@@ -59,9 +59,9 @@ void Curva::bSplines(){
 		Coordenada* p3 = *++it;
 		Coordenada* p4 = *++it;
 		if(algoritmo == Curva::BLENDING_FUNCTION)
-			Curva::gerarPontosBlendingFunction(newPontos, bSpline, p1, p2, p3, p4);
+			this->gerarPontosBlendingFunction(newPontos, bSpline, p1, p2, p3, p4);
 		else
-			Curva::gerarPontosForwardDifference(newPontos, bSpline, p1, p2, p3, p4);
+			this->gerarPontosForwardDifference(newPontos, bSpline, p1, p2, p3, p4);
 		advance(it, -2);
 	}
 	delete bSpline;
