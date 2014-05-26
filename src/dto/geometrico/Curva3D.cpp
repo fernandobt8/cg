@@ -10,7 +10,7 @@
 Curva3D::Curva3D(char* nome, list<Coordenada* >* coordenadas) : ObjetoGeometrico(nome, coordenadas){
 	pontosInS = new list<list<Coordenada*>*>();
 	pontosInT = new list<list<Coordenada*>*>();
-	tipoCuva = SPLINES;
+	tipoCuva = BEZIER;
 }
 
 void Curva3D::multiplyCoordenadasToCPP(Matriz* matriz){
@@ -113,7 +113,7 @@ void Curva3D::blendingFunction(Matriz* M, Matriz* gX, Matriz* gY, Matriz* gZ){
 		delete matrizSZ;
 		pontosInT->push_back(pontos);
 	}
-
+	delete MT;
 }
 
 Matriz* Curva3D::getMatrizS(double s, Matriz* m, Matriz* g, Matriz* mT){
