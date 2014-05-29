@@ -29,7 +29,6 @@ public slots:
 	virtual void on_checkAberto_toggled(bool checked);
 protected:
 	QListWidget *coordenadasList;
-	QPushButton *adicionarCoordenadaButton;
 	QPushButton *removerCoordenadaButton;
 	QCheckBox* checkAberto;
 	QPushButton *selectColorButton;
@@ -37,6 +36,9 @@ protected:
 	QLabel* sentidoHorario;
 	QColor color;
 	list<Coordenada*>* coordenadasObjeto;
+
+private:
+	QPushButton *adicionarCoordenadaButton;
 
 public slots:
 	void on_removerCoordenada_clicked();

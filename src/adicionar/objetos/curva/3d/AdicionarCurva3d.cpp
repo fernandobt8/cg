@@ -12,6 +12,7 @@ AdicionarCurva3d::AdicionarCurva3d(QWidget *parent,	OnAdicionarObjetoTipoEvent *
 	radioButton2->setText(QString::fromUtf8("Spline"));
 	avisoLabel->setText(QString::fromUtf8("16 pontos"));
 	radioButton2->setChecked(true);
+	checkAberto->setChecked(true);
 	checkAberto->hide();
 }
 
@@ -44,22 +45,3 @@ void AdicionarCurva3d::on_adicionarCoordenada_clicked() {
 
 }
 
-void AdicionarCurva3d::on_radioButton1_toggled(bool toggled) {
-	if(toggled){
-		x2Input->hide();
-		y2Input->hide();
-		z2Input->hide();
-		x2Label->hide();
-		y2Label->hide();
-		z2Label->hide();
-		pontoControle->hide();
-	}else{
-		x2Input->show();
-		y2Input->show();
-		z2Input->show();
-		x2Label->show();
-		y2Label->show();
-		z2Label->show();
-		pontoControle->show();
-	}
-}

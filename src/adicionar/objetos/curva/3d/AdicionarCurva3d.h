@@ -20,7 +20,7 @@ public:
 	virtual ~AdicionarCurva3d();
 	void on_okButton_clicked();
 	void on_adicionarCoordenada_clicked();
-	void on_radioButton1_toggled(bool toggled);
+
 };
 
 #endif /* ADICIONARCURVA3D_H_ */

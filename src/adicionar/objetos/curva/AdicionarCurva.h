@@ -16,7 +16,6 @@
 #include "../../../dto/geometrico/Curva.h"
 
 class AdicionarCurva : public AdicionarPoligono {
-Q_OBJECT
 public:
 	AdicionarCurva(QWidget *parent, OnAdicionarObjetoTipoEvent *event);
 	virtual ~AdicionarCurva();
@@ -24,12 +23,8 @@ public:
 	void on_adicionarCoordenada_clicked();
 	void on_checkAberto_toggled(bool checked);
 
-public slots:
-	virtual void on_radioButton1_toggled(bool toggled);
-private:
-	bool bSpline;
-
 protected:
+	bool bSpline;
 	QLabel *avisoLabel;
 	QRadioButton* radioButton1;
 	QRadioButton* radioButton2;

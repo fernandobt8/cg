@@ -44,7 +44,6 @@ AdicionarCurva::AdicionarCurva(QWidget *parent,	OnAdicionarObjetoTipoEvent *even
 	selectColorButton->hide();
 	panelSelectedColor->hide();
 	bSpline = false;
-	QMetaObject::connectSlotsByName(this);
 
 }
 
@@ -99,10 +98,6 @@ void AdicionarCurva::on_adicionarCoordenada_clicked() {
 		item->setText(sX2 + sV2 + sY2 + sV2 + sZ2);
 		coordenadasList->addItem(item);
 	}
-}
-
-void AdicionarCurva::on_radioButton1_toggled(bool toggled){
-
 }
 
 AdicionarCurva::~AdicionarCurva() {
