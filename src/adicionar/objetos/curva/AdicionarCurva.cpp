@@ -24,28 +24,27 @@ AdicionarCurva::AdicionarCurva(QWidget *parent,	OnAdicionarObjetoTipoEvent *even
 	y2Input = new QLineEdit(this);
 	y2Input->setGeometry(QRect(110, 150, 50, 25));
 	z2Label = new QLabel(this);
-	z2Label->setObjectName(QString::fromUtf8("label_2"));
 	z2Label->setGeometry(QRect(180, 150, 10, 25));
 	z2Label->setText(QString::fromUtf8("z"));
 	z2Input = new QLineEdit(this);
-	z2Input->setObjectName(QString::fromUtf8("yTextFieldPonto"));
 	z2Input->setGeometry(QRect(190, 150, 50, 25));
 	avisoLabel = new QLabel(this);
-	avisoLabel->setObjectName(QString::fromUtf8("avisoLabel"));
 	avisoLabel->setGeometry(QRect(260, 45, 130, 25));
 	avisoLabel->setText(QString::fromUtf8("Mínimo 4 pontos!"));
 	checkAberto->setText(QString::fromUtf8("B-Splines"));
-	blendingFuctionButton = new QRadioButton(this);
-	blendingFuctionButton->setObjectName(QString::fromUtf8("blendingFuctionButton"));
-	blendingFuctionButton->setGeometry(QRect(410, 100, 160, 25));
-	blendingFuctionButton->setText(QString::fromUtf8("Blending Fuction"));
-	blendingFuctionButton->setChecked(true);
-	forwardDifferenceButton = new QRadioButton(this);
-	forwardDifferenceButton->setObjectName(QString::fromUtf8("forwardDifferenceButton"));
-	forwardDifferenceButton->setGeometry(QRect(410, 130, 160, 25));
-	forwardDifferenceButton->setText(QString::fromUtf8("Forward Difference"));
+	radioButton1 = new QRadioButton(this);
+	radioButton1->setObjectName(QString::fromUtf8("radioButton1"));
+	radioButton1->setGeometry(QRect(410, 100, 160, 25));
+	radioButton1->setText(QString::fromUtf8("Blending Fuction"));
+	radioButton1->setChecked(true);
+	radioButton2 = new QRadioButton(this);
+	radioButton2->setObjectName(QString::fromUtf8("radioButton2"));
+	radioButton2->setGeometry(QRect(410, 130, 160, 25));
+	radioButton2->setText(QString::fromUtf8("Forward Difference"));
 	selectColorButton->hide();
 	panelSelectedColor->hide();
+	bSpline = false;
+	QMetaObject::connectSlotsByName(this);
 
 }
 
@@ -79,7 +78,7 @@ void AdicionarCurva::on_okButton_clicked() {
 	}
 	Curva *p = new Curva(Utils::cloneChar(this->nomeInput->text().toUtf8().data()), novaLista);
 	p->bSpline = checkAberto->isChecked();
-	p->algoritmo = blendingFuctionButton->isChecked() ? Curva::BLENDING_FUNCTION : Curva::FORWARD_DIFFERENCE;
+	p->algoritmo = radioButton1->isChecked() ? Curva::BLENDING_FUNCTION : Curva::FORWARD_DIFFERENCE;
 	addEvent->OnAdicionarObjetoTipoClick(p);
 }
 
@@ -98,8 +97,12 @@ void AdicionarCurva::on_adicionarCoordenada_clicked() {
 		QString sZ2(this->z2Input->text().toUtf8().data());
 		QString sV2(", ");
 		item->setText(sX2 + sV2 + sY2 + sV2 + sZ2);
-		this->coordenadasList->addItem(item);
+		coordenadasList->addItem(item);
 	}
+}
+
+void AdicionarCurva::on_radioButton1_toggled(bool toggled){
+
 }
 
 AdicionarCurva::~AdicionarCurva() {

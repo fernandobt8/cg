@@ -13,7 +13,7 @@ AdicionarTipoObjetoView::AdicionarTipoObjetoView(
 	tabWindow->addTab(new AdicionarReta(this, event), QString("Reta"));
 	tabWindow->addTab(new AdicionarPoligono(this, event), QString("Poligono"));
 	tabWindow->addTab(new AdicionarCurva(this, event), QString("Curva"));
-	//tabWindow->addTab(new AdicionarCurva3d(this, event), QString("Curva 3D"));
+	tabWindow->addTab(new AdicionarCurva3d(this, event), QString("Curva 3D"));
 
 	QDesktopWidget *desktop = QApplication::desktop();
 	this->move((desktop->width() - 490) / 2, (desktop->height() - 300) / 2);

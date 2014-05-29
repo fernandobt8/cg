@@ -42,5 +42,6 @@ src/adicionar/objetos/ponto \
 src/adicionar/objetos/poligono \
 src/adicionar/objetos \
 src/adicionar/objetos/curva \
+src/adicionar/objetos/curva/3d \
 src/adicionar \
 

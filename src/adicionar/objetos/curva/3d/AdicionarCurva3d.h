@@ -8,23 +8,19 @@
 #ifndef ADICIONARCURVA3D_H_
 #define ADICIONARCURVA3D_H_
 
-#include "../poligono/AdicionarPoligono.h"
+#include "../../curva/AdicionarCurva.h"
 #include "QtGui/qlabel.h"
 #include "QtGui/qradiobutton.h"
-#include "../../../dto/geometrico/Curva3D.h"
+#include "../../../../dto/geometrico/Curva3D.h"
 #include "QtGui/qmessagebox.h"
 
-class AdicionarCurva3d : public AdicionarPoligono{
+class AdicionarCurva3d : public AdicionarCurva{
 public:
 	AdicionarCurva3d(QWidget *parent,	OnAdicionarObjetoTipoEvent *event);
 	virtual ~AdicionarCurva3d();
 	void on_okButton_clicked();
 	void on_adicionarCoordenada_clicked();
-	void on_checkAberto_toggled(bool checked);
-
-private:
-	QRadioButton* splineButton;
-	QRadioButton* bezierButton;
+	void on_radioButton1_toggled(bool toggled);
 };
 
 #endif /* ADICIONARCURVA3D_H_ */
