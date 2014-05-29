@@ -16,6 +16,7 @@
 #include "objetos/reta/AdicionarReta.h"
 #include "objetos/poligono/AdicionarPoligono.h"
 #include "objetos/curva/AdicionarCurva.h"
+#include "objetos/curva/AdicionarCurva3d.h"
 
 using namespace std;
 
