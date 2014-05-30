@@ -40,6 +40,10 @@ AdicionarPoligono::AdicionarPoligono(QWidget *parent,
 	sentidoHorario->setObjectName(QString::fromUtf8("label"));
 	sentidoHorario->setGeometry(QRect(20, 115, 110, 25));
 	sentidoHorario->setText(QString::fromUtf8("*Sentido horário."));
+	connect(adicionarCoordenadaButton, SIGNAL(clicked()), this, SLOT(on_adicionarCoordenada_clicked()));
+	connect(removerCoordenadaButton, SIGNAL(clicked()), this, SLOT(on_removerCoordenada_clicked()));
+	connect(selectColorButton, SIGNAL(clicked()), this, SLOT(on_selectColorButton_clicked()));
+	connect(checkAberto, SIGNAL(toggled(bool)), this, SLOT(on_checkAberto_toggled(bool)));
 	color = QColor("white");
 }
 

@@ -27,6 +27,8 @@ public:
 public slots:
 	void on_selectColorButton_clicked();
 	virtual void on_checkAberto_toggled(bool checked);
+	void on_removerCoordenada_clicked();
+	virtual void on_adicionarCoordenada_clicked();
 protected:
 	QListWidget *coordenadasList;
 	QPushButton *removerCoordenadaButton;
@@ -39,10 +41,6 @@ protected:
 
 private:
 	QPushButton *adicionarCoordenadaButton;
-
-public slots:
-	void on_removerCoordenada_clicked();
-	virtual void on_adicionarCoordenada_clicked();
 };
 
 #endif /* ADICIONARPOLIGONO_H_ */
