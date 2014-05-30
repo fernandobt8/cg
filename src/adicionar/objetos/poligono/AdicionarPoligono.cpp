@@ -41,7 +41,6 @@ AdicionarPoligono::AdicionarPoligono(QWidget *parent,
 	sentidoHorario->setGeometry(QRect(20, 115, 110, 25));
 	sentidoHorario->setText(QString::fromUtf8("*Sentido horário."));
 	color = QColor("white");
-	QMetaObject::connectSlotsByName(this);
 }
 
 void AdicionarPoligono::on_selectColorButton_clicked(){
