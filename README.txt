@@ -6,3 +6,5 @@ QtGui, QtCore, pthread
 
 libraries search linker C++
 /usr/lib/x86_64-linux-gnu
+
+AAAAAAAAAAAAAAA
